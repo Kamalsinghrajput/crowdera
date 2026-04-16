@@ -132,7 +132,7 @@ export default function ServicesMission() {
 
       {/* Carousel */}
       <div
-        className="container mx-auto px-4 md:px-8"
+        className="container mx-auto px-4 md:px-12 lg:px-24 xl:px-52"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >

@@ -1,10 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import { ChevronRight, MapPin, Phone, Mail } from 'lucide-react';
-import { FaCcVisa, FaCcMastercard, FaCcAmex, FaCcPaypal } from 'react-icons/fa';
-import { FaInstagram } from "react-icons/fa6";
-import { FiTwitter } from "react-icons/fi";
-import { TiSocialFacebookCircular } from "react-icons/ti";
+import { ChevronRight, MapPin, Phone, Mail, Facebook, Twitter, Instagram } from 'lucide-react';
+
 
 
 
@@ -29,11 +26,11 @@ const Footer = () => {
               Empowering communities and inspiring change globally. We believe in a world where everyone has access to basic needs and opportunities to grow.
             </p>
             <div className="flex space-x-4">
-              <span className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-yellow hover:text-brand-dark transition-all font-bold cursor-pointer"><TiSocialFacebookCircular />
+              <span className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-yellow hover:text-brand-dark transition-all font-bold cursor-pointer"><Facebook size={20} />
               </span>
-              <span className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-yellow hover:text-brand-dark transition-all font-bold cursor-pointer"><FiTwitter />
+              <span className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-yellow hover:text-brand-dark transition-all font-bold cursor-pointer"><Twitter size={20} />
               </span>
-              <span className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-yellow hover:text-brand-dark transition-all font-bold cursor-pointer"><FaInstagram />
+              <span className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-yellow hover:text-brand-dark transition-all font-bold cursor-pointer"><Instagram size={20} />
               </span>
             </div>
           </div>
@@ -106,19 +103,19 @@ const Footer = () => {
               <div className="flex items-center space-x-2">
                 {/* Visa */}
                 <div className="bg-gray-100 rounded px-1.5 flex items-center justify-center shadow-sm h-[1.6em]">
-                  <FaCcVisa className="text-[#1434CB] text-xl" />
+                  <span className="text-[#1434CB] text-[10px] font-extrabold italic">VISA</span>
                 </div>
                 {/* Mastercard */}
                 <div className="bg-gray-100 rounded px-1.5 flex items-center justify-center shadow-sm h-[1.6em]">
-                  <FaCcMastercard className="text-[#EB001B] text-xl" />
+                  <span className="text-[#EB001B] text-[10px] font-bold">MC</span>
                 </div>
                 {/* Amex */}
                 <div className="bg-gray-100 rounded px-1.5 flex items-center justify-center shadow-sm h-[1.6em]">
-                  <FaCcAmex className="text-[#002663] text-xl" />
+                  <span className="text-[#002663] text-[10px] font-bold">AMEX</span>
                 </div>
                 {/* PayPal */}
                 <div className="bg-gray-100 rounded px-1.5 flex items-center justify-center shadow-sm h-[1.6em]">
-                  <FaCcPaypal className="text-[#003087] text-xl" />
+                  <span className="text-[#003087] text-[10px] font-bold italic">PayPal</span>
                 </div>
               </div>
             </div>

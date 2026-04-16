@@ -111,8 +111,8 @@ const Navbar = () => {
 
             {/* Left — email only (phone moved to About section) */}
             <div className="flex space-x-5 items-center">
-              <a href="mailto:support@example.com" className="flex items-center hover:text-brand-yellow transition-colors">
-                <Mail size={12} className="mr-1.5 text-brand-yellow" />
+              <a href="mailto:support@example.com" className="flex items-center hover:text-brand-yellow transition-colors text-sm font-medium">
+                <Mail size={18} className="mr-1.5 text-brand-yellow" />
                 support@example.com
               </a>
             </div>

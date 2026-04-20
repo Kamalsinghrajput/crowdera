@@ -46,11 +46,9 @@ const donors = [
   },
 ];
 
-const VISIBLE  = 4;
 const GAP      = 24;
 const AUTO_MS  = 3800;
 const TOTAL    = donors.length;
-const MAX_IDX  = TOTAL - VISIBLE; // = 2
 
 const rankColors: Record<number, string> = {
   1: 'linear-gradient(135deg, #f5d020, #f79b00)',
@@ -62,13 +60,19 @@ export default function TopDonors() {
   const [index,    setIndex]    = useState(0);
   const [cardW,    setCardW]    = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(4);
   const trackRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const measure = () => {
+      let v = 4;
+      if (window.innerWidth < 640) v = 1;
+      else if (window.innerWidth < 768) v = 2;
+      else if (window.innerWidth < 1024) v = 3;
+      setVisibleCount(v);
       if (trackRef.current) {
         const w = trackRef.current.offsetWidth;
-        setCardW((w - GAP * (VISIBLE - 1)) / VISIBLE);
+        setCardW((w - GAP * (v - 1)) / v);
       }
     };
     measure();
@@ -76,8 +80,12 @@ export default function TopDonors() {
     return () => window.removeEventListener('resize', measure);
   }, []);
 
-  const goNext = useCallback(() => setIndex(i => (i >= MAX_IDX ? 0 : i + 1)), []);
-  const goPrev = useCallback(() => setIndex(i => (i <= 0 ? MAX_IDX : i - 1)), []);
+  const MAX_IDX = Math.max(0, TOTAL - visibleCount);
+
+  useEffect(() => { if (index > MAX_IDX) setIndex(MAX_IDX); }, [MAX_IDX, index]);
+
+  const goNext = useCallback(() => setIndex(i => (i >= MAX_IDX ? 0 : i + 1)), [MAX_IDX]);
+  const goPrev = useCallback(() => setIndex(i => (i <= 0 ? MAX_IDX : i - 1)), [MAX_IDX]);
 
   useEffect(() => {
     if (isPaused) return;
@@ -134,7 +142,7 @@ export default function TopDonors() {
                 style={{
                   width: cardW
                     ? `${cardW}px`
-                    : `calc(${100 / VISIBLE}% - ${(GAP * (VISIBLE - 1)) / VISIBLE}px)`,
+                    : `calc(${100 / visibleCount}% - ${(GAP * (visibleCount - 1)) / visibleCount}px)`,
                 }}
               >
                 {/* Avatar with rank badge */}

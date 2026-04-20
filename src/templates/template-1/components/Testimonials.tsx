@@ -52,23 +52,26 @@ const testimonials = [
   },
 ];
 
-const VISIBLE   = 3;
 const GAP       = 24;
 const AUTO_MS   = 4500;
 const TOTAL     = testimonials.length;
-const MAX_INDEX = TOTAL - VISIBLE; // = 3
 
 export default function Testimonials() {
   const trackRef = useRef<HTMLDivElement>(null);
   const [cardWidth, setCardWidth] = useState(0);
   const [index,     setIndex]     = useState(0);
   const [isPaused,  setIsPaused]  = useState(false);
+  const [visibleCount, setVisibleCount] = useState(3);
 
   useEffect(() => {
     const measure = () => {
+      let v = 3;
+      if (window.innerWidth < 640) v = 1;
+      else if (window.innerWidth < 1024) v = 2;
+      setVisibleCount(v);
       if (trackRef.current) {
         const w = trackRef.current.offsetWidth;
-        setCardWidth((w - GAP * (VISIBLE - 1)) / VISIBLE);
+        setCardWidth((w - GAP * (v - 1)) / v);
       }
     };
     measure();
@@ -76,8 +79,12 @@ export default function Testimonials() {
     return () => window.removeEventListener('resize', measure);
   }, []);
 
-  const goNext = useCallback(() => setIndex(i => (i >= MAX_INDEX ? 0 : i + 1)), []);
-  const goPrev = useCallback(() => setIndex(i => (i <= 0 ? MAX_INDEX : i - 1)), []);
+  const MAX_INDEX = Math.max(0, TOTAL - visibleCount);
+
+  useEffect(() => { if (index > MAX_INDEX) setIndex(MAX_INDEX); }, [MAX_INDEX, index]);
+
+  const goNext = useCallback(() => setIndex(i => (i >= MAX_INDEX ? 0 : i + 1)), [MAX_INDEX]);
+  const goPrev = useCallback(() => setIndex(i => (i <= 0 ? MAX_INDEX : i - 1)), [MAX_INDEX]);
 
   useEffect(() => {
     if (isPaused) return;
@@ -133,7 +140,7 @@ export default function Testimonials() {
                 style={{
                   width: cardWidth
                     ? `${cardWidth}px`
-                    : `calc(${100 / VISIBLE}% - ${(GAP * (VISIBLE - 1)) / VISIBLE}px)`,
+                    : `calc(${100 / visibleCount}% - ${(GAP * (visibleCount - 1)) / visibleCount}px)`,
                 }}
               >
                 {/* Quote icon */}

@@ -105,7 +105,6 @@ const logos = [
   },
 ];
 
-const VISIBLE = 5;
 const GAP = 20;
 const AUTO_MS = 2800;
 
@@ -113,20 +112,27 @@ export default function FeaturedIn() {
   const [idx, setIdx] = useState(0);
   const [itemW, setItemW] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(5);
   const trackRef = useRef<HTMLDivElement>(null);
-  const maxIdx = logos.length - VISIBLE;
+  const maxIdx = Math.max(0, logos.length - visibleCount);
 
   useEffect(() => {
     const measure = () => {
+      let v = 5;
+      if (window.innerWidth < 640) v = 2;
+      else if (window.innerWidth < 1024) v = 3;
+      setVisibleCount(v);
       if (trackRef.current) {
         const w = trackRef.current.offsetWidth;
-        setItemW((w - GAP * (VISIBLE - 1)) / VISIBLE);
+        setItemW((w - GAP * (v - 1)) / v);
       }
     };
     measure();
     window.addEventListener('resize', measure);
     return () => window.removeEventListener('resize', measure);
   }, []);
+
+  useEffect(() => { if (idx > maxIdx) setIdx(maxIdx); }, [maxIdx, idx]);
 
   const next = useCallback(() => setIdx(i => (i >= maxIdx ? 0 : i + 1)), [maxIdx]);
   const prev = useCallback(() => setIdx(i => (i <= 0 ? maxIdx : i - 1)), [maxIdx]);
@@ -171,7 +177,7 @@ export default function FeaturedIn() {
                 style={{
                   width: itemW
                     ? `${itemW}px`
-                    : `calc(${100 / VISIBLE}% - ${(GAP * (VISIBLE - 1)) / VISIBLE}px)`,
+                    : `calc(${100 / visibleCount}% - ${(GAP * (visibleCount - 1)) / visibleCount}px)`,
                   // border: '1.5px solid #e5e7eb',
                   // boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
                   minHeight: '120px',

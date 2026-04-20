@@ -115,9 +115,9 @@ export default function ImpactProfile() {
 
             {/* Big animated counter */}
             <div className="mb-2">
-              <span className="text-6xl md:text-8xl font-extrabold leading-none">
+              <span className="text-4xl sm:text-6xl md:text-8xl font-extrabold leading-none">
                 <span ref={countRef}>0</span>
-                <span className="ml-2">Individuals</span>
+                <span className="ml-2 text-2xl sm:text-4xl md:text-6xl">Individuals</span>
               </span>
             </div>
 

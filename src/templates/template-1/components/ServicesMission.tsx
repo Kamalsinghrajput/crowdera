@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Apple, Droplets, Stethoscope, GraduationCap, Home, Leaf, ChevronLeft, ChevronRight } from 'lucide-react';
 
-const VISIBLE = 3;
 const GAP = 24;
 const AUTO_SLIDE_MS = 3500;
 
@@ -17,13 +16,9 @@ const missions = [
     title: 'Healthy Food',
     Icon: Apple,
     description: 'Providing nutritious meals to families in need, ensuring no child goes to bed hungry.',
-    // Border / outline color (secondary)
     borderColor: '#EF5350',
-    // Icon circle color
     iconColor: '#EF5350',
-    // Light inner fill (very pale tint)
     lightBg: '#f3f4f6',
-    // CSS filter to convert black SVG to borderColor
     borderFilter: 'brightness(0) saturate(100%) invert(43%) sepia(99%) saturate(743%) hue-rotate(319deg) brightness(111%) contrast(90%)',
     dot: '#EF9A9A',
   },
@@ -80,21 +75,29 @@ const missions = [
 ];
 
 const TOTAL = missions.length;
-const MAX_INDEX = TOTAL - VISIBLE;
 
 /* ── Component ── */
 export default function ServicesMission() {
   const [index, setIndex] = useState(0);
   const [cardWidth, setCardWidth] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(3);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  /* measure card width */
+  /* measure card width and adjust visible count */
   useEffect(() => {
     const measure = () => {
+      let currentVisible = 3;
+      if (window.innerWidth < 640) {
+        currentVisible = 1;
+      } else if (window.innerWidth < 1024) {
+        currentVisible = 2;
+      }
+      setVisibleCount(currentVisible);
+
       if (containerRef.current) {
         const w = containerRef.current.offsetWidth;
-        setCardWidth((w - GAP * (VISIBLE - 1)) / VISIBLE);
+        setCardWidth((w - GAP * (currentVisible - 1)) / currentVisible);
       }
     };
     measure();
@@ -102,8 +105,17 @@ export default function ServicesMission() {
     return () => window.removeEventListener('resize', measure);
   }, []);
 
-  const goNext = useCallback(() => setIndex((i) => (i >= MAX_INDEX ? 0 : i + 1)), []);
-  const goPrev = useCallback(() => setIndex((i) => (i <= 0 ? MAX_INDEX : i - 1)), []);
+  const MAX_INDEX = Math.max(0, TOTAL - visibleCount);
+
+  // Keep index in bounds if screen resizes
+  useEffect(() => {
+    if (index > MAX_INDEX) {
+      setIndex(MAX_INDEX);
+    }
+  }, [MAX_INDEX, index]);
+
+  const goNext = useCallback(() => setIndex((i) => (i >= MAX_INDEX ? 0 : i + 1)), [MAX_INDEX]);
+  const goPrev = useCallback(() => setIndex((i) => (i <= 0 ? MAX_INDEX : i - 1)), [MAX_INDEX]);
 
   /* auto slide */
   useEffect(() => {
@@ -138,7 +150,7 @@ export default function ServicesMission() {
       >
         <div ref={containerRef} className="overflow-hidden">
           <div
-            className="flex"
+            className="flex items-center"
             style={{
               gap: `${GAP}px`,
               transform: `translateX(${translateX}px)`,
@@ -151,11 +163,11 @@ export default function ServicesMission() {
               return (
                 <div
                   key={i}
-                  className="relative flex-shrink-0"
+                  className="relative flex-shrink-0 transition-all duration-300"
                   style={{
                     width: cardWidth
                       ? `${cardWidth}px`
-                      : `calc(${100 / VISIBLE}% - ${(GAP * (VISIBLE - 1)) / VISIBLE}px)`,
+                      : `calc(${100 / visibleCount}% - ${(GAP * (visibleCount - 1)) / visibleCount}px)`,
                   }}
                 >
                   {/* ── Layer 1: Colored Border (base shape) ── */}
@@ -193,24 +205,24 @@ export default function ServicesMission() {
 
                   {/* ── Content: icon + title + description ── */}
                   <div
-                    className="absolute inset-0 flex flex-col items-center justify-center text-center"
-                    style={{ padding: '8% 18%' }}
+                    className="absolute inset-0 flex flex-col items-center justify-center text-center overflow-hidden"
+                    style={{ padding: '22% 25%' }}
                   >
                     {/* Icon circle */}
                     <div
-                      className="w-16 h-16 rounded-full flex items-center justify-center mb-4 shadow-md flex-shrink-0"
+                      className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full flex items-center justify-center mb-1 sm:mb-2 lg:mb-3 shadow-md flex-shrink-0"
                       style={{ backgroundColor: m.iconColor }}
                     >
-                      <IconComp size={30} color="#ffffff" strokeWidth={1.8} />
+                      <IconComp className="w-5 h-5 sm:w-6 sm:h-6" color="#ffffff" strokeWidth={1.8} />
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-lg font-extrabold text-gray-800 mb-2 w-full">
+                    <h3 className="text-sm sm:text-base lg:text-lg font-extrabold text-gray-800 mb-0.5 sm:mb-1 lg:mb-2 w-full truncate">
                       {m.title}
                     </h3>
 
-                    {/* Description — constrained to the inner blob area */}
-                    <p className="text-gray-500 text-md leading-relaxed w-full">
+                    {/* Description — tightly constrained to inner blob */}
+                    <p className="text-gray-500 text-[10px] sm:text-xs lg:text-sm leading-tight sm:leading-snug lg:leading-relaxed w-full line-clamp-3">
                       {m.description}
                     </p>
                   </div>

@@ -149,7 +149,7 @@ const AboutUs = () => {
               <img
                 src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=600&auto=format&fit=crop&q=80"
                 alt="Volunteers helping community"
-                className="w-full h-[420px] object-cover"
+                className="w-full h-[280px] sm:h-[350px] lg:h-[420px] object-cover"
               />
             </div>
 
@@ -158,14 +158,14 @@ const AboutUs = () => {
               <img
                 src="https://images.unsplash.com/photo-1497375638960-ca368c7231e4?w=500&auto=format&fit=crop&q=80"
                 alt="Children learning together"
-                className="w-full h-[260px] object-cover"
+                className="w-full h-[180px] sm:h-[220px] lg:h-[260px] object-cover"
               />
             </div>
 
             {/* Experience Badge */}
-            <div className="absolute -bottom-8 -left-8 bg-brand-yellow text-brand-dark p-8 rounded-3xl shadow-xl z-30 font-bold max-w-xs transition-transform transform hover:scale-105 duration-300">
-              <div className="text-4xl mb-2">25+</div>
-              <div>Years of Experience in Charity &amp; Fundraising.</div>
+            <div className="absolute -bottom-4 left-0 sm:-bottom-8 sm:-left-4 lg:-left-8 bg-brand-yellow text-brand-dark p-5 sm:p-8 rounded-2xl sm:rounded-3xl shadow-xl z-30 font-bold max-w-[200px] sm:max-w-xs transition-transform transform hover:scale-105 duration-300">
+              <div className="text-2xl sm:text-4xl mb-1 sm:mb-2">25+</div>
+              <div className="text-xs sm:text-base">Years of Experience in Charity &amp; Fundraising.</div>
             </div>
           </div>
 

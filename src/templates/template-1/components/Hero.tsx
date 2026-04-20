@@ -15,7 +15,6 @@ const sponsors = [
   { icon: <><path d="M12 22V12" /><path d="M5 12H2a10 10 0 0 0 20 0h-3" /><path d="M12 2a4 4 0 0 1 4 4v6H8V6a4 4 0 0 1 4-4z" /></>, label: 'GlobalHope' },
 ];
 
-const SPONSOR_VISIBLE = 5;
 const SPONSOR_GAP = 20;
 const SPONSOR_INTERVAL = 2800;
 
@@ -23,14 +22,19 @@ function SponsorCarousel() {
   const [idx, setIdx] = useState(0);
   const [itemW, setItemW] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(5);
   const trackRef = useRef<HTMLDivElement>(null);
-  const maxIdx = sponsors.length - SPONSOR_VISIBLE;
+  const maxIdx = Math.max(0, sponsors.length - visibleCount);
 
   useEffect(() => {
     const measure = () => {
+      let v = 5;
+      if (window.innerWidth < 640) v = 2;
+      else if (window.innerWidth < 1024) v = 3;
+      setVisibleCount(v);
       if (trackRef.current) {
         const w = trackRef.current.offsetWidth;
-        setItemW((w - SPONSOR_GAP * (SPONSOR_VISIBLE - 1)) / SPONSOR_VISIBLE);
+        setItemW((w - SPONSOR_GAP * (v - 1)) / v);
       }
     };
     measure();
@@ -71,7 +75,7 @@ function SponsorCarousel() {
                 key={i}
                 className="flex-shrink-0 flex flex-col items-center justify-center gap-2 bg-white rounded-2xl py-5 px-4 cursor-pointer group"
                 style={{
-                  width: itemW ? `${itemW}px` : `calc(${100 / SPONSOR_VISIBLE}% - ${(SPONSOR_GAP * (SPONSOR_VISIBLE - 1)) / SPONSOR_VISIBLE}px)`,
+                  width: itemW ? `${itemW}px` : `calc(${100 / visibleCount}% - ${(SPONSOR_GAP * (visibleCount - 1)) / visibleCount}px)`,
 
                 }}
               >

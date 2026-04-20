@@ -172,7 +172,7 @@ const BoardMembers = () => {
         </div>
 
         <div className="text-center mt-12">
-          <Link href="/templates/template-1-board">
+          <Link href="/templates/template-1/board">
             <a className="inline-flex items-center gap-2 bg-brand-dark text-white font-bold py-4 px-10 rounded-full
                           hover:bg-brand-yellow hover:text-brand-dark transition-all duration-300 transform hover:-translate-y-1 shadow-xl group">
               View All Board Members

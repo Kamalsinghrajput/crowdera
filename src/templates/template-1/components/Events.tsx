@@ -151,10 +151,10 @@ export default function Events() {
           {preview.map((ev) => (
             <div
               key={ev.id}
-              className="bg-white rounded-2xl overflow-hidden flex gap-0 shadow-lg hover:shadow-xl transition-shadow"
+              className="bg-white rounded-2xl overflow-hidden flex flex-col sm:flex-row gap-0 shadow-lg hover:shadow-xl transition-shadow"
             >
               {/* Image with date badge */}
-              <div className="relative w-40 md:w-48 shrink-0">
+              <div className="relative w-full sm:w-40 md:w-48 shrink-0 h-48 sm:h-auto">
                 <img src={ev.img} alt={ev.title} className="w-full h-full object-cover" />
                 <div className="absolute top-3 left-3 bg-brand-yellow text-brand-dark text-center rounded-lg px-2 py-1 min-w-[44px] shadow">
                   <div className="text-xl font-extrabold leading-none">{ev.day}</div>

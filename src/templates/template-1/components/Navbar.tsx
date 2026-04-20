@@ -107,82 +107,81 @@ const Navbar = () => {
       {/* ══════════ TOP BAR ══════════ */}
       {!isScrolled && (
         <div className="bg-brand-dark text-white text-xs py-2.5 px-4">
-          <div className="container mx-auto flex justify-between items-center max-w-7xl">
+          <div className="container mx-auto max-w-7xl flex flex-wrap md:flex-nowrap justify-between items-center gap-y-2">
 
-            {/* Left — email only (phone moved to About section) */}
-            <div className="flex space-x-5 items-center">
+            {/* Row 1 (mobile) / Left (desktop) — email */}
+            <div className="flex items-center order-1">
               <a href="mailto:support@example.com" className="flex items-center hover:text-brand-yellow transition-colors text-sm font-medium">
                 <Mail size={18} className="mr-1.5 text-brand-yellow" />
-                support@example.com
+                <span className="hidden sm:inline">support@example.com</span>
+                <span className="sm:hidden">Email Us</span>
               </a>
             </div>
 
-            {/* Center pill */}
-            <div className="hidden lg:flex items-center bg-brand-yellow/10 border border-brand-yellow/30 rounded-full px-5 py-1 text-brand-yellow font-semibold text-xs">
+            {/* Center pill — desktop only */}
+            <div className="hidden lg:flex items-center bg-brand-yellow/10 border border-brand-yellow/30 rounded-full px-5 py-1 text-brand-yellow font-semibold text-xs order-3 md:order-2">
               <Heart size={12} className="mr-1.5" fill="currentColor" />
               Are You Ready To Help Them? Let&apos;s Become A Volunteer!
             </div>
 
-            {/* Right — currency, language, socials */}
-            <div className="flex items-center space-x-5 pl-2">
-              <div className="flex items-center space-x-4 text-white/70">
+            {/* Row 1 right (mobile) — socials */}
+            <div className="flex items-center space-x-3 text-white/60 text-xs font-bold order-2 md:order-3">
+              <a href="#" className="hover:text-brand-yellow transition-colors">f</a>
+              <a href="#" className="hover:text-brand-yellow transition-colors">v</a>
+              <a href="#" className="hover:text-brand-yellow transition-colors">y</a>
+              <a href="#" className="hover:text-brand-yellow transition-colors">in</a>
+            </div>
 
-                {/* Currency dropdown */}
-                <div className="relative">
-                  <button
-                    onClick={() => { setCurrencyOpen(o => !o); setLangOpen(false); }}
-                    className="flex items-center hover:text-white transition-colors text-xs gap-1"
-                  >
-                    {currency}
-                    <ChevronDown size={10} className={`transition-transform ${currencyOpen ? 'rotate-180' : ''}`} />
-                  </button>
-                  {currencyOpen && (
-                    <div className="absolute top-full left-0 mt-2 w-24 bg-brand-dark border border-white/10 rounded-xl shadow-xl overflow-hidden z-50">
-                      {currencies.map(c => (
-                        <button
-                          key={c}
-                          onClick={() => { setCurrency(c); setCurrencyOpen(false); }}
-                          className={`w-full text-left px-4 py-2 text-xs hover:bg-brand-yellow hover:text-brand-dark transition-colors ${currency === c ? 'text-brand-yellow font-bold' : 'text-white'}`}
-                        >
-                          {c}
-                        </button>
-                      ))}
-                    </div>
-                  )}
-                </div>
+            {/* Row 2 (mobile) / Right (desktop) — currency + language */}
+            <div className="flex items-center justify-between sm:justify-end space-x-4 text-white/70 w-full md:w-auto order-4 md:order-4 border-t border-white/10 md:border-0 pt-2 md:pt-0">
 
-                {/* Language dropdown */}
-                <div className="relative">
-                  <button
-                    onClick={() => { setLangOpen(o => !o); setCurrencyOpen(false); }}
-                    className="flex items-center hover:text-white transition-colors text-xs gap-1"
-                  >
-                    <span className="mr-1">{language.flag}</span>
-                    {language.label}
-                    <ChevronDown size={10} className={`transition-transform ${langOpen ? 'rotate-180' : ''}`} />
-                  </button>
-                  {langOpen && (
-                    <div className="absolute top-full right-0 mt-2 w-32 bg-brand-dark border border-white/10 rounded-xl shadow-xl overflow-hidden z-50">
-                      {languages.map(l => (
-                        <button
-                          key={l.label}
-                          onClick={() => { setLanguage(l); setLangOpen(false); }}
-                          className={`w-full text-left px-4 py-2 text-xs hover:bg-brand-yellow hover:text-brand-dark transition-colors flex items-center gap-2 ${language.label === l.label ? 'text-brand-yellow font-bold' : 'text-white'}`}
-                        >
-                          <span>{l.flag}</span> {l.label}
-                        </button>
-                      ))}
-                    </div>
-                  )}
-                </div>
+              {/* Currency dropdown */}
+              <div className="relative">
+                <button
+                  onClick={() => { setCurrencyOpen(o => !o); setLangOpen(false); }}
+                  className="flex items-center hover:text-white transition-colors text-xs gap-1"
+                >
+                  {currency}
+                  <ChevronDown size={10} className={`transition-transform ${currencyOpen ? 'rotate-180' : ''}`} />
+                </button>
+                {currencyOpen && (
+                  <div className="absolute top-full left-0 mt-2 w-24 bg-brand-dark border border-white/10 rounded-xl shadow-xl overflow-hidden z-50">
+                    {currencies.map(c => (
+                      <button
+                        key={c}
+                        onClick={() => { setCurrency(c); setCurrencyOpen(false); }}
+                        className={`w-full text-left px-4 py-2 text-xs hover:bg-brand-yellow hover:text-brand-dark transition-colors ${currency === c ? 'text-brand-yellow font-bold' : 'text-white'}`}
+                      >
+                        {c}
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
 
-              {/* Socials */}
-              <div className="flex items-center space-x-3 text-white/60 text-xs font-bold">
-                <a href="#" className="hover:text-brand-yellow transition-colors">f</a>
-                <a href="#" className="hover:text-brand-yellow transition-colors">v</a>
-                <a href="#" className="hover:text-brand-yellow transition-colors">y</a>
-                <a href="#" className="hover:text-brand-yellow transition-colors">in</a>
+              {/* Language dropdown */}
+              <div className="relative">
+                <button
+                  onClick={() => { setLangOpen(o => !o); setCurrencyOpen(false); }}
+                  className="flex items-center hover:text-white transition-colors text-xs gap-1"
+                >
+                  <span className="mr-1">{language.flag}</span>
+                  {language.label}
+                  <ChevronDown size={10} className={`transition-transform ${langOpen ? 'rotate-180' : ''}`} />
+                </button>
+                {langOpen && (
+                  <div className="absolute top-full right-0 mt-2 w-32 bg-brand-dark border border-white/10 rounded-xl shadow-xl overflow-hidden z-50">
+                    {languages.map(l => (
+                      <button
+                        key={l.label}
+                        onClick={() => { setLanguage(l); setLangOpen(false); }}
+                        className={`w-full text-left px-4 py-2 text-xs hover:bg-brand-yellow hover:text-brand-dark transition-colors flex items-center gap-2 ${language.label === l.label ? 'text-brand-yellow font-bold' : 'text-white'}`}
+                      >
+                        <span>{l.flag}</span> {l.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
 

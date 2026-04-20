@@ -33,7 +33,7 @@ const navLinks: NavLink[] = [
       { title: 'Start a Campaign', href: '#campaigns' },
     ],
   },
-  { title: 'News', href: '/templates/template-1-news', sub: [], isExternal: true },
+  { title: 'News', href: '/templates/template-1/news', sub: [], isExternal: true },
   { title: 'Contact Us', href: '#contact', sub: [] },
 ];
 

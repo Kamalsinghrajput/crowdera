@@ -124,7 +124,7 @@ const Navbar = () => {
             </div>
 
             {/* Right — currency, language, socials */}
-            <div className="flex items-center space-x-5">
+            <div className="flex items-center space-x-5 pl-2">
               <div className="flex items-center space-x-4 text-white/70">
 
                 {/* Currency dropdown */}

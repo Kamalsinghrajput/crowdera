@@ -122,7 +122,7 @@ export default function DonationsSection() {
       }}
     >
       {/* Dark overlay for readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#2d1330]/85 via-[#1a0a1e]/80 to-[#2d1330]/85 z-[1]" />
+      <div className="absolute inset-0 z-[1]" />
 
       {/* Main content area */}
       <div ref={contentRef} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-28">

@@ -40,33 +40,7 @@ export default function HeroSection() {
                 maxHeight: "720px",
             }}
         >
-            {/* LEFT PURPLE PANEL */}
-            <div
-                className="absolute inset-y-0 left-0 w-[54%] z-0 hidden md:block"
-                style={{ background: "linear-gradient(to bottom right, #7C3682, #8E3E94, #5E2A63)" }}
-            >
-                {/* CURVE */}
-                <svg
-                    className="absolute top-0 right-0 h-full translate-x-full"
-                    style={{ width: "160px" }}
-                    viewBox="0 0 100 100"
-                    preserveAspectRatio="none"
-                >
-                    <path d="M0,0 C80,15 80,85 0,100 Z" style={{ fill: "#7C3682" }} />
-                </svg>
 
-                {/* DECORATIVE GLOW */}
-                <div className="absolute -top-20 -left-20 w-72 h-72 bg-white/10 blur-3xl rounded-full"></div>
-
-                {/* BOTTOM ARC */}
-                <svg
-                    className="absolute bottom-0 left-0 w-72 opacity-20"
-                    viewBox="0 0 300 200"
-                    preserveAspectRatio="none"
-                >
-                    <path d="M0,200 C80,160 160,40 300,0 L0,0 Z" fill="white" />
-                </svg>
-            </div>
 
             {/* MOBILE BG */}
             <div className="absolute inset-0 md:hidden z-0" style={{ background: "linear-gradient(to bottom right, #7C3682, #8E3E94, #5E2A63)" }} />
@@ -99,12 +73,12 @@ export default function HeroSection() {
                     </p>
 
                     <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
-                        <button className="bg-white font-bold text-xs uppercase tracking-wider px-8 py-3.5 rounded-full 
+                        <button className="bg-white font-bold text-xs uppercase tracking-wider px-8 py-3.5 rounded-full
                         hover:scale-105 hover:shadow-xl transition-all duration-300" style={{ color: "#7C3682" }}>
                             Learn More
                         </button>
 
-                        <button className="bg-white/10 backdrop-blur-md border border-white/40 text-white font-bold text-xs uppercase tracking-wider px-8 py-3.5 rounded-full 
+                        <button className="bg-white/10 backdrop-blur-md border border-white/40 text-white font-bold text-xs uppercase tracking-wider px-8 py-3.5 rounded-full
                         hover:bg-white/20 hover:scale-105 transition-all duration-300">
                             Become a Volunteer
                         </button>

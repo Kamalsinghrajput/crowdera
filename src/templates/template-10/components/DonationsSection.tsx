@@ -138,7 +138,7 @@ export default function DonationsSection() {
             <h2 className="text-3xl md:text-4xl lg:text-[44px] font-black mb-6 leading-tight ">
               The Mission and Goals for Our Charity Program
             </h2>
-            <p className="text-white/70 text-base leading-relaxed mb-8">
+            <p className="leading-relaxed mb-8">
               Ultricies lacus turpis tincidunt aliquet. Eget nunc lobortis mattis aliquam faucibus purus in. Bibendum est ultricies integer quis actor elit sed. Ultrices tincidunt arcu non sodales neque.
             </p>
             <div className="flex flex-col sm:flex-row items-start gap-4">
@@ -146,7 +146,7 @@ export default function DonationsSection() {
                 <Heart className="inline mr-2" size={18} fill="currentColor" />
                 DONATE NOW
               </button>
-              <p className="text-white/60 font-script text-2xl italic">With Love</p>
+              <p className="font-script text-2xl italic">With Love</p>
             </div>
           </div>
 
@@ -173,7 +173,7 @@ export default function DonationsSection() {
         </div>
 
         {/* Stats section - Still dark themed */}
-        <div className="bg-white/10 backdrop-blur rounded-xl p-8 md:p-12">
+        <div className="rounded-xl p-8 md:p-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, i) => (
               <div key={i} className="text-center">

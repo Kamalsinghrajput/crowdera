@@ -180,7 +180,7 @@ export default function DonationsSection() {
                 <div className="text-4xl md:text-5xl font-black text-t10-rose mb-2">
                   {stat.value}
                 </div>
-                <div className="text-white/70 text-xs md:text-sm font-semibold uppercase whitespace-pre-line leading-tight">
+                <div className="text-xs md:text-sm font-semibold uppercase whitespace-pre-line leading-tight">
                   {stat.label}
                 </div>
               </div>

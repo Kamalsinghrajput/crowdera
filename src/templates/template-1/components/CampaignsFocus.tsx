@@ -119,7 +119,9 @@ const CampaignsFocus = () => {
   const translateX = cardWidth ? -(index * (cardWidth + GAP)) : 0;
 
   return (
-    <section ref={sectionRef} id="campaigns" className="py-20 lg:py-28 bg-gray-50 relative overflow-hidden">
+    <section ref={sectionRef} id="campaigns" className="py-20 lg:py-28 relative overflow-hidden" style={{
+              backgroundColor:"#223632"
+            }}>
       <div ref={shapesRef} className="absolute inset-0 pointer-events-none z-0">
         <div className="absolute top-16 left-12 w-20 h-20 rounded-full border-4 border-brand-yellow/15" />
         <div className="absolute bottom-24 right-16 w-28 h-28 rounded-full border-2 border-brand-teal/10" />
@@ -134,10 +136,12 @@ const CampaignsFocus = () => {
 
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
         <div className="text-center mb-14">
-          <h2 className="text-3xl lg:text-5xl font-extrabold text-brand-dark leading-tight mb-3">
-            Campaigns in <span className="text-brand-teal">Focus</span>
+          <h2 className="text-3xl lg:text-5xl font-extrabold text-white leading-tight mb-3">
+            Campaigns in <span className="text-brand-teal" style={{
+              color:"#FFCA08"
+            }}>Focus</span>
           </h2>
-          <p className="text-gray-500 max-w-xl mx-auto">
+          <p className="text-white max-w-xl mx-auto">
             Every donation makes a difference. See how your contribution can change lives.
           </p>
         </div>
@@ -202,14 +206,14 @@ const CampaignsFocus = () => {
             {Array.from({ length: MAX_INDEX + 1 }).map((_, i) => (
               <button key={i} onClick={() => setIndex(i)} aria-label={`Slide ${i + 1}`}
                 className="rounded-full transition-all duration-300"
-                style={{ width: i === index ? '28px' : '10px', height: '10px', background: i === index ? '#00715D' : '#d1d5db' }}
+                style={{ width: i === index ? '28px' : '10px', height: '10px', background: i === index ? '#FFCA08' : '#d1d5db' }}
               />
             ))}
           </div>
           <div className="flex items-center gap-3">
             <button onClick={goPrev} aria-label="Previous"
-              className="w-11 h-11 rounded-full border-2 border-brand-dark/20 hover:border-brand-dark flex items-center justify-center text-brand-dark hover:bg-brand-dark hover:text-white transition-all duration-200">
-              <ChevronLeft size={20} />
+              className="w-11 h-11 rounded-full border-2 border-[#FFCA08] hover:border-brand-dark flex items-center justify-center text-brand-dark hover:bg-brand-dark hover:text-white transition-all duration-200">
+              <ChevronLeft size={20} color='#FFCA08' />
             </button>
             <button onClick={goNext} aria-label="Next"
               className="w-11 h-11 rounded-full bg-brand-dark flex items-center justify-center text-white hover:bg-brand-yellow hover:text-brand-dark transition-all duration-200">
@@ -219,7 +223,12 @@ const CampaignsFocus = () => {
         </div>
         <div className="text-center mt-6">
           <Link href="/templates/template-1/campaigns">
-            <a className="inline-flex items-center text-brand-teal font-bold text-sm hover:text-brand-dark transition-colors group">
+            <a className="inline-flex items-center text-brand-teal font-bold text-sm hover:text-brand-dark transition-colors group" style={{
+              color:"#FFCA08",
+              border:"1px solid #FFCA08",
+              padding:"8px",
+              borderRadius:"8px"
+            }}>
               See all campaigns <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
             </a>
           </Link>

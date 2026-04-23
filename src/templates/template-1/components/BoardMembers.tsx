@@ -8,33 +8,33 @@ const members = [
     img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=500&auto=format&fit=crop&q=80",
     name: "Rajesh Kumar",
     role: "Founder & CEO",
-    instagram: "#",
-    twitter: "#",
-    facebook: "#",
+    instagram: "https://instagram.com",
+    twitter: "https://twitter.com",
+    facebook: "https://facebook.com",
   },
   {
     img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&auto=format&fit=crop&q=80",
     name: "Priya Sharma",
     role: "Chief Operations Officer",
-    instagram: "#",
-    twitter: "#",
-    facebook: "#",
+    instagram: "https://instagram.com",
+    twitter: "https://twitter.com",
+    facebook: "https://facebook.com",
   },
   {
     img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=500&auto=format&fit=crop&q=80",
     name: "Arjun Mehta",
     role: "Head of Programs",
-    instagram: "#",
-    twitter: "#",
-    facebook: "#",
+    instagram: "https://instagram.com",
+    twitter: "https://twitter.com",
+    facebook: "https://facebook.com",
   },
   {
     img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=500&auto=format&fit=crop&q=80",
     name: "Ananya Iyer",
     role: "Director of Outreach",
-    instagram: "#",
-    twitter: "#",
-    facebook: "#",
+    instagram: "https://instagram.com",
+    twitter: "https://twitter.com",
+    facebook: "https://facebook.com",
   },
 ];
 
@@ -121,12 +121,14 @@ const BoardMembers = () => {
                 <div className="absolute bottom-4 right-4 z-10 social-hover-wrapper">
                   {/* Social icons — slide up from button on + hover */}
                   <div
-                    className="social-icons-container absolute bottom-12 right-0 flex flex-col gap-2
+                    className="social-icons-container absolute bottom-10 right-0 pb-2 flex flex-col gap-2
                     opacity-0 translate-y-2 pointer-events-none
                     transition-all duration-300"
                   >
                     <a
                       href={m.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       aria-label="Instagram"
                       className="w-9 h-9 rounded-full flex items-center justify-center shadow-lg
                                  hover:scale-110 transition-transform"
@@ -136,6 +138,8 @@ const BoardMembers = () => {
                     </a>
                     <a
                       href={m.twitter}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       aria-label="Twitter"
                       className="w-9 h-9 rounded-full bg-[#1DA1F2] flex items-center justify-center shadow-lg
                                  hover:scale-110 transition-transform"
@@ -144,6 +148,8 @@ const BoardMembers = () => {
                     </a>
                     <a
                       href={m.facebook}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       aria-label="Facebook"
                       className="w-9 h-9 rounded-full bg-[#4267B2] flex items-center justify-center shadow-lg
                                  hover:scale-110 transition-transform"

@@ -180,18 +180,12 @@ const AboutUs = () => {
             </p>
 
             <ul className="space-y-4 mb-10">
-              <li className="flex items-start">
-                <CheckCircle2 className="text-brand-teal mt-1 mr-3 min-w-[24px]" size={24} />
-                <span className="text-brand-dark font-bold text-lg">Highest standard of integrity</span>
-              </li>
-              <li className="flex items-start">
-                <CheckCircle2 className="text-brand-teal mt-1 mr-3 min-w-[24px]" size={24} />
-                <span className="text-brand-dark font-bold text-lg">Over 100+ active worldwide campaigns</span>
-              </li>
-              <li className="flex items-start">
-                <CheckCircle2 className="text-brand-teal mt-1 mr-3 min-w-[24px]" size={24} />
-                <span className="text-brand-dark font-bold text-lg">Direct impact on global communities</span>
-              </li>
+              {['Highest standard of integrity', 'Over 100+ active worldwide campaigns', 'Direct impact on global communities'].map((text, i) => (
+                <li key={i} className="flex items-start">
+                  <CheckCircle2 className="text-brand-teal mt-1 mr-3 min-w-[24px]" size={24} />
+                  <span className="text-brand-dark font-bold text-lg">{text}</span>
+                </li>
+              ))}
             </ul>
 
             {/* CTA + phone number side-by-side */}

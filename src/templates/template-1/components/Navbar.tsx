@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { Mail, Phone, Heart, ChevronDown, Search, ArrowUpRight, Menu, X, Headphones } from 'lucide-react';
 
 /* ── Types ── */
@@ -33,6 +34,13 @@ const navLinks: NavLink[] = [
       { title: 'Start a Campaign', href: '#campaigns' },
     ],
   },
+  {
+    title: 'Events', href: '#events',
+    sub: [
+      { title: 'Upcoming Events', href: '#events' },
+      { title: 'All Events', href: '/templates/template-1/events' },
+    ],
+  },
   { title: 'News', href: '/templates/template-1/news', sub: [], isExternal: true },
   { title: 'Contact Us', href: '#contact', sub: [] },
 ];
@@ -53,6 +61,7 @@ const languages = [
 
 /* ── Component ── */
 const Navbar = () => {
+  const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<number | null>(null);
@@ -93,11 +102,27 @@ const Navbar = () => {
     e.preventDefault();
     setIsMobileOpen(false);
     setOpenDropdown(null);
+
+    const isHomePage = router.pathname === '/templates/template-1';
+    if (!href.startsWith('#')) {
+      router.push(href);
+      return;
+    }
+
+    if (!isHomePage) {
+      router.push(`/templates/template-1${href}`);
+      return;
+    }
+
     if (href === '#hero') { window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
-    const el = document.querySelector(href);
-    if (el) {
-      const top = el.getBoundingClientRect().top + window.pageYOffset - 80;
-      window.scrollTo({ top, behavior: 'smooth' });
+    try {
+      const el = document.querySelector(href);
+      if (el) {
+        const top = el.getBoundingClientRect().top + window.pageYOffset - 80;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    } catch (err) {
+      console.warn("Invalid selector", href);
     }
   };
 

@@ -4,13 +4,6 @@ import { Apple, Droplets, Stethoscope, GraduationCap, Home, Leaf, ChevronLeft, C
 const GAP = 24;
 const AUTO_SLIDE_MS = 3500;
 
-/**
- * CSS filter strings to convert a black SVG to a specific color.
- * Generated for each mission's secondary (border) color and lightBg (fill tint).
- * The SVG is rendered twice:
- *   1. Bottom layer: very low opacity to simulate the light inner fill
- *   2. Top layer: full opacity with the border color filter
- */
 const missions = [
   {
     title: 'Healthy Food',

@@ -2,9 +2,26 @@ import React from 'react';
 import Link from 'next/link';
 import { ChevronRight, MapPin, Phone, Mail, Facebook, Twitter, Instagram } from 'lucide-react';
 
+const exploreLinks = [
+  { label: 'About Us', href: '#' },
+  { label: 'Our Causes', href: '#' },
+  { label: 'Latest News', href: '#' },
+  { label: 'Contact Us', href: '#' },
+  { label: 'FAQ', href: '#' },
+];
 
+const contactDetails = [
+  { Icon: MapPin, text: '250 Main Street, 2nd Floor, New York, NY 10012' },
+  { Icon: Phone, text: '+1 (234) 567 890' },
+  { Icon: Mail, text: 'support@wowtheme7.com' },
+];
 
-
+const paymentMethods = [
+  { label: 'VISA', color: '#1434CB', extraClass: 'font-extrabold italic' },
+  { label: 'MC', color: '#EB001B', extraClass: 'font-bold' },
+  { label: 'AMEX', color: '#002663', extraClass: 'font-bold' },
+  { label: 'PayPal', color: '#003087', extraClass: 'font-bold italic' },
+];
 
 const Footer = () => {
   return (
@@ -42,11 +59,15 @@ const Footer = () => {
               <span className="absolute bottom-0 left-0 w-12 h-1 bg-brand-yellow"></span>
             </h4>
             <ul className="space-y-3">
-              <li><Link href="#"><a className="text-gray-400 hover:text-brand-yellow transition-colors flex items-center group"><ChevronRight size={16} className="text-brand-yellow mr-2 group-hover:translate-x-1 transition-transform" /> About Us</a></Link></li>
-              <li><Link href="#"><a className="text-gray-400 hover:text-brand-yellow transition-colors flex items-center group"><ChevronRight size={16} className="text-brand-yellow mr-2 group-hover:translate-x-1 transition-transform" /> Our Causes</a></Link></li>
-              <li><Link href="#"><a className="text-gray-400 hover:text-brand-yellow transition-colors flex items-center group"><ChevronRight size={16} className="text-brand-yellow mr-2 group-hover:translate-x-1 transition-transform" /> Latest News</a></Link></li>
-              <li><Link href="#"><a className="text-gray-400 hover:text-brand-yellow transition-colors flex items-center group"><ChevronRight size={16} className="text-brand-yellow mr-2 group-hover:translate-x-1 transition-transform" /> Contact Us</a></Link></li>
-              <li><Link href="#"><a className="text-gray-400 hover:text-brand-yellow transition-colors flex items-center group"><ChevronRight size={16} className="text-brand-yellow mr-2 group-hover:translate-x-1 transition-transform" /> FAQ</a></Link></li>
+              {exploreLinks.map((link, idx) => (
+                <li key={idx}>
+                  <Link href={link.href}>
+                    <a className="text-gray-400 hover:text-brand-yellow transition-colors flex items-center group">
+                      <ChevronRight size={16} className="text-brand-yellow mr-2 group-hover:translate-x-1 transition-transform" /> {link.label}
+                    </a>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -57,18 +78,12 @@ const Footer = () => {
               <span className="absolute bottom-0 left-0 w-12 h-1 bg-brand-yellow"></span>
             </h4>
             <ul className="space-y-4">
-              <li className="flex items-start">
-                <MapPin size={20} className="text-brand-yellow mr-3 mt-1 shrink-0" />
-                <span className="text-gray-400">250 Main Street, 2nd Floor, New York, NY 10012</span>
-              </li>
-              <li className="flex items-start">
-                <Phone size={20} className="text-brand-yellow mr-3 mt-1 shrink-0" />
-                <span className="text-gray-400">+1 (234) 567 890</span>
-              </li>
-              <li className="flex items-start">
-                <Mail size={20} className="text-brand-yellow mr-3 mt-1 shrink-0" />
-                <span className="text-gray-400">support@wowtheme7.com</span>
-              </li>
+              {contactDetails.map((item, idx) => (
+                <li key={idx} className="flex items-start">
+                  <item.Icon size={20} className="text-brand-yellow mr-3 mt-1 shrink-0" />
+                  <span className="text-gray-400">{item.text}</span>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -101,22 +116,11 @@ const Footer = () => {
             <div className="flex items-center space-x-3">
               <p>PCI DSS Compliant 100% Secure Payments</p>
               <div className="flex items-center space-x-2">
-                {/* Visa */}
-                <div className="bg-gray-100 rounded px-1.5 flex items-center justify-center shadow-sm h-[1.6em]">
-                  <span className="text-[#1434CB] text-[10px] font-extrabold italic">VISA</span>
-                </div>
-                {/* Mastercard */}
-                <div className="bg-gray-100 rounded px-1.5 flex items-center justify-center shadow-sm h-[1.6em]">
-                  <span className="text-[#EB001B] text-[10px] font-bold">MC</span>
-                </div>
-                {/* Amex */}
-                <div className="bg-gray-100 rounded px-1.5 flex items-center justify-center shadow-sm h-[1.6em]">
-                  <span className="text-[#002663] text-[10px] font-bold">AMEX</span>
-                </div>
-                {/* PayPal */}
-                <div className="bg-gray-100 rounded px-1.5 flex items-center justify-center shadow-sm h-[1.6em]">
-                  <span className="text-[#003087] text-[10px] font-bold italic">PayPal</span>
-                </div>
+                {paymentMethods.map((pm, idx) => (
+                  <div key={idx} className="bg-gray-100 rounded px-1.5 flex items-center justify-center shadow-sm h-[1.6em]">
+                    <span className={`text-[${pm.color}] text-[10px] ${pm.extraClass}`}>{pm.label}</span>
+                  </div>
+                ))}
               </div>
             </div>
             <p className="text-gray-500">© {new Date().getFullYear()} Charifund. All Rights Reserved.</p>

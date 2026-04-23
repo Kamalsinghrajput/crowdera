@@ -67,18 +67,18 @@ export default function Template1Board() {
                     />
                     {/* Socials + Button */}
                     <div className="absolute bottom-4 right-4 z-10 group/btn">
-                      <div className="absolute bottom-12 right-0 flex flex-col gap-2
+                      <div className="absolute bottom-10 right-0 pb-2 flex flex-col gap-2
                                       opacity-0 group-hover/btn:opacity-100
                                       translate-y-2 group-hover/btn:translate-y-0
                                       pointer-events-none group-hover/btn:pointer-events-auto
                                       transition-all duration-300">
-                        <a href="#" aria-label="Instagram" className="w-9 h-9 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform" style={{ background: 'linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045)' }}>
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-9 h-9 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform" style={{ background: 'linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045)' }}>
                           <Instagram size={16} color="#fff" />
                         </a>
-                        <a href="#" aria-label="Twitter" className="w-9 h-9 rounded-full bg-[#1DA1F2] flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
+                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="w-9 h-9 rounded-full bg-[#1DA1F2] flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
                           <Twitter size={16} color="#fff" />
                         </a>
-                        <a href="#" aria-label="Facebook" className="w-9 h-9 rounded-full bg-[#4267B2] flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-9 h-9 rounded-full bg-[#4267B2] flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
                           <Facebook size={16} color="#fff" />
                         </a>
                       </div>

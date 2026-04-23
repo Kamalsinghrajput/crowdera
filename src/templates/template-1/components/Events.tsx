@@ -129,7 +129,7 @@ export default function Events() {
   const preview = events.slice(0, 4);
 
   return (
-    <section className="py-20" style={{ background: '#2d3748' }}>
+    <section id="events" className="py-20" style={{ background: '#2d3748' }}>
       <div className="container mx-auto px-4 md:px-8">
         {/* Header row */}
         <div className="flex items-start justify-between mb-10 gap-4 flex-wrap">

@@ -94,7 +94,7 @@ export default function SponsorCarousel() {
         {/* Prev / Next */}
         <div className="flex justify-end gap-3 mt-5">
           <button onClick={prev} aria-label="Previous sponsor"
-            className="w-9 h-9 rounded-full border-2 border-gray-200 hover:border-brand-dark flex items-center justify-center text-gray-400 hover:text-brand-dark hover:bg-brand-dark hover:text-white transition-all duration-200">
+            className="w-9 h-9 rounded-full border-2 border-gray-200 hover:border-brand-dark flex items-center justify-center text-gray-400 hover:text-brand-dark hover:bg-brand-dark transition-all duration-200">
             <ChevronLeft size={16} />
           </button>
           <button onClick={next} aria-label="Next sponsor"

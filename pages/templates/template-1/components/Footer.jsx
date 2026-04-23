@@ -1,0 +1,175 @@
+import React from "react";
+import Link from "next/link";
+import {
+  ChevronRight,
+  MapPin,
+  Phone,
+  Mail,
+  Facebook,
+  Twitter,
+  Instagram,
+} from "lucide-react";
+
+const exploreLinks = [
+  { label: "About Us", href: "#" },
+  { label: "Our Causes", href: "#" },
+  { label: "Latest News", href: "#" },
+  { label: "Contact Us", href: "#" },
+  { label: "FAQ", href: "#" },
+];
+
+const contactDetails = [
+  { Icon: MapPin, text: "250 Main Street, 2nd Floor, New York, NY 10012" },
+  { Icon: Phone, text: "+1 (234) 567 890" },
+  { Icon: Mail, text: "support@wowtheme7.com" },
+];
+
+const paymentMethods = [
+  { label: "VISA", color: "#1434CB", extraClass: "font-extrabold italic" },
+  { label: "MC", color: "#EB001B", extraClass: "font-bold" },
+  { label: "AMEX", color: "#002663", extraClass: "font-bold" },
+  { label: "PayPal", color: "#003087", extraClass: "font-bold italic" },
+];
+
+const Footer = () => {
+  return (
+    <footer
+      id="contact"
+      className="bg-brand-dark text-white pt-20 pb-10 relative overflow-hidden"
+    >
+      {/* Decorative background circle */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-brand-teal rounded-full blur-3xl opacity-10 translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+
+      <div className="container mx-auto px-4 md:px-8 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16">
+          {/* Column 1 */}
+          <div>
+            <Link href="/">
+              <a className="text-3xl font-extrabold text-white flex items-center mb-6">
+                <span className="text-brand-yellow mr-1">Chari</span>fund.
+              </a>
+            </Link>
+            <p className="text-gray-400 leading-relaxed mb-6">
+              Empowering communities and inspiring change globally. We believe
+              in a world where everyone has access to basic needs and
+              opportunities to grow.
+            </p>
+            <div className="flex space-x-4">
+              <span className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-yellow hover:text-brand-dark transition-all font-bold cursor-pointer">
+                <Facebook size={20} />
+              </span>
+              <span className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-yellow hover:text-brand-dark transition-all font-bold cursor-pointer">
+                <Twitter size={20} />
+              </span>
+              <span className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-yellow hover:text-brand-dark transition-all font-bold cursor-pointer">
+                <Instagram size={20} />
+              </span>
+            </div>
+          </div>
+
+          {/* Column 2 */}
+          <div>
+            <h4 className="text-xl font-bold text-white mb-6 relative pb-3 border-b border-white/20">
+              Explore Links
+              <span className="absolute bottom-0 left-0 w-12 h-1 bg-brand-yellow"></span>
+            </h4>
+            <ul className="space-y-3">
+              {exploreLinks.map((link, idx) => (
+                <li key={idx}>
+                  <Link href={link.href}>
+                    <a className="text-gray-400 hover:text-brand-yellow transition-colors flex items-center group">
+                      <ChevronRight
+                        size={16}
+                        className="text-brand-yellow mr-2 group-hover:translate-x-1 transition-transform"
+                      />{" "}
+                      {link.label}
+                    </a>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 3 */}
+          <div>
+            <h4 className="text-xl font-bold text-white mb-6 relative pb-3 border-b border-white/20">
+              Get In Touch
+              <span className="absolute bottom-0 left-0 w-12 h-1 bg-brand-yellow"></span>
+            </h4>
+            <ul className="space-y-4">
+              {contactDetails.map((item, idx) => (
+                <li key={idx} className="flex items-start">
+                  <item.Icon
+                    size={20}
+                    className="text-brand-yellow mr-3 mt-1 shrink-0"
+                  />
+                  <span className="text-gray-400">{item.text}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 4 */}
+          <div>
+            <h4 className="text-xl font-bold text-white mb-6 relative pb-3 border-b border-white/20">
+              Newsletter
+              <span className="absolute bottom-0 left-0 w-12 h-1 bg-brand-yellow"></span>
+            </h4>
+            <p className="text-gray-400 mb-4">
+              Subscribe to our newsletter to get the latest updates and news.
+            </p>
+            <form className="relative" onSubmit={(e) => e.preventDefault()}>
+              <input
+                type="email"
+                placeholder="Email Address"
+                className="w-full bg-white/10 border border-white/20 rounded-full py-4 px-6 text-white outline-none focus:border-brand-yellow transition-colors placeholder-gray-400"
+              />
+
+              <button
+                className="absolute right-1 top-1 bottom-1 bg-brand-yellow text-brand-dark px-6 rounded-full font-bold hover:bg-white transition-colors"
+                type="submit"
+              >
+                Go
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div className="border-t border-white/10 mt-16 pt-8 pb-4 text-center text-gray-400 text-sm flex flex-col md:flex-row justify-between items-center">
+          <div className="flex flex-col items-center md:items-start space-y-2">
+            <div className="flex items-center space-x-3">
+              <p>PCI DSS Compliant 100% Secure Payments</p>
+              <div className="flex items-center space-x-2">
+                {paymentMethods.map((pm, idx) => (
+                  <div
+                    key={idx}
+                    className="bg-gray-100 rounded px-1.5 flex items-center justify-center shadow-sm h-[1.6em]"
+                  >
+                    <span
+                      className={`text-[${pm.color}] text-[10px] ${pm.extraClass}`}
+                    >
+                      {pm.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <p className="text-gray-500">
+              © {new Date().getFullYear()} Charifund. All Rights Reserved.
+            </p>
+          </div>
+          <div className="flex space-x-4 mt-4 md:mt-0">
+            <Link href="#">
+              <a className="hover:text-white">Terms & Conditions</a>
+            </Link>
+            <Link href="#">
+              <a className="hover:text-white">Privacy Policy</a>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;

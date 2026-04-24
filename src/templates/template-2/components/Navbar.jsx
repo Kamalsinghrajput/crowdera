@@ -240,56 +240,20 @@ export default function Navbar() {
               </button>
 
               {/* Donation CTA */}
-              <a
-                href="#"
-                className="hidden sm:flex group"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  borderRadius: 30,
-                  overflow: "hidden",
-                  textDecoration: "none",
-                  transition: "all 0.3s",
-                }}
-              >
-                <span
-                  className="group-hover:bg-white"
-                  style={{
-                    padding: "13px 20px",
-                    color: "#fff",
-                    fontFamily: "Inter, sans-serif",
-                    fontWeight: 600,
-                    fontSize: 16,
-                    background: "#FFA415",
-                    transition: "all 0.3s",
-                  }}
-                >
-                  Donate Now
-                </span>
-                <span
-                  className="group-hover:bg-[#FFA415]"
-                  style={{
-                    width: 50,
-                    height: 50,
-                    background: "#121D18",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    borderRadius: "50%",
-                    transition: "all 0.3s",
-                  }}
-                >
+              <a href="#" className="hidden sm:flex t2-btn t2-btn-secondary">
+                <span>Donate Now</span>
+                <i>
                   <svg
                     width="18"
                     height="18"
                     viewBox="0 0 24 24"
                     fill="none"
-                    stroke="#fff"
+                    stroke="currentColor"
                     strokeWidth="2"
                   >
                     <path d="M7 17L17 7M17 7H7M17 7v10" />
                   </svg>
-                </span>
+                </i>
               </a>
 
               {/* Overflow Hamburger for Desktop */}

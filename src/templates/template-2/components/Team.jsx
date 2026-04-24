@@ -115,11 +115,9 @@ export default function Team() {
         {/* See All button */}
         <div className="text-center mt-[70px]">
           <Link href="/templates/template-2/team">
-            <a className="inline-flex items-center gap-2 group">
-              <span className="px-7 py-3.5 rounded-full bg-t2-dark text-white text-[16px] transition-colors duration-300 group-hover:bg-t2-secondary">
-                See All Members
-              </span>
-              <span className="w-[54px] h-[54px] rounded-full bg-t2-dark text-white flex items-center justify-center transition-colors duration-300 group-hover:bg-t2-secondary">
+            <a className="t2-btn">
+              <span>See All Members</span>
+              <i>
                 <svg
                   width="18"
                   height="18"
@@ -130,7 +128,7 @@ export default function Team() {
                 >
                   <path d="M7 17L17 7M17 7H7M17 7v10" />
                 </svg>
-              </span>
+              </i>
             </a>
           </Link>
         </div>

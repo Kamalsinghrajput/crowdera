@@ -122,26 +122,20 @@ function CourseCard({ course }) {
 
         {/* Donate Button */}
         <div className="flex items-center gap-2 pb-2">
-          <a
-            href="#"
-            className="px-6 py-2.5 rounded-full border border-[#E5E5E5] text-t2-dark text-[14px] transition-colors hover:bg-t2-light"
-          >
-            Donate Now
-          </a>
-          <a
-            href="#"
-            className="w-10 h-10 rounded-full border border-[#E5E5E5] flex items-center justify-center text-t2-dark transition-colors hover:bg-t2-light"
-          >
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-            >
-              <path d="M7 17L17 7M17 7H7M17 7v10" />
-            </svg>
+          <a href="#" className="t2-btn" style={{ transform: "scale(0.85)", transformOrigin: "left center" }}>
+            <span>Donate Now</span>
+            <i>
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+              >
+                <path d="M7 17L17 7M17 7H7M17 7v10" />
+              </svg>
+            </i>
           </a>
         </div>
       </div>

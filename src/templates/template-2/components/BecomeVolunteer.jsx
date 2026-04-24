@@ -1,8 +1,6 @@
-import FloatingBird from "./FloatingBird";
 export default function BecomeVolunteer() {
   return (
     <section className="relative p-0 overflow-hidden bg-[#121D18]">
-      <FloatingBird position="left" />
       <div className="grid grid-cols-1 md:grid-cols-2">
         
         {/* Panel 1 — Join Us Volunteer */}
@@ -20,12 +18,12 @@ export default function BecomeVolunteer() {
             <p className="font-['Sora'] text-[15px] text-white/80 leading-[1.8] mb-8 max-w-md">
               Becoming A Volunteer With Chioary Means Joining A Dedicated Team Committed To Making A Difference. We Welcome Individuals From All Walks Of Life Who Are Passionate
             </p>
-            <div className="flex items-center gap-2 group/btn">
-              <a href="#" className="px-6 py-3.5 rounded-full bg-[#FFA415] text-white font-['Inter'] font-semibold text-[15px] transition-colors hover:bg-[#e08e0b]">
-                See More
-              </a>
-              <a href="#" className="w-12 h-12 rounded-full bg-[#FFA415] text-white flex items-center justify-center transition-colors hover:bg-[#e08e0b]">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M7 17L17 7M17 7H7M17 7v10" /></svg>
+            <div className="flex items-center gap-2">
+              <a href="#" className="t2-btn t2-btn-orange-white">
+                <span>See More</span>
+                <i>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M7 17L17 7M17 7H7M17 7v10" /></svg>
+                </i>
               </a>
             </div>
           </div>
@@ -46,12 +44,12 @@ export default function BecomeVolunteer() {
             <p className="font-['Sora'] text-[15px] text-white/80 leading-[1.8] mb-8 max-w-md">
               Becoming A Volunteer With Chioary Means Joining A Dedicated Team Committed To Making A Difference. We Welcome Individuals From All Walks Of Life Who Are Passionate
             </p>
-            <div className="flex items-center gap-2 group/btn">
-              <a href="#" className="px-6 py-3.5 rounded-full bg-[#007B39] text-white font-['Inter'] font-semibold text-[15px] transition-colors hover:bg-[#00602b]">
-                See More
-              </a>
-              <a href="#" className="w-12 h-12 rounded-full bg-[#007B39] text-white flex items-center justify-center transition-colors hover:bg-[#00602b]">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M7 17L17 7M17 7H7M17 7v10" /></svg>
+            <div className="flex items-center gap-2">
+              <a href="#" className="t2-btn t2-btn-green-white">
+                <span>See More</span>
+                <i>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M7 17L17 7M17 7H7M17 7v10" /></svg>
+                </i>
               </a>
             </div>
           </div>

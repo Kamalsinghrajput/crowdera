@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect, useRef, useCallback } from "react";
-import FloatingBird from "./FloatingBird";
 
 
 const DONORS = [
@@ -97,7 +96,6 @@ export default function TopDonors() {
       className="py-[120px]"
       style={{ background: "var(--t2-darkTeal)" }}
     >
-      <FloatingBird position="left" />
       <div className="max-w-[1320px] mx-auto px-3">
         {/* Header */}
         <div className="text-center mb-[60px]">

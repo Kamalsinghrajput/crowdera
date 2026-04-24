@@ -1,5 +1,4 @@
 import Link from "next/link";
-import FloatingBird from "./FloatingBird";
 
 
 const EVENTS = [
@@ -36,7 +35,6 @@ const EVENTS = [
 export default function Event() {
   return (
     <section className="bg-white py-[120px] pb-[80px] relative overflow-hidden">
-      <FloatingBird position="left" />
       {/* Decorative SVG Blob (Left Side) */}
       <div
         className="absolute top-0 left-[-100px] w-96 h-96 opacity-10 pointer-events-none rotate-12"
@@ -132,25 +130,9 @@ export default function Event() {
                 </p>
 
                 {/* Read More Link */}
-                <a
-                  href="#"
-                  className="flex items-center gap-3 mt-2 group/btn w-fit"
-                >
-                  <span className="w-10 h-10 rounded-full border border-[#E5E5E5] flex items-center justify-center text-t2-dark transition-all duration-300 group-hover:bg-t2-secondary group-hover:border-t2-secondary group-hover:text-white">
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                    >
-                      <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
-                  </span>
-                  <span className="text-[15px] text-t2-dark transition-colors duration-300 group-hover:text-t2-secondary">
-                    Read More
-                  </span>
+                <a href="#" className="t2-text-btn mt-2">
+                  <span />
+                  Read More
                 </a>
               </div>
             </div>
@@ -160,11 +142,9 @@ export default function Event() {
         {/* See All button */}
         <div className="text-center mt-16 relative z-10">
           <Link href="/templates/template-2/events">
-            <a className="inline-flex items-center gap-2 group">
-              <span className="px-7 py-3.5 rounded-full bg-t2-dark text-white text-[16px] transition-colors duration-300 group-hover:bg-t2-secondary">
-                See All
-              </span>
-              <span className="w-[52px] h-[52px] rounded-full bg-t2-dark text-white flex items-center justify-center transition-colors duration-300 group-hover:bg-t2-secondary">
+            <a className="t2-btn">
+              <span>See All</span>
+              <i>
                 <svg
                   width="18"
                   height="18"
@@ -175,7 +155,7 @@ export default function Event() {
                 >
                   <path d="M7 17L17 7M17 7H7M17 7v10" />
                 </svg>
-              </span>
+              </i>
             </a>
           </Link>
         </div>

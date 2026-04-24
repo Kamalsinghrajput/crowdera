@@ -1,4 +1,3 @@
-import FloatingBird from "./FloatingBird";
 const STATS = [
   { num: "20", suffix: " billion", label: "People Helped", color: "#FBD9D7" },
   { num: "200", suffix: "+", label: "Country Impacted", color: "#C6F3EE" },
@@ -9,7 +8,6 @@ const STATS = [
 export default function CounterOne() {
   return (
     <section className="bg-white py-[60px] pb-[80px] border-t border-[#F0F0F0]">
-      <FloatingBird position="right" />
       <div className="max-w-[1320px] mx-auto px-3">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0">
           {STATS.map((stat, i) => (

@@ -1,6 +1,5 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
-import FloatingBird from "./FloatingBird";
 
 const FAQS = [
   {
@@ -87,7 +86,6 @@ export default function Faq() {
 
   return (
     <section className="bg-[#F5F7F5] py-[120px] relative">
-      <FloatingBird position="right" />
       <div className="max-w-[1320px] mx-auto px-3">
         <div className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-20 items-start">
           {/* Left */}
@@ -107,11 +105,9 @@ export default function Faq() {
               asked questions to find the information you need.
             </p>
 
-            <a href="#" className="inline-flex items-center gap-2 group">
-              <span className="px-7 py-3.5 rounded-full bg-t2-dark text-white text-[16px] transition-colors duration-300 group-hover:bg-t2-secondary">
-                More Questions
-              </span>
-              <span className="w-[54px] h-[54px] rounded-full bg-t2-dark text-white flex items-center justify-center transition-colors duration-300 group-hover:bg-t2-secondary">
+            <a href="#" className="t2-btn">
+              <span>More Questions</span>
+              <i>
                 <svg
                   width="18"
                   height="18"
@@ -122,7 +118,7 @@ export default function Faq() {
                 >
                   <path d="M7 17L17 7M17 7H7M17 7v10" />
                 </svg>
-              </span>
+              </i>
             </a>
 
             {/* Decorative image */}

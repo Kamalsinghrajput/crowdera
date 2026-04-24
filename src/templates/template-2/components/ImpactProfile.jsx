@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import FloatingBird from "./FloatingBird";
 
 const CURRENT_YEAR = new Date().getFullYear();
 
@@ -120,7 +119,6 @@ export default function ImpactProfile() {
 
   return (
     <section className="py-[100px] bg-white">
-      <FloatingBird position="left" />
       <div className="max-w-[1320px] mx-auto px-3">
         <div
           ref={sectionRef}

@@ -1,8 +1,6 @@
-import FloatingBird from "./FloatingBird";
 export default function VideoOne() {
   return (
     <section style={{ position: "relative", overflow: "hidden", padding: "120px 0" }}>
-      <FloatingBird position="right" />
       {/* Background image */}
       <div style={{
         position: "absolute", inset: 0,
@@ -79,20 +77,11 @@ export default function VideoOne() {
             </div>
 
             {/* Donate button */}
-            <a href="#" style={{
-              display: "inline-flex", alignItems: "center", borderRadius: 30,
-              overflow: "hidden", textDecoration: "none"
-            }}>
-              <span style={{
-                padding: "13px 24px", background: "var(--t2-secondary)", color: "#fff",
-                  fontSize: 16
-              }}>Donate Now</span>
-              <span style={{
-                width: 52, height: 52, background: "var(--t2-dark)",
-                display: "flex", alignItems: "center", justifyContent: "center", borderRadius: "50%"
-              }}>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5"><path d="M7 17L17 7M17 7H7M17 7v10" /></svg>
-              </span>
+            <a href="#" className="t2-btn t2-btn-secondary">
+              <span>Donate Now</span>
+              <i>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M7 17L17 7M17 7H7M17 7v10" /></svg>
+              </i>
             </a>
           </div>
         </div>

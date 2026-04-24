@@ -111,25 +111,13 @@ function BlogCard({ blog }) {
         <div className="h-px w-full bg-[#E8E8E8] mb-6 mt-auto" />
 
         {/* Read more button */}
-        <a
-          href="#"
-          className="inline-flex items-center gap-2 group/btn self-start"
-        >
-          <span className="px-6 py-2.5 rounded-full bg-t2-dark text-white text-[15px] transition-colors duration-300 group-hover/btn:bg-t2-secondary">
-            Read More
-          </span>
-          <span className="w-11 h-11 rounded-full bg-t2-dark text-white flex items-center justify-center transition-colors duration-300 group-hover/btn:bg-t2-secondary">
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-            >
+        <a href="#" className="t2-btn" style={{ transform: "scale(0.85)", transformOrigin: "left center" }}>
+          <span>Read More</span>
+          <i>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               <path d="M7 17L17 7M17 7H7M17 7v10" />
             </svg>
-          </span>
+          </i>
         </a>
       </div>
     </div>
@@ -155,11 +143,9 @@ export default function BLog() {
           </div>
 
           <Link href="/templates/template-2/blog">
-            <a className="inline-flex items-center gap-2 group shrink-0">
-              <span className="px-7 py-3.5 rounded-full bg-t2-dark text-white text-[16px] transition-colors duration-300 group-hover:bg-t2-secondary">
-                See All Blog
-              </span>
-              <span className="w-[54px] h-[54px] rounded-full bg-t2-dark text-white flex items-center justify-center transition-colors duration-300 group-hover:bg-t2-secondary">
+            <a className="t2-btn">
+              <span>See All Blog</span>
+              <i>
                 <svg
                   width="18"
                   height="18"
@@ -170,7 +156,7 @@ export default function BLog() {
                 >
                   <path d="M7 17L17 7M17 7H7M17 7v10" />
                 </svg>
-              </span>
+              </i>
             </a>
           </Link>
         </div>

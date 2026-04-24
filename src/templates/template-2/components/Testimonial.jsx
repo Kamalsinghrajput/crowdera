@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect } from "react";
-import FloatingBird from "./FloatingBird";
 
 
 const TESTIMONIALS = [
@@ -48,7 +47,6 @@ export default function Testimonial() {
 
   return (
     <section className="relative py-[120px] overflow-hidden bg-t2-dark">
-      <FloatingBird position="left" />
       {/* Parallax Background */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-fixed opacity-40 grayscale"

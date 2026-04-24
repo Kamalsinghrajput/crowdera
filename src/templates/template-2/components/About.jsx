@@ -183,27 +183,8 @@ export default function About() {
                     >
                       {item.text}
                     </p>
-                    <a
-                      href="#"
-                      style={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: 8,
-                        fontSize: 13,
-                        color: "var(--t2-primary)",
-                        textDecoration: "none",
-                        textTransform: "uppercase",
-                        letterSpacing: "0.08em",
-                      }}
-                    >
-                      <span
-                        style={{
-                          width: 30,
-                          height: 2,
-                          background: "var(--t2-primary)",
-                          display: "inline-block",
-                        }}
-                      />
+                    <a href="#" className="t2-text-btn">
+                      <span />
                       Read More
                     </a>
                   </div>
@@ -315,27 +296,8 @@ export default function About() {
                     addressing health, housing, and emotional well-being under
                     one roof.
                   </p>
-                  <a
-                    href="#"
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: 8,
-                      fontSize: 13,
-                      color: "var(--t2-primary)",
-                      textDecoration: "none",
-                      textTransform: "uppercase",
-                      letterSpacing: "0.08em",
-                    }}
-                  >
-                    <span
-                      style={{
-                        width: 30,
-                        height: 2,
-                        background: "var(--t2-primary)",
-                        display: "inline-block",
-                      }}
-                    />
+                  <a href="#" className="t2-text-btn">
+                    <span />
                     Read More
                   </a>
                 </div>

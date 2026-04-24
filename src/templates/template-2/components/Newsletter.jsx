@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import FloatingBird from "./FloatingBird";
 
 
 export default function NewsLetter() {
@@ -18,7 +17,6 @@ export default function NewsLetter() {
 
   return (
     <section className="relative pt-[120px] pb-[80px] overflow-hidden bg-t2-dark">
-      <FloatingBird position="right" />
       {/* Background image */}
       <div
         className="absolute inset-0 bg-cover bg-center grayscale"

@@ -2,7 +2,6 @@
 import { useState } from "react";
 import FloatingBird from "./FloatingBird";
 
-
 const SERVICES = [
   {
     title: "Food Assistance Programs",
@@ -71,6 +70,7 @@ function ServiceCard({ srv }) {
         borderRadius: 12,
         overflow: "hidden",
         cursor: "pointer",
+        background: "var(--primary)",
       }}
     >
       {/* Image — greyscale default, color on hover */}
@@ -170,15 +170,21 @@ function ServiceCard({ srv }) {
 }
 
 export default function Services() {
+  const primaryColor = "#1A3A37";
+  const secondaryColor = "#FFA415";
+  const bgColor = "#121d18";
+  const secondaryBgColor = "#f9f9f9";
+
   return (
     <section
       style={{
         position: "relative",
-        background: "var(--t2-darkTeal)",
+        background: primaryColor,
         padding: "110px 0 80px",
         overflow: "hidden",
       }}
     >
+      <style dangerouslySetInnerHTML={{ __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; --bg-color: ${bgColor}; --secondary-bg-color: ${secondaryBgColor}; }` }} />
       <FloatingBird position="left" />
       {/* Section Title */}
       <div
@@ -407,12 +413,12 @@ export default function Services() {
         </div>
       </div>
 
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         @keyframes ripple {
           0% { transform: scale(1); opacity: 1; }
           100% { transform: scale(1.5); opacity: 0; }
         }
-      `}</style>
+      ` }} />
     </section>
   );
 }

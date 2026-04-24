@@ -10,6 +10,9 @@ const SOCIAL = [
 
 
 export default function FooterSection() {
+  const primaryColor = "#e8547a";
+  const secondaryColor = "#9b59b6";
+
   return (
     <footer
       id="footer"
@@ -17,6 +20,7 @@ export default function FooterSection() {
       style={{
         background: "url('/assets/template-10-footer.svg') center bottom / cover no-repeat, #511F54"
       }}>
+      <style>{`:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; }`}</style>
       
 
 
@@ -53,7 +57,7 @@ export default function FooterSection() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={label}
-              className="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white/50 hover:border-t10-rose hover:text-t10-rose hover:bg-t10-rose/10 transition-all duration-300">
+              className="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white/50 hover:border-[var(--primary)] hover:text-[var(--primary)] hover:bg-t10-rose/10 transition-all duration-300">
               
                 <Icon size={14} />
               </a>
@@ -69,9 +73,9 @@ export default function FooterSection() {
             <li key={s}>
                 <a
                 href="#"
-                className="text-white/50 text-sm hover:text-t10-rose transition-colors duration-300 flex items-center gap-2">
+                className="text-white/50 text-sm hover:text-[var(--primary)] transition-colors duration-300 flex items-center gap-2">
                 
-                  <span className="w-1.5 h-1.5 rounded-full bg-t10-rose flex-shrink-0" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--primary)] flex-shrink-0" />
                   {s}
                 </a>
               </li>
@@ -84,10 +88,10 @@ export default function FooterSection() {
           <h4 className="text-white font-extrabold text-sm uppercase tracking-widest mb-5">Contacts</h4>
           <address className="not-italic flex flex-col gap-3 text-white/50 text-sm">
             <span>92 Bowery St., NY 10013</span>
-            <a href="mailto:info@bighearts.com" className="hover:text-t10-rose transition-colors">
+            <a href="mailto:info@bighearts.com" className="hover:text-[var(--primary)] transition-colors">
               info@bighearts.com
             </a>
-            <a href="tel:+18001234567" className="hover:text-t10-rose transition-colors">
+            <a href="tel:+18001234567" className="hover:text-[var(--primary)] transition-colors">
               +1 800 123 456 789
             </a>
           </address>
@@ -99,8 +103,8 @@ export default function FooterSection() {
         <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-white/35 text-xs">
           <p>Copyright © {new Date().getFullYear()} BigHearts. All Rights Reserved.</p>
           <div className="flex gap-5">
-            <a href="#" className="hover:text-t10-rose transition-colors">Terms of use</a>
-            <a href="#" className="hover:text-t10-rose transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-[var(--primary)] transition-colors">Terms of use</a>
+            <a href="#" className="hover:text-[var(--primary)] transition-colors">Privacy Policy</a>
           </div>
         </div>
       </div>

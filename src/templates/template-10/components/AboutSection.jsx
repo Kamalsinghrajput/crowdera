@@ -5,6 +5,9 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function AboutSection() {
+  const primaryColor = "#e8547a";
+  const secondaryColor = "#9b59b6";
+
   const sectionRef = useRef(null);
   const leftRef = useRef(null);
   const rightRef = useRef(null);
@@ -38,6 +41,7 @@ export default function AboutSection() {
       id="about"
       className="relative py-20 md:py-28 px-4 sm:px-6 overflow-hidden"
       style={{ background: "linear-gradient(135deg,#fdf4f6 0%,#ffffff 50%,#f8f0ff 100%)" }}>
+      <style>{`:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; }`}</style>
       
       {/* Decorative SVG rings */}
       <svg className="absolute top-8 left-4 w-28 opacity-10 animate-float-slow pointer-events-none" viewBox="0 0 120 120">
@@ -62,14 +66,14 @@ export default function AboutSection() {
         <div ref={rightRef} className="flex flex-col gap-0">
           {/* Label */}
           <div className="inline-flex items-center gap-3 self-start mb-4">
-            <span className="block w-10 h-0.5 bg-t10-rose" />
-            <span className="text-t10-rose font-extrabold text-xs uppercase tracking-[3px]">About Us</span>
+            <span className="block w-10 h-0.5 bg-[var(--primary)]" />
+            <span className="text-[var(--primary)] font-extrabold text-xs uppercase tracking-[3px]">About Us</span>
           </div>
 
           {/* Heading */}
           <h2 className="font-black text-gray-800 leading-tight text-3xl md:text-4xl lg:text-[44px] mb-6">
             You Can Help a Lot by Donating{" "}
-            <span className="text-t10-rose">Little for Charity</span>
+            <span className="text-[var(--primary)]">Little for Charity</span>
           </h2>
 
           {/* Body text */}

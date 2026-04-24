@@ -6,6 +6,9 @@ import { useEffect } from "react";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function NewsletterSection() {
+  const primaryColor = "#e8547a";
+  const secondaryColor = "#9b59b6";
+
   const sectionRef = useRef(null);
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -46,6 +49,7 @@ export default function NewsletterSection() {
       ref={sectionRef}
       id="newsletter"
       className="relative py-20 md:py-28 px-4 sm:px-6 overflow-hidden bg-white">
+      <style>{`:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; }`}</style>
       
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
@@ -53,8 +57,8 @@ export default function NewsletterSection() {
           <div className="newsletter-content">
             {/* Label */}
             <div className="inline-flex items-center gap-3 mb-4">
-              <span className="block w-10 h-0.5 bg-t10-rose" />
-              <span className="text-t10-rose font-extrabold tracking-widest uppercase text-xs">
+              <span className="block w-10 h-0.5 bg-[var(--primary)]" />
+              <span className="text-[var(--primary)] font-extrabold tracking-widest uppercase text-xs">
                 Our Newsletter
               </span>
             </div>
@@ -73,7 +77,7 @@ export default function NewsletterSection() {
             {/* Form */}
             {submitted ?
             <div className="border border-t10-rose/20 rounded-2xl px-6 py-4 inline-block" style={{ background: '#fdf4f6' }}>
-                <p className="text-t10-rose font-extrabold">✓ Thank you for subscribing!</p>
+                <p className="text-[var(--primary)] font-extrabold">✓ Thank you for subscribing!</p>
                 <p className="text-t10-rose/70 text-sm">We'll keep you updated with our latest news.</p>
               </div> :
 

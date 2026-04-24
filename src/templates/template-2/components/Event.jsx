@@ -33,8 +33,15 @@ const EVENTS = [
 ];
 
 export default function Event() {
+  const primaryColor = "#007B39";
+  const secondaryColor = "#FFA415";
+  const bgColor = "#121d18";
+  const secondaryBgColor = "#f9f9f9";
+
+
   return (
     <section className="bg-white py-[120px] pb-[80px] relative overflow-hidden">
+      <style dangerouslySetInnerHTML={{ __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; --bg-color: ${bgColor}; --secondary-bg-color: ${secondaryBgColor}; }` }} />
       {/* Decorative SVG Blob (Left Side) */}
       <div
         className="absolute top-0 left-[-100px] w-96 h-96 opacity-10 pointer-events-none rotate-12"
@@ -70,10 +77,10 @@ export default function Event() {
         {/* Section title */}
         <div className="text-center mb-16 relative">
           <div className="inline-flex items-center gap-3 mb-4 relative z-10">
-            <div className="w-2 h-2 rounded-full bg-t2-secondary" />
-            <span className="text-[16px] text-t2-dark italic">Our Events</span>
+            <div className="w-2 h-2 rounded-full bg-[var(--secondary)]" />
+            <span className="text-[16px] text-[var(--bg-color)] italic">Our Events</span>
           </div>
-          <h2 className="text-[clamp(32px,4vw,48px)] leading-[1.2] text-t2-dark relative z-10">
+          <h2 className="text-[clamp(32px,4vw,48px)] leading-[1.2] text-[var(--bg-color)] relative z-10">
             Events Schedule Upcoming
             <br /> Events.
           </h2>
@@ -100,7 +107,7 @@ export default function Event() {
           {EVENTS.map((ev, i) => (
             <div
               key={i}
-              className="group flex flex-col sm:flex-row bg-t2-light rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_10px_40px_rgba(0,0,0,0.08)]"
+              className="group flex flex-col sm:flex-row bg-[var(--secondary-bg-color)] rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_10px_40px_rgba(0,0,0,0.08)]"
             >
               {/* Image + date badge */}
               <div className="relative w-full sm:w-[260px] h-[260px] sm:h-auto shrink-0 overflow-hidden">
@@ -111,22 +118,22 @@ export default function Event() {
                 />
 
                 {/* Date badge */}
-                <div className="absolute bottom-0 left-0 bg-t2-primary text-white px-5 py-2.5 text-[14px]">
+                <div className="absolute bottom-0 left-0 bg-[var(--primary)] text-white px-5 py-2.5 text-[14px]">
                   {ev.date}
                 </div>
               </div>
 
               {/* Content */}
               <div className="p-8 flex flex-col justify-center gap-4 flex-grow">
-                <h3 className="text-[22px] text-t2-dark leading-[1.4] transition-colors duration-300 group-hover:text-t2-secondary">
+                <h3 className="text-[22px] text-[var(--bg-color)] leading-[1.4] transition-colors duration-300 group-hover:text-t2-secondary">
                   <a href="#" className="block">
                     {ev.title}
                   </a>
                 </h3>
 
-                <p className="text-[15px] text-t2-gray">
+                <p className="text-[15px] text-[#6c6e76]">
                   By {ev.by}{" "}
-                  <span className="ml-3 text-t2-secondary">{ev.time}</span>
+                  <span className="ml-3 text-[var(--secondary)]">{ev.time}</span>
                 </p>
 
                 {/* Read More Link */}

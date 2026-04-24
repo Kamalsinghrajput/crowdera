@@ -75,6 +75,8 @@ function WorldMapBg() {
 }
 
 export default function ImpactProfile() {
+  const primaryColor = "#000000";
+
   const [count, setCount] = useState(0);
   const target = 10000;
   const sectionRef = useRef(null);
@@ -122,7 +124,8 @@ export default function ImpactProfile() {
       <div className="max-w-[1320px] mx-auto px-3">
         <div
           ref={sectionRef}
-          className="relative rounded-[30px] overflow-hidden bg-t2-dark"
+          className="relative rounded-[30px] overflow-hidden "
+          style={{ background: primaryColor }}
         >
           {/* World map watermark */}
           <WorldMapBg />
@@ -141,7 +144,7 @@ export default function ImpactProfile() {
 
             {/* Big animated counter */}
             <div className="mb-4">
-              <span className="text-[clamp(40px,8vw,100px)] leading-none text-t2-secondary">
+              <span className="text-[clamp(40px,8vw,100px)] leading-none text-[var(--secondary)]">
                 {count.toLocaleString()}
               </span>
               <span className="ml-4 text-[clamp(24px,4vw,40px)] text-white">
@@ -182,9 +185,9 @@ export default function ImpactProfile() {
 
             {/* View Annual Report button */}
             <Link href={`/templates/template-2/annual-report/${CURRENT_YEAR}`}>
-              <a className="inline-flex items-center gap-3 group text-t2-secondary text-[16px] hover:text-white transition-colors duration-300">
+              <a className="inline-flex items-center gap-3 group text-[var(--secondary)] text-[16px] hover:text-white transition-colors duration-300">
                 View Annual Report {CURRENT_YEAR}
-                <span className="w-10 h-10 rounded-full bg-t2-secondary text-white flex items-center justify-center transition-all duration-300 group-hover:bg-white group-hover:text-t2-dark">
+                <span className="w-10 h-10 rounded-full bg-[var(--secondary)] text-white flex items-center justify-center transition-all duration-300 group-hover:bg-white group-hover:text-t2-dark">
                   <svg
                     width="18"
                     height="18"

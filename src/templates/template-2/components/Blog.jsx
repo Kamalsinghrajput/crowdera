@@ -51,7 +51,7 @@ function BlogCard({ blog }) {
         {/* Date badge with brush stroke style background */}
         <div className="absolute bottom-5 left-5 z-10">
           <div
-            className="px-5 py-2.5 bg-t2-dark"
+            className="px-5 py-2.5 bg-[var(--bg-color)]"
             style={{
               maskImage: "url(/assets/template-2-stats.svg)",
               maskSize: "100% 100%",
@@ -70,7 +70,7 @@ function BlogCard({ blog }) {
       <div className="pt-6 pb-2 flex flex-col flex-1">
         {/* Meta */}
         <div className="flex gap-5 mb-4">
-          <span className="flex items-center gap-2 text-[13px] text-t2-gray">
+          <span className="flex items-center gap-2 text-[13px] text-[#6c6e76]">
             <svg
               width="15"
               height="15"
@@ -84,7 +84,7 @@ function BlogCard({ blog }) {
             </svg>
             By {blog.by}
           </span>
-          <span className="flex items-center gap-2 text-[13px] text-t2-gray">
+          <span className="flex items-center gap-2 text-[13px] text-[#6c6e76]">
             <svg
               width="15"
               height="15"
@@ -99,7 +99,7 @@ function BlogCard({ blog }) {
           </span>
         </div>
 
-        <h3 className="text-[22px] text-t2-dark leading-[1.4] mb-6 pr-4">
+        <h3 className="text-[22px] text-[var(--bg-color)] leading-[1.4] mb-6 pr-4">
           <a
             href="#"
             className="transition-colors duration-300 group-hover:text-t2-secondary"
@@ -111,10 +111,21 @@ function BlogCard({ blog }) {
         <div className="h-px w-full bg-[#E8E8E8] mb-6 mt-auto" />
 
         {/* Read more button */}
-        <a href="#" className="t2-btn" style={{ transform: "scale(0.85)", transformOrigin: "left center" }}>
+        <a
+          href="#"
+          className="t2-btn"
+          // style={{ transform: "scale(0.85)", transformOrigin: "left center" }}
+        >
           <span>Read More</span>
           <i>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+            >
               <path d="M7 17L17 7M17 7H7M17 7v10" />
             </svg>
           </i>
@@ -125,6 +136,11 @@ function BlogCard({ blog }) {
 }
 
 export default function BLog() {
+  const primaryColor = "#007B39";
+  const secondaryColor = "#FFA415";
+  const bgColor = "#121d18";
+  const secondaryBgColor = "#f9f9f9";
+
   return (
     <section className="bg-white py-[120px] relative">
       <FloatingBird position="left" />
@@ -133,10 +149,12 @@ export default function BLog() {
         <div className="flex flex-wrap justify-between items-end gap-6 mb-16">
           <div>
             <div className="inline-flex items-center gap-3 mb-6">
-              <div className="w-2 h-2 rounded-full bg-t2-secondary" />
-              <span className="text-[16px] text-t2-dark italic">Our Blog</span>
+              <div className="w-2 h-2 rounded-full bg-[var(--secondary)]" />
+              <span className="text-[16px] text-[var(--bg-color)] italic">
+                Our Blog
+              </span>
             </div>
-            <h2 className="text-[clamp(28px,4vw,52px)] leading-[1.2] text-t2-dark m-0">
+            <h2 className="text-[clamp(28px,4vw,52px)] leading-[1.2] text-[var(--bg-color)] m-0">
               Latest News &amp; Inspiring
               <br /> Stories.
             </h2>

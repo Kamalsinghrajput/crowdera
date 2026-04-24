@@ -28,6 +28,11 @@ export default function Navbar() {
   const [overflowOpen, setOverflowOpen] = useState(false);
   const overflowRef = useRef(null);
 
+  const primaryColor = "#007B39";
+  const secondaryColor = "#FFA415";
+  const bgColor = "#121d18";
+  const secondaryBgColor = "#f9f9f9";
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -535,12 +540,16 @@ export default function Navbar() {
         </div>
       )}
 
-      <style>{`
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
         @keyframes fadeDown {
           from { opacity: 0; transform: translateY(-10px); }
           to { opacity: 1; transform: translateY(0); }
         }
-      `}</style>
+      `,
+        }}
+      />
     </>
   );
 }

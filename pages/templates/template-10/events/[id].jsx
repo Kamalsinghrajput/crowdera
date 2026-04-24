@@ -11,6 +11,9 @@ import FooterSection from "../../../../src/templates/template-10/components/Foot
 import { events } from "../../../../src/templates/template-10/data/eventsData";
 
 export default function EventDetail() {
+  const primaryColor = "#e8547a";
+  const secondaryColor = "#9b59b6";
+
   const router = useRouter();
   const { id } = router.query;
   const ev = events.find((e) => e.id === id);
@@ -18,10 +21,11 @@ export default function EventDetail() {
   if (!ev) {
     return (
       <div className="min-h-screen flex items-center justify-center font-sans bg-white">
+      <style>{`:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; }`}</style>
         <div className="text-center">
           <p className="text-2xl font-bold text-gray-400 mb-4">Event not found.</p>
           <Link href="/templates/template-10/events">
-            <span className="text-t10-rose font-bold hover:underline cursor-pointer">← Back to Events</span>
+            <span className="text-[var(--primary)] font-bold hover:underline cursor-pointer">← Back to Events</span>
           </Link>
         </div>
       </div>);
@@ -52,7 +56,7 @@ export default function EventDetail() {
 
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
           {/* Event type pill */}
-          <span className="inline-flex items-center gap-2 bg-t10-rose/20 backdrop-blur-sm border border-t10-rose/40 text-t10-rose text-xs font-bold px-5 py-2 rounded-full mb-6">
+          <span className="inline-flex items-center gap-2 bg-t10-rose/20 backdrop-blur-sm border border-t10-rose/40 text-[var(--primary)] text-xs font-bold px-5 py-2 rounded-full mb-6">
             <MapPin size={12} /> {ev.type}
           </span>
 
@@ -90,7 +94,7 @@ export default function EventDetail() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 md:py-14">
         {/* Back */}
         <Link href="/templates/template-10/events">
-          <span className="inline-flex items-center gap-2 text-t10-rose font-bold mb-8 hover:gap-3 transition-all text-sm cursor-pointer">
+          <span className="inline-flex items-center gap-2 text-[var(--primary)] font-bold mb-8 hover:gap-3 transition-all text-sm cursor-pointer">
             <ArrowLeft size={16} /> Back to Events
           </span>
         </Link>
@@ -99,9 +103,9 @@ export default function EventDetail() {
         <div className="inline-flex items-center gap-2 text-xs border border-gray-200 rounded-full px-4 py-2 mb-10 shadow-sm"
         style={{ background: "linear-gradient(135deg,#fdf4f6 0%,#f8f0ff 100%)" }}>
           
-          <Users size={12} className="text-t10-rose" />
+          <Users size={12} className="text-[var(--primary)]" />
           <span className="text-gray-500">This event supports a fundraising initiative by</span>
-          <span className="font-bold text-t10-purple">{ev.beneficiary}</span>
+          <span className="font-bold text-[var(--secondary)]">{ev.beneficiary}</span>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
@@ -121,7 +125,7 @@ export default function EventDetail() {
                   if (line.startsWith("•")) {
                     return (
                       <div key={i} className="flex items-start gap-2.5 text-sm text-gray-600">
-                        <span className="w-1.5 h-1.5 rounded-full bg-t10-rose mt-[7px] shrink-0" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-[var(--primary)] mt-[7px] shrink-0" />
                         <span>{line.replace("•", "").trim()}</span>
                       </div>);
 
@@ -150,7 +154,7 @@ export default function EventDetail() {
                 Event Location
               </h2>
               <p className="flex items-center gap-2 font-extrabold text-gray-800 mb-1">
-                <MapPin size={14} className="text-t10-rose" /> {ev.venue}
+                <MapPin size={14} className="text-[var(--primary)]" /> {ev.venue}
               </p>
               <p className="text-sm text-gray-400 mb-5">
                 Join us at this amazing venue for an unforgettable experience!
@@ -168,7 +172,7 @@ export default function EventDetail() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="rounded-xl p-4" style={{ background: "#fdf4f6" }}>
-                  <div className="flex items-center gap-2 text-t10-rose font-bold text-sm mb-1.5">
+                  <div className="flex items-center gap-2 text-[var(--primary)] font-bold text-sm mb-1.5">
                     <Bus size={14} /> Getting There
                   </div>
                   <p className="text-xs text-gray-500 leading-relaxed">
@@ -176,7 +180,7 @@ export default function EventDetail() {
                   </p>
                 </div>
                 <div className="rounded-xl p-4" style={{ background: "#f8f0ff" }}>
-                  <div className="flex items-center gap-2 text-t10-purple font-bold text-sm mb-1.5">
+                  <div className="flex items-center gap-2 text-[var(--secondary)] font-bold text-sm mb-1.5">
                     <AlarmClock size={14} /> Arrival Time
                   </div>
                   <p className="text-xs text-gray-500 leading-relaxed">
@@ -206,7 +210,7 @@ export default function EventDetail() {
             <div className="bg-white rounded-2xl p-6 shadow-[0_4px_30px_rgba(0,0,0,0.06)] border border-gray-100 text-center">
               {ev.status === "finished" ?
               <>
-                  <CheckCircle size={40} className="text-t10-purple mx-auto mb-3" />
+                  <CheckCircle size={40} className="text-[var(--secondary)] mx-auto mb-3" />
                   <p className="font-black text-gray-800 text-lg">Event is Finished</p>
                   <p className="text-xs text-gray-400 mt-1">
                     Thank you for participating in this event
@@ -215,7 +219,7 @@ export default function EventDetail() {
 
               <>
                   <div className="w-10 h-10 rounded-full bg-t10-rose/10 flex items-center justify-center mx-auto mb-3">
-                    <Calendar size={22} className="text-t10-rose" />
+                    <Calendar size={22} className="text-[var(--primary)]" />
                   </div>
                   <p className="font-black text-gray-800 text-lg">Event is Upcoming</p>
                   <p className="text-xs text-gray-400 mt-1">
@@ -253,7 +257,7 @@ export default function EventDetail() {
                 
                 <Heart size={15} /> Donate Now
               </button>
-              <button className="w-full flex items-center justify-center gap-2 border-2 border-t10-purple text-t10-purple font-bold py-3 rounded-full hover:bg-t10-purple hover:text-white transition-all text-sm">
+              <button className="w-full flex items-center justify-center gap-2 border-2 border-[var(--secondary)] text-[var(--secondary)] font-bold py-3 rounded-full hover:bg-t10-purple hover:text-white transition-all text-sm">
                 <Share2 size={15} /> Share
               </button>
             </div>
@@ -261,7 +265,7 @@ export default function EventDetail() {
             {/* Event Details */}
             <div className="bg-white rounded-2xl p-6 shadow-[0_4px_30px_rgba(0,0,0,0.06)] border border-gray-100">
               <h3 className="flex items-center gap-2 font-black text-gray-800 mb-4 text-base">
-                <Info size={16} className="text-t10-rose" /> Event Details
+                <Info size={16} className="text-[var(--primary)]" /> Event Details
               </h3>
               {[
               { icon: <Calendar size={13} />, label: "Date", value: ev.date },
@@ -272,7 +276,7 @@ export default function EventDetail() {
               map((d, i) =>
               <div key={i} className="rounded-xl px-4 py-3 mb-2" style={{ background: "#fdf4f6" }}>
                   <div className="flex items-center gap-1.5 text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-0.5">
-                    <span className="text-t10-rose">{d.icon}</span> {d.label}
+                    <span className="text-[var(--primary)]">{d.icon}</span> {d.label}
                   </div>
                   <div className="text-sm font-bold text-gray-800">{d.value}</div>
                 </div>
@@ -281,7 +285,7 @@ export default function EventDetail() {
 
             {/* Organizer */}
             <div className="bg-white rounded-2xl p-6 shadow-[0_4px_30px_rgba(0,0,0,0.06)] border border-gray-100">
-              <h3 className="font-black text-t10-purple mb-4 text-base">Organizer</h3>
+              <h3 className="font-black text-[var(--secondary)] mb-4 text-base">Organizer</h3>
               <div className="flex items-center gap-3">
                 <div className="w-11 h-11 rounded-full bg-gradient-to-br from-t10-rose to-t10-roseDark flex items-center justify-center text-white font-extrabold text-lg shrink-0">
                   {ev.organizer.name.charAt(0)}
@@ -295,10 +299,10 @@ export default function EventDetail() {
 
             {/* Beneficiary */}
             <div className="bg-white rounded-2xl p-6 shadow-[0_4px_30px_rgba(0,0,0,0.06)] border border-gray-100">
-              <h3 className="font-black text-t10-purple mb-4 text-base">Beneficiary</h3>
+              <h3 className="font-black text-[var(--secondary)] mb-4 text-base">Beneficiary</h3>
               <div className="flex items-center gap-3">
                 <div className="w-11 h-11 rounded-full bg-t10-rose/15 flex items-center justify-center shrink-0">
-                  <Heart size={18} className="text-t10-rose" />
+                  <Heart size={18} className="text-[var(--primary)]" />
                 </div>
                 <span className="font-bold text-gray-800 text-sm">{ev.beneficiary}</span>
               </div>
@@ -306,12 +310,12 @@ export default function EventDetail() {
 
             {/* Team Fundraisers */}
             <div className="bg-white rounded-2xl p-6 shadow-[0_4px_30px_rgba(0,0,0,0.06)] border border-gray-100">
-              <h3 className="font-black text-t10-purple mb-4 text-base">
+              <h3 className="font-black text-[var(--secondary)] mb-4 text-base">
                 Team Fundraisers (1)
               </h3>
               <div className="flex items-center gap-3 rounded-xl p-3" style={{ background: "#fdf4f6" }}>
                 <div className="w-10 h-10 rounded-full bg-t10-purple/10 flex items-center justify-center shrink-0">
-                  <Users size={16} className="text-t10-purple" />
+                  <Users size={16} className="text-[var(--secondary)]" />
                 </div>
                 <div>
                   <div className="font-bold text-gray-800 text-sm">{ev.organizer.name}</div>

@@ -6,8 +6,12 @@ import Footer from '../../../../src/templates/template-1/components/Footer';
 import { events } from '../../../../src/templates/template-1/components/Events';
 
 export default function AllEvents() {
+  const primaryColor = "#FFCA08";
+  const secondaryColor = "#00715D";
+
   return (
     <div className="bg-white min-h-screen font-sans">
+      <style>{`:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; }`}</style>
       <Head>
         <title>All Events | Charifund</title>
         <meta name="description" content="Browse all upcoming and ongoing charity events by Charifund. Get involved and make a difference." />
@@ -17,10 +21,10 @@ export default function AllEvents() {
       <main className="pt-28 pb-20">
 
         {/* ── Hero banner — matches campaigns/annual-report pages ── */}
-        <div className="bg-brand-dark py-20 text-center relative overflow-hidden">
+        <div className="bg-[#091F1B] py-20 text-center relative overflow-hidden">
           <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_30%_50%,#FFCA08,transparent_60%)]" />
           <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_70%_50%,#00715D,transparent_55%)]" />
-          <span className="text-brand-yellow font-bold tracking-widest uppercase text-sm mb-3 block">Get Involved</span>
+          <span className="text-[var(--primary)] font-bold tracking-widest uppercase text-sm mb-3 block">Get Involved</span>
           <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-4">All Charity Events</h1>
           <p className="text-white/60 max-w-lg mx-auto text-sm leading-relaxed">
             Join us at our upcoming events and be part of something meaningful. Every event is an opportunity to create real change.
@@ -31,27 +35,27 @@ export default function AllEvents() {
 
           {/* Back link */}
           <Link href="/templates/template-1">
-            <a className="inline-flex items-center gap-2 text-brand-teal font-bold mb-10 hover:gap-3 transition-all text-sm">
+            <a className="inline-flex items-center gap-2 text-[var(--secondary)] font-bold mb-10 hover:gap-3 transition-all text-sm">
               <ArrowLeft size={16} /> Back to Home
             </a>
           </Link>
 
           {/* Stats bar */}
-          <div className="flex flex-wrap gap-8 mb-12 p-6 bg-brand-gray rounded-2xl items-center">
+          <div className="flex flex-wrap gap-8 mb-12 p-6 bg-[#f7f7f7] rounded-2xl items-center">
             <div>
-              <div className="text-2xl font-extrabold text-brand-dark">{events.length}</div>
+              <div className="text-2xl font-extrabold text-[#091F1B]">{events.length}</div>
               <div className="text-xs text-gray-500 font-medium">Total Events</div>
             </div>
             <div className="h-8 w-px bg-gray-200 hidden md:block" />
             <div>
-              <div className="text-2xl font-extrabold text-brand-dark">
+              <div className="text-2xl font-extrabold text-[#091F1B]">
                 {events.filter((e) => e.status === 'upcoming').length}
               </div>
               <div className="text-xs text-gray-500 font-medium">Upcoming</div>
             </div>
             <div className="h-8 w-px bg-gray-200 hidden md:block" />
             <div>
-              <div className="text-2xl font-extrabold text-brand-dark">
+              <div className="text-2xl font-extrabold text-[#091F1B]">
                 {events.filter((e) => e.status === 'finished').length}
               </div>
               <div className="text-xs text-gray-500 font-medium">Finished</div>
@@ -77,14 +81,14 @@ export default function AllEvents() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
 
                     {/* Date badge */}
-                    <div className="absolute top-3 left-3 bg-brand-yellow text-brand-dark text-center rounded-xl px-2.5 py-1.5 shadow-md min-w-[48px]">
+                    <div className="absolute top-3 left-3 bg-[var(--primary)] text-[#091F1B] text-center rounded-xl px-2.5 py-1.5 shadow-md min-w-[48px]">
                       <div className="text-xl font-extrabold leading-none">{ev.day}</div>
                       <div className="text-[9px] font-bold uppercase tracking-widest">{ev.month}</div>
                     </div>
 
                     {/* Category badge */}
                     <div className="absolute top-3 right-3">
-                      <span className="bg-brand-teal text-white text-[10px] font-bold py-1 px-2.5 rounded-full">
+                      <span className="bg-[var(--secondary)] text-white text-[10px] font-bold py-1 px-2.5 rounded-full">
                         {ev.category}
                       </span>
                     </div>
@@ -102,23 +106,23 @@ export default function AllEvents() {
                     {/* Meta */}
                     <div className="space-y-1.5 mb-4">
                       <div className="flex items-center gap-1.5 text-xs text-gray-500">
-                        <Calendar size={11} className="text-brand-teal shrink-0" />
+                        <Calendar size={11} className="text-[var(--secondary)] shrink-0" />
                         {ev.date}
                       </div>
                       <div className="flex items-center gap-1.5 text-xs text-gray-500">
-                        <Clock size={11} className="text-brand-teal shrink-0" />
+                        <Clock size={11} className="text-[var(--secondary)] shrink-0" />
                         {ev.time}
                       </div>
                       <div className="flex items-center gap-1.5 text-xs text-gray-500">
-                        <MapPin size={11} className="text-brand-teal shrink-0" />
+                        <MapPin size={11} className="text-[var(--secondary)] shrink-0" />
                         {ev.venue}
                       </div>
                     </div>
 
                     {/* Progress */}
                     <div className="mb-4">
-                      <div className="flex justify-between text-[11px] font-bold text-brand-dark mb-1">
-                        <span>Raised: <span className="text-brand-teal">₹{ev.raised.toLocaleString('en-IN')}</span></span>
+                      <div className="flex justify-between text-[11px] font-bold text-[#091F1B] mb-1">
+                        <span>Raised: <span className="text-[var(--secondary)]">₹{ev.raised.toLocaleString('en-IN')}</span></span>
                         <span>{pct}%</span>
                       </div>
                       <div className="w-full bg-gray-100 rounded-full h-1.5 overflow-hidden">
@@ -134,12 +138,12 @@ export default function AllEvents() {
                       <span className={`text-[10px] font-bold px-2.5 py-1 rounded-full ${
                       ev.status === 'finished' ?
                       'bg-gray-100 text-gray-500' :
-                      'bg-brand-teal/10 text-brand-teal'}`
+                      'bg-[rgba(0,113,93,0.10)] text-[var(--secondary)]'}`
                       }>
                         {ev.status === 'finished' ? 'Finished' : '● Upcoming'}
                       </span>
                       <Link href={`/templates/template-1/events/${ev.id}`}>
-                        <a className="inline-flex items-center gap-1.5 bg-brand-dark text-white font-bold text-xs px-4 py-2 rounded-full hover:bg-brand-yellow hover:text-brand-dark transition-all">
+                        <a className="inline-flex items-center gap-1.5 bg-[#091F1B] text-white font-bold text-xs px-4 py-2 rounded-full hover:bg-[var(--primary)] hover:text-[#091F1B] transition-all">
                           Details <ArrowRight size={11} />
                         </a>
                       </Link>

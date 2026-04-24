@@ -65,12 +65,16 @@ const reportData =
 };
 
 export default function AnnualReport() {
+  const primaryColor = "#FFCA08";
+  const secondaryColor = "#00715D";
+
   const router = useRouter();
   const { year } = router.query;
   const data = year ? reportData[year] : null;
 
   return (
     <div className="bg-white min-h-screen font-sans">
+      <style>{`:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; }`}</style>
       <Head>
         <title>Annual Report {year} | Charifund</title>
         <meta name="description" content={`Charifund Annual Impact Report ${year} — see how your support made a difference.`} />
@@ -92,7 +96,7 @@ export default function AnnualReport() {
         <div className="container mx-auto px-4 md:px-8 mt-16">
           {/* Back link */}
           <Link href="/">
-            <a className="inline-flex items-center gap-2 text-brand-teal font-bold mb-10 hover:gap-3 transition-all">
+            <a className="inline-flex items-center gap-2 text-[var(--secondary)] font-bold mb-10 hover:gap-3 transition-all">
               <ArrowLeft size={18} /> Back to Home
             </a>
           </Link>
@@ -104,10 +108,10 @@ export default function AnnualReport() {
                 {data.highlights.map((h, i) =>
               <div
                 key={i}
-                className="flex flex-col items-center text-center bg-brand-gray rounded-2xl p-8 shadow-sm">
+                className="flex flex-col items-center text-center bg-[#f7f7f7] rounded-2xl p-8 shadow-sm">
                 
-                    <div className="text-brand-teal mb-3">{h.icon}</div>
-                    <div className="text-3xl font-extrabold text-brand-dark mb-1">{h.value}</div>
+                    <div className="text-[var(--secondary)] mb-3">{h.icon}</div>
+                    <div className="text-3xl font-extrabold text-[#091F1B] mb-1">{h.value}</div>
                     <div className="text-sm text-gray-500 font-medium">{h.label}</div>
                   </div>
               )}
@@ -121,8 +125,8 @@ export default function AnnualReport() {
                     <a
                   className={`px-4 py-1.5 rounded-full text-sm font-bold transition-all ${
                   y === year ?
-                  'bg-brand-dark text-white' :
-                  'border-2 border-brand-dark/20 text-brand-dark hover:bg-brand-dark hover:text-white'}`
+                  'bg-[#091F1B] text-white' :
+                  'border-2 border-brand-dark/20 text-[#091F1B] hover:bg-[#091F1B] hover:text-white'}`
                   }>
                   
                       {y}
@@ -134,8 +138,8 @@ export default function AnnualReport() {
               {/* Report sections */}
               <div className="space-y-10">
                 {data.sections.map((sec, i) =>
-              <div key={i} className="border-l-4 border-brand-yellow pl-6">
-                    <h2 className="text-2xl font-extrabold text-brand-dark mb-3">{sec.title}</h2>
+              <div key={i} className="border-l-4 border-[var(--primary)] pl-6">
+                    <h2 className="text-2xl font-extrabold text-[#091F1B] mb-3">{sec.title}</h2>
                     <p className="text-gray-600 leading-relaxed max-w-3xl">{sec.body}</p>
                   </div>
               )}
@@ -144,8 +148,8 @@ export default function AnnualReport() {
               {/* Download CTA */}
               <div className="mt-16 flex justify-center">
                 <button
-                className="inline-flex items-center gap-3 bg-brand-dark text-white font-bold py-4 px-10 rounded-full
-                             hover:bg-brand-yellow hover:text-brand-dark transition-all transform hover:-translate-y-1 shadow-xl">
+                className="inline-flex items-center gap-3 bg-[#091F1B] text-white font-bold py-4 px-10 rounded-full
+                             hover:bg-[var(--primary)] hover:text-[#091F1B] transition-all transform hover:-translate-y-1 shadow-xl">
 
                 
                   <Download size={18} />
@@ -156,7 +160,7 @@ export default function AnnualReport() {
 
           <div className="text-center py-24">
               <p className="text-2xl font-bold text-gray-400">Report for {year} is not available yet.</p>
-              <Link href="/"><a className="mt-6 inline-block text-brand-teal font-bold">← Back to Home</a></Link>
+              <Link href="/"><a className="mt-6 inline-block text-[var(--secondary)] font-bold">← Back to Home</a></Link>
             </div>
           }
         </div>

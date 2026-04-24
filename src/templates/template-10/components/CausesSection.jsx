@@ -107,6 +107,9 @@ const AUTO_MS = 4500;
 const TOTAL = causes.length;
 
 export default function CausesSection() {
+  const primaryColor = "#e8547a";
+  const secondaryColor = "#9b59b6";
+
   const trackRef = useRef(null);
   const [cardWidth, setCardWidth] = useState(0);
   const [index, setIndex] = useState(0);
@@ -157,15 +160,16 @@ export default function CausesSection() {
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat"
       }}>
+      <style>{`:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; }`}</style>
       
       <div className="relative z-10 flex flex-col items-center justify-center px-4 sm:px-6">
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-3 mb-4">
-            <span className="block w-10 h-0.5 bg-t10-rose" />
-            <span className="text-t10-rose font-extrabold tracking-widest uppercase text-xs">
+            <span className="block w-10 h-0.5 bg-[var(--primary)]" />
+            <span className="text-[var(--primary)] font-extrabold tracking-widest uppercase text-xs">
               Features Causes
             </span>
-            <span className="block w-10 h-0.5 bg-t10-rose" />
+            <span className="block w-10 h-0.5 bg-[var(--primary)]" />
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-[44px] font-black text-gray-800 mb-4 leading-tight">
             Support Our Futures Companies

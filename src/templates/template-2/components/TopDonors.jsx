@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect, useRef, useCallback } from "react";
 
-
 const DONORS = [
   {
     img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop&q=80",
@@ -45,6 +44,11 @@ const GAP = 30;
 const AUTO_MS = 3800;
 
 export default function TopDonors() {
+  const primaryColor = "#1A3A37";
+  const secondaryColor = "#FFA415";
+  const bgColor = "#121d18";
+  const secondaryBgColor = "#f9f9f9";
+
   const [index, setIndex] = useState(0);
   const [cardW, setCardW] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -92,15 +96,13 @@ export default function TopDonors() {
   const translateX = cardW ? -(index * (cardW + GAP)) : 0;
 
   return (
-    <section
-      className="py-[120px]"
-      style={{ background: "var(--t2-darkTeal)" }}
-    >
+    <section className="py-[120px]" style={{ background: primaryColor }}>
+      <style dangerouslySetInnerHTML={{ __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; --bg-color: ${bgColor}; --secondary-bg-color: ${secondaryBgColor}; }` }} />
       <div className="max-w-[1320px] mx-auto px-3">
         {/* Header */}
         <div className="text-center mb-[60px]">
           <div className="inline-flex items-center gap-3 mb-4">
-            <div className="w-2 h-2 rounded-full bg-t2-secondary" />
+            <div className="w-2 h-2 rounded-full bg-[var(--secondary)]" />
             <span className="text-[16px] text-white italic">Hall of Fame</span>
           </div>
           <h2 className="text-[clamp(32px,5vw,56px)] leading-[1.2] text-white m-0">
@@ -145,24 +147,24 @@ export default function TopDonors() {
                   </div>
                   {/* Rank badge */}
                   <div
-                    className={`absolute -top-2 -right-2 w-8 h-8 rounded-full flex items-center justify-center text-[14px]  shadow-lg ${d.rank <= 3 ? "bg-t2-secondary text-white" : "bg-t2-dark text-white"}`}
+                    className={`absolute -top-2 -right-2 w-8 h-8 rounded-full flex items-center justify-center text-[14px]  shadow-lg ${d.rank <= 3 ? "bg-[var(--secondary)] text-white" : "bg-[var(--bg-color)] text-white"}`}
                   >
                     #{d.rank}
                   </div>
                 </div>
 
                 {/* Name */}
-                <h4 className="text-[20px] text-t2-dark mb-2 group-hover:text-t2-secondary transition-colors">
+                <h4 className="text-[20px] text-[var(--bg-color)] mb-2 group-hover:text-t2-secondary transition-colors">
                   {d.name}
                 </h4>
 
                 {/* Amount */}
                 <div className="flex items-center gap-1.5 mt-2">
-                  <span className="text-[22px] text-t2-secondary">
+                  <span className="text-[22px] text-[var(--secondary)]">
                     ${d.amount.toLocaleString("en-US")}
                   </span>
                 </div>
-                <p className="text-[14px] text-t2-gray mt-2">Total Donated</p>
+                <p className="text-[14px] text-[#6c6e76] mt-2">Total Donated</p>
               </div>
             ))}
           </div>
@@ -187,7 +189,7 @@ export default function TopDonors() {
           <div className="flex items-center gap-3">
             <button
               onClick={goPrev}
-              className="w-[50px] h-[50px] rounded-full border border-[#DDE3E3] flex items-center justify-center text-white hover:border-t2-secondary hover:bg-t2-secondary hover:text-white transition-all duration-300"
+              className="w-[50px] h-[50px] rounded-full border border-[#DDE3E3] flex items-center justify-center text-white hover:border-[var(--secondary)] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300"
             >
               <svg
                 width="20"
@@ -202,7 +204,7 @@ export default function TopDonors() {
             </button>
             <button
               onClick={goNext}
-              className="w-[50px] h-[50px] rounded-full border border-[#DDE3E3] flex items-center justify-center text-white hover:border-t2-secondary hover:bg-t2-secondary hover:text-white transition-all duration-300"
+              className="w-[50px] h-[50px] rounded-full border border-[#DDE3E3] flex items-center justify-center text-white hover:border-[var(--secondary)] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300"
             >
               <svg
                 width="20"

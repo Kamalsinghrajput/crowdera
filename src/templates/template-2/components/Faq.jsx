@@ -33,7 +33,7 @@ function AccordionItem({ faq, isOpen, onToggle, index }) {
 
   return (
     <div
-      className={`rounded-[10px] overflow-hidden bg-white transition-all duration-350 border-[1.5px] ${isOpen ? "border-t2-secondary shadow-[0_8px_30px_rgba(255,164,21,0.12)]" : "border-[#E8E8E8] shadow-[0_2px_10px_rgba(0,0,0,0.04)]"}`}
+      className={`rounded-[10px] overflow-hidden bg-white transition-all duration-350 border-[1.5px] ${isOpen ? "border-[var(--secondary)] shadow-[0_8px_30px_rgba(255,164,21,0.12)]" : "border-[#E8E8E8] shadow-[0_2px_10px_rgba(0,0,0,0.04)]"}`}
     >
       <button
         onClick={onToggle}
@@ -42,18 +42,18 @@ function AccordionItem({ faq, isOpen, onToggle, index }) {
         {/* Number + Question */}
         <div className="flex items-center gap-4 flex-1">
           <span
-            className={`  text-[14px] shrink-0 transition-colors duration-300 min-w-[28px] ${isOpen ? "text-t2-secondary" : "text-t2-dark/30"}`}
+            className={`  text-[14px] shrink-0 transition-colors duration-300 min-w-[28px] ${isOpen ? "text-[var(--secondary)]" : "text-t2-dark/30"}`}
           >
             {String(index + 1).padStart(2, "0")}
           </span>
-          <h4 className="text-[17px] text-t2-dark m-0 leading-[1.4]">
+          <h4 className="text-[17px] text-[var(--bg-color)] m-0 leading-[1.4]">
             {faq.q}
           </h4>
         </div>
 
         {/* Toggle icon */}
         <div
-          className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 transition-all duration-350 ${isOpen ? "bg-t2-secondary rotate-45" : "bg-[#F5F5F5] rotate-0"}`}
+          className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 transition-all duration-350 ${isOpen ? "bg-[var(--secondary)] rotate-45" : "bg-[#F5F5F5] rotate-0"}`}
         >
           <svg
             width="14"
@@ -74,7 +74,7 @@ function AccordionItem({ faq, isOpen, onToggle, index }) {
         style={{ height }}
       >
         <div ref={contentRef} className="px-6 pb-6 pl-[70px]">
-          <p className="text-[15px] text-t2-gray leading-[1.85] m-0">{faq.a}</p>
+          <p className="text-[15px] text-[#6c6e76] leading-[1.85] m-0">{faq.a}</p>
         </div>
       </div>
     </div>
@@ -82,25 +82,32 @@ function AccordionItem({ faq, isOpen, onToggle, index }) {
 }
 
 export default function Faq() {
+  const primaryColor = "#007B39";
+  const secondaryColor = "#FFA415";
+  const bgColor = "#121d18";
+  const secondaryBgColor = "#f9f9f9";
+
+
   const [open, setOpen] = useState(1);
 
   return (
     <section className="bg-[#F5F7F5] py-[120px] relative">
+      <style dangerouslySetInnerHTML={{ __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; --bg-color: ${bgColor}; --secondary-bg-color: ${secondaryBgColor}; }` }} />
       <div className="max-w-[1320px] mx-auto px-3">
         <div className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-20 items-start">
           {/* Left */}
           <div>
             <div className="inline-flex items-center gap-3 mb-6">
-              <div className="w-2 h-2 rounded-full bg-t2-secondary" />
-              <span className="text-[16px] text-t2-dark italic">Our FAQ</span>
+              <div className="w-2 h-2 rounded-full bg-[var(--secondary)]" />
+              <span className="text-[16px] text-[var(--bg-color)] italic">Our FAQ</span>
             </div>
 
-            <h2 className="text-[clamp(28px,4vw,50px)] leading-[1.2] text-t2-dark mb-5">
+            <h2 className="text-[clamp(28px,4vw,50px)] leading-[1.2] text-[var(--bg-color)] mb-5">
               Frequently Asking
               <br /> Questions.
             </h2>
 
-            <p className="text-[15px] text-t2-gray leading-[1.8] mb-10">
+            <p className="text-[15px] text-[#6c6e76] leading-[1.8] mb-10">
               Have questions? We've got answers. Browse through our frequently
               asked questions to find the information you need.
             </p>
@@ -128,8 +135,8 @@ export default function Faq() {
                 alt="FAQ"
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-t2-dark/55 flex flex-col items-center justify-center">
-                <div className="text-[48px] text-t2-secondary leading-none">
+              <div className="absolute inset-0 bg-[rgba(18,29,24,0.55)] flex flex-col items-center justify-center">
+                <div className="text-[48px] text-[var(--secondary)] leading-none">
                   24/7
                 </div>
                 <div className="text-[14px] text-white/80 mt-2 tracking-[0.05em]">

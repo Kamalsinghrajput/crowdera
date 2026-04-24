@@ -48,6 +48,9 @@ function scrollToSection(id) {
 }
 
 export default function Navbar() {
+  const primaryColor = "#e8547a";
+  const secondaryColor = "#9b59b6";
+
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [overflowOpen, setOverflowOpen] = useState(false);
@@ -109,6 +112,7 @@ export default function Navbar() {
       ref={navRef}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500
         ${scrolled ? "bg-white shadow-md" : "bg-white border-b border-gray-100"}`}>
+      <style>{`:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; }`}</style>
       
       {/* Remove default focus outline from all focusable elements inside navbar */}
       <style>{`
@@ -148,8 +152,8 @@ export default function Navbar() {
                   transition-colors duration-300 bg-transparent border-none cursor-pointer
                   focus:outline-none
                   ${activeSection === item.sectionId ?
-              "text-t10-rose" :
-              "text-t10-dark group-hover:text-t10-rose"}`
+              "text-[var(--primary)]" :
+              "text-[#1a1a2e] group-hover:text-t10-rose"}`
               }>
               
                 {item.label}
@@ -172,7 +176,7 @@ export default function Navbar() {
                   key={si}
                   onClick={() => handleNavClick(sub.sectionId)}
                   className="w-full text-left px-5 py-3 text-[13px] font-semibold
-                          text-t10-dark hover:bg-t10-rose/5 hover:text-t10-rose
+                          text-[#1a1a2e] hover:bg-t10-rose/5 hover:text-[var(--primary)]
                           border-b border-gray-50 last:border-0 transition-all duration-200
                           hover:pl-6 focus:outline-none">
 
@@ -202,7 +206,7 @@ export default function Navbar() {
 
 
             
-            DONATE NOW <Heart size={14} className="text-t10-rose" fill="currentColor" />
+            DONATE NOW <Heart size={14} className="text-[var(--primary)]" fill="currentColor" />
           </button>
 
           {/* Overflow hamburger (desktop, for items 6+) */}
@@ -214,8 +218,8 @@ export default function Navbar() {
               className={`w-10 h-10 rounded-full border-2 flex items-center justify-center
                   transition-all duration-300 focus:outline-none
                   ${overflowOpen ?
-              "border-t10-rose text-t10-rose bg-t10-rose/5" :
-              "border-gray-300 text-t10-dark hover:border-t10-rose hover:text-t10-rose"}`
+              "border-[var(--primary)] text-[var(--primary)] bg-t10-rose/5" :
+              "border-gray-300 text-[#1a1a2e] hover:border-[var(--primary)] hover:text-[var(--primary)]"}`
               }>
               
                 {overflowOpen ? <X size={18} /> : <Menu size={18} />}
@@ -228,10 +232,10 @@ export default function Navbar() {
                 key={item.sectionId}
                 onClick={() => handleNavClick(item.sectionId)}
                 className={`w-full text-left px-5 py-3 text-[13px] font-bold transition-all duration-200
-                        hover:bg-t10-rose/5 hover:text-t10-rose hover:pl-6 focus:outline-none
+                        hover:bg-t10-rose/5 hover:text-[var(--primary)] hover:pl-6 focus:outline-none
                         ${activeSection === item.sectionId ?
-                "text-t10-rose bg-t10-rose/5" :
-                "text-t10-dark"}`
+                "text-[var(--primary)] bg-t10-rose/5" :
+                "text-[#1a1a2e]"}`
                 }>
                 
                       {item.label}
@@ -246,7 +250,7 @@ export default function Navbar() {
           <button
             aria-label="Toggle mobile menu"
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden text-2xl transition-colors duration-300 text-t10-dark focus:outline-none">
+            className="lg:hidden text-2xl transition-colors duration-300 text-[#1a1a2e] focus:outline-none">
             
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -263,14 +267,14 @@ export default function Navbar() {
               onClick={() => handleNavClick(item.sectionId)}
               className={`flex-1 text-left py-3 font-bold text-xs uppercase tracking-widest
                     transition-colors duration-200 focus:outline-none
-                    ${activeSection === item.sectionId ? "text-t10-rose" : "text-t10-dark hover:text-t10-rose"}`}>
+                    ${activeSection === item.sectionId ? "text-[var(--primary)]" : "text-[#1a1a2e] hover:text-[var(--primary)]"}`}>
               
                   {item.label}
                 </button>
                 {item.sub && item.sub.length > 0 &&
             <button
               onClick={() => setMobileOpenIdx(mobileOpenIdx === idx ? null : idx)}
-              className="p-2 focus:outline-none text-t10-dark hover:text-t10-rose transition-colors">
+              className="p-2 focus:outline-none text-[#1a1a2e] hover:text-[var(--primary)] transition-colors">
               
                     <ChevronDown
                 size={15}
@@ -288,7 +292,7 @@ export default function Navbar() {
               key={si}
               onClick={() => handleNavClick(sub.sectionId)}
               className="text-left py-2 text-xs font-semibold text-t10-dark/60
-                        hover:text-t10-rose transition-colors focus:outline-none">
+                        hover:text-[var(--primary)] transition-colors focus:outline-none">
 
               
                       {sub.label}
@@ -301,15 +305,15 @@ export default function Navbar() {
 
           <button
           onClick={() => handleNavClick("donations")}
-          className="mt-4 flex items-center gap-2 bg-transparent border border-t10-dark text-t10-dark
+          className="mt-4 flex items-center gap-2 bg-transparent border border-t10-dark text-[#1a1a2e]
               font-extrabold text-[11px] uppercase tracking-widest px-6 py-2.5 rounded-full
-              hover:bg-t10-rose hover:text-white hover:border-t10-rose transition-all duration-300
+              hover:bg-[var(--primary)] hover:text-white hover:border-[var(--primary)] transition-all duration-300
               focus:outline-none">
 
 
 
           
-            Donate Now <Heart size={14} className="text-t10-rose" fill="currentColor" />
+            Donate Now <Heart size={14} className="text-[var(--primary)]" fill="currentColor" />
           </button>
         </div>
       }

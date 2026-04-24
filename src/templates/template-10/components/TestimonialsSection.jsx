@@ -49,6 +49,9 @@ const AUTO_MS = 5000;
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
 export default function TestimonialsSection() {
+  const primaryColor = "#e8547a";
+  const secondaryColor = "#9b59b6";
+
   const sectionRef = useRef(null);
   const trackRef = useRef(null);
   const [cardWidth, setCardWidth] = useState(0);
@@ -106,6 +109,7 @@ export default function TestimonialsSection() {
     <section ref={sectionRef} id="testimonials"
     className="relative py-20 md:py-28 px-4 sm:px-6 overflow-hidden"
     style={{ background: "linear-gradient(135deg,#fdf4f6 0%,#fff 60%,#f8f0ff 100%)" }}>
+      <style>{`:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; }`}</style>
       
       {/* Watermark rings */}
       <svg className="absolute left-8 top-12 w-32 opacity-[0.06] pointer-events-none animate-float-slow" viewBox="0 0 120 120">
@@ -174,9 +178,9 @@ export default function TestimonialsSection() {
           {/* Header Section */}
           <div className="testimonials-header">
             <div className="inline-flex items-center gap-3 mb-4">
-              <span className="block w-10 h-0.5 bg-t10-rose" />
-              <span className="text-t10-rose font-extrabold text-xs uppercase tracking-[3px]">Testimonials</span>
-              <span className="block w-10 h-0.5 bg-t10-rose" />
+              <span className="block w-10 h-0.5 bg-[var(--primary)]" />
+              <span className="text-[var(--primary)] font-extrabold text-xs uppercase tracking-[3px]">Testimonials</span>
+              <span className="block w-10 h-0.5 bg-[var(--primary)]" />
             </div>
             <h2 className="font-black text-gray-800 text-3xl md:text-4xl lg:text-[44px] mb-4 leading-tight">
               What People Say{" "}

@@ -7,8 +7,12 @@ import { MapPin, Calendar, ArrowRight } from "lucide-react";
 
 
 export default function EventCard({ event }) {
+  const primaryColor = "#e8547a";
+  const secondaryColor = "#9b59b6";
+
   return (
     <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group flex flex-col sm:flex-row h-full">
+      <style>{`:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; }`}</style>
       {/* Image with date badge */}
       <div className="relative w-full sm:w-44 md:w-48 shrink-0 h-52 sm:h-auto overflow-hidden">
         <img
@@ -36,7 +40,7 @@ export default function EventCard({ event }) {
           <p className="text-xs text-gray-500 line-clamp-2 mb-3 leading-relaxed">
             {event.desc}
           </p>
-          <div className="flex items-center gap-1.5 text-xs text-t10-rose font-semibold mb-0.5">
+          <div className="flex items-center gap-1.5 text-xs text-[var(--primary)] font-semibold mb-0.5">
             <MapPin size={12} /> Venue
           </div>
           <p className="text-xs text-gray-500 mb-2">{event.venue}</p>
@@ -45,7 +49,7 @@ export default function EventCard({ event }) {
           </div>
         </div>
         <Link href={`/templates/template-10/events/${event.id}`}>
-          <span className="mt-4 inline-flex items-center gap-2 bg-t10-rose text-white font-bold text-xs px-5 py-2.5 rounded-full hover:bg-t10-roseDark transition-all duration-300 self-start cursor-pointer">
+          <span className="mt-4 inline-flex items-center gap-2 bg-[var(--primary)] text-white font-bold text-xs px-5 py-2.5 rounded-full hover:bg-t10-roseDark transition-all duration-300 self-start cursor-pointer">
             <ArrowRight size={12} /> Event Details
           </span>
         </Link>

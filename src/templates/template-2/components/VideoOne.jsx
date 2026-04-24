@@ -1,6 +1,12 @@
 export default function VideoOne() {
-  return (
+  
+  const primaryColor = "#007B39";
+  const secondaryColor = "#FFA415";
+  const bgColor = "#121d18";
+  const secondaryBgColor = "#f9f9f9";
+return (
     <section style={{ position: "relative", overflow: "hidden", padding: "120px 0" }}>
+      <style dangerouslySetInnerHTML={{ __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; --bg-color: ${bgColor}; --secondary-bg-color: ${secondaryBgColor}; }` }} />
       {/* Background image */}
       <div style={{
         position: "absolute", inset: 0,
@@ -87,12 +93,12 @@ export default function VideoOne() {
         </div>
       </div>
 
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         @keyframes ripple {
           0% { transform: scale(1); opacity: 1; }
           100% { transform: scale(1.3); opacity: 0; }
         }
-      `}</style>
+      ` }} />
     </section>);
 
 }

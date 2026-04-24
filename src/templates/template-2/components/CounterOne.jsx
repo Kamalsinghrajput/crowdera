@@ -6,8 +6,14 @@ const STATS = [
 ];
 
 export default function CounterOne() {
+  const primaryColor = "#007B39";
+  const secondaryColor = "#FFA415";
+  const bgColor = "#121d18";
+  const secondaryBgColor = "#f9f9f9";
+
   return (
     <section className="bg-white py-[60px] pb-[80px] border-t border-[#F0F0F0]">
+      <style dangerouslySetInnerHTML={{ __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; --bg-color: ${bgColor}; --secondary-bg-color: ${secondaryBgColor}; }` }} />
       <div className="max-w-[1320px] mx-auto px-3">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0">
           {STATS.map((stat, i) => (
@@ -35,20 +41,20 @@ export default function CounterOne() {
 
               <div className="relative z-10">
                 <div className="flex items-baseline justify-center gap-0.5 mb-2">
-                  <span className="font-['Sora',sans-serif] text-[clamp(40px,5vw,60px)] text-t2-dark leading-none">
+                  <span className="font-['Sora',sans-serif] text-[clamp(40px,5vw,60px)] text-[var(--bg-color)] leading-none">
                     {stat.num}
                   </span>
                   <span
                     className={`font-['Sora',sans-serif]  ${
                       stat.suffix.includes("billion")
-                        ? "text-lg text-t2-gray ml-1"
-                        : "text-[clamp(24px,3vw,40px)] text-t2-secondary"
+                        ? "text-lg text-[#6c6e76] ml-1"
+                        : "text-[clamp(24px,3vw,40px)] text-[var(--secondary)]"
                     }`}
                   >
                     {stat.suffix}
                   </span>
                 </div>
-                <p className="font-['Inter',sans-serif] text-base text-t2-gray m-0 capitalize">
+                <p className="font-['Inter',sans-serif] text-base text-[#6c6e76] m-0 capitalize">
                   {stat.label}
                 </p>
               </div>

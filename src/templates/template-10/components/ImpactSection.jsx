@@ -54,6 +54,9 @@ const STATS = [
 
 
 export default function ImpactSection() {
+  const primaryColor = "#e8547a";
+  const secondaryColor = "#9b59b6";
+
   const sectionRef = useRef(null);
   const cardRef = useRef(null);
   const counterRefs = useRef([]);
@@ -94,6 +97,7 @@ export default function ImpactSection() {
       id="impact"
       className="relative py-20 md:py-28 px-6 overflow-hidden"
       style={{ background: "linear-gradient(135deg,#fdf4f6 0%,#ffffff 50%,#f8f0ff 100%)" }}>
+      <style dangerouslySetInnerHTML={{ __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; }` }} />
       
       {/* Decorative rings */}
       <svg className="absolute top-8 right-8 w-28 opacity-10 animate-float-slow pointer-events-none" viewBox="0 0 120 120">
@@ -105,15 +109,15 @@ export default function ImpactSection() {
         {/* Section header */}
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-3 mb-4">
-            <span className="block w-10 h-0.5 bg-t10-rose" />
-            <span className="text-t10-rose font-extrabold text-xs uppercase tracking-[3px]">
+            <span className="block w-10 h-0.5 bg-[var(--primary)]" />
+            <span className="text-[var(--primary)] font-extrabold text-xs uppercase tracking-[3px]">
               Our Impact
             </span>
-            <span className="block w-10 h-0.5 bg-t10-rose" />
+            <span className="block w-10 h-0.5 bg-[var(--primary)]" />
           </div>
           <h2 className="font-black text-gray-800 text-3xl md:text-4xl lg:text-[44px] leading-tight mb-4">
             Creating a World Where{" "}
-            <span className="text-t10-rose">Every Life Matters</span>
+            <span className="text-[var(--primary)]">Every Life Matters</span>
           </h2>
           <p className="text-gray-500 max-w-xl mx-auto text-sm md:text-base leading-relaxed">
             To promote well-being and opportunity by creating awareness, providing support,

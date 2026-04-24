@@ -37,7 +37,7 @@ function TeamCard({ member }) {
             className="w-full h-full object-cover object-top grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105"
           />
           {/* Greenish tint overlay */}
-          <div className="absolute inset-0 bg-t2-primary/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none mix-blend-multiply" />
+          <div className="absolute inset-0 bg-[rgba(0,123,57,0.40)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none mix-blend-multiply" />
         </div>
       </div>
 
@@ -51,7 +51,7 @@ function TeamCard({ member }) {
               <a
                 key={s}
                 href="#"
-                className="w-9 h-9 rounded-full bg-white text-t2-dark flex items-center justify-center text-[12px] uppercase shadow-[0_4px_14px_rgba(0,0,0,0.15)] transition-colors hover:bg-t2-secondary hover:text-white"
+                className="w-9 h-9 rounded-full bg-white text-[var(--bg-color)] flex items-center justify-center text-[12px] uppercase shadow-[0_4px_14px_rgba(0,0,0,0.15)] transition-colors hover:bg-[var(--secondary)] hover:text-white"
                 style={{ transitionDelay: `${(2 - idx) * 40}ms` }}
               >
                 {s}
@@ -59,7 +59,7 @@ function TeamCard({ member }) {
             ))}
           </div>
 
-          <div className="w-[50px] h-[50px] rounded-full bg-t2-dark flex items-center justify-center shrink-0 cursor-pointer text-white transition-all duration-300 group-hover/social:bg-t2-secondary relative z-10">
+          <div className="w-[50px] h-[50px] rounded-full bg-[var(--bg-color)] flex items-center justify-center shrink-0 cursor-pointer text-white transition-all duration-300 group-hover/social:bg-t2-secondary relative z-10">
             <svg
               width="18"
               height="18"
@@ -76,10 +76,10 @@ function TeamCard({ member }) {
 
         {/* Text Stack */}
         <div className="flex flex-col text-left">
-          <h3 className="text-[20px] text-t2-dark transition-colors duration-300 group-hover:text-t2-secondary leading-tight mb-1">
+          <h3 className="text-[20px] text-[var(--bg-color)] transition-colors duration-300 group-hover:text-t2-secondary leading-tight mb-1">
             <a href="#">{member.name}</a>
           </h3>
-          <p className="text-[14px] text-t2-gray m-0">{member.role}</p>
+          <p className="text-[14px] text-[#6c6e76] m-0">{member.role}</p>
         </div>
       </div>
     </div>
@@ -87,19 +87,26 @@ function TeamCard({ member }) {
 }
 
 export default function Team() {
+  const primaryColor = "#007B39";
+  const secondaryColor = "#FFA415";
+  const bgColor = "#121d18";
+  const secondaryBgColor = "#f9f9f9";
+
+
   return (
-    <section className="bg-t2-light py-[120px] pb-[100px] relative">
+    <section className="bg-[var(--secondary-bg-color)] py-[120px] pb-[100px] relative">
+      <style dangerouslySetInnerHTML={{ __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; --bg-color: ${bgColor}; --secondary-bg-color: ${secondaryBgColor}; }` }} />
       <FloatingBird position="right" />
       <div className="max-w-[1320px] mx-auto px-3">
         {/* Section title */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-3 mb-6">
-            <div className="w-2 h-2 rounded-full bg-t2-secondary" />
-            <span className="text-[16px] text-t2-dark italic">
+            <div className="w-2 h-2 rounded-full bg-[var(--secondary)]" />
+            <span className="text-[16px] text-[var(--bg-color)] italic">
               Our Team Member
             </span>
           </div>
-          <h2 className="text-[clamp(32px,4vw,48px)] leading-[1.2] text-t2-dark">
+          <h2 className="text-[clamp(32px,4vw,48px)] leading-[1.2] text-[var(--bg-color)]">
             Meet Our Dedicated
             <br /> Team Members.
           </h2>

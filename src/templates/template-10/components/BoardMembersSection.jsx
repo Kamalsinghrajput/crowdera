@@ -38,6 +38,9 @@ const MEMBERS = [
 
 
 export default function BoardMembersSection() {
+  const primaryColor = "#e8547a";
+  const secondaryColor = "#9b59b6";
+
   const sectionRef = useRef(null);
   const cardsRef = useRef(null);
 
@@ -70,6 +73,7 @@ export default function BoardMembersSection() {
       id="board-members"
       className="relative py-20 md:py-28 px-4 sm:px-6 overflow-hidden"
       style={{ background: "linear-gradient(135deg,#fff7f9 0%,#ffffff 50%,#f8f0ff 100%)" }}>
+      <style>{`:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; }`}</style>
       
       {/* Decorative SVGs matching Template-10 style */}
       <svg
@@ -94,15 +98,15 @@ export default function BoardMembersSection() {
         {/* Section header — matches T10 pattern */}
         <div className="text-center mb-14">
           <div className="inline-flex items-center gap-3 mb-4">
-            <span className="block w-10 h-0.5 bg-t10-rose" />
-            <span className="inline-flex items-center gap-2 text-t10-rose font-extrabold text-xs uppercase tracking-[3px]">
+            <span className="block w-10 h-0.5 bg-[var(--primary)]" />
+            <span className="inline-flex items-center gap-2 text-[var(--primary)] font-extrabold text-xs uppercase tracking-[3px]">
               <Users size={14} /> Our Team
             </span>
-            <span className="block w-10 h-0.5 bg-t10-rose" />
+            <span className="block w-10 h-0.5 bg-[var(--primary)]" />
           </div>
           <h2 className="font-black text-gray-800 text-3xl md:text-4xl lg:text-[44px] leading-tight mb-3">
             Meet Our Board{" "}
-            <span className="text-t10-rose">Members</span>
+            <span className="text-[var(--primary)]">Members</span>
           </h2>
           <p className="text-gray-500 max-w-xl mx-auto text-sm md:text-base">
             Our board provides strategic guidance and governance to ensure long-term impact

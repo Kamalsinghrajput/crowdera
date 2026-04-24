@@ -57,6 +57,9 @@ const rankGradients = {
 };
 
 export default function TopDonorsSection() {
+  const primaryColor = "#e8547a";
+  const secondaryColor = "#9b59b6";
+
   const sectionRef = useRef(null);
   const trackRef = useRef(null);
   const [index, setIndex] = useState(0);
@@ -119,6 +122,7 @@ export default function TopDonorsSection() {
       id="top-donors"
       className="relative py-20 md:py-28 px-4 sm:px-6 overflow-hidden"
       style={{ background: "linear-gradient(135deg,#fdf4f6 0%,#ffffff 50%,#f8f0ff 100%)" }}>
+      <style>{`:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; }`}</style>
       
       {/* Decorative elements */}
       <svg
@@ -144,15 +148,15 @@ export default function TopDonorsSection() {
         isReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`
         }>
           <div className="inline-flex items-center gap-3 mb-4">
-            <span className="block w-10 h-0.5 bg-t10-rose" />
-            <span className="inline-flex items-center gap-2 text-t10-rose font-extrabold text-xs uppercase tracking-[3px]">
+            <span className="block w-10 h-0.5 bg-[var(--primary)]" />
+            <span className="inline-flex items-center gap-2 text-[var(--primary)] font-extrabold text-xs uppercase tracking-[3px]">
               <Trophy size={14} /> Hall of Fame
             </span>
-            <span className="block w-10 h-0.5 bg-t10-rose" />
+            <span className="block w-10 h-0.5 bg-[var(--primary)]" />
           </div>
           <h2 className="font-black text-gray-800 text-3xl md:text-4xl lg:text-[44px] leading-tight mb-3">
             Our Top{" "}
-            <span className="text-t10-rose">Donors</span>
+            <span className="text-[var(--primary)]">Donors</span>
           </h2>
           <p className="text-gray-500 max-w-xl mx-auto text-sm md:text-base">
             These generous hearts have made an extraordinary impact. Thank you for changing lives.
@@ -221,8 +225,8 @@ export default function TopDonorsSection() {
 
                 {/* Amount */}
                 <div className="flex items-center gap-1.5 mt-2">
-                  <Heart size={13} className="text-t10-rose" fill="currentColor" />
-                  <span className="text-t10-rose font-black text-lg">
+                  <Heart size={13} className="text-[var(--primary)]" fill="currentColor" />
+                  <span className="text-[var(--primary)] font-black text-lg">
                     ₹{d.amount.toLocaleString("en-IN")}
                   </span>
                 </div>
@@ -256,8 +260,8 @@ export default function TopDonorsSection() {
             <button
               onClick={goPrev}
               aria-label="Previous"
-              className="w-11 h-11 rounded-full border-2 border-gray-200 hover:border-t10-rose
-                         flex items-center justify-center text-gray-400 hover:text-t10-rose transition-all">
+              className="w-11 h-11 rounded-full border-2 border-gray-200 hover:border-[var(--primary)]
+                         flex items-center justify-center text-gray-400 hover:text-[var(--primary)] transition-all">
 
               
               <ChevronLeft size={20} />

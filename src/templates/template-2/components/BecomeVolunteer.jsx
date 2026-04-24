@@ -1,6 +1,13 @@
 export default function BecomeVolunteer() {
+  const primaryColor = "#007B39";
+  const secondaryColor = "#FFA415";
+  const bgColor = "#121d18";
+  const secondaryBgColor = "#f9f9f9";
+
+
   return (
-    <section className="relative p-0 overflow-hidden bg-[#121D18]">
+    <section className="relative p-0 overflow-hidden bg-[var(--bg-color)]">
+      <style dangerouslySetInnerHTML={{ __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; --bg-color: ${bgColor}; --secondary-bg-color: ${secondaryBgColor}; }` }} />
       <div className="grid grid-cols-1 md:grid-cols-2">
         
         {/* Panel 1 — Join Us Volunteer */}
@@ -35,7 +42,7 @@ export default function BecomeVolunteer() {
             className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-105 grayscale"
             style={{ backgroundImage: "url(https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80)" }} 
           />
-          <div className="absolute inset-0 bg-[#121D18]/75 transition-colors duration-500 group-hover:bg-[#121D18]/85" />
+          <div className="absolute inset-0 bg-[var(--primary)]/90 transition-colors duration-500 group-hover:bg-[var(--primary)]/95 mix-blend-multiply" />
           
           <div className="relative z-10 px-6 py-24 h-full flex flex-col items-center justify-center text-center">
             <h3 className="font-['Inter'] font-bold text-[clamp(28px,3vw,36px)] text-white italic mb-4 leading-[1.3]">

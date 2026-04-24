@@ -83,8 +83,12 @@ const tagColors = {
 };
 
 export default function AllCampaigns() {
+  const primaryColor = "#FFCA08";
+  const secondaryColor = "#00715D";
+
   return (
     <div className="bg-white min-h-screen font-sans">
+      <style>{`:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; }`}</style>
       <Head>
         <title>All Campaigns | Charifund</title>
         <meta name="description" content="Browse all active fundraising campaigns by Charifund. Every donation makes a real difference." />
@@ -94,9 +98,9 @@ export default function AllCampaigns() {
 
       <main className="pt-28 pb-20">
         {/* Hero banner */}
-        <div className="bg-brand-dark py-16 text-center relative overflow-hidden">
+        <div className="bg-[#091F1B] py-16 text-center relative overflow-hidden">
           <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_30%_50%,#FFCA08,transparent_60%)]" />
-          <p className="text-brand-yellow font-bold tracking-widest uppercase text-sm mb-2">Make A Difference</p>
+          <p className="text-[var(--primary)] font-bold tracking-widest uppercase text-sm mb-2">Make A Difference</p>
           <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-3">All Campaigns</h1>
           <p className="text-white/60 max-w-xl mx-auto">
             Every donation — big or small — creates ripples of change. Choose a cause that speaks to your heart.
@@ -106,28 +110,28 @@ export default function AllCampaigns() {
         <div className="container mx-auto px-4 md:px-8 mt-12">
           {/* Back link */}
           <Link href="/templates/template-1">
-            <a className="inline-flex items-center gap-2 text-brand-teal font-bold mb-10 hover:gap-3 transition-all">
+            <a className="inline-flex items-center gap-2 text-[var(--secondary)] font-bold mb-10 hover:gap-3 transition-all">
               <ArrowLeft size={18} /> Back to Home
             </a>
           </Link>
 
           {/* Stats bar */}
-          <div className="flex flex-wrap gap-6 mb-12 p-6 bg-brand-gray rounded-2xl">
+          <div className="flex flex-wrap gap-6 mb-12 p-6 bg-[#f7f7f7] rounded-2xl">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-brand-teal/10 flex items-center justify-center">
-                <Target size={20} className="text-brand-teal" />
+              <div className="w-10 h-10 rounded-full bg-[rgba(0,113,93,0.10)] flex items-center justify-center">
+                <Target size={20} className="text-[var(--secondary)]" />
               </div>
               <div>
-                <div className="text-xl font-extrabold text-brand-dark">{allCampaigns.length}</div>
+                <div className="text-xl font-extrabold text-[#091F1B]">{allCampaigns.length}</div>
                 <div className="text-xs text-gray-500">Active Campaigns</div>
               </div>
             </div>
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-brand-yellow/20 flex items-center justify-center">
-                <Heart size={20} className="text-brand-dark" />
+                <Heart size={20} className="text-[#091F1B]" />
               </div>
               <div>
-                <div className="text-xl font-extrabold text-brand-dark">
+                <div className="text-xl font-extrabold text-[#091F1B]">
                   ₹{allCampaigns.reduce((s, c) => s + c.raised, 0).toLocaleString('en-IN')}
                 </div>
                 <div className="text-xs text-gray-500">Total Raised</div>
@@ -163,14 +167,14 @@ export default function AllCampaigns() {
 
                   {/* Body */}
                   <div className="p-5 flex flex-col flex-grow">
-                    <h2 className="text-base font-extrabold text-brand-dark mb-2 leading-snug">
+                    <h2 className="text-base font-extrabold text-[#091F1B] mb-2 leading-snug">
                       {c.title}
                     </h2>
                     <p className="text-gray-500 text-sm leading-relaxed mb-4 flex-grow">{c.desc}</p>
 
                     {/* Progress */}
-                    <div className="flex justify-between text-xs font-bold text-brand-dark mb-1.5">
-                      <span>Raised: <span className="text-brand-teal">₹{c.raised.toLocaleString('en-IN')}</span></span>
+                    <div className="flex justify-between text-xs font-bold text-[#091F1B] mb-1.5">
+                      <span>Raised: <span className="text-[var(--secondary)]">₹{c.raised.toLocaleString('en-IN')}</span></span>
                       <span>{pct}%</span>
                     </div>
                     <div className="w-full bg-gray-100 rounded-full h-2 mb-4 overflow-hidden">
@@ -183,7 +187,7 @@ export default function AllCampaigns() {
                       <span>Goal: ₹{c.goal.toLocaleString('en-IN')}</span>
                     </div>
 
-                    <button className="w-full bg-brand-dark text-white font-bold py-3 rounded-full hover:bg-brand-teal transition-colors text-sm">
+                    <button className="w-full bg-[#091F1B] text-white font-bold py-3 rounded-full hover:bg-[var(--secondary)] transition-colors text-sm">
                       Donate Now
                     </button>
                   </div>

@@ -6,8 +6,12 @@ import FooterSection from "../../../../src/templates/template-10/components/Foot
 import { events } from "../../../../src/templates/template-10/data/eventsData";
 
 export default function AllEventsPage() {
+  const primaryColor = "#e8547a";
+  const secondaryColor = "#9b59b6";
+
   return (
     <div className="bg-white min-h-screen font-sans">
+      <style>{`:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; }`}</style>
       <Head>
         <title>All Events | BigHearts – Template 10</title>
         <meta
@@ -32,11 +36,11 @@ export default function AllEventsPage() {
 
           <div className="relative z-10 px-4">
             <div className="inline-flex items-center gap-3 mb-4">
-              <span className="block w-10 h-0.5 bg-t10-rose" />
-              <span className="text-t10-rose font-extrabold tracking-widest uppercase text-sm">
+              <span className="block w-10 h-0.5 bg-[var(--primary)]" />
+              <span className="text-[var(--primary)] font-extrabold tracking-widest uppercase text-sm">
                 Get Involved
               </span>
-              <span className="block w-10 h-0.5 bg-t10-rose" />
+              <span className="block w-10 h-0.5 bg-[var(--primary)]" />
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4">
               All Charity Events
@@ -51,7 +55,7 @@ export default function AllEventsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 mt-10 md:mt-14 pb-20">
           {/* Back link */}
           <Link href="/templates/template-10">
-            <span className="inline-flex items-center gap-2 text-t10-rose font-bold mb-10 hover:gap-3 transition-all text-sm cursor-pointer">
+            <span className="inline-flex items-center gap-2 text-[var(--primary)] font-bold mb-10 hover:gap-3 transition-all text-sm cursor-pointer">
               <ArrowLeft size={16} /> Back to Home
             </span>
           </Link>
@@ -113,7 +117,7 @@ export default function AllEventsPage() {
 
                     {/* Category badge */}
                     <div className="absolute top-3 right-3">
-                      <span className="bg-t10-purple text-white text-[10px] font-bold py-1 px-2.5 rounded-full">
+                      <span className="bg-[var(--secondary)] text-white text-[10px] font-bold py-1 px-2.5 rounded-full">
                         {ev.category}
                       </span>
                     </div>
@@ -137,21 +141,21 @@ export default function AllEventsPage() {
                       <div className="flex items-center gap-1.5 text-xs text-gray-500">
                         <Calendar
                           size={11}
-                          className="text-t10-rose shrink-0" />
+                          className="text-[var(--primary)] shrink-0" />
                         
                         {ev.date}
                       </div>
                       <div className="flex items-center gap-1.5 text-xs text-gray-500">
                         <Clock
                           size={11}
-                          className="text-t10-rose shrink-0" />
+                          className="text-[var(--primary)] shrink-0" />
                         
                         {ev.time}
                       </div>
                       <div className="flex items-center gap-1.5 text-xs text-gray-500">
                         <MapPin
                           size={11}
-                          className="text-t10-rose shrink-0" />
+                          className="text-[var(--primary)] shrink-0" />
                         
                         {ev.venue}
                       </div>
@@ -162,7 +166,7 @@ export default function AllEventsPage() {
                       <div className="flex justify-between text-[11px] font-bold text-gray-800 mb-1">
                         <span>
                           Raised:{" "}
-                          <span className="text-t10-rose">
+                          <span className="text-[var(--primary)]">
                             ₹{ev.raised.toLocaleString("en-IN")}
                           </span>
                         </span>
@@ -182,7 +186,7 @@ export default function AllEventsPage() {
                         className={`text-[10px] font-bold px-2.5 py-1 rounded-full ${
                         ev.status === "finished" ?
                         "bg-gray-100 text-gray-500" :
-                        "bg-t10-rose/10 text-t10-rose"}`
+                        "bg-t10-rose/10 text-[var(--primary)]"}`
                         }>
                         
                         {ev.status === "finished" ? "Finished" : "● Upcoming"}

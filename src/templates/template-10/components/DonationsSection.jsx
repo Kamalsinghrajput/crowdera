@@ -85,6 +85,9 @@ const stats = [
 
 
 export default function DonationsSection() {
+  const primaryColor = "#e8547a";
+  const secondaryColor = "#9b59b6";
+
   const sectionRef = useRef(null);
   const contentRef = useRef(null);
 
@@ -120,6 +123,7 @@ export default function DonationsSection() {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat"
       }}>
+      <style>{`:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; }`}</style>
       
       {/* Dark overlay for readability */}
       <div className="absolute inset-0 z-[1]" />
@@ -130,8 +134,8 @@ export default function DonationsSection() {
           {/* Left side - Text content */}
           <div>
             <div className="inline-flex items-center gap-3 mb-4">
-              <span className="block w-10 h-0.5 bg-t10-rose" />
-              <span className="text-t10-rose font-extrabold tracking-widest uppercase text-xs">
+              <span className="block w-10 h-0.5 bg-[var(--primary)]" />
+              <span className="text-[var(--primary)] font-extrabold tracking-widest uppercase text-xs">
                 Easy Fund Donations
               </span>
             </div>
@@ -177,7 +181,7 @@ export default function DonationsSection() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, i) =>
             <div key={i} className="text-center">
-                <div className="text-4xl md:text-5xl font-black text-t10-rose mb-2">
+                <div className="text-4xl md:text-5xl font-black text-[var(--primary)] mb-2">
                   {stat.value}
                 </div>
                 <div className="text-xs md:text-sm font-semibold uppercase whitespace-pre-line leading-tight">

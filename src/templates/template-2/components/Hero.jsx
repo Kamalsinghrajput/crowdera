@@ -27,6 +27,11 @@ export default function Hero() {
   const [current, setCurrent] = useState(0);
   const [animKey, setAnimKey] = useState(0);
 
+  const primaryColor = "#007B39";
+  const secondaryColor = "#FFA415";
+  const bgColor = "#121d18";
+  const secondaryBgColor = "#f9f9f9";
+
   useEffect(() => {
     const t = setInterval(() => {
       setCurrent((p) => (p + 1) % SLIDES.length);
@@ -49,6 +54,7 @@ export default function Hero() {
         background: "#000",
       }}
     >
+      <style dangerouslySetInnerHTML={{ __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; --bg-color: ${bgColor}; --secondary-bg-color: ${secondaryBgColor}; }` }} />
       {/* Slides */}
       {SLIDES.map((slide, i) => (
         <div
@@ -268,7 +274,7 @@ export default function Hero() {
         ))}
       </div>
 
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         @keyframes slideInUp {
           from { opacity: 0; transform: translateY(40px); }
           to { opacity: 1; transform: translateY(0); }
@@ -276,7 +282,7 @@ export default function Hero() {
         .hero-cta-btn:hover span:first-child {
           background: #e8940a !important;
         }
-      `}</style>
+      ` }} />
     </section>
   );
 }

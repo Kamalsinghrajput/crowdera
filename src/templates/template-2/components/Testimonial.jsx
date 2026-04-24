@@ -30,6 +30,11 @@ const TESTIMONIALS = [
 ];
 
 export default function Testimonial() {
+  const primaryColor = "#007B39";
+  const secondaryColor = "#FFA415";
+  const bgColor = "#121d18";
+  const secondaryBgColor = "#f9f9f9";
+
   const [active, setActive] = useState(0);
 
   const goTo = (i) => setActive(i);
@@ -46,7 +51,8 @@ export default function Testimonial() {
   }, []);
 
   return (
-    <section className="relative py-[120px] overflow-hidden bg-t2-dark">
+    <section className="relative py-[120px] overflow-hidden bg-[var(--bg-color)]">
+      <style dangerouslySetInnerHTML={{ __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; --bg-color: ${bgColor}; --secondary-bg-color: ${secondaryBgColor}; }` }} />
       {/* Parallax Background */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-fixed opacity-40 grayscale"
@@ -55,7 +61,7 @@ export default function Testimonial() {
             "url(https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1920&q=80)",
         }}
       />
-      <div className="absolute inset-0 bg-t2-dark/80" />
+      <div className="absolute inset-0 bg-[rgba(18,29,24,0.80)]" />
 
       <div className="max-w-[1000px] mx-auto px-4 relative z-10 text-center">
         {/* Quote Icon */}
@@ -83,13 +89,13 @@ export default function Testimonial() {
             <img
               src={TESTIMONIALS[active].img}
               alt={TESTIMONIALS[active].name}
-              className="w-[80px] h-[80px] rounded-full object-cover border-[4px] border-t2-secondary"
+              className="w-[80px] h-[80px] rounded-full object-cover border-[4px] border-[var(--secondary)]"
             />
             <div className="text-left">
               <h4 className="text-[22px] text-white leading-tight mb-1">
                 {TESTIMONIALS[active].name}
               </h4>
-              <span className="text-[15px] text-t2-secondary">
+              <span className="text-[15px] text-[var(--secondary)]">
                 {TESTIMONIALS[active].role}
               </span>
             </div>
@@ -100,7 +106,7 @@ export default function Testimonial() {
         <div className="flex items-center justify-between mt-16 max-w-[280px] mx-auto relative z-20">
           <button
             onClick={prev}
-            className="w-[50px] h-[50px] rounded-full border border-white/20 flex items-center justify-center text-white transition-all duration-300 hover:bg-t2-secondary hover:border-t2-secondary"
+            className="w-[50px] h-[50px] rounded-full border border-white/20 flex items-center justify-center text-white transition-all duration-300 hover:bg-[var(--secondary)] hover:border-[var(--secondary)]"
           >
             <svg
               width="20"
@@ -119,14 +125,14 @@ export default function Testimonial() {
               <button
                 key={i}
                 onClick={() => goTo(i)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${active === i ? "bg-t2-secondary scale-125" : "bg-white/30 hover:bg-white/50"}`}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${active === i ? "bg-[var(--secondary)] scale-125" : "bg-white/30 hover:bg-white/50"}`}
               />
             ))}
           </div>
 
           <button
             onClick={next}
-            className="w-[50px] h-[50px] rounded-full border border-white/20 flex items-center justify-center text-white transition-all duration-300 hover:bg-t2-secondary hover:border-t2-secondary"
+            className="w-[50px] h-[50px] rounded-full border border-white/20 flex items-center justify-center text-white transition-all duration-300 hover:bg-[var(--secondary)] hover:border-[var(--secondary)]"
           >
             <svg
               width="20"

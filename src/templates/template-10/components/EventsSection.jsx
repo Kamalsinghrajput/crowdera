@@ -5,6 +5,9 @@ import { events } from "../data/eventsData";
 import EventCard from "./EventCard";
 
 export default function EventsSection() {
+  const primaryColor = "#e8547a";
+  const secondaryColor = "#9b59b6";
+
   const sectionRef = useRef(null);
   const [isReady, setIsReady] = useState(false);
 
@@ -23,6 +26,7 @@ export default function EventsSection() {
       style={{
         background: "#511F54"
       }}>
+      <style>{`:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; }`}</style>
       
       {/* Decorative blobs */}
       <div className="absolute top-0 left-0 w-80 h-80 rounded-full bg-t10-rose/10 blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
@@ -38,15 +42,15 @@ export default function EventsSection() {
           
           <div>
             <div className="inline-flex items-center gap-3 mb-4">
-              <span className="block w-10 h-0.5 bg-t10-rose" />
-              <span className="text-t10-rose font-extrabold text-xs uppercase tracking-[3px]">
+              <span className="block w-10 h-0.5 bg-[var(--primary)]" />
+              <span className="text-[var(--primary)] font-extrabold text-xs uppercase tracking-[3px]">
                 Ongoing Events
               </span>
             </div>
             <h2 className="font-black text-white text-3xl md:text-4xl lg:text-[44px] leading-tight">
               Get Involved: Upcoming
               <br />
-              <span className="text-t10-rose">Charity Events</span>
+              <span className="text-[var(--primary)]">Charity Events</span>
             </h2>
           </div>
           <Link href="/templates/template-10/events">

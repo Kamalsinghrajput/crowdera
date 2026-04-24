@@ -86,36 +86,36 @@ function CourseCard({ course }) {
 
       {/* Content */}
       <div className="flex flex-col flex-grow">
-        <h3 className="text-[22px] text-t2-dark leading-[1.4] mb-3">
-          <a href="#" className="hover:text-t2-secondary transition-colors">
+        <h3 className="text-[22px] text-[var(--bg-color)] leading-[1.4] mb-3">
+          <a href="#" className="hover:text-[var(--secondary)] transition-colors">
             {course.title}
           </a>
         </h3>
-        <p className="text-[15px] text-t2-gray leading-relaxed mb-8 flex-grow">
+        <p className="text-[15px] text-[#6c6e76] leading-relaxed mb-8 flex-grow">
           {course.text}
         </p>
 
         {/* Stats */}
         <div className="flex items-center justify-between mb-4 relative z-10">
-          <div className="text-[17px] text-t2-dark">
+          <div className="text-[17px] text-[var(--bg-color)]">
             {course.raised}{" "}
-            <span className="text-[14px] text-t2-gray">Raised</span>
+            <span className="text-[14px] text-[#6c6e76]">Raised</span>
           </div>
 
           {/* Percentage Circle */}
-          <div className="w-11 h-11 rounded-full bg-t2-dark text-white flex items-center justify-center text-[13px] shadow-[0_0_0_3px_#F9F9F9,0_0_0_4px_#121D18] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+          <div className="w-11 h-11 rounded-full bg-[var(--bg-color)] text-white flex items-center justify-center text-[13px] shadow-[0_0_0_3px_#F9F9F9,0_0_0_4px_#121D18] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
             {course.percent}%
           </div>
 
-          <div className="text-[17px] text-t2-dark">
-            {course.goal} <span className="text-[14px] text-t2-gray">Goal</span>
+          <div className="text-[17px] text-[var(--bg-color)]">
+            {course.goal} <span className="text-[14px] text-[#6c6e76]">Goal</span>
           </div>
         </div>
 
         {/* Progress Bar */}
         <div className="w-full h-1.5 bg-[#E5E5E5] rounded-full mb-8 relative">
           <div
-            className="h-full bg-t2-dark rounded-full"
+            className="h-full bg-[var(--bg-color)] rounded-full"
             style={{ width: `${course.percent}%` }}
           ></div>
         </div>
@@ -144,6 +144,12 @@ function CourseCard({ course }) {
 }
 
 export default function Causes() {
+  const primaryColor = "#007B39";
+  const secondaryColor = "#FFA415";
+  const bgColor = "#121d18";
+  const secondaryBgColor = "#f9f9f9";
+
+
   const [activeTab, setActiveTab] = useState("View All");
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -173,19 +179,20 @@ export default function Causes() {
     setCurrentIndex((prev) => Math.min(prev + 1, maxIndex));
 
   return (
-    <section className="relative bg-t2-light py-[120px] overflow-hidden">
+    <section className="relative bg-[var(--secondary-bg-color)] py-[120px] overflow-hidden">
+      <style dangerouslySetInnerHTML={{ __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; --bg-color: ${bgColor}; --secondary-bg-color: ${secondaryBgColor}; }` }} />
       <FloatingBird position="right" />
       <div className="max-w-[1320px] mx-auto px-3">
         <div className="grid grid-cols-1 lg:grid-cols-[380px_1fr] gap-12 lg:gap-16 items-start">
           {/* Left: Title + Tabs */}
           <div className="flex flex-col">
             <div className="flex items-center gap-2 mb-4 justify-end">
-              <span className="text-[15px] italic text-t2-dark">
+              <span className="text-[15px] italic text-[var(--bg-color)]">
                 Recent Causes
               </span>
-              <div className="w-2 h-2 rounded-full bg-t2-secondary" />
+              <div className="w-2 h-2 rounded-full bg-[var(--secondary)]" />
             </div>
-            <h2 className="text-[clamp(32px,4vw,48px)] leading-[1.1] text-t2-dark text-right mb-10">
+            <h2 className="text-[clamp(32px,4vw,48px)] leading-[1.1] text-[var(--bg-color)] text-right mb-10">
               Strengthening
               <br /> Communities
             </h2>
@@ -201,8 +208,8 @@ export default function Causes() {
                     onClick={() => setActiveTab(tab)}
                     className={`w-full flex items-center justify-end gap-3 py-4 text-right   text-[15px] transition-colors ${
                       activeTab === tab
-                        ? "text-t2-secondary"
-                        : "text-t2-dark hover:text-t2-secondary"
+                        ? "text-[var(--secondary)]"
+                        : "text-[var(--bg-color)] hover:text-[var(--secondary)]"
                     }`}
                   >
                     <span>{tab}</span>
@@ -226,7 +233,7 @@ export default function Causes() {
               <button
                 onClick={handlePrev}
                 disabled={currentIndex === 0}
-                className="w-12 h-12 rounded-full border border-[#E5E5E5] flex items-center justify-center text-t2-dark transition-colors hover:bg-t2-dark hover:text-white disabled:opacity-50 disabled:hover:bg-transparent disabled:hover:text-t2-dark"
+                className="w-12 h-12 rounded-full border border-[#E5E5E5] flex items-center justify-center text-[var(--bg-color)] transition-colors hover:bg-[var(--bg-color)] hover:text-white disabled:opacity-50 disabled:hover:bg-transparent disabled:hover:text-t2-dark"
               >
                 <svg
                   width="18"
@@ -242,7 +249,7 @@ export default function Causes() {
               <button
                 onClick={handleNext}
                 disabled={currentIndex >= maxIndex}
-                className="w-12 h-12 rounded-full border border-[#E5E5E5] flex items-center justify-center text-t2-dark transition-colors hover:bg-t2-dark hover:text-white disabled:opacity-50 disabled:hover:bg-transparent disabled:hover:text-t2-dark"
+                className="w-12 h-12 rounded-full border border-[#E5E5E5] flex items-center justify-center text-[var(--bg-color)] transition-colors hover:bg-[var(--bg-color)] hover:text-white disabled:opacity-50 disabled:hover:bg-transparent disabled:hover:text-t2-dark"
               >
                 <svg
                   width="18"

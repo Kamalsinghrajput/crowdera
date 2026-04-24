@@ -359,12 +359,12 @@ export default function About() {
         </div>
       </div>
 
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         @keyframes rotateSlow {
           from { transform: rotate(0deg); }
           to { transform: rotate(360deg); }
         }
-      `}</style>
+      ` }} />
     </section>
   );
 }

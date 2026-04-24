@@ -3,7 +3,7 @@ export default function SiteFooter() {
   const services = ["Emergency Relief", "Medical Outreach", "Educational Support", "Mental Health", "Community Development"];
 
   return (
-    <footer style={{ background: "#121D18", position: "relative", overflow: "hidden" }}>
+    <footer style={{ background: "var(--t2-dark)", position: "relative", overflow: "hidden" }}>
       {/* Decorative circles */}
       <div style={{ position: "absolute", top: -80, right: -80, width: 300, height: 300, borderRadius: "50%", border: "1px solid rgba(255,255,255,0.04)", pointerEvents: "none" }} />
       <div style={{ position: "absolute", bottom: -60, left: -60, width: 200, height: 200, borderRadius: "50%", border: "1px solid rgba(255,255,255,0.04)", pointerEvents: "none" }} />
@@ -15,9 +15,9 @@ export default function SiteFooter() {
             {/* About widget */}
             <div>
               <div style={{ marginBottom: 24 }}>
-                <span style={{ fontFamily: "Sora, sans-serif", fontWeight: 800, fontSize: 28, color: "#FFA415" }}>CHIOARY</span>
+                <span style={{   fontSize: 28, color: "var(--t2-secondary)" }}>CHIOARY</span>
               </div>
-              <p style={{ fontFamily: "Sora, sans-serif", fontSize: 15, color: "rgba(255,255,255,0.5)", lineHeight: 1.8, marginBottom: 28 }}>
+              <p style={{  fontSize: 15, color: "rgba(255,255,255,0.5)", lineHeight: 1.8, marginBottom: 28 }}>
                 Charity and donation is category that<br /> involves giving.
               </p>
               {/* Social links */}
@@ -35,8 +35,8 @@ export default function SiteFooter() {
                   color: "rgba(255,255,255,0.5)", textDecoration: "none", transition: "all 0.3s"
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "#FFA415";
-                  e.currentTarget.style.borderColor = "#FFA415";
+                  e.currentTarget.style.background = "var(--t2-secondary)";
+                  e.currentTarget.style.borderColor = "var(--t2-secondary)";
                   e.currentTarget.style.color = "#fff";
                 }}
                 onMouseLeave={(e) => {
@@ -55,18 +55,18 @@ export default function SiteFooter() {
 
             {/* Quick Links */}
             <div>
-              <h4 style={{ fontFamily: "Inter, sans-serif", fontWeight: 700, fontSize: 18, color: "#fff", marginBottom: 28, position: "relative", paddingBottom: 16 }}>
+              <h4 style={{   fontSize: 18, color: "#fff", marginBottom: 28, position: "relative", paddingBottom: 16 }}>
                 Quick links
-                <span style={{ position: "absolute", bottom: 0, left: 0, width: 40, height: 2, background: "#FFA415", borderRadius: 1 }} />
+                <span style={{ position: "absolute", bottom: 0, left: 0, width: 40, height: 2, background: "var(--t2-secondary)", borderRadius: 1 }} />
               </h4>
               <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 12 }}>
                 {quickLinks.map((link) =>
                 <li key={link}>
                     <a href="#" style={{
-                    fontFamily: "Sora, sans-serif", fontSize: 15, color: "rgba(255,255,255,0.5)",
+                     fontSize: 15, color: "rgba(255,255,255,0.5)",
                     textDecoration: "none", transition: "all 0.3s", display: "flex", alignItems: "center", gap: 8
                   }}
-                  onMouseEnter={(e) => {e.currentTarget.style.color = "#FFA415";e.currentTarget.style.paddingLeft = "6px";}}
+                  onMouseEnter={(e) => {e.currentTarget.style.color = "var(--t2-secondary)";e.currentTarget.style.paddingLeft = "6px";}}
                   onMouseLeave={(e) => {e.currentTarget.style.color = "rgba(255,255,255,0.5)";e.currentTarget.style.paddingLeft = "0";}}>
                     
                       {link}
@@ -78,28 +78,28 @@ export default function SiteFooter() {
 
             {/* Contact */}
             <div>
-              <h3 style={{ fontFamily: "Inter, sans-serif", fontWeight: 700, fontSize: 18, color: "#fff", marginBottom: 28, position: "relative", paddingBottom: 16 }}>
+              <h3 style={{   fontSize: 18, color: "#fff", marginBottom: 28, position: "relative", paddingBottom: 16 }}>
                 Contact Us
-                <span style={{ position: "absolute", bottom: 0, left: 0, width: 40, height: 2, background: "#FFA415", borderRadius: 1 }} />
+                <span style={{ position: "absolute", bottom: 0, left: 0, width: 40, height: 2, background: "var(--t2-secondary)", borderRadius: 1 }} />
               </h3>
               <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 16 }}>
                 <li style={{ display: "flex", gap: 12 }}>
                   <div style={{ width: 20, height: 20, flexShrink: 0, marginTop: 2 }}>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFA415" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--t2-secondary)" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
                   </div>
-                  <p style={{ fontFamily: "Sora, sans-serif", fontSize: 15, color: "rgba(255,255,255,0.5)", lineHeight: 1.7, margin: 0 }}>
+                  <p style={{  fontSize: 15, color: "rgba(255,255,255,0.5)", lineHeight: 1.7, margin: 0 }}>
                     4517 Washington Ave. Manchester, Kentucky 39495
                   </p>
                 </li>
                 <li style={{ display: "flex", gap: 12, alignItems: "center" }}>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFA415" strokeWidth="2" style={{ flexShrink: 0 }}><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
-                  <a href="tel:2195550114" style={{ fontFamily: "Sora, sans-serif", fontSize: 15, color: "rgba(255,255,255,0.5)", textDecoration: "none" }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--t2-secondary)" strokeWidth="2" style={{ flexShrink: 0 }}><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+                  <a href="tel:2195550114" style={{  fontSize: 15, color: "rgba(255,255,255,0.5)", textDecoration: "none" }}>
                     (219) 555-0114
                   </a>
                 </li>
                 <li style={{ display: "flex", gap: 12, alignItems: "center" }}>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFA415" strokeWidth="2" style={{ flexShrink: 0 }}><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
-                  <a href="mailto:Chioary@gmail.com" style={{ fontFamily: "Sora, sans-serif", fontSize: 15, color: "rgba(255,255,255,0.5)", textDecoration: "none" }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--t2-secondary)" strokeWidth="2" style={{ flexShrink: 0 }}><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
+                  <a href="mailto:Chioary@gmail.com" style={{  fontSize: 15, color: "rgba(255,255,255,0.5)", textDecoration: "none" }}>
                     Chioary@gmail.com
                   </a>
                 </li>
@@ -108,18 +108,18 @@ export default function SiteFooter() {
 
             {/* Services */}
             <div>
-              <h4 style={{ fontFamily: "Inter, sans-serif", fontWeight: 700, fontSize: 18, color: "#fff", marginBottom: 28, position: "relative", paddingBottom: 16 }}>
+              <h4 style={{   fontSize: 18, color: "#fff", marginBottom: 28, position: "relative", paddingBottom: 16 }}>
                 Services
-                <span style={{ position: "absolute", bottom: 0, left: 0, width: 40, height: 2, background: "#FFA415", borderRadius: 1 }} />
+                <span style={{ position: "absolute", bottom: 0, left: 0, width: 40, height: 2, background: "var(--t2-secondary)", borderRadius: 1 }} />
               </h4>
               <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 12 }}>
                 {services.map((svc) =>
                 <li key={svc}>
                     <a href="#" style={{
-                    fontFamily: "Sora, sans-serif", fontSize: 15, color: "rgba(255,255,255,0.5)",
+                     fontSize: 15, color: "rgba(255,255,255,0.5)",
                     textDecoration: "none", transition: "all 0.3s", display: "block"
                   }}
-                  onMouseEnter={(e) => {e.currentTarget.style.color = "#FFA415";e.currentTarget.style.paddingLeft = "6px";}}
+                  onMouseEnter={(e) => {e.currentTarget.style.color = "var(--t2-secondary)";e.currentTarget.style.paddingLeft = "6px";}}
                   onMouseLeave={(e) => {e.currentTarget.style.color = "rgba(255,255,255,0.5)";e.currentTarget.style.paddingLeft = "0";}}>
                     
                       {svc}
@@ -135,17 +135,17 @@ export default function SiteFooter() {
       {/* Bottom bar */}
       <div style={{ padding: "22px 0" }}>
         <div className="max-w-[1320px] mx-auto px-3" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
-          <p style={{ fontFamily: "Sora, sans-serif", fontSize: 14, color: "rgba(255,255,255,0.4)", margin: 0 }}>
-            © {new Date().getFullYear()} <a href="#" style={{ color: "#FFA415", textDecoration: "none" }}>Chioary</a>. All rights reserved.
+          <p style={{  fontSize: 14, color: "rgba(255,255,255,0.4)", margin: 0 }}>
+            © {new Date().getFullYear()} <a href="#" style={{ color: "var(--t2-secondary)", textDecoration: "none" }}>Chioary</a>. All rights reserved.
           </p>
           <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", gap: 24 }}>
             {["Terms of Service", "Privacy policy"].map((item) =>
             <li key={item}>
                 <a href="#" style={{
-                fontFamily: "Sora, sans-serif", fontSize: 14, color: "rgba(255,255,255,0.4)",
+                 fontSize: 14, color: "rgba(255,255,255,0.4)",
                 textDecoration: "none", transition: "color 0.3s"
               }}
-              onMouseEnter={(e) => e.currentTarget.style.color = "#FFA415"}
+              onMouseEnter={(e) => e.currentTarget.style.color = "var(--t2-secondary)"}
               onMouseLeave={(e) => e.currentTarget.style.color = "rgba(255,255,255,0.4)"}>
                 {item}</a>
               </li>

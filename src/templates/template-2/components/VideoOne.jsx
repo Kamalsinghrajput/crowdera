@@ -1,6 +1,8 @@
+import FloatingBird from "./FloatingBird";
 export default function VideoOne() {
   return (
     <section style={{ position: "relative", overflow: "hidden", padding: "120px 0" }}>
+      <FloatingBird position="right" />
       {/* Background image */}
       <div style={{
         position: "absolute", inset: 0,
@@ -33,7 +35,7 @@ export default function VideoOne() {
                 <svg width="36" height="36" viewBox="0 0 24 24" fill="#fff"><polygon points="5 3 19 12 5 21 5 3" /></svg>
               </a>
               <h3 style={{
-                fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: 32, color: "#fff", margin: 0
+                  fontSize: 32, color: "#fff", margin: 0
               }}>Best Volunteer</h3>
             </div>
           </div>
@@ -44,7 +46,7 @@ export default function VideoOne() {
             borderRadius: 16, padding: "44px 40px"
           }}>
             <h3 style={{
-              fontFamily: "Inter, sans-serif", fontWeight: 700, fontSize: 28, color: "#fff",
+                fontSize: 28, color: "#fff",
               marginBottom: 32, lineHeight: 1.3
             }}>
               Support Us, we need<br /> your help
@@ -55,7 +57,7 @@ export default function VideoOne() {
               <div style={{ position: "relative", width: 116, height: 116, flexShrink: 0 }}>
                 <svg width="116" height="116" viewBox="0 0 116 116">
                   {/* Background circle */}
-                  <circle cx="58" cy="58" r="52" fill="none" stroke="#007B39" strokeWidth="6" />
+                  <circle cx="58" cy="58" r="52" fill="none" stroke="var(--t2-primary)" strokeWidth="6" />
                   {/* Progress circle */}
                   <circle
                     cx="58" cy="58" r="52" fill="none" stroke="#fff" strokeWidth="6"
@@ -67,12 +69,12 @@ export default function VideoOne() {
                 </svg>
                 <span style={{
                   position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center",
-                  fontFamily: "Inter, sans-serif", fontWeight: 700, fontSize: 22, color: "#fff"
+                    fontSize: 22, color: "#fff"
                 }}>70%</span>
               </div>
               <div>
-                <h3 style={{ fontFamily: "Sora, sans-serif", fontWeight: 800, fontSize: 36, color: "#FFA415", margin: "0 0 4px" }}>$72,000</h3>
-                <p style={{ fontFamily: "Inter, sans-serif", fontSize: 15, color: "rgba(255,255,255,0.6)", margin: 0 }}>Donation Collected</p>
+                <h3 style={{   fontSize: 36, color: "var(--t2-secondary)", margin: "0 0 4px" }}>$72,000</h3>
+                <p style={{  fontSize: 15, color: "rgba(255,255,255,0.6)", margin: 0 }}>Donation Collected</p>
               </div>
             </div>
 
@@ -82,11 +84,11 @@ export default function VideoOne() {
               overflow: "hidden", textDecoration: "none"
             }}>
               <span style={{
-                padding: "13px 24px", background: "#FFA415", color: "#fff",
-                fontFamily: "Inter, sans-serif", fontWeight: 600, fontSize: 16
+                padding: "13px 24px", background: "var(--t2-secondary)", color: "#fff",
+                  fontSize: 16
               }}>Donate Now</span>
               <span style={{
-                width: 52, height: 52, background: "#121D18",
+                width: 52, height: 52, background: "var(--t2-dark)",
                 display: "flex", alignItems: "center", justifyContent: "center", borderRadius: "50%"
               }}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5"><path d="M7 17L17 7M17 7H7M17 7v10" /></svg>

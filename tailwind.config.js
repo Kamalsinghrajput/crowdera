@@ -23,6 +23,15 @@ module.exports = {
           deepest: '#4a2050',
           light:   '#fdf4f6',
         },
+        t2: {
+          light: '#f9f9f9',
+          dark: '#121d18',
+          darkTeal: '#121d18',
+          secondary: '#ffa415',
+          gray: '#6c6e76',
+          primary: '#007b39',
+          border: '#e2e2e2',
+        },
       },
       fontFamily: {
         sans: ['Nunito', 'sans-serif'],

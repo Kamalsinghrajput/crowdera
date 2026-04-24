@@ -1,21 +1,42 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&family=Caveat:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&family=Caveat:wght@400;700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Template-2 (Chioary) CSS Custom Properties — matches reference site exactly */
+:root {
+  --t2-dark: #121d18;
+  --t2-darkTeal: #1a3a37;
+  --t2-secondary: #ffa415;
+  --t2-primary: #007b39;
+  --t2-gray: #6c6e76;
+  --t2-extra: #f9f9f9;
+  --t2-white: #ffffff;
+  --t2-border: #e2e2e2;
+}
+
 @layer base {
   body {
     @apply font-sans text-brand-text bg-white;
   }
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-bold text-brand-dark;
   }
 }
 
 @keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 .animate-marquee {
   animation: marquee 28s linear infinite;

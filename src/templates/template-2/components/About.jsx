@@ -1,4 +1,65 @@
+import React, { useState } from "react";
 import FloatingBird from "./FloatingBird";
+import { Globe, Lightbulb, Users } from "lucide-react";
+
+function FeatureBox({ item }) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <div
+      style={{
+        borderBottom: "1px solid #F0F0F0",
+        paddingBottom: 30,
+      }}
+    >
+      <div
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        style={{
+          width: 70,
+          height: 70,
+          borderRadius: "50%",
+          background: hovered ? "var(--secondary, #FFA415)" : "#F5F5F5",
+          color: hovered ? "#fff" : "var(--secondary, #FFA415)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontSize: 28,
+          marginBottom: 18,
+          transition: "background 0.3s, color 0.3s",
+          cursor: "pointer",
+        }}
+      >
+        {item.icon}
+      </div>
+      <h3
+        style={{
+          fontSize: 20,
+          color: "var(--t2-dark)",
+          marginBottom: 10,
+        }}
+      >
+        <a href="#" style={{ color: "inherit", textDecoration: "none" }}>
+          {item.title}
+        </a>
+      </h3>
+      <p
+        style={{
+          fontSize: 15,
+          color: "var(--t2-gray)",
+          lineHeight: 1.6,
+          marginBottom: 14,
+        }}
+      >
+        {item.text}
+      </p>
+      <a href="#" className="t2-text-btn">
+        <span />
+        Read More
+      </a>
+    </div>
+  );
+}
+
 export default function About() {
   return (
     <section
@@ -126,68 +187,17 @@ export default function About() {
               >
                 {[
                   {
-                    icon: "🌍",
+                    icon: <Globe size={32} strokeWidth={1.5} />,
                     title: "Driven Compassion",
                     text: "Every service we offer is rooted in deep compassion, designed to meet people where they are and create lasting positive change.",
                   },
                   {
-                    icon: "💡",
+                    icon: <Lightbulb size={32} strokeWidth={1.5} />,
                     title: "Sustainable Impact",
                     text: "We invest in long-term solutions — from education and job training to clean water and medical outreach — that empower communities to thrive.",
                   },
                 ].map((item, i) => (
-                  <div
-                    key={i}
-                    style={{
-                      borderBottom: "1px solid #F0F0F0",
-                      paddingBottom: 30,
-                    }}
-                  >
-                    <div
-                      style={{
-                        width: 70,
-                        height: 70,
-                        borderRadius: "50%",
-                        background: "#F5F5F5",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        fontSize: 28,
-                        marginBottom: 18,
-                        transition: "background 0.3s",
-                      }}
-                    >
-                      {item.icon}
-                    </div>
-                    <h3
-                      style={{
-                        fontSize: 20,
-                        color: "var(--t2-dark)",
-                        marginBottom: 10,
-                      }}
-                    >
-                      <a
-                        href="#"
-                        style={{ color: "inherit", textDecoration: "none" }}
-                      >
-                        {item.title}
-                      </a>
-                    </h3>
-                    <p
-                      style={{
-                        fontSize: 15,
-                        color: "var(--t2-gray)",
-                        lineHeight: 1.6,
-                        marginBottom: 14,
-                      }}
-                    >
-                      {item.text}
-                    </p>
-                    <a href="#" className="t2-text-btn">
-                      <span />
-                      Read More
-                    </a>
-                  </div>
+                  <FeatureBox key={i} item={item} />
                 ))}
               </div>
 
@@ -199,9 +209,10 @@ export default function About() {
                 <div
                   style={{
                     position: "relative",
-                    width: "100%",
+                    width: "50%",
+                    maxWidth: 220,
+                    margin: "0 auto",
                     aspectRatio: "1",
-                    border: "1px dashed rgba(0,123,57,0.3)",
                     borderRadius: "50%",
                     display: "flex",
                     alignItems: "center",
@@ -224,83 +235,42 @@ export default function About() {
                     >
                       +
                     </span>
-                    <p
-                      style={{
-                        fontSize: 12,
-                        color: "var(--t2-gray)",
-                        textTransform: "uppercase",
-                        letterSpacing: "0.1em",
-                        margin: "6px 0 0",
-                      }}
-                    >
-                      Years of Experience
-                    </p>
                   </div>
-                  {/* Rotating text around circle */}
+                  {/* Circular Text */}
                   <div
                     style={{
                       position: "absolute",
-                      inset: -8,
-                      borderRadius: "50%",
-                      border: "2px solid rgba(255,164,21,0.4)",
+                      inset: 0,
                       animation: "rotateSlow 10s linear infinite",
                     }}
-                  />
+                  >
+                    <svg viewBox="0 0 100 100" width="100%" height="100%">
+                      <path
+                        id="circlePath"
+                        d="M 50, 50 m -40, 0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0"
+                        fill="transparent"
+                      />
+                      <text
+                        fontSize="11"
+                        fill="var(--t2-gray)"
+                        letterSpacing="2.5"
+                      >
+                        <textPath href="#circlePath" startOffset="0%">
+                          YEARS OF EXPERIENCE • YEARS OF EXPERIENCE •
+                        </textPath>
+                      </text>
+                    </svg>
+                  </div>
                 </div>
 
                 {/* Holistic Support */}
-                <div
-                  style={{
-                    borderBottom: "1px solid #F0F0F0",
-                    paddingBottom: 30,
+                <FeatureBox
+                  item={{
+                    icon: <Users size={32} strokeWidth={1.5} />,
+                    title: "Holistic Support",
+                    text: "We provide wraparound support for individuals and families, addressing health, housing, and emotional well-being under one roof.",
                   }}
-                >
-                  <div
-                    style={{
-                      width: 70,
-                      height: 70,
-                      borderRadius: "50%",
-                      background: "#F5F5F5",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      fontSize: 28,
-                      marginBottom: 18,
-                    }}
-                  >
-                    👥
-                  </div>
-                  <h3
-                    style={{
-                      fontSize: 20,
-                      color: "var(--t2-dark)",
-                      marginBottom: 10,
-                    }}
-                  >
-                    <a
-                      href="#"
-                      style={{ color: "inherit", textDecoration: "none" }}
-                    >
-                      Holistic Support
-                    </a>
-                  </h3>
-                  <p
-                    style={{
-                      fontSize: 15,
-                      color: "var(--t2-gray)",
-                      lineHeight: 1.6,
-                      marginBottom: 14,
-                    }}
-                  >
-                    We provide wraparound support for individuals and families,
-                    addressing health, housing, and emotional well-being under
-                    one roof.
-                  </p>
-                  <a href="#" className="t2-text-btn">
-                    <span />
-                    Read More
-                  </a>
-                </div>
+                />
 
                 {/* Client signature box */}
                 <div
@@ -359,12 +329,16 @@ export default function About() {
         </div>
       </div>
 
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
         @keyframes rotateSlow {
           from { transform: rotate(0deg); }
           to { transform: rotate(360deg); }
         }
-      ` }} />
+      `,
+        }}
+      />
     </section>
   );
 }

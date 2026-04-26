@@ -6,9 +6,33 @@ import { useRouter } from "next/router";
 const NAV_ITEMS = [
   { label: "Home", href: "#hero" },
   { label: "Services", href: "#services" },
-  { label: "About", href: "#about" },
-  { label: "Causes", href: "#causes" },
-  { label: "Events", href: "#events" },
+  { 
+    label: "About", 
+    href: "#about",
+    subItems: [
+      { label: "Our Story", href: "#about" },
+      { label: "Impact Profile", href: "#impact" },
+      { label: "Global Reach", href: "#counter" },
+      { label: "Watch Video", href: "#video" }
+    ]
+  },
+  { 
+    label: "Causes", 
+    href: "#causes",
+    subItems: [
+      { label: "Active Causes", href: "#causes" },
+      { label: "Top Donors", href: "#top-donors" }
+    ]
+  },
+  { 
+    label: "Events", 
+    href: "#events",
+    subItems: [
+      { label: "Upcoming Events", href: "#events" },
+      { label: "Volunteer", href: "#volunteer" },
+      { label: "Newsletter", href: "#newsletter" }
+    ]
+  },
   { label: "Team", href: "#team" },
   { label: "Testimonials", href: "#testimonials" },
   { label: "FAQ", href: "#faq" },
@@ -177,12 +201,19 @@ export default function Navbar() {
                 {mainLinks.map((item) => (
                   <li
                     key={item.label}
+                    className="group"
                     style={{ position: "relative", padding: "35px 0" }}
                   >
                     <a
                       href={item.href}
-                      onClick={(e) => scrollTo(e, item.href)}
+                      onClick={(e) => {
+                        if (item.href !== "#") scrollTo(e, item.href);
+                        else e.preventDefault();
+                      }}
                       style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 6,
                         color: "#fff",
                         fontFamily: "Inter, sans-serif",
                         fontWeight: 600,
@@ -198,7 +229,55 @@ export default function Navbar() {
                       }
                     >
                       {item.label}
+                      {item.subItems && (
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" style={{ transition: "transform 0.3s" }} className="group-hover:rotate-180">
+                          <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                      )}
                     </a>
+
+                    {/* Submenu Dropdown */}
+                    {item.subItems && (
+                      <div 
+                        className="absolute top-[100%] left-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-4 group-hover:translate-y-0"
+                        style={{
+                          background: "#fff",
+                          minWidth: 200,
+                          padding: "10px 0",
+                          boxShadow: "0 10px 40px rgba(0,0,0,0.15)",
+                          borderRadius: 4,
+                          zIndex: 100,
+                        }}
+                      >
+                        {item.subItems.map((sub) => (
+                          <a
+                            key={sub.label}
+                            href={sub.href}
+                            onClick={(e) => scrollTo(e, sub.href)}
+                            style={{
+                              display: "block",
+                              padding: "10px 20px",
+                              color: "#121D18",
+                              fontFamily: "Inter, sans-serif",
+                              fontSize: 15,
+                              fontWeight: 500,
+                              textDecoration: "none",
+                              transition: "all 0.2s",
+                            }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.color = "#FFA415";
+                              e.currentTarget.style.paddingLeft = "26px";
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.color = "#121D18";
+                              e.currentTarget.style.paddingLeft = "20px";
+                            }}
+                          >
+                            {sub.label}
+                          </a>
+                        ))}
+                      </div>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -471,7 +550,9 @@ export default function Navbar() {
                   <a
                     href={item.href}
                     style={{
-                      display: "block",
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
                       padding: "14px 25px",
                       color: "#fff",
                       fontFamily: "Inter, sans-serif",
@@ -479,10 +560,42 @@ export default function Navbar() {
                       fontSize: 16,
                       textDecoration: "none",
                     }}
-                    onClick={(e) => scrollTo(e, item.href)}
+                    onClick={(e) => {
+                      if (item.href === "#" && item.subItems) {
+                        e.preventDefault();
+                      } else {
+                        scrollTo(e, item.href);
+                      }
+                    }}
                   >
-                    {item.label}
+                    <span>{item.label}</span>
+                    {item.subItems && (
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M6 9l6 6 6-6"/>
+                      </svg>
+                    )}
                   </a>
+                  {item.subItems && (
+                    <div style={{ background: "rgba(0,0,0,0.2)", padding: "10px 0" }}>
+                      {item.subItems.map((sub) => (
+                        <a
+                          key={sub.label}
+                          href={sub.href}
+                          style={{
+                            display: "block",
+                            padding: "10px 25px 10px 40px",
+                            color: "rgba(255,255,255,0.7)",
+                            fontFamily: "Inter, sans-serif",
+                            fontSize: 14,
+                            textDecoration: "none",
+                          }}
+                          onClick={(e) => scrollTo(e, sub.href)}
+                        >
+                          {sub.label}
+                        </a>
+                      ))}
+                    </div>
+                  )}
                 </li>
               ))}
             </ul>

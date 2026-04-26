@@ -170,6 +170,7 @@ function ServiceCard({ srv }) {
 }
 
 export default function Services() {
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const primaryColor = "#1A3A37";
   const secondaryColor = "#FFA415";
   const bgColor = "#121d18";
@@ -184,8 +185,12 @@ export default function Services() {
         overflow: "hidden",
       }}
     >
-      <style dangerouslySetInnerHTML={{ __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; --bg-color: ${bgColor}; --secondary-bg-color: ${secondaryBgColor}; }` }} />
-      <FloatingBird position="left" />
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; --bg-color: ${bgColor}; --secondary-bg-color: ${secondaryBgColor}; }`,
+        }}
+      />
+      <FloatingBird position="left" invert={true} />
       {/* Section Title */}
       <div
         className="max-w-[1320px] mx-auto px-3"
@@ -210,7 +215,7 @@ export default function Services() {
           <span
             style={{
               fontSize: 16,
-              color: "var(--t2-secondary)",
+              color: "white",
               fontStyle: "italic",
             }}
           >
@@ -263,62 +268,75 @@ export default function Services() {
               height: 380,
             }}
           >
-            <img
-              src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=800&q=80"
-              alt="Video"
-              style={{ width: "100%", height: "100%", objectFit: "cover" }}
-            />
-            <div
-              style={{
-                position: "absolute",
-                inset: 0,
-                background: "rgba(0,0,0,0.35)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <a
-                href="https://www.youtube.com/watch?v=Get7rqXYrbQ"
-                target="_blank"
-                rel="noreferrer"
-                style={{
-                  width: 84,
-                  height: 84,
-                  borderRadius: "50%",
-                  background: "rgba(255,255,255,0.15)",
-                  border: "2px solid rgba(255,255,255,0.45)",
-                  backdropFilter: "blur(4px)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  textDecoration: "none",
-                  position: "relative",
-                }}
-              >
-                <span
+            {isVideoPlaying ? (
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/Get7rqXYrbQ?autoplay=1"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                style={{ position: "absolute", top: 0, left: 0 }}
+              />
+            ) : (
+              <>
+                <img
+                  src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=800&q=80"
+                  alt="Video"
+                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                />
+                <div
                   style={{
                     position: "absolute",
-                    inset: -16,
-                    borderRadius: "50%",
-                    border: "1px solid rgba(255,255,255,0.2)",
-                    animation: "ripple 1.5s infinite",
+                    inset: 0,
+                    background: "rgba(0,0,0,0.35)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
                   }}
-                />
-                <span
-                  style={{
-                    position: "absolute",
-                    inset: -32,
-                    borderRadius: "50%",
-                    border: "1px solid rgba(255,255,255,0.1)",
-                    animation: "ripple 1.5s 0.5s infinite",
-                  }}
-                />
-                <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff">
-                  <polygon points="5 3 19 12 5 21 5 3" />
-                </svg>
-              </a>
-            </div>
+                >
+                  <button
+                    onClick={() => setIsVideoPlaying(true)}
+                    style={{
+                      width: 84,
+                      height: 84,
+                      borderRadius: "50%",
+                      background: "rgba(255,255,255,0.15)",
+                      border: "2px solid rgba(255,255,255,0.45)",
+                      backdropFilter: "blur(4px)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      cursor: "pointer",
+                      position: "relative",
+                    }}
+                  >
+                    <span
+                      style={{
+                        position: "absolute",
+                        inset: -16,
+                        borderRadius: "50%",
+                        border: "1px solid rgba(255,255,255,0.2)",
+                        animation: "ripple 1.5s infinite",
+                      }}
+                    />
+                    <span
+                      style={{
+                        position: "absolute",
+                        inset: -32,
+                        borderRadius: "50%",
+                        border: "1px solid rgba(255,255,255,0.1)",
+                        animation: "ripple 1.5s 0.5s infinite",
+                      }}
+                    />
+                    <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff">
+                      <polygon points="5 3 19 12 5 21 5 3" />
+                    </svg>
+                  </button>
+                </div>
+              </>
+            )}
           </div>
 
           {/* Audio player */}
@@ -413,12 +431,16 @@ export default function Services() {
         </div>
       </div>
 
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
         @keyframes ripple {
           0% { transform: scale(1); opacity: 1; }
           100% { transform: scale(1.5); opacity: 0; }
         }
-      ` }} />
+      `,
+        }}
+      />
     </section>
   );
 }

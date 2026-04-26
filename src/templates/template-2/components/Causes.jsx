@@ -87,7 +87,10 @@ function CourseCard({ course }) {
       {/* Content */}
       <div className="flex flex-col flex-grow">
         <h3 className="text-[22px] text-[var(--bg-color)] leading-[1.4] mb-3">
-          <a href="#" className="hover:text-[var(--secondary)] transition-colors">
+          <a
+            href="#"
+            className="hover:text-[var(--secondary)] transition-colors"
+          >
             {course.title}
           </a>
         </h3>
@@ -108,7 +111,8 @@ function CourseCard({ course }) {
           </div>
 
           <div className="text-[17px] text-[var(--bg-color)]">
-            {course.goal} <span className="text-[14px] text-[#6c6e76]">Goal</span>
+            {course.goal}{" "}
+            <span className="text-[14px] text-[#6c6e76]">Goal</span>
           </div>
         </div>
 
@@ -122,7 +126,11 @@ function CourseCard({ course }) {
 
         {/* Donate Button */}
         <div className="flex items-center gap-2 pb-2">
-          <a href="#" className="t2-btn" style={{ transform: "scale(0.85)", transformOrigin: "left center" }}>
+          <a
+            href="#"
+            className="t2-btn"
+            style={{ transform: "scale(0.85)", transformOrigin: "left center" }}
+          >
             <span>Donate Now</span>
             <i>
               <svg
@@ -148,7 +156,6 @@ export default function Causes() {
   const secondaryColor = "#FFA415";
   const bgColor = "#121d18";
   const secondaryBgColor = "#f9f9f9";
-
 
   const [activeTab, setActiveTab] = useState("View All");
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -180,8 +187,12 @@ export default function Causes() {
 
   return (
     <section className="relative bg-[var(--secondary-bg-color)] py-[120px] overflow-hidden">
-      <style dangerouslySetInnerHTML={{ __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; --bg-color: ${bgColor}; --secondary-bg-color: ${secondaryBgColor}; }` }} />
-      <FloatingBird position="right" />
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; --bg-color: ${bgColor}; --secondary-bg-color: ${secondaryBgColor}; }`,
+        }}
+      />
+      <FloatingBird position="left" />
       <div className="max-w-[1320px] mx-auto px-3">
         <div className="grid grid-cols-1 lg:grid-cols-[380px_1fr] gap-12 lg:gap-16 items-start">
           {/* Left: Title + Tabs */}

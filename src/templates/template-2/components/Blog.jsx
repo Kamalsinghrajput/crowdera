@@ -47,19 +47,22 @@ function BlogCard({ blog }) {
           alt={blog.title}
           className="w-full h-full object-cover grayscale transition-transform duration-700 group-hover:scale-105"
         />
+        {/* Dark overlay to ensure date visibility */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent z-0 pointer-events-none" />
 
         {/* Date badge with brush stroke style background */}
         <div className="absolute bottom-5 left-5 z-10">
           <div
-            className="px-5 py-2.5 bg-[var(--bg-color)]"
+            className="absolute inset-0 bg-[var(--bg-color)]"
             style={{
               maskImage: "url(/assets/template-2-stats.svg)",
               maskSize: "100% 100%",
               WebkitMaskImage: "url(/assets/template-2-stats.svg)",
               WebkitMaskSize: "100% 100%",
             }}
-          >
-            <span className="text-[18px] text-white tracking-wide">
+          />
+          <div className="relative px-5 py-2.5 flex items-center justify-center">
+            <span className="text-[18px] text-white tracking-wide font-extrabold">
               {blog.date}
             </span>
           </div>
@@ -100,36 +103,36 @@ function BlogCard({ blog }) {
         </div>
 
         <h3 className="text-[22px] text-[var(--bg-color)] leading-[1.4] mb-6 pr-4">
-          <a
-            href="#"
-            className="transition-colors duration-300 group-hover:text-t2-secondary"
-          >
-            {blog.title}
-          </a>
+          <Link href="#" passHref>
+            <a className="transition-colors duration-300 group-hover:text-t2-secondary">
+              {blog.title}
+            </a>
+          </Link>
         </h3>
 
         <div className="h-px w-full bg-[#E8E8E8] mb-6 mt-auto" />
 
         {/* Read more button */}
-        <a
-          href="#"
-          className="t2-btn"
-          // style={{ transform: "scale(0.85)", transformOrigin: "left center" }}
-        >
-          <span>Read More</span>
-          <i>
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-            >
-              <path d="M7 17L17 7M17 7H7M17 7v10" />
-            </svg>
-          </i>
-        </a>
+        <Link href="#" passHref>
+          <a
+            className="t2-btn"
+            // style={{ transform: "scale(0.85)", transformOrigin: "left center" }}
+          >
+            <span>Read More</span>
+            <i>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+              >
+                <path d="M7 17L17 7M17 7H7M17 7v10" />
+              </svg>
+            </i>
+          </a>
+        </Link>
       </div>
     </div>
   );
@@ -160,7 +163,7 @@ export default function BLog() {
             </h2>
           </div>
 
-          <Link href="/templates/template-2/blog">
+          <Link href="/templates/template-2/blog" passHref>
             <a className="t2-btn">
               <span>See All Blog</span>
               <i>

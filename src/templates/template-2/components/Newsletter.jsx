@@ -32,7 +32,7 @@ export default function NewsLetter() {
       />
 
       {/* Gradient overlay to blend with footer */}
-      <div className="absolute inset-0 bg-gradient-to-b from-t2-dark/60 via-t2-dark/80 to-t2-dark" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/70 to-black" />
 
       <div className="max-w-[800px] mx-auto px-4 relative z-10 text-center">
         <h2 className="text-[clamp(32px,5vw,56px)] leading-[1.2] text-white mb-6">

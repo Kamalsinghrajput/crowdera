@@ -2,7 +2,13 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
-export default function FloatingBird({ position = "left", top = "15%" }) {
+export default function FloatingBird({
+  position = "left",
+  top = "15%",
+  opacity = 1,
+  invert = false,
+  width = "250px",
+}) {
   const birdRef = useRef(null);
 
   useEffect(() => {
@@ -28,9 +34,10 @@ export default function FloatingBird({ position = "left", top = "15%" }) {
     top,
     [position]: "5%",
     zIndex: 1, // Keep behind most content, but inside the section
-    opacity: 0.15, // Subtle background effect
+    opacity,
     pointerEvents: "none",
-    width: "120px",
+    width,
+    filter: invert ? "invert(1)" : "none",
   };
 
   // Flip bird based on position to face inward (assuming default faces right)

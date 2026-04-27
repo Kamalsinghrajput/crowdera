@@ -118,7 +118,13 @@ export default function TopDonors() {
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
         {/* Header */}
         <div className="text-center mb-14">
-          <span className="inline-flex items-center gap-2 text-[var(--primary)] font-bold tracking-wider uppercase text-sm mb-3">
+          <span
+            className="inline-flex items-center gap-2 text-[var(--primary)] font-bold tracking-wider uppercase text-md mb-3 text-[#FEC908]"
+            style={{
+              fontFamily: "'Caveat', 'Segoe Script', cursive",
+              fontWeight: "bolder",
+            }}
+          >
             <Trophy size={16} /> Hall of Fame
           </span>
           <h2 className="text-3xl lg:text-5xl font-extrabold text-white leading-tight mb-3">

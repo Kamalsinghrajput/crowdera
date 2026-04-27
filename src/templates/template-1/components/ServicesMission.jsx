@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import Link from "next/link";
 import {
   Apple,
   Droplets,
@@ -152,7 +153,13 @@ export default function ServicesMission() {
       {/* Header */}
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <span className="text-[var(--secondary)] font-bold tracking-wider uppercase text-sm mb-2 block">
+          <span
+            className="text-[var(--secondary)] tracking-wider uppercase text-md mb-2 block text-[#00715D]"
+            style={{
+              fontFamily: "'Caveat', 'Segoe Script', cursive",
+              fontWeight: "bolder",
+            }}
+          >
             Our Mission
           </span>
           <h2 className="text-4xl md:text-5xl font-extrabold text-[#091F1B] mb-4">
@@ -250,13 +257,14 @@ export default function ServicesMission() {
 
                     {/* Arrow Button */}
                     <div className="mt-2 sm:mt-3 lg:mt-4">
-                      <a
-                        href="#"
-                        className="inline-flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full border border-current transition-transform hover:scale-110"
-                        style={{ color: m.iconColor }}
-                      >
-                        <ArrowRight size={14} className="sm:w-4 sm:h-4" />
-                      </a>
+                      <Link href="#" passHref>
+                        <a
+                          className="inline-flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full border border-current transition-transform hover:scale-110"
+                          style={{ color: m.iconColor }}
+                        >
+                          <ArrowRight size={14} className="sm:w-4 sm:h-4" />
+                        </a>
+                      </Link>
                     </div>
                   </div>
                 </div>

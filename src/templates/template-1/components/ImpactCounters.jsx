@@ -72,7 +72,7 @@ const ImpactCounters = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 text-center divide-x-0 md:divide-x divide-white/20">
           {stats.map((stat, idx) => (
             <div key={idx} className="p-4">
-              <div className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-[var(--primary)] mb-2 flex justify-center items-end">
+              <div className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-[#FEC908] mb-2 flex justify-center items-end">
                 <span id={`counter-${idx}`}>0</span>
                 <span>{stat.suffix}</span>
               </div>

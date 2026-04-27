@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import Link from "next/link";
 import { gsap } from "gsap";
 import { CheckCircle2, Phone } from "lucide-react";
 
@@ -190,9 +191,12 @@ const AboutUs = () => {
             </div>
 
             {/* Experience Badge */}
-            <div className="absolute -bottom-4 left-0 sm:-bottom-8 sm:-left-4 lg:-left-8 bg-[var(--primary)] text-[#091F1B] p-5 sm:p-8 rounded-2xl sm:rounded-3xl shadow-xl z-30 font-bold max-w-[200px] sm:max-w-xs transition-transform transform hover:scale-105 duration-300">
+            <div
+              className="absolute -bottom-4 left-0 sm:-bottom-8 sm:-left-4 lg:-left-8 bg-[var(--primary)] text-[#091F1B] p-5 sm:p-8 rounded-2xl sm:rounded-3xl shadow-xl z-30 font-bold max-w-[200px] sm:max-w-xs transition-transform transform hover:scale-105 duration-300"
+              style={{ background: "#FEC908" }}
+            >
               <div className="text-2xl sm:text-4xl mb-1 sm:mb-2">25+</div>
-              <div className="text-xs sm:text-base">
+              <div className="text-xs sm:text-base ">
                 Years of Experience in Charity &amp; Fundraising.
               </div>
             </div>
@@ -200,7 +204,13 @@ const AboutUs = () => {
 
           {/* Text Right */}
           <div className="w-full lg:w-1/2 about-text">
-            <span className="text-[var(--secondary)] font-bold tracking-wider uppercase text-sm mb-2 block">
+            <span
+              className="font-bold tracking-wider uppercase text-md mb-2 block text-[#00715D]"
+              style={{
+                fontFamily: "'Caveat', 'Segoe Script', cursive",
+                fontWeight: "bolder",
+              }}
+            >
               About Us
             </span>
             <h2 className="text-4xl md:text-5xl font-extrabold text-[#091F1B] mb-6 leading-tight">
@@ -232,13 +242,14 @@ const AboutUs = () => {
 
             {/* CTA + phone number side-by-side */}
             <div className="flex flex-wrap items-center gap-6">
-              <a
-                href="#"
-                className="inline-block bg-[#091F1B] text-white font-bold py-4 px-10 rounded-full
-                           hover:bg-[var(--primary)] hover:text-[#091F1B] transition-all transform hover:-translate-y-1 shadow-xl"
-              >
-                Learn More About Us
-              </a>
+              <Link href="#" passHref>
+                <a
+                  className="inline-block bg-[#091F1B] text-white font-bold py-4 px-10 rounded-full
+                            hover:text-white hover:bg-[#00715D] transition-all transform shadow-xl hover:shadow-2xl hover:shadow-[#091F1B]/30"
+                >
+                  Learn More About Us
+                </a>
+              </Link>
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-[rgba(0,113,93,0.10)] flex items-center justify-center flex-shrink-0">
                   <Phone size={36} className="text-[var(--secondary)]" />

@@ -116,40 +116,43 @@ const BoardMembers = () => {
                     opacity-0 translate-y-2 pointer-events-none
                     transition-all duration-300"
                   >
-                    <a
-                      href={m.instagram}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="Instagram"
-                      className="w-9 h-9 rounded-full flex items-center justify-center shadow-lg
-                                 hover:scale-110 transition-transform"
-                      style={{
-                        background:
-                          "linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045)",
-                      }}
-                    >
-                      <Instagram size={16} color="#fff" />
-                    </a>
-                    <a
-                      href={m.twitter}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="Twitter"
-                      className="w-9 h-9 rounded-full bg-[#1DA1F2] flex items-center justify-center shadow-lg
-                                 hover:scale-110 transition-transform"
-                    >
-                      <Twitter size={16} color="#fff" />
-                    </a>
-                    <a
-                      href={m.facebook}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="Facebook"
-                      className="w-9 h-9 rounded-full bg-[#4267B2] flex items-center justify-center shadow-lg
-                                 hover:scale-110 transition-transform"
-                    >
-                      <Facebook size={16} color="#fff" />
-                    </a>
+                    <Link href={m.instagram} passHref>
+                      <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Instagram"
+                        className="w-9 h-9 rounded-full flex items-center justify-center shadow-lg
+                                   hover:scale-110 transition-transform"
+                        style={{
+                          background:
+                            "linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045)",
+                        }}
+                      >
+                        <Instagram size={16} color="#fff" />
+                      </a>
+                    </Link>
+                    <Link href={m.twitter} passHref>
+                      <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Twitter"
+                        className="w-9 h-9 rounded-full bg-[#1DA1F2] flex items-center justify-center shadow-lg
+                                   hover:scale-110 transition-transform"
+                      >
+                        <Twitter size={16} color="#fff" />
+                      </a>
+                    </Link>
+                    <Link href={m.facebook} passHref>
+                      <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Facebook"
+                        className="w-9 h-9 rounded-full bg-[#4267B2] flex items-center justify-center shadow-lg
+                                   hover:scale-110 transition-transform"
+                      >
+                        <Facebook size={16} color="#fff" />
+                      </a>
+                    </Link>
                   </div>
 
                   {/* The + button itself */}
@@ -177,7 +180,7 @@ const BoardMembers = () => {
           <Link href="/templates/template-1/board">
             <a
               className="inline-flex items-center gap-2 bg-[#091F1B] text-white font-bold py-4 px-10 rounded-full
-                          hover:bg-[var(--primary)] hover:text-[#091F1B] transition-all duration-300 transform hover:-translate-y-1 shadow-xl group"
+                           hover:text-white transition-all duration-300 transform shadow-xl group hover:bg-[#00715D]"
             >
               View All Board Members
               <ArrowRight

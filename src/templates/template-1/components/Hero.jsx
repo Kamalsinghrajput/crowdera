@@ -181,10 +181,10 @@ const Hero = () => {
               <Heart
                 size={16}
                 fill="currentColor"
-                className="mr-2 flex-shrink-0"
+                className="mr-2 flex-shrink-0 text-[#FEC908]"
               />
               <span
-                className="italic"
+                className="italic text-[#FEC908]"
                 style={{ fontFamily: "'Caveat', 'Segoe Script', cursive" }}
               >
                 {slide.subtitle}

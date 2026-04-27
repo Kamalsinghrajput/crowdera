@@ -117,7 +117,13 @@ export default function Testimonials() {
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
         {/* Header */}
         <div className="text-center mb-14">
-          <span className="text-[var(--primary)] font-bold tracking-wider uppercase text-sm block mb-3">
+          <span
+            className="text-[var(--primary)] font-bold tracking-wider uppercase text-md block mb-3 text-[#FEC908]"
+            style={{
+              fontFamily: "'Caveat', 'Segoe Script', cursive",
+              fontWeight: "bolder",
+            }}
+          >
             Testimonials
           </span>
           <h2 className="text-3xl lg:text-5xl font-extrabold text-white leading-tight mb-3">

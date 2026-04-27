@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import Link from "next/link";
 import { gsap } from "gsap";
 import {
   Heart,
@@ -197,15 +198,14 @@ const LatestNews = () => {
                 </h3>
 
                 {/* Read More */}
-                <a
-                  href="#"
-                  className="inline-flex items-center text-sm font-bold text-[#091F1B] hover:text-[var(--secondary)] transition-colors group/link"
-                >
-                  Read More
-                  <span className="w-6 h-6 rounded-full bg-[var(--secondary)] text-white flex items-center justify-center ml-2 group-hover/link:bg-brand-yellow group-hover/link:text-brand-dark transition-colors">
-                    <ArrowRight size={12} />
-                  </span>
-                </a>
+                <Link href="#" passHref>
+                  <a className="inline-flex items-center text-sm font-bold text-[#091F1B] hover:text-[var(--secondary)] transition-colors group/link">
+                    Read More
+                    <span className="w-6 h-6 rounded-full bg-[var(--secondary)] text-white flex items-center justify-center ml-2 group-hover/link:bg-brand-yellow group-hover/link:text-brand-dark transition-colors">
+                      <ArrowRight size={12} />
+                    </span>
+                  </a>
+                </Link>
               </div>
             </div>
           ))}
@@ -213,16 +213,15 @@ const LatestNews = () => {
 
         {/* View All Button */}
         <div className="text-center mt-12">
-          <a
-            href="#"
-            className="inline-flex items-center bg-[#091F1B] text-white font-bold text-sm py-3.5 px-8 rounded-md hover:bg-[var(--secondary)] transition-all group shadow-lg"
-          >
-            View All
-            <ArrowUpRight
-              size={15}
-              className="ml-2 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
-            />
-          </a>
+          <Link href="#" passHref>
+            <a className="inline-flex items-center bg-[#091F1B] text-white font-bold text-sm py-3.5 px-8 rounded-md hover:bg-[var(--secondary)] transition-all group shadow-lg">
+              View All
+              <ArrowUpRight
+                size={15}
+                className="ml-2 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+              />
+            </a>
+          </Link>
         </div>
       </div>
     </section>

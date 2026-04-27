@@ -263,7 +263,7 @@ const CampaignsFocus = () => {
                         style={{ width: `${pct}%` }}
                       />
                     </div>
-                    <button className="w-full bg-[#091F1B] text-white font-bold py-2.5 rounded-full hover:bg-[var(--secondary)] transition-colors text-xs">
+                    <button className="w-full bg-[#091F1B] text-white font-bold py-2.5 rounded-full hover:bg-[#00715D] transition-colors text-xs">
                       Donate Now
                     </button>
                   </div>

@@ -173,30 +173,26 @@ const Navbar = () => {
 
             {/* Row 1 right (mobile) — socials */}
             <div className="flex items-center space-x-3 text-white/60 text-xs font-bold order-2 md:order-3">
-              <a
-                href="#"
-                className="hover:text-[var(--primary)] transition-colors"
-              >
-                f
-              </a>
-              <a
-                href="#"
-                className="hover:text-[var(--primary)] transition-colors"
-              >
-                v
-              </a>
-              <a
-                href="#"
-                className="hover:text-[var(--primary)] transition-colors"
-              >
-                y
-              </a>
-              <a
-                href="#"
-                className="hover:text-[var(--primary)] transition-colors"
-              >
-                in
-              </a>
+              <Link href="#">
+                <a className="hover:text-[var(--primary)] transition-colors">
+                  f
+                </a>
+              </Link>
+              <Link href="#">
+                <a className="hover:text-[var(--primary)] transition-colors">
+                  v
+                </a>
+              </Link>
+              <Link href="#">
+                <a className="hover:text-[var(--primary)] transition-colors">
+                  y
+                </a>
+              </Link>
+              <Link href="#">
+                <a className="hover:text-[var(--primary)] transition-colors">
+                  in
+                </a>
+              </Link>
             </div>
 
             {/* Row 2 (mobile) / Right (desktop) — currency + language */}
@@ -311,36 +307,37 @@ const Navbar = () => {
                     onMouseEnter={() => setHoveredNav(idx)}
                     onMouseLeave={() => setHoveredNav(null)}
                   >
-                    <a
-                      href={link.href}
-                      onClick={(e) => scrollTo(e, link.href, link.isExternal)}
-                      className="flex items-center gap-1 text-[#091F1B] font-bold text-sm px-3 py-2.5
-                                 hover:opacity-60 transition-opacity whitespace-nowrap cursor-pointer"
-                    >
-                      {link.title}
-                      {link.sub.length > 0 && (
-                        <ChevronDown
-                          size={13}
-                          className={`transition-transform duration-200 ${hoveredNav === idx ? "rotate-180" : ""}`}
-                        />
-                      )}
-                    </a>
+                    <Link href={link.href} passHref>
+                      <a
+                        onClick={(e) => scrollTo(e, link.href, link.isExternal)}
+                        className="flex items-center gap-1 text-[#091F1B] font-bold text-sm px-3 py-2.5
+                                   hover:opacity-60 transition-opacity whitespace-nowrap cursor-pointer"
+                      >
+                        {link.title}
+                        {link.sub.length > 0 && (
+                          <ChevronDown
+                            size={13}
+                            className={`transition-transform duration-200 ${hoveredNav === idx ? "rotate-180" : ""}`}
+                          />
+                        )}
+                      </a>
+                    </Link>
 
                     {/* Dropdown — shown on hover via JS state */}
                     {link.sub.length > 0 && hoveredNav === idx && (
                       <div className="absolute top-full left-0 pt-2 z-[9999]">
                         <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden min-w-[190px]">
                           {link.sub.map((s, si) => (
-                            <a
-                              key={si}
-                              href={s.href}
-                              onClick={(e) => scrollTo(e, s.href)}
-                              className="block px-5 py-3 text-sm text-[#091F1B] font-semibold
-                                         hover:bg-[var(--primary)] transition-colors
-                                         border-b border-gray-50 last:border-0 cursor-pointer"
-                            >
-                              {s.title}
-                            </a>
+                            <Link key={si} href={s.href} passHref>
+                              <a
+                                onClick={(e) => scrollTo(e, s.href)}
+                                className="block px-5 py-3 text-sm text-[#091F1B] font-semibold
+                                           hover:bg-[var(--primary)] transition-colors
+                                           border-b border-gray-50 last:border-0 cursor-pointer"
+                              >
+                                {s.title}
+                              </a>
+                            </Link>
                           ))}
                         </div>
                       </div>
@@ -360,11 +357,10 @@ const Navbar = () => {
             {/* Donate Now — animated color change on hover */}
             <Link href="#">
               <a
-                className="hidden lg:flex items-center font-bold text-sm py-3 px-7 rounded-full
+                className="hidden lg:flex items-center font-bold text-sm py-3 px-7 rounded-full bg-[#FEC908]
                              text-[#091F1B]
-                             hover:bg-[#091F1B] hover:text-white
+                             hover:bg-[#00715D] hover:text-white
                              transition-all duration-300 ease-in-out group shadow-sm"
-                style={{ background: primaryColor }}
               >
                 Donate Now
                 <ArrowUpRight
@@ -387,18 +383,18 @@ const Navbar = () => {
                 {overflowOpen && (
                   <div className="absolute top-full right-0 mt-3 bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden min-w-[160px] z-50">
                     {overflowLinks.map((link, idx) => (
-                      <a
-                        key={idx}
-                        href={link.href}
-                        onClick={(e) => {
-                          scrollTo(e, link.href);
-                          setOverflowOpen(false);
-                        }}
-                        className="block px-5 py-3 text-sm text-[#091F1B] font-semibold
-                                   hover:bg-[var(--primary)] transition-colors border-b border-gray-50 last:border-0 cursor-pointer"
-                      >
-                        {link.title}
-                      </a>
+                      <Link key={idx} href={link.href} passHref>
+                        <a
+                          onClick={(e) => {
+                            scrollTo(e, link.href);
+                            setOverflowOpen(false);
+                          }}
+                          className="block px-5 py-3 text-sm text-[#091F1B] font-semibold
+                                     hover:bg-[var(--primary)] transition-colors border-b border-gray-50 last:border-0 cursor-pointer"
+                        >
+                          {link.title}
+                        </a>
+                      </Link>
                     ))}
                   </div>
                 )}
@@ -421,39 +417,40 @@ const Navbar = () => {
             <div className="flex flex-col py-4 px-6">
               {navLinks.map((link, idx) => (
                 <div key={idx}>
-                  <a
-                    href={link.href}
-                    onClick={(e) => scrollTo(e, link.href, link.isExternal)}
-                    className="text-[#091F1B] font-bold py-3 border-b border-gray-100 flex justify-between items-center cursor-pointer hover:text-[var(--secondary)] transition-colors"
-                  >
-                    {link.title}
-                    {link.sub.length > 0 && (
-                      <button
-                        onClick={(e) => {
-                          e.preventDefault();
-                          e.stopPropagation();
-                          setOpenDropdown(openDropdown === idx ? null : idx);
-                        }}
-                        className="ml-2"
-                      >
-                        <ChevronDown
-                          size={16}
-                          className={`transition-transform ${openDropdown === idx ? "rotate-180" : ""}`}
-                        />
-                      </button>
-                    )}
-                  </a>
+                  <Link href={link.href} passHref>
+                    <a
+                      onClick={(e) => scrollTo(e, link.href, link.isExternal)}
+                      className="text-[#091F1B] font-bold py-3 border-b border-gray-100 flex justify-between items-center cursor-pointer hover:text-[var(--secondary)] transition-colors"
+                    >
+                      {link.title}
+                      {link.sub.length > 0 && (
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            setOpenDropdown(openDropdown === idx ? null : idx);
+                          }}
+                          className="ml-2"
+                        >
+                          <ChevronDown
+                            size={16}
+                            className={`transition-transform ${openDropdown === idx ? "rotate-180" : ""}`}
+                          />
+                        </button>
+                      )}
+                    </a>
+                  </Link>
                   {link.sub.length > 0 && openDropdown === idx && (
                     <div className="pl-4 pb-2 border-b border-gray-100">
                       {link.sub.map((s, si) => (
-                        <a
-                          key={si}
-                          href={s.href}
-                          onClick={(e) => scrollTo(e, s.href)}
-                          className="block py-2 text-sm text-gray-500 hover:text-[var(--secondary)] transition-colors cursor-pointer"
-                        >
-                          {s.title}
-                        </a>
+                        <Link key={si} href={s.href} passHref>
+                          <a
+                            onClick={(e) => scrollTo(e, s.href)}
+                            className="block py-2 text-sm text-gray-500 hover:text-[var(--secondary)] transition-colors cursor-pointer"
+                          >
+                            {s.title}
+                          </a>
+                        </Link>
                       ))}
                     </div>
                   )}

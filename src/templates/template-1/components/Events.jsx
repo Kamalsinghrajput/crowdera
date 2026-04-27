@@ -143,7 +143,13 @@ export default function Events() {
         {/* Header row */}
         <div className="flex items-start justify-between mb-10 gap-4 flex-wrap">
           <div>
-            <span className="text-[var(--primary)] font-bold text-sm mb-2 block">
+            <span
+              className="text-[var(--primary)] font-bold text-md mb-2 block text-[#FEC908]"
+              style={{
+                fontFamily: "'Caveat', 'Segoe Script', cursive",
+                fontWeight: "bolder",
+              }}
+            >
               Ongoing Events
             </span>
             <h2 className="text-3xl md:text-4xl font-extrabold text-white leading-tight">
@@ -153,10 +159,7 @@ export default function Events() {
             </h2>
           </div>
           <Link href="/templates/template-1/events">
-            <a
-              className="inline-flex items-center gap-2 text-[#091F1B] font-bold px-6 py-3 rounded-full hover:brightness-110 transition-all text-sm shrink-0 mt-2"
-              style={{ background: secondaryColor }}
-            >
+            <a className="inline-flex items-center gap-2 text-[#091F1B] font-bold px-6 py-3 rounded-full hover:bg-[#00715D] hover:text-white transition-all text-sm shrink-0 mt-2 bg-[#FEC908]">
               <ArrowRight size={16} /> Explore More
             </a>
           </Link>

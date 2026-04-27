@@ -160,9 +160,6 @@ function WorldMapBg() {
 }
 
 export default function ImpactProfile() {
-  const primaryColor = "#FFCA08";
-  const secondaryColor = "#00715D";
-
   const sectionRef = useRef(null);
   const countRef = useRef(null);
   const [hasAnimated, setHasAnimated] = useState(false);
@@ -207,7 +204,6 @@ export default function ImpactProfile() {
 
   return (
     <section className="py-20">
-      <style>{`:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; }`}</style>
       <div className="container mx-auto px-4 max-w-7xl">
         {/* ── The Card ── */}
         <div

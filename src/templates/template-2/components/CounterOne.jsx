@@ -1,3 +1,6 @@
+import React, { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
+
 const STATS = [
   { num: "20", suffix: " billion", label: "People Helped", color: "#FBD9D7" },
   { num: "200", suffix: "+", label: "Country Impacted", color: "#C6F3EE" },
@@ -11,8 +14,42 @@ export default function CounterOne() {
   const bgColor = "#121d18";
   const secondaryBgColor = "#f9f9f9";
 
+  const sectionRef = useRef(null);
+  const countRefs = useRef([]);
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !hasAnimated) {
+          setHasAnimated(true);
+
+          STATS.forEach((stat, i) => {
+            const targetVal = parseFloat(stat.num);
+            const obj = { val: 0 };
+            
+            gsap.to(obj, {
+              val: targetVal,
+              duration: 2.5,
+              ease: "power2.out",
+              onUpdate() {
+                if (countRefs.current[i]) {
+                  countRefs.current[i].textContent = Math.round(obj.val).toString();
+                }
+              },
+            });
+          });
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, [hasAnimated]);
+
   return (
-    <section className="bg-white py-[60px] pb-[80px] border-t border-[#F0F0F0]">
+    <section ref={sectionRef} className="bg-white py-[60px] pb-[80px] border-t border-[#F0F0F0]">
       <style dangerouslySetInnerHTML={{ __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; --bg-color: ${bgColor}; --secondary-bg-color: ${secondaryBgColor}; }` }} />
       <div className="max-w-[1320px] mx-auto px-3">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0">
@@ -41,8 +78,11 @@ export default function CounterOne() {
 
               <div className="relative z-10">
                 <div className="flex items-baseline justify-center gap-0.5 mb-2">
-                  <span className="font-['Sora',sans-serif] text-[clamp(40px,5vw,60px)] text-[var(--bg-color)] leading-none">
-                    {stat.num}
+                  <span 
+                    ref={(el) => (countRefs.current[i] = el)}
+                    className="font-['Sora',sans-serif] text-[clamp(40px,5vw,60px)] text-[var(--bg-color)] leading-none"
+                  >
+                    0
                   </span>
                   <span
                     className={`font-['Sora',sans-serif]  ${

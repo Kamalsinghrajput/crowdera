@@ -3,9 +3,6 @@ import { gsap } from "gsap";
 import { CheckCircle2, Phone } from "lucide-react";
 
 const AboutUs = () => {
-  const primaryColor = "#FFCA08";
-  const secondaryColor = "#00715D";
-
   const containerRef = useRef(null);
   const shapesRef = useRef(null);
   const heartRef = useRef(null);

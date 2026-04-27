@@ -165,7 +165,7 @@ export default function Causes() {
       ? COURSES
       : COURSES.filter((c) => c.tabs.includes(activeTab));
 
-  const maxIndex = Math.max(0, filtered.length - 2);
+  const maxIndex = Math.max(0, filtered.length - 1);
 
   // Auto slide
   useEffect(() => {
@@ -192,18 +192,20 @@ export default function Causes() {
           __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; --bg-color: ${bgColor}; --secondary-bg-color: ${secondaryBgColor}; }`,
         }}
       />
-      <FloatingBird position="left" />
+      <div className="hidden lg:block">
+        <FloatingBird position="left" />
+      </div>
       <div className="max-w-[1320px] mx-auto px-3">
         <div className="grid grid-cols-1 lg:grid-cols-[380px_1fr] gap-12 lg:gap-16 items-start">
           {/* Left: Title + Tabs */}
           <div className="flex flex-col">
-            <div className="flex items-center gap-2 mb-4 justify-end">
+            <div className="flex items-center gap-2 mb-4 justify-start">
+              <div className="w-2 h-2 rounded-full bg-[var(--secondary)]" />
               <span className="text-[15px] italic text-[var(--bg-color)]">
                 Recent Causes
               </span>
-              <div className="w-2 h-2 rounded-full bg-[var(--secondary)]" />
             </div>
-            <h2 className="text-[clamp(32px,4vw,48px)] leading-[1.1] text-[var(--bg-color)] text-right mb-10">
+            <h2 className="text-[clamp(32px,4vw,48px)] leading-[1.1] text-[var(--bg-color)] text-left mb-10">
               Strengthening
               <br /> Communities
             </h2>
@@ -217,13 +219,12 @@ export default function Causes() {
                 >
                   <button
                     onClick={() => setActiveTab(tab)}
-                    className={`w-full flex items-center justify-end gap-3 py-4 text-right   text-[15px] transition-colors ${
+                    className={`w-full flex items-center justify-start gap-3 py-4 text-left text-[15px] transition-colors ${
                       activeTab === tab
                         ? "text-[var(--secondary)]"
                         : "text-[var(--bg-color)] hover:text-[var(--secondary)]"
                     }`}
                   >
-                    <span>{tab}</span>
                     <svg
                       width="16"
                       height="16"
@@ -234,13 +235,14 @@ export default function Causes() {
                     >
                       <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
+                    <span>{tab}</span>
                   </button>
                 </li>
               ))}
             </ul>
 
             {/* Carousel Navigation */}
-            <div className="flex items-center justify-end gap-3">
+            <div className="flex items-center justify-start gap-3">
               <button
                 onClick={handlePrev}
                 disabled={currentIndex === 0}
@@ -282,7 +284,7 @@ export default function Causes() {
               {filtered.map((c) => (
                 <div
                   key={c.id}
-                  className="w-[calc(50%-16px)] shrink-0 transition-transform duration-500 ease-in-out"
+                  className="w-full sm:w-[calc(50%-16px)] shrink-0 transition-transform duration-500 ease-in-out"
                   style={{
                     transform: `translateX(calc(-${currentIndex * 100}% - ${currentIndex * 32}px))`,
                   }}

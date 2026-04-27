@@ -70,7 +70,9 @@ export default function About() {
         overflow: "hidden",
       }}
     >
-      <FloatingBird position="right" />
+      <div className="hidden lg:block">
+        <FloatingBird position="right" />
+      </div>
       {/* Floating shape */}
       <div
         style={{
@@ -127,14 +129,7 @@ export default function About() {
           </h2>
         </div>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: 60,
-            alignItems: "start",
-          }}
-        >
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-[60px] items-start">
           {/* Left */}
           <div>
             <p
@@ -174,13 +169,7 @@ export default function About() {
 
           {/* Right */}
           <div>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: 30,
-              }}
-            >
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-[30px]">
               {/* Col 1: Two feature boxes */}
               <div
                 style={{ display: "flex", flexDirection: "column", gap: 30 }}
@@ -284,7 +273,7 @@ export default function About() {
                   }}
                 >
                   <img
-                    src="https://images.unsplash.com/photo-1494790108755-2616b612b47c?auto=format&fit=crop&w=100&q=80"
+                    src="https://randomuser.me/api/portraits/women/44.jpg"
                     alt="Client"
                     style={{
                       width: 56,
@@ -295,7 +284,7 @@ export default function About() {
                     }}
                   />
 
-                  <div>
+                  <div style={{ display: "flex", flexDirection: "column" }}>
                     <p
                       style={{
                         fontSize: 13,
@@ -305,21 +294,12 @@ export default function About() {
                     >
                       UX/UI Specialist
                     </p>
-                    <div style={{ marginTop: 6 }}>
-                      <svg
-                        width="80"
-                        height="24"
-                        viewBox="0 0 120 30"
-                        fill="none"
-                      >
-                        <path
-                          d="M5 20 Q20 5 35 18 Q50 31 65 15 Q80 -1 95 18 Q110 37 120 20"
-                          stroke="var(--t2-dark)"
-                          strokeWidth="2"
-                          fill="none"
-                          strokeLinecap="round"
-                        />
-                      </svg>
+                    <div style={{ marginTop: "2px", marginBottom: "4px" }}>
+                      <img
+                        src="/assets/template-2-signature.png"
+                        alt="Signature"
+                        style={{ width: 130, height: "auto", display: "block" }}
+                      />
                     </div>
                   </div>
                 </div>

@@ -171,7 +171,7 @@ export default function Navbar() {
             style={{ gap: 20 }}
           >
             {/* Left: Logo + Links */}
-            <div style={{ display: "flex", alignItems: "center", gap: 80 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "clamp(20px, 4vw, 80px)" }}>
               <a
                 href="#"
                 style={{
@@ -185,7 +185,7 @@ export default function Navbar() {
                     color: "#FFA415",
                     fontFamily: "Sora, sans-serif",
                     fontWeight: 800,
-                    fontSize: 28,
+                    fontSize: "clamp(20px, 5vw, 28px)",
                     letterSpacing: "0.02em",
                   }}
                 >
@@ -324,8 +324,9 @@ export default function Navbar() {
               </button>
 
               {/* Donation CTA */}
-              <a href="#" className="hidden sm:flex t2-btn t2-btn-secondary">
-                <span>Donate Now</span>
+              <div className="hidden lg:flex">
+                <a href="#" className="t2-btn t2-btn-secondary">
+                  <span>Donate Now</span>
                 <i>
                   <svg
                     width="18"
@@ -339,6 +340,7 @@ export default function Navbar() {
                   </svg>
                 </i>
               </a>
+              </div>
 
               {/* Overflow Hamburger for Desktop */}
               {hasOverflow && (
@@ -448,28 +450,33 @@ export default function Navbar() {
               )}
 
               {/* Mobile Hamburger */}
-              <button
-                className="lg:hidden"
-                onClick={() => setMobileOpen(true)}
-                style={{
-                  background: "transparent",
-                  border: "none",
-                  color: "#fff",
-                  cursor: "pointer",
-                  padding: 4,
-                }}
-              >
-                <svg
-                  width="28"
-                  height="28"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
+              <div className="flex lg:hidden">
+                <button
+                  onClick={() => setMobileOpen(true)}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    background: "transparent",
+                    border: "none",
+                    color: "#fff",
+                    cursor: "pointer",
+                    padding: 8,
+                    flexShrink: 0,
+                  }}
                 >
-                  <path d="M3 12h18M3 6h18M3 18h18" />
-                </svg>
-              </button>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                  >
+                    <path d="M3 12h18M3 6h18M3 18h18" />
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
         </nav>
@@ -599,6 +606,44 @@ export default function Navbar() {
                 </li>
               ))}
             </ul>
+
+            <div style={{ padding: "20px 25px 0", display: "flex", flexDirection: "column", gap: 10 }}>
+              <a
+                href="#"
+                style={{
+                  display: "block",
+                  background: "#FFA415",
+                  color: "#fff",
+                  padding: "12px 20px",
+                  fontSize: 15,
+                  fontWeight: 600,
+                  fontFamily: "Inter, sans-serif",
+                  textAlign: "center",
+                  textDecoration: "none",
+                  borderRadius: 4,
+                }}
+              >
+                Signup Now
+              </a>
+              <a
+                href="#"
+                className="sm:hidden"
+                style={{
+                  display: "block",
+                  border: "1px solid #FFA415",
+                  color: "#FFA415",
+                  padding: "12px 20px",
+                  fontSize: 15,
+                  fontWeight: 600,
+                  fontFamily: "Inter, sans-serif",
+                  textAlign: "center",
+                  textDecoration: "none",
+                  borderRadius: 4,
+                }}
+              >
+                Donate Now
+              </a>
+            </div>
 
             <div style={{ padding: "25px 25px 0" }}>
               <p

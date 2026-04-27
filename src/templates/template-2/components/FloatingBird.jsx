@@ -48,7 +48,7 @@ export default function FloatingBird({
   };
 
   return (
-    <div ref={birdRef} style={style}>
+    <div ref={birdRef} style={style} className="hidden lg:block">
       <img
         src="/assets/template-2-bird.svg"
         alt="Floating Bird Decoration"

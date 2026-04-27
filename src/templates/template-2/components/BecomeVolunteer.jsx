@@ -20,7 +20,7 @@ export default function BecomeVolunteer() {
       />
       <div className="grid grid-cols-1 md:grid-cols-2">
         {/* Panel 1 — Join Us Volunteer */}
-        <div className="relative min-h-[480px] overflow-hidden group">
+        <div className="relative min-h-[350px] md:min-h-[480px] overflow-hidden group">
           <div
             className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-105 grayscale"
             style={{
@@ -30,7 +30,7 @@ export default function BecomeVolunteer() {
           />
           <div className="absolute inset-0 bg-[#121D18]/75 transition-colors duration-500 group-hover:bg-[#121D18]/85" />
 
-          <div className="relative z-10 px-6 py-24 h-full flex flex-col items-center justify-center text-center">
+          <div className="relative z-10 px-6 py-16 md:py-24 h-full flex flex-col items-center justify-center text-center">
             <h3 className="font-['Inter'] font-bold text-[clamp(28px,3vw,36px)] text-white italic mb-4 leading-[1.3]">
               Join Us Volunteer
             </h3>
@@ -60,7 +60,7 @@ export default function BecomeVolunteer() {
         </div>
 
         {/* Panel 2 — Become Volunteer */}
-        <div className="relative min-h-[480px] overflow-hidden group">
+        <div className="relative min-h-[350px] md:min-h-[480px] overflow-hidden group">
           <div
             className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-105 grayscale"
             style={{
@@ -71,7 +71,7 @@ export default function BecomeVolunteer() {
           <div className="absolute inset-0 bg-black/40 z-[1]" />
           <div className="absolute inset-0 bg-[var(--primary)]/90 transition-colors duration-500 group-hover:bg-[var(--primary)]/95 mix-blend-multiply z-[2]" />
 
-          <div className="relative z-10 px-6 py-24 h-full flex flex-col items-center justify-center text-center">
+          <div className="relative z-10 px-6 py-16 md:py-24 h-full flex flex-col items-center justify-center text-center">
             <h3 className="font-['Inter'] font-bold text-[clamp(28px,3vw,36px)] text-white italic mb-4 leading-[1.3]">
               Become Volunteer
             </h3>

@@ -84,7 +84,7 @@ export default function Testimonial() {
   }, [active]);
 
   return (
-    <section className="relative py-[140px] overflow-hidden bg-[var(--bg-color)]">
+    <section className="relative py-20 md:py-[140px] overflow-hidden bg-[var(--bg-color)]">
       <style
         dangerouslySetInnerHTML={{
           __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; --bg-color: ${bgColor}; --secondary-bg-color: ${secondaryBgColor}; }`,

@@ -60,13 +60,7 @@ export default function SiteFooter() {
         }}
       >
         <div className="max-w-[1320px] mx-auto px-3">
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "4fr 2fr 3fr 3fr",
-              gap: 50,
-            }}
-          >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[4fr_2fr_3fr_3fr] gap-10 lg:gap-[50px]">
             {/* About widget */}
             <div>
               <div style={{ marginBottom: 24 }}>

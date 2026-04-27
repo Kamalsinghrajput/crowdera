@@ -140,9 +140,10 @@ export default function Hero() {
           height: "100%",
           display: "flex",
           alignItems: "center",
+          paddingTop: "clamp(80px, 12vh, 140px)",
         }}
       >
-        <div style={{ paddingLeft: "clamp(60px, 8vw, 120px)", maxWidth: 800 }}>
+        <div style={{ paddingLeft: "clamp(30px, 8vw, 120px)", maxWidth: 800 }}>
           <>
             {/* Subtitle */}
             <div

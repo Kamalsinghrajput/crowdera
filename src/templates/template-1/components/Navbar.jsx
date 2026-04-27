@@ -272,7 +272,7 @@ const Navbar = () => {
       <nav className="w-full bg-white shadow-md py-2.5">
         <div className="container mx-auto px-4 max-w-7xl flex items-center justify-between">
           {/* Logo */}
-          <Link href="/">
+          <Link href="/templates/template-1">
             <a className="flex items-center text-2xl font-extrabold text-[#122F2A]">
               <div className="w-9 h-9 rounded-full bg-[var(--primary)] mr-2 flex items-center justify-center flex-shrink-0">
                 <svg

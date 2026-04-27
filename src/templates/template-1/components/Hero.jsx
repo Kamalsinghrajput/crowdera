@@ -159,7 +159,7 @@ const Hero = () => {
               goPrev();
               if (autoplayRef.current) clearInterval(autoplayRef.current);
             }}
-            className="w-12 h-12 rounded-full bg-brand-dark/80 bg-[#122F2A] hover:bg-[#FEC908] text-white flex items-center justify-center shadow-lg transition-all hover:scale-105"
+            className="w-12 h-12 rounded-full bg-brand-dark/80 bg-[#122F2A] hover:bg-[#FEC908] text-white flex items-center justify-center shadow-lg transition-all hover:scale-105 hover:text-black"
           >
             <ArrowLeft size={18} />
           </button>
@@ -168,7 +168,7 @@ const Hero = () => {
               goNext();
               if (autoplayRef.current) clearInterval(autoplayRef.current);
             }}
-            className="w-12 h-12 rounded-full bg-[#FEC908] hover:bg-[#122F2A] hover:brightness-110 text-[#091F1B] flex items-center justify-center shadow-lg transition-all hover:scale-105"
+            className="w-12 h-12 rounded-full bg-[#FEC908] hover:bg-[#122F2A] hover:brightness-110 text-[#091F1B] flex items-center justify-center shadow-lg transition-all hover:scale-105 hover:text-white"
           >
             <ArrowRight size={18} />
           </button>
@@ -202,7 +202,7 @@ const Hero = () => {
 
             <div className="hero-btns flex flex-wrap gap-4 items-center">
               <Link href="#">
-                <a className="border-2 border-white text-white font-bold text-sm py-4 px-8 rounded-full hover:bg-white hover:text-[#091F1B] transition-all flex items-center group shadow-xl">
+                <a className="bg-[#122F2A] text-white font-bold text-sm py-4 px-8 rounded-full hover:bg-[#FEC908] hover:text-black transition-all flex items-center group shadow-xl">
                   Discover More
                   <ArrowUpRight
                     size={15}
@@ -211,7 +211,7 @@ const Hero = () => {
                 </a>
               </Link>
               <Link href="#">
-                <a className="bg-[var(--primary)] text-[#091F1B] font-bold text-sm py-4 px-8 rounded-full hover:brightness-95 transition-all flex items-center group shadow-xl">
+                <a className=" bg-[#FEC908] font-bold text-sm py-4 px-8 rounded-full hover:bg-[#122F2A] hover:text-white text-black transition-all flex items-center group shadow-xl">
                   Get A Quote
                   <ArrowUpRight
                     size={15}

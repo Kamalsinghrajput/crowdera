@@ -47,7 +47,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16">
           {/* Column 1 */}
           <div>
-            <Link href="/">
+            <Link href="/templates/template-1">
               <a className="text-3xl font-extrabold text-white flex items-center mb-6">
                 <span className="text-[var(--primary)] mr-1">Chari</span>fund.
               </a>

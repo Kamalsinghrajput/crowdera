@@ -17,6 +17,7 @@ import Events from "../../../src/templates/template-1/components/Events";
 export default function Template1() {
   return (
     <div className="bg-white min-h-screen font-sans">
+      <style>{`:root { --primary: #FFCA08; --secondary: #00715D; }`}</style>
       <Head>
         <title>Charifund | Template 1 - Charity &amp; Donation</title>
         <meta

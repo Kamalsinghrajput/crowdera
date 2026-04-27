@@ -169,7 +169,7 @@ export default function SponsorCarousel() {
           <button
             onClick={prev}
             aria-label="Previous sponsor"
-            className="w-9 h-9 rounded-full border-2 border-gray-200 hover:border-[#091F1B] flex items-center justify-center text-gray-400 hover:text-[#091F1B] hover:bg-[#091F1B] transition-all duration-200"
+            className="w-9 h-9 rounded-full border-2 border-gray-200 hover:border-[#091F1B] flex items-center justify-center text-gray-400 hover:text-white hover:bg-[#091F1B] transition-all duration-200"
           >
             <ChevronLeft size={16} />
           </button>

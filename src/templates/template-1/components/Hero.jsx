@@ -159,7 +159,7 @@ const Hero = () => {
               goPrev();
               if (autoplayRef.current) clearInterval(autoplayRef.current);
             }}
-            className="w-12 h-12 rounded-full bg-brand-dark/80 hover:bg-[#091F1B] text-white flex items-center justify-center shadow-lg transition-all hover:scale-105"
+            className="w-12 h-12 rounded-full bg-brand-dark/80 bg-[#122F2A] hover:bg-[#FEC908] text-white flex items-center justify-center shadow-lg transition-all hover:scale-105"
           >
             <ArrowLeft size={18} />
           </button>
@@ -168,7 +168,7 @@ const Hero = () => {
               goNext();
               if (autoplayRef.current) clearInterval(autoplayRef.current);
             }}
-            className="w-12 h-12 rounded-full bg-[var(--primary)] hover:brightness-110 text-[#091F1B] flex items-center justify-center shadow-lg transition-all hover:scale-105"
+            className="w-12 h-12 rounded-full bg-[#FEC908] hover:bg-[#122F2A] hover:brightness-110 text-[#091F1B] flex items-center justify-center shadow-lg transition-all hover:scale-105"
           >
             <ArrowRight size={18} />
           </button>

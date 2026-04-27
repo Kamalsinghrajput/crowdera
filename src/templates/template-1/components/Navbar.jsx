@@ -151,7 +151,7 @@ const Navbar = () => {
     <header ref={navRef} className="fixed w-full top-0 z-50">
       {/* ══════════ TOP BAR ══════════ */}
       {!isScrolled && (
-        <div className="bg-[#091F1B] text-white text-xs py-2.5 px-4">
+        <div className="bg-[#122F2A] text-white text-xs py-2.5 px-4">
           <div className="container mx-auto px-4 max-w-7xl flex flex-wrap md:flex-nowrap justify-between items-center gap-y-2">
             {/* Row 1 (mobile) / Left (desktop) — email */}
             <div className="flex items-center order-1">
@@ -221,7 +221,7 @@ const Navbar = () => {
                           setCurrency(c);
                           setCurrencyOpen(false);
                         }}
-                        className={`w-full text-left px-4 py-2 text-xs hover:bg-[var(--primary)] hover:text-[#091F1B] transition-colors ${currency === c ? "text-[var(--primary)] font-bold" : "text-white"}`}
+                        className={`w-full text-left px-4 py-2 text-xs  transition-colors ${currency === c ? " font-bold" : "text-white"}`}
                       >
                         {c}
                       </button>
@@ -255,7 +255,7 @@ const Navbar = () => {
                           setLanguage(l);
                           setLangOpen(false);
                         }}
-                        className={`w-full text-left px-4 py-2 text-xs hover:bg-[var(--primary)] hover:text-[#091F1B] transition-colors flex items-center gap-2 ${language.label === l.label ? "text-[var(--primary)] font-bold" : "text-white"}`}
+                        className={`w-full text-left px-4 py-2 text-xs  transition-colors flex items-center gap-2 ${language.label === l.label ? " font-bold" : "text-white"}`}
                       >
                         <span>{l.flag}</span> {l.label}
                       </button>
@@ -273,7 +273,7 @@ const Navbar = () => {
         <div className="container mx-auto px-4 max-w-7xl flex items-center justify-between">
           {/* Logo */}
           <Link href="/">
-            <a className="flex items-center text-2xl font-extrabold text-[#091F1B]">
+            <a className="flex items-center text-2xl font-extrabold text-[#122F2A]">
               <div className="w-9 h-9 rounded-full bg-[var(--primary)] mr-2 flex items-center justify-center flex-shrink-0">
                 <svg
                   width="20"

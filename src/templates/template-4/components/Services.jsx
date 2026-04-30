@@ -92,7 +92,7 @@ export default function Services() {
       </div>
 
       {/* Cards */}
-      <div className="max-w-[1320px] mx-auto px-4 grid grid-cols-3 gap-8">
+      <div className="max-w-[1320px] mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-16 md:gap-y-20 lg:gap-8 mt-12 lg:mt-0">
         {SERVICES.map((srv, i) => (
           <div
             key={i}

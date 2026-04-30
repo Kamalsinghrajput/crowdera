@@ -1,158 +1,148 @@
 import Head from "next/head";
-import Link from "next/link";
+import dynamic from "next/dynamic";
+import Navbar from "../../../src/templates/template-4/components/Navbar";
+import Hero from "../../../src/templates/template-4/components/Hero";
+import Services from "../../../src/templates/template-4/components/Services";
+import About from "../../../src/templates/template-4/components/About";
+import CounterOne from "../../../src/templates/template-4/components/CounterOne";
+import Causes from "../../../src/templates/template-4/components/Causes";
+import Event from "../../../src/templates/template-4/components/Event";
+import RecentProjects from "../../../src/templates/template-4/components/RecentProjects";
+import WorkingProcess from "../../../src/templates/template-4/components/WorkingProcess";
+import HelpUs from "../../../src/templates/template-4/components/HelpUs";
+import Team from "../../../src/templates/template-4/components/Team";
+import Testimonial from "../../../src/templates/template-4/components/Testimonial";
+import Faq from "../../../src/templates/template-4/components/Faq";
+import BLog from "../../../src/templates/template-4/components/Blog";
+import NewsLetter from "../../../src/templates/template-4/components/Newsletter";
+import SiteFooter from "../../../src/templates/template-4/components/SiteFooter";
+import ImpactProfile from "../../../src/templates/template-4/components/ImpactProfile";
+import TopDonors from "../../../src/templates/template-4/components/TopDonors";
 
-export default function Template4() {
+// ScrollToTop must be client-only to avoid hydration mismatch
+const ScrollToTop = dynamic(
+  () => import("../../../src/templates/template-2/components/ScrollToTop"),
+  { ssr: false },
+);
+
+export default function Template2() {
+  const buttonStyles = `
+    :root {
+      --primary: #007B39;
+      --secondary: #FFA415;
+      --bg-color: #121d18;
+      --secondary-bg-color: #f9f9f9;
+      --t2-primary: #007B39;
+      --t2-secondary: #FFA415;
+      --t2-dark: #121d18;
+      --t2-gray: #6c6e76;
+      --t2-light: #f9f9f9;
+    }
+    .t2-btn { display: inline-flex; align-items: center; gap: 0; text-decoration: none; border: none; background: none; cursor: pointer; padding: 0; }
+    .t2-btn span { position: relative; display: inline-flex; align-items: center; justify-content: center; height: 50px; padding: 0 35px; background-color: var(--bg-color, #121d18); color: white; border-radius: 25px; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; z-index: 1; overflow: hidden; transition: all 500ms ease; white-space: nowrap; }
+    .t2-btn span::before { content: ""; position: absolute; inset: 0; background-color: var(--secondary, #FFA415); transform-origin: left; transform: scaleX(0); transition: transform 0.8s cubic-bezier(0, 0.96, 0.58, 1.1); z-index: -1; }
+    .t2-btn:hover span::before { transform: scaleX(1); transition: transform 1.2s cubic-bezier(0, 0.96, 0.58, 1.1); }
+    .t2-btn:hover span { color: white; }
+    .t2-btn i { position: relative; display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; background-color: var(--bg-color, #121d18); border-radius: 50%; font-size: 18px; color: white; overflow: hidden; transition: all 500ms ease; z-index: 2; margin-left: -10px; }
+    .t2-btn i::after { content: ""; position: absolute; inset: 0; background-color: var(--secondary, #FFA415); transform-origin: right; transform: scaleX(0); transition: transform 0.8s cubic-bezier(0, 0.96, 0.58, 1.1); z-index: -1; }
+    .t2-btn:hover i::after { transform: scaleX(1); transition: transform 1.2s cubic-bezier(0, 0.96, 0.58, 1.1); }
+    .t2-btn:hover i { color: white; }
+    .t2-btn.t2-btn-primary span, .t2-btn.t2-btn-primary i { background-color: var(--primary, #007B39); }
+    .t2-btn.t2-btn-secondary span, .t2-btn.t2-btn-secondary i { background-color: var(--secondary, #FFA415); color: var(--bg-color, #121d18); }
+    .t2-btn.t2-btn-secondary span::before, .t2-btn.t2-btn-secondary i::after { background-color: var(--bg-color, #121d18); }
+    .t2-btn.t2-btn-secondary:hover span, .t2-btn.t2-btn-secondary:hover i { color: white; }
+    .t2-text-btn { display: inline-flex; align-items: center; font-size: 13px; color: var(--primary, #007B39); text-decoration: none; text-transform: uppercase; font-weight: 500; letter-spacing: 0.1em; transition: color 0.3s; }
+    .t2-text-btn:hover { color: var(--secondary, #FFA415); }
+    .t2-text-btn svg { transition: transform 0.3s; }
+    .t2-text-btn:hover svg { transform: translateX(5px); }
+  `;
+
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        background: "#0a0a0a",
-        display: "flex",
-        flexDirection: "column",
-        fontFamily: "Inter, sans-serif",
-      }}
-    >
+    <>
+      <style dangerouslySetInnerHTML={{ __html: buttonStyles }} />
       <Head>
-        <title>Charifund | Template 4 - Coming Soon</title>
-        <meta name="description" content="Template 4 is under construction." />
-        <link rel="icon" href="/favicon.ico" />
+        <title>Home One || Chioary - Crowdfunding & Charity</title>
+        <meta
+          name="description"
+          content="Chioary - A crowdfunding and charity agency empowering communities through compassionate action."
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        {/* Load fonts via standard link — moved to _document ideally but works here too */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@400;600;700;800&display=swap"
+          rel="stylesheet"
+        />
       </Head>
 
-      {/* Minimal placeholder header */}
-      <header
+      <div
         style={{
-          padding: "1.5rem 2rem",
-          borderBottom: "1px solid rgba(255,255,255,0.08)",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
+          position: "relative",
+          overflowX: "hidden",
+          background: "#fff",
         }}
       >
-        <span
-          style={{
-            color: "#f59e0b",
-            fontWeight: 900,
-            fontSize: "1.25rem",
-            letterSpacing: "-0.02em",
-          }}
-        >
-          CHARIFUND
-        </span>
-        <span
-          style={{
-            color: "rgba(255,255,255,0.3)",
-            fontSize: "0.75rem",
-            fontWeight: 600,
-            letterSpacing: "0.1em",
-            textTransform: "uppercase",
-          }}
-        >
-          Template 4
-        </span>
-      </header>
+        <Navbar />
+        <main>
+          <div id="hero">
+            <Hero />
+          </div>
+          <div id="services">
+            <Services />
+          </div>
 
-      {/* Coming soon body */}
-      <main
-        style={{
-          flex: 1,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          padding: "4rem 1.5rem",
-          textAlign: "center",
-        }}
-      >
-        <div
-          style={{
-            background: "rgba(245,158,11,0.12)",
-            border: "1px solid rgba(245,158,11,0.3)",
-            borderRadius: "9999px",
-            padding: "0.4rem 1.2rem",
-            marginBottom: "2rem",
-            display: "inline-block",
-          }}
-        >
-          <span
-            style={{
-              color: "#f59e0b",
-              fontSize: "0.75rem",
-              fontWeight: 700,
-              letterSpacing: "0.12em",
-              textTransform: "uppercase",
-            }}
-          >
-            Template {4}
-          </span>
-        </div>
-        <h1
-          style={{
-            fontSize: "clamp(3rem, 10vw, 6rem)",
-            fontWeight: 900,
-            color: "#ffffff",
-            lineHeight: 1,
-            marginBottom: "1.5rem",
-            letterSpacing: "-0.04em",
-          }}
-        >
-          Coming
-          <br />
-          Soon
-        </h1>
-        <p
-          style={{
-            color: "rgba(255,255,255,0.4)",
-            fontSize: "1.125rem",
-            maxWidth: "28rem",
-            marginBottom: "3rem",
-            lineHeight: 1.6,
-          }}
-        >
-          This template slot is ready. Add your components to{" "}
-          <code
-            style={{
-              color: "#f59e0b",
-              background: "rgba(245,158,11,0.1)",
-              borderRadius: "4px",
-              padding: "0.1em 0.4em",
-              fontSize: "0.875em",
-            }}
-          >
-            templates/template-4/components/
-          </code>{" "}
-          and start building.
-        </p>
-        <Link href="/" legacyBehavior>
-          <a
-            style={{
-              background: "#f59e0b",
-              color: "#0a0a0a",
-              fontWeight: 700,
-              padding: "1rem 2.5rem",
-              borderRadius: "9999px",
-              textDecoration: "none",
-              fontSize: "0.95rem",
-              display: "inline-block",
-              transition: "opacity 0.2s",
-            }}
-          >
-            ← Back to Templates
-          </a>
-        </Link>
-      </main>
+          <div id="working-process">
+            <WorkingProcess />
+          </div>
+          <div id="about">
+            <About />
+          </div>
+          <div id="impact">
+            <ImpactProfile />
+          </div>
+          <div id="counter">
+            <CounterOne />
+          </div>
+          <div id="events">
+            <Event />
+          </div>
+          <div id="causes">
+            <Causes />
+          </div>
+          <div id="testimonials">
+            <Testimonial />
+          </div>
+          <div id="recent-projects">
+            <RecentProjects />
+          </div>
+          <div id="help-us">
+            <HelpUs />
+          </div>
+          <div id="team">
+            <Team />
+          </div>
+          <div id="faq">
+            <Faq />
+          </div>
 
-      {/* Minimal placeholder footer */}
-      <footer
-        style={{
-          padding: "1.5rem 2rem",
-          borderTop: "1px solid rgba(255,255,255,0.08)",
-          textAlign: "center",
-          color: "rgba(255,255,255,0.2)",
-          fontSize: "0.8rem",
-        }}
-      >
-        Charifund — Template 4 placeholder footer
-      </footer>
-    </div>
+          <div id="top-donors">
+            <TopDonors />
+          </div>
+          <div id="blog">
+            <BLog />
+          </div>
+          <div id="newsletter">
+            <NewsLetter />
+          </div>
+        </main>
+        <SiteFooter />
+        <ScrollToTop />
+      </div>
+    </>
   );
 }

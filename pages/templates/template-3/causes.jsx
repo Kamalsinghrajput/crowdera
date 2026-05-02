@@ -1,13 +1,13 @@
 import Head from "next/head";
 import Navbar from "../../../src/templates/template-3/components/Navbar";
 import SiteFooter from "../../../src/templates/template-3/components/SiteFooter";
-import Team from "../../../src/templates/template-3/components/Team";
+import Causes from "../../../src/templates/template-3/components/Causes";
 
-export default function TeamPage() {
+export default function CausesPage() {
   return (
     <>
       <Head>
-        <title>Our Team || Chioary</title>
+        <title>Our Causes || Chioary</title>
       </Head>
       <div
         style={{
@@ -20,13 +20,13 @@ export default function TeamPage() {
         <main style={{ paddingTop: "50px" }}>
           <div className="bg-[#EBD3AF] py-[80px] text-center border-b border-[#E5E5E5]">
             <h1 className="text-[48px] text-[#121d18] font-bold">
-              All Team Members
+              All Recent Causes
             </h1>
             <p className="text-[#6c6e76] mt-4">
-              Meet the dedicated people behind our mission.
+              Discover the projects we are currently working on.
             </p>
           </div>
-          <Team isAllTeamPage={true} />
+          <Causes isAllCausesPage={true} />
         </main>
         <SiteFooter />
       </div>

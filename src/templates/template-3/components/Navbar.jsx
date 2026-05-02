@@ -99,8 +99,42 @@ export default function Navbar() {
     }
   };
 
+  const buttonStyles = `
+    :root {
+      --primary: #007B39;
+      --secondary: #FFA415;
+      --bg-color: #121d18;
+      --secondary-bg-color: #f9f9f9;
+      --t2-primary: #007B39;
+      --t2-secondary: #FFA415;
+      --t2-dark: #121d18;
+      --t2-gray: #6c6e76;
+      --t2-light: #f9f9f9;
+    }
+    .t2-btn { display: inline-flex; align-items: center; gap: 0; text-decoration: none; border: none; background: none; cursor: pointer; padding: 0; }
+    .t2-btn span { position: relative; display: inline-flex; align-items: center; justify-content: center; height: 50px; padding: 0 35px; background-color: var(--primary, #007B39); color: white; border-radius: 25px; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; z-index: 1; overflow: hidden; transition: all 500ms ease; white-space: nowrap; }
+    .t2-btn span::before { content: ""; position: absolute; inset: 0; background-color: var(--bg-color, #121d18); transform-origin: left; transform: scaleX(0); transition: transform 0.8s cubic-bezier(0, 0.96, 0.58, 1.1); z-index: -1; }
+    .t2-btn:hover span::before { transform: scaleX(1); transition: transform 1.2s cubic-bezier(0, 0.96, 0.58, 1.1); }
+    .t2-btn:hover span { color: white; }
+    .t2-btn i { position: relative; display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; background-color: var(--primary, #007B39); border-radius: 50%; font-size: 18px; color: white; overflow: hidden; transition: all 500ms ease; z-index: 2; margin-left: -10px; }
+    .t2-btn i::after { content: ""; position: absolute; inset: 0; background-color: var(--bg-color, #121d18); transform-origin: right; transform: scaleX(0); transition: transform 0.8s cubic-bezier(0, 0.96, 0.58, 1.1); z-index: -1; }
+    .t2-btn:hover i::after { transform: scaleX(1); transition: transform 1.2s cubic-bezier(0, 0.96, 0.58, 1.1); }
+    .t2-btn:hover i { color: white; }
+    .t2-btn.t2-btn-black span, .t2-btn.t2-btn-black i { background-color: var(--bg-color, #121d18); }
+    .t2-btn.t2-btn-black span::before, .t2-btn.t2-btn-black i::after { background-color: var(--secondary, #FFA415); }
+    .t2-btn.t2-btn-primary span, .t2-btn.t2-btn-primary i { background-color: var(--primary, #007B39); }
+    .t2-btn.t2-btn-secondary span, .t2-btn.t2-btn-secondary i { background-color: var(--secondary, #FFA415); color: var(--bg-color, #121d18); }
+    .t2-btn.t2-btn-secondary span::before, .t2-btn.t2-btn-secondary i::after { background-color: var(--bg-color, #121d18); }
+    .t2-btn.t2-btn-secondary:hover span, .t2-btn.t2-btn-secondary:hover i { color: white; }
+    .t2-text-btn { display: inline-flex; align-items: center; font-size: 13px; color: var(--primary, #007B39); text-decoration: none; text-transform: uppercase; font-weight: 500; letter-spacing: 0.1em; transition: color 0.3s; }
+    .t2-text-btn:hover { color: var(--secondary, #FFA415); }
+    .t2-text-btn svg { transition: transform 0.3s; }
+    .t2-text-btn:hover svg { transform: translateX(5px); }
+  `;
+
   return (
     <>
+      <style dangerouslySetInnerHTML={{ __html: buttonStyles }} />
       <header
         style={{
           position: "fixed",
@@ -114,20 +148,32 @@ export default function Navbar() {
         {/* Main Nav */}
         <nav
           style={{
-            background: scrolled ? "#EBD3AF" : "transparent",
-            boxShadow: scrolled ? "0 4px 30px rgba(0,0,0,0.08)" : "none",
+            background: scrolled || isSubpage ? "#EBD3AF" : "transparent",
+            boxShadow:
+              scrolled || isSubpage ? "0 4px 30px rgba(0,0,0,0.08)" : "none",
             transition: "background 0.4s ease, box-shadow 0.4s ease",
-            padding: "20px",
           }}
         >
           <div
-            className="max-w-[1320px] mx-auto px-8 flex items-center justify-between"
+            className="max-w-[1320px] mx-auto px-4 lg:px-8 flex items-center justify-between"
             style={{ gap: 20 }}
           >
             {/* Left: Logo + Links */}
-            <div style={{ display: "flex", alignItems: "center", gap: "clamp(20px, 4vw, 80px)" }}>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "clamp(20px, 4vw, 80px)",
+              }}
+            >
               <Link href="/templates/template-3">
-                <a style={{ padding: "14px 0", display: "block", textDecoration: "none" }}>
+                <a
+                  style={{
+                    padding: "14px 0",
+                    display: "block",
+                    textDecoration: "none",
+                  }}
+                >
                   <span
                     style={{
                       color: "#121D18",
@@ -143,9 +189,16 @@ export default function Navbar() {
               </Link>
 
               {/* Desktop Main Links */}
-              <ul className="hidden lg:flex" style={{ listStyle: "none", margin: 0, padding: 0, gap: 40 }}>
+              <ul
+                className="hidden lg:flex"
+                style={{ listStyle: "none", margin: 0, padding: 0, gap: 40 }}
+              >
                 {mainLinks.map((item) => (
-                  <li key={item.label} className="group t3-nav-item" style={{ position: "relative", cursor: "pointer" }}>
+                  <li
+                    key={item.label}
+                    className="group t3-nav-item"
+                    style={{ position: "relative", cursor: "pointer" }}
+                  >
                     <a
                       href={item.href}
                       onClick={(e) => scrollTo(e, item.href)}
@@ -161,10 +214,25 @@ export default function Navbar() {
                         textDecoration: "none",
                       }}
                     >
-                      <span style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                      <span
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: 6,
+                        }}
+                      >
                         {item.label}
                         {item.subItems && (
-                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" className="group-hover:rotate-180" style={{ transition: "transform 0.3s" }}>
+                          <svg
+                            width="12"
+                            height="12"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="3"
+                            className="group-hover:rotate-180"
+                            style={{ transition: "transform 0.3s" }}
+                          >
                             <path d="M6 9l6 6 6-6" />
                           </svg>
                         )}
@@ -188,7 +256,11 @@ export default function Navbar() {
                         }}
                       >
                         {item.subItems.map((sub) => (
-                          <div key={sub.label} className="t3-submenu-item" style={{ margin: "2px 8px", borderRadius: 6 }}>
+                          <div
+                            key={sub.label}
+                            className="t3-submenu-item"
+                            style={{ margin: "2px 8px", borderRadius: 6 }}
+                          >
                             <a
                               href={sub.href}
                               onClick={(e) => scrollTo(e, sub.href)}
@@ -217,11 +289,24 @@ export default function Navbar() {
             <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
               {/* Donation CTA */}
               <div className="hidden lg:flex">
-                <a href="#donate" onClick={(e) => scrollTo(e, "#donate")} className="t2-btn" style={{ textDecoration: "none" }}>
+                <a
+                  href="#donate"
+                  onClick={(e) => scrollTo(e, "#donate")}
+                  className="t2-btn inline-flex"
+                  style={{ textDecoration: "none" }}
+                >
                   <span>Donate Now</span>
                   <i>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M7 17L17 7M17 7H7M17 7v10" />
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      className="-rotate-45"
+                    >
+                      <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
                   </i>
                 </a>
@@ -247,11 +332,25 @@ export default function Navbar() {
                     }}
                   >
                     {overflowOpen ? (
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      >
                         <path d="M18 6L6 18M6 6l12 12" />
                       </svg>
                     ) : (
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      >
                         <path d="M3 12h18M3 6h18M3 18h18" />
                       </svg>
                     )}
@@ -275,7 +374,11 @@ export default function Navbar() {
                       }}
                     >
                       {overflowLinks.map((link) => (
-                        <div key={link.label} className="t3-submenu-item" style={{ margin: "2px 8px", borderRadius: 6 }}>
+                        <div
+                          key={link.label}
+                          className="t3-submenu-item"
+                          style={{ margin: "2px 8px", borderRadius: 6 }}
+                        >
                           <a
                             href={link.href}
                             onClick={(e) => scrollTo(e, link.href)}
@@ -314,7 +417,14 @@ export default function Navbar() {
                     flexShrink: 0,
                   }}
                 >
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                  >
                     <path d="M3 12h18M3 6h18M3 18h18" />
                   </svg>
                 </button>
@@ -328,7 +438,11 @@ export default function Navbar() {
       {mobileOpen && (
         <div style={{ position: "fixed", inset: 0, zIndex: 9999 }}>
           <div
-            style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.6)" }}
+            style={{
+              position: "absolute",
+              inset: 0,
+              background: "rgba(0,0,0,0.6)",
+            }}
             onClick={() => setMobileOpen(false)}
           />
           <div
@@ -342,17 +456,46 @@ export default function Navbar() {
               overflow: "auto",
               padding: "30px 0",
               boxShadow: "4px 0 30px rgba(0,0,0,0.4)",
+              animation:
+                "slideInLeft 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards",
             }}
           >
-            <div style={{ padding: "0 25px 20px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-              <span style={{ color: "#FFA415", fontFamily: "Sora, sans-serif", fontWeight: 800, fontSize: 22 }}>
+            <div
+              style={{
+                padding: "0 25px 20px",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
+              <span
+                style={{
+                  color: "#FFA415",
+                  fontFamily: "Sora, sans-serif",
+                  fontWeight: 800,
+                  fontSize: 22,
+                }}
+              >
                 CHIOARY
               </span>
               <button
                 onClick={() => setMobileOpen(false)}
-                style={{ background: "transparent", border: "none", color: "#fff", cursor: "pointer", fontSize: 22 }}
+                style={{
+                  background: "transparent",
+                  border: "none",
+                  color: "#fff",
+                  cursor: "pointer",
+                  fontSize: 22,
+                }}
               >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
                   <path d="M18 6L6 18M6 6l12 12" />
                 </svg>
               </button>
@@ -360,7 +503,10 @@ export default function Navbar() {
 
             <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
               {NAV_ITEMS.map((item) => (
-                <li key={item.label} style={{ borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
+                <li
+                  key={item.label}
+                  style={{ borderBottom: "1px solid rgba(255,255,255,0.1)" }}
+                >
                   <a
                     href={item.href}
                     onClick={(e) => scrollTo(e, item.href)}
@@ -376,17 +522,36 @@ export default function Navbar() {
                       textDecoration: "none",
                     }}
                   >
-                    <span style={{ display: "flex", justifyContent: "space-between", alignItems: "center", width: "100%" }}>
+                    <span
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        width: "100%",
+                      }}
+                    >
                       <span>{item.label}</span>
                       {item.subItems && (
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <svg
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                        >
                           <path d="M6 9l6 6 6-6" />
                         </svg>
                       )}
                     </span>
                   </a>
                   {item.subItems && (
-                    <div style={{ background: "rgba(0,0,0,0.2)", padding: "10px 0" }}>
+                    <div
+                      style={{
+                        background: "rgba(0,0,0,0.2)",
+                        padding: "10px 0",
+                      }}
+                    >
                       {item.subItems.map((sub) => (
                         <a
                           key={sub.label}
@@ -410,7 +575,14 @@ export default function Navbar() {
               ))}
             </ul>
 
-            <div style={{ padding: "20px 25px 0", display: "flex", flexDirection: "column", gap: 10 }}>
+            <div
+              style={{
+                padding: "20px 25px 0",
+                display: "flex",
+                flexDirection: "column",
+                gap: 10,
+              }}
+            >
               <a
                 href="#"
                 style={{
@@ -449,8 +621,23 @@ export default function Navbar() {
             </div>
 
             <div style={{ padding: "25px 25px 0" }}>
-              <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 13, fontFamily: "Inter, sans-serif", marginBottom: 8 }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ marginRight: 6, verticalAlign: "middle" }}>
+              <p
+                style={{
+                  color: "rgba(255,255,255,0.5)",
+                  fontSize: 13,
+                  fontFamily: "Inter, sans-serif",
+                  marginBottom: 8,
+                }}
+              >
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  style={{ marginRight: 6, verticalAlign: "middle" }}
+                >
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                   <polyline points="22,6 12,13 2,6" />
                 </svg>
@@ -461,16 +648,24 @@ export default function Navbar() {
         </div>
       )}
 
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
         @keyframes fadeDown {
           from { opacity: 0; transform: translateY(-10px); }
           to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideInLeft {
+          from { transform: translateX(-100%); }
+          to { transform: translateX(0); }
         }
         .t3-navlink { transition: color 0.3s; }
         .t3-navlink:hover { color: #007B39 !important; }
         .t3-submenu-item:hover { background: rgba(0,123,57,0.06); }
         .t3-submenu-item:hover a { color: #007B39 !important; }
-      ` }} />
+      `,
+        }}
+      />
     </>
   );
 }

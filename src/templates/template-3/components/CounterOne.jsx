@@ -9,11 +9,6 @@ const STATS = [
 ];
 
 export default function CounterOne() {
-  const primaryColor = "#007B39";
-  const secondaryColor = "#FFA415";
-  const bgColor = "#007B39";
-  const secondaryBgColor = "#f9f9f9";
-
   const sectionRef = useRef(null);
   const countRefs = useRef([]);
   const [hasAnimated, setHasAnimated] = useState(false);
@@ -31,21 +26,23 @@ export default function CounterOne() {
           STATS.forEach((stat, i) => {
             const targetVal = parseFloat(stat.num);
             const obj = { val: 0 };
-            
+
             gsap.to(obj, {
               val: targetVal,
               duration: 2.5,
               ease: "power2.out",
               onUpdate() {
                 if (countRefs.current[i]) {
-                  countRefs.current[i].textContent = Math.round(obj.val).toString();
+                  countRefs.current[i].textContent = Math.round(
+                    obj.val,
+                  ).toString();
                 }
               },
             });
           });
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
 
     if (sectionRef.current) observer.observe(sectionRef.current);
@@ -53,8 +50,10 @@ export default function CounterOne() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-white py-[60px] pb-[80px] border-t border-[#F0F0F0]">
-      <style dangerouslySetInnerHTML={{ __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; --bg-color: ${bgColor}; --secondary-bg-color: ${secondaryBgColor}; }` }} />
+    <section
+      ref={sectionRef}
+      className="bg-white py-[60px] pb-[80px] border-t border-[#F0F0F0]"
+    >
       <div className="max-w-[1320px] mx-auto px-3">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0">
           {STATS.map((stat, i) => (
@@ -82,11 +81,11 @@ export default function CounterOne() {
 
               <div className="relative z-10">
                 <div className="flex items-baseline justify-center gap-0.5 mb-2">
-                  <span 
+                  <span
                     ref={(el) => (countRefs.current[i] = el)}
                     className="font-['Sora',sans-serif] text-[clamp(40px,5vw,60px)] text-[var(--bg-color)] leading-none"
                   >
-                    0
+                    {hasAnimated ? stat.num : "0"}
                   </span>
                   <span
                     className={`font-['Sora',sans-serif]  ${

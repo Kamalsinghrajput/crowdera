@@ -55,7 +55,15 @@ export default function SiteFooter() {
                 type="submit"
                 className="absolute right-0 top-0 bottom-0 px-4 bg-[#007B39] text-white rounded-r-[5px] hover:bg-[#FFA415] transition-colors flex items-center justify-center"
               >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="rotate-45">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  className="rotate-45"
+                >
                   <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
               </button>
@@ -80,9 +88,7 @@ export default function SiteFooter() {
 
           {/* Col 3: Services */}
           <div>
-            <h3 className="text-[22px] font-bold mb-6 text-white">
-              Services
-            </h3>
+            <h3 className="text-[22px] font-bold mb-6 text-white">Services</h3>
             <ul className="space-y-4">
               {services.map((link) => (
                 <li key={link}>
@@ -102,7 +108,15 @@ export default function SiteFooter() {
             <ul className="space-y-5">
               <li className="flex items-start gap-4 group cursor-pointer">
                 <div className="w-[40px] h-[40px] rounded-full bg-white/10 flex items-center justify-center shrink-0 group-hover:bg-[#FFA415] transition-colors duration-300">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-white">
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    className="text-white"
+                  >
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
                     <circle cx="12" cy="10" r="3" />
                   </svg>
@@ -113,17 +127,31 @@ export default function SiteFooter() {
               </li>
               <li className="flex items-center gap-4 group cursor-pointer">
                 <div className="w-[40px] h-[40px] rounded-full bg-white/10 flex items-center justify-center shrink-0 group-hover:bg-[#FFA415] transition-colors duration-300">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-white">
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    className="text-white"
+                  >
                     <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
                   </svg>
                 </div>
-                <div className="text-white/70 text-[15px]">
-                  (219) 555-0114
-                </div>
+                <div className="text-white/70 text-[15px]">(219) 555-0114</div>
               </li>
               <li className="flex items-center gap-4 group cursor-pointer">
                 <div className="w-[40px] h-[40px] rounded-full bg-white/10 flex items-center justify-center shrink-0 group-hover:bg-[#FFA415] transition-colors duration-300">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-white">
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    className="text-white"
+                  >
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                     <polyline points="22,6 12,13 2,6" />
                   </svg>

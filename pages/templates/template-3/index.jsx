@@ -8,7 +8,6 @@ import About from "../../../src/templates/template-3/components/About";
 import CounterOne from "../../../src/templates/template-3/components/CounterOne";
 import Causes from "../../../src/templates/template-3/components/Causes";
 import Event from "../../../src/templates/template-3/components/Event";
-import HelpUs from "../../../src/templates/template-3/components/HelpUs";
 import Team from "../../../src/templates/template-3/components/Team";
 import Testimonial from "../../../src/templates/template-3/components/Testimonial";
 import Faq from "../../../src/templates/template-3/components/Faq";
@@ -27,42 +26,8 @@ const ScrollToTop = dynamic(
 );
 
 export default function Template2() {
-  const buttonStyles = `
-    :root {
-      --primary: #007B39;
-      --secondary: #FFA415;
-      --bg-color: #121d18;
-      --secondary-bg-color: #f9f9f9;
-      --t2-primary: #007B39;
-      --t2-secondary: #FFA415;
-      --t2-dark: #121d18;
-      --t2-gray: #6c6e76;
-      --t2-light: #f9f9f9;
-    }
-    .t2-btn { display: inline-flex; align-items: center; gap: 0; text-decoration: none; border: none; background: none; cursor: pointer; padding: 0; }
-    .t2-btn span { position: relative; display: inline-flex; align-items: center; justify-content: center; height: 50px; padding: 0 35px; background-color: var(--primary, #007B39); color: white; border-radius: 25px; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; z-index: 1; overflow: hidden; transition: all 500ms ease; white-space: nowrap; }
-    .t2-btn span::before { content: ""; position: absolute; inset: 0; background-color: var(--bg-color, #121d18); transform-origin: left; transform: scaleX(0); transition: transform 0.8s cubic-bezier(0, 0.96, 0.58, 1.1); z-index: -1; }
-    .t2-btn:hover span::before { transform: scaleX(1); transition: transform 1.2s cubic-bezier(0, 0.96, 0.58, 1.1); }
-    .t2-btn:hover span { color: white; }
-    .t2-btn i { position: relative; display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; background-color: var(--primary, #007B39); border-radius: 50%; font-size: 18px; color: white; overflow: hidden; transition: all 500ms ease; z-index: 2; margin-left: -10px; }
-    .t2-btn i::after { content: ""; position: absolute; inset: 0; background-color: var(--bg-color, #121d18); transform-origin: right; transform: scaleX(0); transition: transform 0.8s cubic-bezier(0, 0.96, 0.58, 1.1); z-index: -1; }
-    .t2-btn:hover i::after { transform: scaleX(1); transition: transform 1.2s cubic-bezier(0, 0.96, 0.58, 1.1); }
-    .t2-btn:hover i { color: white; }
-    .t2-btn.t2-btn-black span, .t2-btn.t2-btn-black i { background-color: var(--bg-color, #121d18); }
-    .t2-btn.t2-btn-black span::before, .t2-btn.t2-btn-black i::after { background-color: var(--secondary, #FFA415); }
-    .t2-btn.t2-btn-primary span, .t2-btn.t2-btn-primary i { background-color: var(--primary, #007B39); }
-    .t2-btn.t2-btn-secondary span, .t2-btn.t2-btn-secondary i { background-color: var(--secondary, #FFA415); color: var(--bg-color, #121d18); }
-    .t2-btn.t2-btn-secondary span::before, .t2-btn.t2-btn-secondary i::after { background-color: var(--bg-color, #121d18); }
-    .t2-btn.t2-btn-secondary:hover span, .t2-btn.t2-btn-secondary:hover i { color: white; }
-    .t2-text-btn { display: inline-flex; align-items: center; font-size: 13px; color: var(--primary, #007B39); text-decoration: none; text-transform: uppercase; font-weight: 500; letter-spacing: 0.1em; transition: color 0.3s; }
-    .t2-text-btn:hover { color: var(--secondary, #FFA415); }
-    .t2-text-btn svg { transition: transform 0.3s; }
-    .t2-text-btn:hover svg { transform: translateX(5px); }
-  `;
-
   return (
     <>
-      <style dangerouslySetInnerHTML={{ __html: buttonStyles }} />
       <Head>
         <title>Home One || Chioary - Crowdfunding & Charity</title>
         <meta
@@ -117,20 +82,25 @@ export default function Template2() {
           <div id="causes">
             <Causes />
           </div>
-          <div id="testimonials"><Testimonial /></div>
+          <div id="testimonials">
+            <Testimonial />
+          </div>
 
-          <div id="help-us"><HelpUs /></div>
-          <div id="team"><Team /></div>
+          <div id="team">
+            <Team />
+          </div>
           <div id="faq">
             <JoinUsVolunteer />
             <Faq />
-      <GetInTouch />
+            <GetInTouch />
           </div>
 
           <div id="top-donors">
             <TopDonors />
           </div>
-          <div id="blog"><BLog /></div>
+          <div id="blog">
+            <BLog />
+          </div>
           <div id="newsletter">
             <NewsLetter />
           </div>
@@ -141,6 +111,3 @@ export default function Template2() {
     </>
   );
 }
-
-
-

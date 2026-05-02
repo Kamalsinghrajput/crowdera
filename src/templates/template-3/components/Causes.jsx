@@ -3,7 +3,7 @@ import { useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 
-const COURSES = [
+const causes = [
   {
     id: 1,
     title: "Well Construction And Purification Projects.",
@@ -77,11 +77,10 @@ const COURSES = [
 ];
 
 const GAP = 28; // px gap between cards
-const VISIBLE = 3; // cards shown at once
 const AUTO_MS = 3500; // auto-advance interval
-const TOTAL = COURSES.length;
+const TOTAL = causes.length;
 
-export default function Causes() {
+export default function Causes({ isAllCausesPage }) {
   const trackRef = useRef(null);
   const vpRef = useRef(null);
   const dotRefs = useRef([]);
@@ -102,29 +101,33 @@ export default function Causes() {
   /* ── compute card width from container ── */
   const measure = useCallback(() => {
     if (!vpRef.current) return;
-    const vpW = vpRef.current.offsetWidth;
-    const cw = (vpW - (VISIBLE - 1) * GAP) / VISIBLE;
-    cardWRef.current = cw;
+    const viewportWidth = vpRef.current.offsetWidth;
+    // Calculate visible cards dynamically
+    const views = viewportWidth < 768 ? 1 : viewportWidth < 1024 ? 2 : 3;
+    const cardWidth = (viewportWidth - (views - 1) * GAP) / views;
+    cardWRef.current = cardWidth;
 
     // Directly size every card in the DOM
     if (trackRef.current) {
-      trackRef.current.querySelectorAll(".cause-card").forEach((el) => {
-        el.style.width = cw + "px";
+      trackRef.current.querySelectorAll(".cause-card").forEach((element) => {
+        element.style.width = cardWidth + "px";
       });
       // Re-snap to active position instantly (no animation)
-      gsap.set(trackRef.current, { x: -(activeRef.current * (cw + GAP)) });
+      gsap.set(trackRef.current, {
+        x: -(activeRef.current * (cardWidth + GAP)),
+      });
     }
   }, []);
 
   /* ── slide to logical index ── */
   const moveTo = useCallback(
-    (idx) => {
-      const c = ((idx % TOTAL) + TOTAL) % TOTAL;
-      activeRef.current = c;
-      paintDots(c);
+    (rawIndex) => {
+      const targetIndex = ((rawIndex % TOTAL) + TOTAL) % TOTAL;
+      activeRef.current = targetIndex;
+      paintDots(targetIndex);
       if (trackRef.current && cardWRef.current > 0) {
         gsap.to(trackRef.current, {
-          x: -(c * (cardWRef.current + GAP)),
+          x: -(targetIndex * (cardWRef.current + GAP)),
           duration: 0.55,
           ease: "power3.inOut",
         });
@@ -175,9 +178,9 @@ export default function Causes() {
   };
 
   /* ── For seamless wrap we use TOTAL duplicate cards so the last slide
-        can show VISIBLE=3 full cards. The track holds 2×TOTAL items so
+        can show up to 3 full cards. The track holds 2×TOTAL items so
         the GSAP position never goes negative and never overflows. ── */
-  const trackCards = [...COURSES, ...COURSES];
+  const trackCards = [...causes, ...causes];
 
   return (
     <section id="causes" style={{ background: "#f7f4ee", padding: "110px 0" }}>
@@ -225,36 +228,14 @@ export default function Causes() {
           </h2>
         </div>
 
-        {/* ── Carousel Viewport ── */}
-        <div
-          ref={vpRef}
-          style={{ overflow: "hidden", marginBottom: 48, cursor: "grab" }}
-          onMouseEnter={() => {
-            isPausedRef.current = true;
-          }}
-          onMouseLeave={() => {
-            isPausedRef.current = false;
-          }}
-        >
-          {/* Track – contains 2× cards for seamless looping */}
-          <div
-            ref={trackRef}
-            style={{ display: "flex", gap: GAP, willChange: "transform" }}
-          >
-            {trackCards.map((course, idx) => (
+        {/* ── Conditional Render: Grid vs Carousel ── */}
+        {isAllCausesPage ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[28px] pb-16">
+            {causes.map((course, idx) => (
               <div
                 key={idx}
-                className="cause-card"
+                className="cause-card flex flex-col bg-white rounded-[16px] overflow-hidden border border-[#ebebeb]"
                 style={{
-                  /* width is set imperatively by measure() */
-                  width: "calc(33.333% - 19px)",
-                  flexShrink: 0,
-                  background: "#fff",
-                  borderRadius: 16,
-                  overflow: "hidden",
-                  border: "1px solid #ebebeb",
-                  display: "flex",
-                  flexDirection: "column",
                   transition: "box-shadow 0.3s ease, transform 0.3s ease",
                 }}
                 onMouseEnter={(e) => {
@@ -416,8 +397,9 @@ export default function Causes() {
                           fill="none"
                           stroke="currentColor"
                           strokeWidth="2.5"
+                          className="-rotate-45"
                         >
-                          <path d="M7 17L17 7M17 7H7M17 7v10" />
+                          <path d="M5 12h14M12 5l7 7-7 7" />
                         </svg>
                       </i>
                     </a>
@@ -426,152 +408,356 @@ export default function Causes() {
               </div>
             ))}
           </div>
-        </div>
-
-        {/* ── Controls: Prev / Dots / Next + View All ── */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            flexWrap: "wrap",
-            gap: 24,
-          }}
-        >
-          {/* Prev / Dots / Next */}
-          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-            {/* Prev button */}
-            <button
-              onClick={handlePrev}
-              style={{
-                width: 46,
-                height: 46,
-                borderRadius: "50%",
-                border: "1.5px solid #121D18",
-                background: "transparent",
-                cursor: "pointer",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                transition: "all 0.25s",
-                flexShrink: 0,
+        ) : (
+          <>
+            {/* ── Carousel Viewport ── */}
+            <div
+              ref={vpRef}
+              style={{ overflow: "hidden", marginBottom: 48, cursor: "grab" }}
+              onMouseEnter={() => {
+                isPausedRef.current = true;
               }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = "#007B39";
-                e.currentTarget.style.borderColor = "#007B39";
-                e.currentTarget.style.color = "#fff";
+              onMouseLeave={() => {
+                isPausedRef.current = false;
               }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = "transparent";
-                e.currentTarget.style.borderColor = "#121D18";
-                e.currentTarget.style.color = "#121D18";
-              }}
-              aria-label="Previous"
             >
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
+              {/* Track – contains 2× cards for seamless looping */}
+              <div
+                ref={trackRef}
+                style={{ display: "flex", gap: GAP, willChange: "transform" }}
               >
-                <path d="M19 12H5M12 19l-7-7 7-7" />
-              </svg>
-            </button>
+                {trackCards.map((course, idx) => (
+                  <div
+                    key={idx}
+                    className="cause-card flex flex-col bg-white rounded-[16px] overflow-hidden border border-[#ebebeb]"
+                    style={{
+                      /* width is set imperatively by measure() */
+                      width: "calc(33.333% - 19px)",
+                      flexShrink: 0,
+                      transition: "box-shadow 0.3s ease, transform 0.3s ease",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.boxShadow =
+                        "0 20px 60px rgba(0,0,0,0.08)";
+                      e.currentTarget.style.transform = "translateY(-4px)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.boxShadow = "none";
+                      e.currentTarget.style.transform = "translateY(0)";
+                    }}
+                  >
+                    {/* Image */}
+                    <div
+                      style={{
+                        position: "relative",
+                        height: 220,
+                        flexShrink: 0,
+                      }}
+                    >
+                      <Image
+                        src={course.img}
+                        alt={course.title}
+                        layout="fill"
+                        objectFit="cover"
+                      />
+                      <div
+                        style={{
+                          position: "absolute",
+                          bottom: 16,
+                          left: 16,
+                          background: "#FFA415",
+                          color: "#fff",
+                          padding: "5px 14px",
+                          borderRadius: 50,
+                          fontSize: 12,
+                          fontWeight: 600,
+                          letterSpacing: "0.03em",
+                        }}
+                      >
+                        {course.tag}
+                      </div>
+                    </div>
 
-            {/* Dots — imperatively styled, NO state */}
-            <div style={{ display: "flex", gap: 6 }}>
-              {COURSES.map((_, i) => (
-                <button
-                  key={i}
-                  ref={(el) => {
-                    dotRefs.current[i] = el;
-                  }}
-                  onClick={() => {
-                    isPausedRef.current = true;
-                    moveTo(i);
-                    setTimeout(() => {
-                      isPausedRef.current = false;
-                    }, 4000);
-                  }}
-                  style={{
-                    height: 8,
-                    width: 8,
-                    borderRadius: 99,
-                    border: "none",
-                    cursor: "pointer",
-                    background: "#D1D5DB",
-                    padding: 0,
-                    transition: "all 0.3s",
-                  }}
-                  aria-label={`Slide ${i + 1}`}
-                />
-              ))}
+                    {/* Content */}
+                    <div
+                      style={{
+                        padding: "24px 24px 28px",
+                        flex: 1,
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: 12,
+                      }}
+                    >
+                      <h3
+                        style={{
+                          fontSize: 18,
+                          fontWeight: 700,
+                          color: "#121D18",
+                          margin: 0,
+                          lineHeight: 1.4,
+                        }}
+                      >
+                        {course.title}
+                      </h3>
+                      <p
+                        style={{
+                          fontSize: 14,
+                          color: "#6F767E",
+                          lineHeight: 1.7,
+                          margin: 0,
+                        }}
+                      >
+                        {course.text}
+                      </p>
+
+                      {/* Raised / Goal */}
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "flex-end",
+                          marginTop: 8,
+                        }}
+                      >
+                        <div>
+                          <span
+                            style={{
+                              fontSize: 17,
+                              fontWeight: 700,
+                              color: "#121D18",
+                            }}
+                          >
+                            {course.raised}
+                          </span>{" "}
+                          <span style={{ fontSize: 12, color: "#9CA3AF" }}>
+                            Raised
+                          </span>
+                        </div>
+                        <div>
+                          <span
+                            style={{
+                              fontSize: 17,
+                              fontWeight: 700,
+                              color: "#121D18",
+                            }}
+                          >
+                            {course.goal}
+                          </span>{" "}
+                          <span style={{ fontSize: 12, color: "#9CA3AF" }}>
+                            Goal
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Progress bar */}
+                      <div style={{ position: "relative" }}>
+                        <div
+                          style={{
+                            width: "100%",
+                            height: 6,
+                            background: "#f0f0f0",
+                            borderRadius: 99,
+                            overflow: "hidden",
+                          }}
+                        >
+                          <div
+                            style={{
+                              height: "100%",
+                              width: course.percent + "%",
+                              background: "#007B39",
+                              borderRadius: 99,
+                            }}
+                          />
+                        </div>
+                        <span
+                          style={{
+                            position: "absolute",
+                            right: 0,
+                            top: -22,
+                            fontSize: 12,
+                            fontWeight: 600,
+                            color: "#007B39",
+                          }}
+                        >
+                          {course.percent}%
+                        </span>
+                      </div>
+
+                      {/* Donate button */}
+                      <div style={{ marginTop: 8 }}>
+                        <a
+                          href="/templates/template-3/causes"
+                          className="t2-btn inline-flex"
+                          style={{ textDecoration: "none" }}
+                        >
+                          <span>Donate Now</span>
+                          <i>
+                            <svg
+                              width="18"
+                              height="18"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2.5"
+                              className="-rotate-45"
+                            >
+                              <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
+                          </i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            {/* Next button */}
-            <button
-              onClick={handleNext}
+            {/* ── Controls: Prev / Dots / Next + View All ── */}
+            <div
               style={{
-                width: 46,
-                height: 46,
-                borderRadius: "50%",
-                border: "1.5px solid #121D18",
-                background: "transparent",
-                cursor: "pointer",
                 display: "flex",
                 alignItems: "center",
-                justifyContent: "center",
-                transition: "all 0.25s",
-                flexShrink: 0,
+                justifyContent: "space-between",
+                flexWrap: "wrap",
+                gap: 24,
               }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = "#007B39";
-                e.currentTarget.style.borderColor = "#007B39";
-                e.currentTarget.style.color = "#fff";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = "transparent";
-                e.currentTarget.style.borderColor = "#121D18";
-                e.currentTarget.style.color = "#121D18";
-              }}
-              aria-label="Next"
             >
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-              >
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </button>
-          </div>
+              {/* Prev / Dots / Next */}
+              <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+                {/* Prev button */}
+                <button
+                  onClick={handlePrev}
+                  style={{
+                    width: 46,
+                    height: 46,
+                    borderRadius: "50%",
+                    border: "1.5px solid #121D18",
+                    background: "transparent",
+                    cursor: "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    transition: "all 0.25s",
+                    flexShrink: 0,
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "#007B39";
+                    e.currentTarget.style.borderColor = "#007B39";
+                    e.currentTarget.style.color = "#fff";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = "transparent";
+                    e.currentTarget.style.borderColor = "#121D18";
+                    e.currentTarget.style.color = "#121D18";
+                  }}
+                  aria-label="Previous"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                  >
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                  </svg>
+                </button>
 
-          {/* View All button */}
-          <a
-            href="/templates/template-3/causes"
-            className="t2-btn inline-flex"
-            style={{ textDecoration: "none" }}
-          >
-            <span>View All Causes</span>
-            <i>
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
+                {/* Dots — imperatively styled, NO state */}
+                <div style={{ display: "flex", gap: 6 }}>
+                  {causes.map((_, i) => (
+                    <button
+                      key={i}
+                      ref={(el) => {
+                        dotRefs.current[i] = el;
+                      }}
+                      onClick={() => {
+                        isPausedRef.current = true;
+                        moveTo(i);
+                        setTimeout(() => {
+                          isPausedRef.current = false;
+                        }, 4000);
+                      }}
+                      style={{
+                        height: 8,
+                        width: 8,
+                        borderRadius: 99,
+                        border: "none",
+                        cursor: "pointer",
+                        background: "#D1D5DB",
+                        padding: 0,
+                        transition: "all 0.3s",
+                      }}
+                      aria-label={`Slide ${i + 1}`}
+                    />
+                  ))}
+                </div>
+
+                {/* Next button */}
+                <button
+                  onClick={handleNext}
+                  style={{
+                    width: 46,
+                    height: 46,
+                    borderRadius: "50%",
+                    border: "1.5px solid #121D18",
+                    background: "transparent",
+                    cursor: "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    transition: "all 0.25s",
+                    flexShrink: 0,
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "#007B39";
+                    e.currentTarget.style.borderColor = "#007B39";
+                    e.currentTarget.style.color = "#fff";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = "transparent";
+                    e.currentTarget.style.borderColor = "#121D18";
+                    e.currentTarget.style.color = "#121D18";
+                  }}
+                  aria-label="Next"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                  >
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* View All button */}
+              <a
+                href="/templates/template-3/causes"
+                className="t2-btn inline-flex"
+                style={{ textDecoration: "none" }}
               >
-                <path d="M7 17L17 7M17 7H7M17 7v10" />
-              </svg>
-            </i>
-          </a>
-        </div>
+                <span>View All Causes</span>
+                <i>
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                  >
+                    <path d="M7 17L17 7M17 7H7M17 7v10" />
+                  </svg>
+                </i>
+              </a>
+            </div>
+          </>
+        )}
       </div>
     </section>
   );

@@ -46,9 +46,6 @@ const AUTO_MS = 3800;
 
 export default function TopDonors() {
   const primaryColor = "#EBD3AF";
-  const secondaryColor = "#FFA415";
-  const bgColor = "#121d18";
-  const secondaryBgColor = "#f9f9f9";
 
   const [index, setIndex] = useState(0);
   const [cardW, setCardW] = useState(0);
@@ -98,11 +95,6 @@ export default function TopDonors() {
 
   return (
     <section className="py-[120px]" style={{ background: primaryColor }}>
-      <style
-        dangerouslySetInnerHTML={{
-          __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; --bg-color: ${bgColor}; --secondary-bg-color: ${secondaryBgColor}; }`,
-        }}
-      />
       <div className="max-w-[1320px] mx-auto px-3">
         {/* Header */}
         <div className="text-center mb-[60px]">

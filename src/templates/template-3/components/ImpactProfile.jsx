@@ -4,12 +4,8 @@ import Link from "next/link";
 
 const CURRENT_YEAR = new Date().getFullYear();
 
-
-
 export default function ImpactProfile() {
   const primaryColor = "#EBD3AF";
-  const greenColor = "#007B39";
-  const darkColor = "#121d18";
 
   const [count, setCount] = useState(0);
   const target = 10000;
@@ -109,8 +105,9 @@ export default function ImpactProfile() {
                   Geographic Presence
                 </h3>
                 <p className="text-[#121d18]/80 text-[15px] leading-[1.7] font-medium">
-                  Worldwide Ã¢â‚¬â€ active across Asia, Africa, and the Americas,
-                  bringing hope and resources to those who need it most.
+                  Worldwide Ã¢â‚¬â€ active across Asia, Africa, and the
+                  Americas, bringing hope and resources to those who need it
+                  most.
                 </p>
               </div>
             </div>
@@ -139,5 +136,3 @@ export default function ImpactProfile() {
     </section>
   );
 }
-
-

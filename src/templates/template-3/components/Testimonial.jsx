@@ -1,6 +1,10 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { gsap } from "gsap";
+import { HiArrowLeft, HiArrowRight } from "react-icons/hi";
+import { FaQuoteLeft } from "react-icons/fa";
 
 const TESTIMONIALS = [
   {
@@ -29,24 +33,94 @@ const TESTIMONIALS = [
   },
 ];
 
+const TOTAL = TESTIMONIALS.length;
+// For a smooth infinite loop when showing 2 items, we need a few clones
+const ITEMS = [...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS];
+
+import TestimonialCard from "./TestimonialCard";
+
 export default function Testimonial() {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const trackRef = useRef(null);
+  const viewportRef = useRef(null);
+  const [cardWidth, setCardWidth] = useState(0);
+  const [itemsPerView, setItemsPerView] = useState(2);
+  const gapBetweenCards = 40; // from the original gap: "40px"
+  
+  // We start at the second set of testimonials (index = TOTAL) to allow reverse sliding
+  const trackIndexRef = useRef(TOTAL); 
+  const isAnimating = useRef(false);
+  const isPaused = useRef(false);
 
-  const next = () => {
-    setActiveIndex((prev) => (prev + 2 >= TESTIMONIALS.length ? 0 : prev + 2));
-  };
+  /* Measure single-card width */
+  useEffect(() => {
+    const measureViewport = () => {
+      if (viewportRef.current) {
+        const viewportWidth = viewportRef.current.offsetWidth;
+        // Basic responsive logic: if width < 768, show 1 item, else show 2 items
+        const views = viewportWidth < 768 ? 1 : 2;
+        setItemsPerView(views);
+        // Card width is (Viewport Width - (views - 1) * gap) / views
+        const calculatedWidth = (viewportWidth - (views - 1) * gapBetweenCards) / views;
+        setCardWidth(calculatedWidth);
+      }
+    };
+    measureViewport();
+    window.addEventListener("resize", measureViewport);
+    return () => window.removeEventListener("resize", measureViewport);
+  }, [gapBetweenCards]);
 
-  const prev = () => {
-    setActiveIndex((prev) =>
-      prev - 2 < 0 ? Math.max(0, TESTIMONIALS.length - 2) : prev - 2,
-    );
-  };
+  /* Snap to initial position without animation */
+  useEffect(() => {
+    if (cardWidth > 0 && trackRef.current) {
+      gsap.set(trackRef.current, { x: -(trackIndexRef.current * (cardWidth + gapBetweenCards)) });
+    }
+  }, [cardWidth, gapBetweenCards]);
 
-  const currentTestimonials = TESTIMONIALS.slice(activeIndex, activeIndex + 2);
+  const slideToNextIndex = useCallback(
+    (targetIndex) => {
+      if (isAnimating.current || cardWidth === 0) return;
+      isAnimating.current = true;
+      trackIndexRef.current = targetIndex;
+
+      gsap.to(trackRef.current, {
+        x: -(targetIndex * (cardWidth + gapBetweenCards)),
+        duration: 0.65,
+        ease: "power3.inOut",
+        onComplete: () => {
+          isAnimating.current = false;
+          // Silent jump for infinite loop
+          // If we reached the end of the second set, jump back to the first set
+          if (targetIndex >= TOTAL * 2) {
+            trackIndexRef.current = targetIndex - TOTAL;
+            gsap.set(trackRef.current, { x: -(trackIndexRef.current * (cardWidth + gapBetweenCards)) });
+          } 
+          // If we reached the start of the first set, jump forward to the second set
+          else if (targetIndex <= 0) {
+            trackIndexRef.current = targetIndex + TOTAL;
+            gsap.set(trackRef.current, { x: -(trackIndexRef.current * (cardWidth + gapBetweenCards)) });
+          }
+        },
+      });
+    },
+    [cardWidth, gapBetweenCards]
+  );
+
+  /* Auto-advance every 4s */
+  useEffect(() => {
+    const autoplayIntervalId = setInterval(() => {
+      if (!isPaused.current) {
+        // Slide by itemsPerView so it completely replaces the visible cards like the original
+        slideToNextIndex(trackIndexRef.current + itemsPerView);
+      }
+    }, 4000);
+    return () => clearInterval(autoplayIntervalId);
+  }, [slideToNextIndex, itemsPerView]);
 
   return (
     <section
       style={{ backgroundColor: "#F9F9F9", padding: "120px 0" }}
+      onMouseEnter={() => (isPaused.current = true)}
+      onMouseLeave={() => (isPaused.current = false)}
     >
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 16px" }}>
         {/* Header */}
@@ -92,82 +166,30 @@ export default function Testimonial() {
           </h2>
         </div>
 
-        {/* Testimonials Grid */}
+        {/* Carousel Viewport (Replaces original CSS Grid) */}
         <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-            gap: "40px",
-            marginBottom: "50px",
-          }}
+          ref={viewportRef}
+          style={{ width: "100%", overflow: "hidden", marginBottom: "50px" }}
         >
-          {currentTestimonials.map((t, idx) => (
-            <div key={idx} style={{ padding: "10px" }}>
-              <div style={{ marginBottom: "24px" }}>
-                <svg
-                  width="40"
-                  height="40"
-                  viewBox="0 0 24 24"
-                  fill="#121d18"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M14.017 18L14.017 10.609C14.017 4.905 17.748 1.039 23 0L23.995 2.151C21.563 3.068 20 5.789 20 8H24V18H14.017ZM0 18V10.609C0 4.905 3.748 1.038 9 0L9.996 2.151C7.563 3.068 6 5.789 6 8H9.983L9.983 18L0 18Z" />
-                </svg>
-              </div>
-              <p
-                style={{
-                  fontSize: "22px",
-                  color: "#6c6e76",
-                  lineHeight: 1.6,
-                  marginBottom: "30px",
-                  fontWeight: 400,
-                }}
-              >
-                {t.text}
-              </p>
-              <div
-                style={{ display: "flex", alignItems: "center", gap: "20px" }}
-              >
-                <div
-                  style={{
-                    width: "60px",
-                    height: "60px",
-                    borderRadius: "50%",
-                    overflow: "hidden",
-                    position: "relative",
-                  }}
-                >
-                  <Image
-                    src={t.img}
-                    alt={t.name}
-                    layout="fill"
-                    objectFit="cover"
-                  />
-                </div>
-                <div>
-                  <h4
-                    style={{
-                      fontSize: "20px",
-                      fontWeight: 700,
-                      color: "#121d18",
-                      marginBottom: "4px",
-                    }}
-                  >
-                    {t.name}
-                  </h4>
-                  <p style={{ fontSize: "14px", color: "#6c6e76", margin: 0 }}>
-                    {t.role}
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))}
+          {/* Track */}
+          <div
+            ref={trackRef}
+            style={{
+              display: "flex",
+              gap: `${gapBetweenCards}px`,
+              willChange: "transform",
+            }}
+          >
+            {ITEMS.map((testimonialData, idx) => (
+              <TestimonialCard key={idx} testimonialData={testimonialData} cardWidth={cardWidth} />
+            ))}
+          </div>
         </div>
 
-        {/* Navigation */}
+        {/* Navigation - Same design as original */}
         <div style={{ display: "flex", justifyContent: "center", gap: "16px" }}>
           <button
-            onClick={prev}
+            onClick={() => slideToNextIndex(trackIndexRef.current - itemsPerView)}
             style={{
               width: "50px",
               height: "50px",
@@ -180,6 +202,7 @@ export default function Testimonial() {
               cursor: "pointer",
               border: "none",
               transition: "background-color 0.3s",
+              fontSize: "20px",
             }}
             onMouseEnter={(e) =>
               (e.currentTarget.style.backgroundColor = "#FFA415")
@@ -189,21 +212,10 @@ export default function Testimonial() {
             }
             aria-label="Previous Testimonial"
           >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M19 12H5M12 19l-7-7 7-7" />
-            </svg>
+            <HiArrowLeft />
           </button>
           <button
-            onClick={next}
+            onClick={() => slideToNextIndex(trackIndexRef.current + itemsPerView)}
             style={{
               width: "50px",
               height: "50px",
@@ -216,6 +228,7 @@ export default function Testimonial() {
               cursor: "pointer",
               border: "none",
               transition: "background-color 0.3s",
+              fontSize: "20px",
             }}
             onMouseEnter={(e) =>
               (e.currentTarget.style.backgroundColor = "#FFA415")
@@ -225,19 +238,7 @@ export default function Testimonial() {
             }
             aria-label="Next Testimonial"
           >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              style={{ transform: "rotate(45deg)" }}
-            >
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
+            <HiArrowRight />
           </button>
         </div>
       </div>

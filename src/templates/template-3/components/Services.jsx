@@ -1,6 +1,7 @@
 "use client";
 import { useRef, useState, useEffect, useCallback } from "react";
 import { gsap } from "gsap";
+import { useHeadingAnimation } from "../hooks/useHeadingAnimation";
 import {
   FiDroplet,
   FiShoppingBag,
@@ -67,6 +68,7 @@ const TOTAL = SERVICES.length; // 8
 
 export default function Services() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const headingRef = useHeadingAnimation();
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [cardWidth, setCardWidth] = useState(0); // px â€“ measured on client
   const [visibleCardsCount, setVisibleCardsCount] = useState(4);
@@ -220,6 +222,7 @@ export default function Services() {
         }}
       >
         <h2
+          ref={headingRef}
           style={{
             fontSize: "clamp(32px,4.5vw,54px)",
             fontWeight: 800,

@@ -3,6 +3,7 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { gsap } from "gsap";
+import { useHeadingAnimation } from "../hooks/useHeadingAnimation";
 
 const GREEN = "#007B39";
 const ORANGE = "#FFA415";
@@ -52,6 +53,7 @@ const EVENTS = [
 import BrushBadge from "./BrushBadge";
 
 export default function Event({ isAllEventsPage }) {
+  const headingRef = useHeadingAnimation();
   const totalEvents = EVENTS.length;
   const ITEMS = [EVENTS[totalEvents - 1], ...EVENTS, EVENTS[0]]; // extended array
   const extendedTotal = ITEMS.length; // total + 2
@@ -196,6 +198,7 @@ export default function Event({ isAllEventsPage }) {
           </span>
         </div>
         <h2
+          ref={headingRef}
           style={{
             fontSize: "clamp(30px,4vw,48px)",
             fontWeight: 800,

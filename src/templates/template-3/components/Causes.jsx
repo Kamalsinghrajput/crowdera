@@ -1,7 +1,8 @@
-﻿"use client";
+"use client";
 import { useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
+import { useHeadingAnimation } from "../hooks/useHeadingAnimation";
 
 const causes = [
   {
@@ -82,6 +83,7 @@ const TOTAL = causes.length;
 
 export default function Causes({ isAllCausesPage }) {
   const trackRef = useRef(null);
+  const headingRef = useHeadingAnimation();
   const vpRef = useRef(null);
   const dotRefs = useRef([]);
   const cardWRef = useRef(0); // measured card width in px
@@ -216,6 +218,7 @@ export default function Causes({ isAllCausesPage }) {
             </span>
           </div>
           <h2
+            ref={headingRef}
             style={{
               fontSize: "clamp(32px, 4vw, 52px)",
               fontWeight: 700,

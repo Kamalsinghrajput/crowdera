@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
+import { useHeadingAnimation } from "../hooks/useHeadingAnimation";
 
 const TEAM = [
   {
@@ -31,6 +32,7 @@ const TEAM = [
 import TeamCard from "./TeamCard";
 
 export default function Team({ isAllTeamPage }) {
+  const headingRef = useHeadingAnimation();
   const displayTeam = isAllTeamPage ? [...TEAM, ...TEAM] : TEAM;
 
   return (
@@ -120,6 +122,7 @@ export default function Team({ isAllTeamPage }) {
             </span>
           </div>
           <h2
+            ref={headingRef}
             style={{
               fontSize: "clamp(36px, 4vw, 48px)",
               fontWeight: 800,

@@ -1,7 +1,9 @@
-﻿"use client";
+"use client";
 import { useState } from "react";
+import { useHeadingAnimation } from "../hooks/useHeadingAnimation";
 
 export default function NewsLetter() {
+  const headingRef = useHeadingAnimation();
   const primaryColor = "#007B39";
   const secondaryColor = "#FFA415";
   const bgColor = "#121d18";
@@ -39,7 +41,7 @@ export default function NewsLetter() {
       <div className="absolute inset-0 bg-gradient-to-b from-[#121d18]/40 via-[#121d18]/80 to-[#121d18]" />
 
       <div className="max-w-[800px] mx-auto px-4 relative z-10 text-center">
-        <h2 className="text-[clamp(32px,5vw,56px)] leading-[1.2] text-white mb-6">
+        <h2 ref={headingRef} className="text-[clamp(32px,5vw,56px)] leading-[1.2] text-white mb-6">
           Get Updated By Subscribing To
           <br /> Our Newsletter
         </h2>

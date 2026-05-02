@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
+import { useHeadingAnimation } from "../hooks/useHeadingAnimation";
 
 const DONORS = [
   {
@@ -46,6 +47,7 @@ const AUTO_MS = 3800;
 
 export default function TopDonors() {
   const primaryColor = "#EBD3AF";
+  const headingRef = useHeadingAnimation();
 
   const [index, setIndex] = useState(0);
   const [cardW, setCardW] = useState(0);
@@ -104,7 +106,7 @@ export default function TopDonors() {
               Hall of Fame
             </span>
           </div>
-          <h2 className="text-[clamp(32px,5vw,56px)] leading-[1.2] text-[#121d18] m-0 font-bold">
+          <h2 ref={headingRef} className="text-[clamp(32px,5vw,56px)] leading-[1.2] text-[#121d18] m-0 font-bold">
             Our Top Donors
           </h2>
         </div>

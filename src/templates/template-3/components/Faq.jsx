@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { useHeadingAnimation } from "../hooks/useHeadingAnimation";
 import Image from "next/image";
 
 const FAQS = [
@@ -30,6 +31,7 @@ import AccordionItem from "./AccordionItem";
 
 export default function Faq() {
   const [open, setOpen] = useState(1);
+  const headingRef = useHeadingAnimation();
 
   return (
     <section className=" py-[120px] relative">
@@ -44,7 +46,7 @@ export default function Faq() {
               </span>
             </div>
 
-            <h2 className="text-[clamp(28px,4vw,50px)] leading-[1.2] text-[#121d18] mb-5 font-bold">
+            <h2 ref={headingRef} className="text-[clamp(28px,4vw,50px)] leading-[1.2] text-[#121d18] mb-5 font-bold">
               Frequently Asking
               <br /> Questions.
             </h2>

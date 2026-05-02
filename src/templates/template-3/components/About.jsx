@@ -1,8 +1,9 @@
-﻿"use client";
+"use client";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import Image from "next/image";
 import Link from "next/link";
+import { useHeadingAnimation } from "../hooks/useHeadingAnimation";
 import {
   FiUsers,
   FiDollarSign,
@@ -25,6 +26,7 @@ const TEAM_AVATARS = [
 
 export default function About() {
   const badgeRef = useRef(null);
+  const headingRef = useHeadingAnimation();
 
   useEffect(() => {
     if (badgeRef.current) {
@@ -64,6 +66,7 @@ export default function About() {
 
             {/* Heading */}
             <h2
+              ref={headingRef}
               style={{
                 fontFamily: "Sora, sans-serif",
                 fontSize: "clamp(32px, 3.5vw, 50px)",

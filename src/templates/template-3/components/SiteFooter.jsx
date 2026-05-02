@@ -1,8 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import { useHeadingAnimation } from "../hooks/useHeadingAnimation";
 
 export default function SiteFooter() {
+  const headingRef = useHeadingAnimation();
   const quickLinks = [
     "About Us",
     "Our Services",
@@ -35,7 +37,7 @@ export default function SiteFooter() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 py-[80px]">
           {/* Col 1: Logo + About + Form */}
           <div>
-            <h2 className="text-[32px] font-bold mb-6 tracking-wide">
+            <h2 ref={headingRef} className="text-[32px] font-bold mb-6 tracking-wide">
               <span className="text-[#FFA415]">Chio</span>
               <span className="text-white">ary</span>
             </h2>

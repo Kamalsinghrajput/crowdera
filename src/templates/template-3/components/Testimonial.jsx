@@ -3,6 +3,7 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { gsap } from "gsap";
+import { useHeadingAnimation } from "../hooks/useHeadingAnimation";
 import { HiArrowLeft, HiArrowRight } from "react-icons/hi";
 import { FaQuoteLeft } from "react-icons/fa";
 
@@ -41,6 +42,7 @@ import TestimonialCard from "./TestimonialCard";
 
 export default function Testimonial() {
   const trackRef = useRef(null);
+  const headingRef = useHeadingAnimation();
   const viewportRef = useRef(null);
   const [cardWidth, setCardWidth] = useState(0);
   const [itemsPerView, setItemsPerView] = useState(2);
@@ -154,6 +156,7 @@ export default function Testimonial() {
             </span>
           </div>
           <h2
+            ref={headingRef}
             style={{
               fontSize: "clamp(32px, 4vw, 48px)",
               fontWeight: 800,

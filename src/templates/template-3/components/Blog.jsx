@@ -1,5 +1,6 @@
 "use client";
 import BlogCard from "./BlogCard";
+import { useHeadingAnimation } from "../hooks/useHeadingAnimation";
 
 const BLOGS = [
   {
@@ -26,6 +27,7 @@ const BLOGS = [
 ];
 
 export default function Blog({ isAllBlogsPage }) {
+  const headingRef = useHeadingAnimation();
   return (
     <section style={{ backgroundColor: "#fff", padding: "120px 0" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 16px" }}>
@@ -60,6 +62,7 @@ export default function Blog({ isAllBlogsPage }) {
             </span>
           </div>
           <h2
+            ref={headingRef}
             style={{
               fontSize: "clamp(32px, 4vw, 48px)",
               fontWeight: 800,

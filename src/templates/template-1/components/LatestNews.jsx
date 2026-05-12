@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { gsap } from "gsap";
 import {
@@ -160,11 +161,13 @@ const LatestNews = () => {
               className="news-card opacity-0 bg-white rounded-2xl overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.06)] hover:shadow-xl transition-shadow group"
             >
               {/* Image */}
-              <div className="relative overflow-hidden rounded-2xl m-4 mb-0">
-                <img
+              <div className="relative overflow-hidden rounded-2xl m-4 mb-0 h-56">
+                <Image
                   src={article.img}
                   alt={article.title}
-                  className="w-full h-56 object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500"
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded-2xl group-hover:scale-105 transition-transform duration-500"
                   style={{ filter: "grayscale(30%)" }}
                 />
 

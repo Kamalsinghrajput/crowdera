@@ -157,17 +157,14 @@ export default function About() {
             </div>
           </div>
 
-          {/* ====== RIGHT COLUMN â€” Images ====== */}
-          <div className="w-full lg:w-1/2 relative" style={{ minHeight: 520 }}>
+          {/* ====== RIGHT COLUMN — Images ====== */}
+          <div className="w-full lg:w-1/2 relative min-h-[400px] lg:min-h-[520px] mt-12 lg:mt-0 px-4 sm:px-8 lg:px-0">
 
             {/* Main large image */}
             <div
+              className="relative w-full h-[400px] lg:h-[520px] overflow-hidden"
               style={{
-                position: "relative",
-                width: "100%",
-                height: 520,
                 borderRadius: "20px 20px 20px 150px",
-                overflow: "hidden",
               }}
             >
               <Image
@@ -178,18 +175,9 @@ export default function About() {
               />
             </div>
 
-            {/* Overlay video thumbnail â€” top-left */}
+            {/* Overlay video thumbnail — top-left */}
             <div
-              style={{
-                position: "absolute",
-                top: 40,
-                left: -60,
-                width: 200,
-                height: 150,
-                borderRadius: 16,
-                overflow: "hidden",
-                boxShadow: "0 20px 60px rgba(0,0,0,0.2)",
-              }}
+              className="absolute top-10 left-0 lg:-left-16 w-[160px] h-[120px] lg:w-[200px] lg:h-[150px] rounded-2xl overflow-hidden shadow-2xl translate-x-4 lg:translate-x-0"
             >
               <Image
                 src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=400&q=80"
@@ -227,16 +215,7 @@ export default function About() {
 
             {/* 25 Years Experience badge */}
             <div
-              style={{
-                position: "absolute",
-                bottom: 60,
-                left: -50,
-                background: "#007B39",
-                borderRadius: 16,
-                padding: "18px 22px",
-                boxShadow: "0 10px 40px rgba(0,123,57,0.3)",
-                minWidth: 160,
-              }}
+              className="absolute bottom-10 left-0 lg:-left-12 bg-[#007B39] rounded-2xl p-4 lg:p-[18px_22px] shadow-lg min-w-[140px] lg:min-w-[160px] translate-x-4 lg:translate-x-0"
             >
               <div
                 style={{
@@ -264,7 +243,7 @@ export default function About() {
             {/* Decorative circle */}
             <svg
               ref={badgeRef}
-              style={{ position: "absolute", top: -20, right: -20, opacity: 0.08 }}
+              className="absolute -top-5 right-0 lg:-right-5 opacity-[0.08] -translate-x-4 lg:translate-x-0"
               width="120"
               height="120"
               viewBox="0 0 120 120"
@@ -274,36 +253,20 @@ export default function About() {
           </div>
         </div>
 
-        {/* â”€â”€ Join Us Bar â”€â”€ */}
+        {/* —— Join Us Bar —— */}
         <div
-          style={{
-            marginTop: 80,
-            background: "#f8f8f5",
-            borderRadius: 20,
-            padding: "28px 36px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            gap: 24,
-            flexWrap: "wrap",
-          }}
+          className="mt-12 lg:mt-20 bg-[#f8f8f5] rounded-[20px] p-6 lg:p-[28px_36px] flex flex-col md:flex-row items-center justify-between gap-6"
         >
           {/* Avatars + CTA text */}
-          <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+          <div className="flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left">
             {/* Overlapping avatars */}
-            <div style={{ display: "flex" }}>
+            <div className="flex shrink-0">
               {TEAM_AVATARS.map((src, i) => (
                 <div
                   key={i}
+                  className="w-11 h-11 rounded-full border-2 border-white overflow-hidden relative shadow-md"
                   style={{
-                    width: 44,
-                    height: 44,
-                    borderRadius: "50%",
-                    border: "2px solid #fff",
-                    overflow: "hidden",
-                    position: "relative",
                     marginLeft: i === 0 ? 0 : -14,
-                    boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
                   }}
                 >
                   <Image src={src} alt="Team member" layout="fill" objectFit="cover" />
@@ -328,7 +291,7 @@ export default function About() {
 
           {/* Join Us Button */}
           <Link href="#contact">
-            <a className="t2-btn  inline-flex" style={{ whiteSpace: "nowrap" }}>
+            <a className="t2-btn inline-flex whitespace-nowrap">
               <span>Join Us</span>
               <i>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="-rotate-45">

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import Image from "next/image";
 import { gsap } from "gsap";
 import Link from "next/link";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
@@ -229,11 +230,13 @@ const CampaignsFocus = () => {
                   }}
                 >
                   <div className="relative h-44 overflow-hidden">
-                    <img
-                      src={c.img}
-                      alt={c.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
+                  <Image
+                    src={c.img}
+                    alt={c.title}
+                    layout="fill"
+                    objectFit="cover"
+                    className="group-hover:scale-105 transition-transform duration-500"
+                  />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                     <div className="absolute bottom-3 left-3 right-3 z-10">
                       <h3 className="text-white font-extrabold text-sm leading-snug mb-1.5">
@@ -308,14 +311,14 @@ const CampaignsFocus = () => {
           </div>
         </div>
         <div className="text-center mt-6">
-          <Link href="/templates/template-1/campaigns">
+          <Link href="/templates/template-1/initiatives?tab=campaigns">
             <a
               className="inline-flex items-center text-[var(--secondary)] font-bold text-sm hover:text-[#091F1B] transition-colors group"
               style={{
                 color: "#FFCA08",
                 border: "1px solid #FFCA08",
-                padding: "8px",
-                borderRadius: "8px",
+                padding: "12px 24px",
+                borderRadius: "12px",
               }}
             >
               See all campaigns{" "}

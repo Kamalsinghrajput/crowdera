@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { gsap } from "gsap";
 import { ArrowUpRight, ArrowLeft, ArrowRight, Heart } from "lucide-react";
@@ -132,11 +133,13 @@ const Hero = () => {
             className="absolute inset-0 w-full h-full transition-opacity duration-1000"
             style={{ opacity: idx === current ? 1 : 0 }}
           >
-            <img
+            <Image
               src={s.img}
               alt={`Slide ${idx + 1}`}
-              className="w-full h-full object-cover"
+              layout="fill"
+              objectFit="cover"
               style={{ filter: "grayscale(100%) brightness(0.7)" }}
+              priority={idx === 0}
             />
           </div>
         ))}
@@ -201,7 +204,7 @@ const Hero = () => {
             </h1>
 
             <div className="hero-btns flex flex-wrap gap-4 items-center">
-              <Link href="#">
+              <Link href="/templates/template-1/initiatives">
                 <a className="bg-[#122F2A] text-white font-bold text-sm py-4 px-8 rounded-full hover:bg-[#FEC908] hover:text-black transition-all flex items-center group shadow-xl">
                   Discover More
                   <ArrowUpRight

@@ -1,0 +1,243 @@
+import React, { useEffect, useRef, useState, useCallback } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { gsap } from "gsap";
+import { ArrowUpRight, ArrowLeft, ArrowRight, Heart } from "lucide-react";
+// import SponsorCarousel from "./SponsorCarousel";
+
+const heroSlides = [
+  {
+    img: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2670&auto=format&fit=crop",
+    subtitle: "Start Donating Poor People",
+    title: "Giving Help\nTo Those\nWho Need It.",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?q=80&w=2670&auto=format&fit=crop",
+    subtitle: "Together We Can Make A Change",
+    title: "Be The Reason\nSomeone\nSmiles Today.",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1509099836639-18ba1795216d?q=80&w=2670&auto=format&fit=crop",
+    subtitle: "Every Child Deserves A Chance",
+    title: "Empowering\nCommunities\nWorldwide.",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1497375638960-ca368c7231e4?q=80&w=2670&auto=format&fit=crop",
+    subtitle: "Education Changes Everything",
+    title: "Building A\nBrighter\nFuture.",
+  },
+];
+
+const Hero = () => {
+  const [current, setCurrent] = useState(0);
+  const heroRef = useRef(null);
+  const textRef = useRef(null);
+  const sponsorsRef = useRef(null);
+  const doodlesRef = useRef(null);
+  const autoplayRef = useRef(null);
+
+  const animateText = useCallback(() => {
+    if (!textRef.current) return;
+    const tl = gsap.timeline();
+    tl.fromTo(
+      textRef.current.querySelector(".hero-subtitle"),
+      { x: -40, opacity: 0 },
+      { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
+    )
+      .fromTo(
+        textRef.current.querySelector(".hero-title"),
+        { x: -40, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.7, ease: "power3.out" },
+        "-=0.4",
+      )
+      .fromTo(
+        textRef.current.querySelector(".hero-btns"),
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.5, ease: "power2.out" },
+        "-=0.3",
+      );
+  }, []);
+
+  const goTo = useCallback((idx) => {
+    setCurrent(idx);
+  }, []);
+
+  const goNext = useCallback(() => {
+    setCurrent((prev) => (prev + 1) % heroSlides.length);
+  }, []);
+
+  const goPrev = useCallback(() => {
+    setCurrent((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
+  }, []);
+
+  // Autoplay
+  useEffect(() => {
+    autoplayRef.current = setInterval(goNext, 5000);
+    return () => {
+      if (autoplayRef.current) clearInterval(autoplayRef.current);
+    };
+  }, [goNext]);
+
+  // Animate on slide change
+  useEffect(() => {
+    animateText();
+  }, [current, animateText]);
+
+  // Initial entrance
+  useEffect(() => {
+    const tl = gsap.timeline({ delay: 0.3 });
+    tl.fromTo(
+      heroRef.current,
+      { opacity: 0 },
+      { opacity: 1, duration: 0.8 },
+    ).fromTo(
+      sponsorsRef.current,
+      { y: 40, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" },
+      "-=0.1",
+    );
+
+    // Float all doodle graphics
+    if (doodlesRef.current) {
+      const els = doodlesRef.current.children;
+      gsap.to(els, {
+        y: "random(-18, 18)",
+        x: "random(-12, 12)",
+        rotation: "random(-8, 8)",
+        scale: "random(0.95, 1.08)",
+        duration: "random(2.5, 4.5)",
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+        stagger: 0.6,
+      });
+    }
+  }, []);
+
+  const slide = heroSlides[current];
+
+  return (
+    <div
+      id="hero"
+      className="flex flex-col relative w-full overflow-hidden font-sans"
+    >
+      {/* ===== HERO SECTION ===== */}
+      <div
+        ref={heroRef}
+        className="relative w-full min-h-[90vh] flex items-center bg-[#091F1B]"
+      >
+        {/* Background Images - All stacked, only active one visible */}
+        {heroSlides.map((s, idx) => (
+          <div
+            key={idx}
+            className="absolute inset-0 w-full h-full"
+            style={{ opacity: idx === current ? 1 : 0 }}
+          >
+            <Image
+              src={s.img}
+              alt={`Slide ${idx + 1}`}
+              layout="fill"
+              objectFit="cover"
+            />
+          </div>
+        ))}
+
+        {/* Dark Teal Gradient Overlay */}
+        <div className="absolute inset-0 pointer-events-none z-[5]">
+          <div
+            className="absolute top-0 left-0 w-full lg:w-[65%] h-full"
+            style={{
+              background:
+                "linear-gradient(to right, #091F1Bcc 0%, #091F1B99 45%, #091F1B55 75%, transparent 100%)",
+            }}
+          ></div>
+        </div>
+
+        {/* Slider Arrows */}
+        <div className="absolute right-6 top-1/2 -translate-y-1/2 z-20 hidden md:flex flex-col space-y-3">
+          <button
+            onClick={() => {
+              goPrev();
+              if (autoplayRef.current) clearInterval(autoplayRef.current);
+            }}
+            className="w-12 h-12 rounded-full bg-brand-dark/80 bg-[#122F2A] hover:bg-[#FEC908] text-white flex items-center justify-center shadow-lg transition-all hover:scale-105 hover:text-black"
+          >
+            <ArrowLeft size={18} />
+          </button>
+          <button
+            onClick={() => {
+              goNext();
+              if (autoplayRef.current) clearInterval(autoplayRef.current);
+            }}
+            className="w-12 h-12 rounded-full bg-[#FEC908] hover:bg-[#122F2A] hover:brightness-110 text-[#091F1B] flex items-center justify-center shadow-lg transition-all hover:scale-105 hover:text-white"
+          >
+            <ArrowRight size={18} />
+          </button>
+        </div>
+
+        {/* Text Content */}
+        <div className="w-full px-6 lg:px-16 relative z-[15] flex items-center min-h-[92vh]">
+          <div ref={textRef} className="max-w-xl py-32">
+            <div className="hero-subtitle flex items-center text-[var(--primary)] text-lg lg:text-xl mb-5">
+              <Heart
+                size={16}
+                fill="currentColor"
+                className="mr-2 flex-shrink-0 text-[#FEC908]"
+              />
+              <span
+                className="italic text-[#FEC908]"
+                style={{ fontFamily: "'Caveat', 'Segoe Script', cursive" }}
+              >
+                {slide.subtitle}
+              </span>
+            </div>
+            <h1 className="hero-title text-white font-extrabold text-5xl lg:text-[72px] leading-[1.08] mb-10 tracking-tight">
+              {slide.title.split("\n").map((line, i) => (
+                <span key={i}>
+                  {line}
+                  <br />
+                </span>
+              ))}
+            </h1>
+            <div className="hero-btns flex flex-wrap gap-4 items-center">
+              <Link href="#">
+                <a className="bg-[#122F2A] text-white font-bold text-sm py-4 px-8 rounded-full hover:bg-[#FEC908] hover:text-black transition-all flex items-center group shadow-xl">
+                  Discover More
+                  <ArrowUpRight
+                    size={15}
+                    className="ml-2 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                  />
+                </a>
+              </Link>
+              <Link href="#">
+                <a className=" bg-[#FEC908] font-bold text-sm py-4 px-8 rounded-full hover:bg-[#122F2A] hover:text-white text-black transition-all flex items-center group shadow-xl">
+                  Get A Quote
+                  <ArrowUpRight
+                    size={15}
+                    className="ml-2 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                  />
+                </a>
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Slide Indicators */}
+        <div className="absolute bottom-28 lg:bottom-32 left-1/2 -translate-x-1/2 z-20 flex space-x-2">
+          {heroSlides.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => {
+                goTo(idx);
+                if (autoplayRef.current) clearInterval(autoplayRef.current);
+              }}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${idx === current ? " scale-125 w-8" : "bg-white/50 hover:bg-white/80"}`}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Hero;

@@ -49,7 +49,7 @@ const navLinks = [
     href: "#events",
     sub: [
       { title: "Upcoming Events", href: "#events" },
-      { title: "All Events", href: "/templates/template-1/events" },
+      { title: "All Events", href: "#events" },
     ],
   },
   {
@@ -155,14 +155,13 @@ const Navbar = () => {
           <div className="container mx-auto px-4 max-w-7xl flex flex-wrap md:flex-nowrap justify-between items-center gap-y-2">
             {/* Row 1 (mobile) / Left (desktop) — email */}
             <div className="flex items-center order-1">
-              <a
-                href="mailto:support@example.com"
-                className="flex items-center hover:text-[var(--primary)] transition-colors text-sm font-medium"
-              >
-                <Mail size={18} className="mr-1.5 text-[var(--primary)]" />
-                <span className="hidden sm:inline">support@example.com</span>
-                <span className="sm:hidden">Email Us</span>
-              </a>
+              <Link href="mailto:support@example.com" passHref>
+                <a className="flex items-center hover:text-[var(--primary)] transition-colors text-sm font-medium">
+                  <Mail size={18} className="mr-1.5 text-[var(--primary)]" />
+                  <span className="hidden sm:inline">support@example.com</span>
+                  <span className="sm:hidden">Email Us</span>
+                </a>
+              </Link>
             </div>
 
             {/* Center pill — desktop only */}

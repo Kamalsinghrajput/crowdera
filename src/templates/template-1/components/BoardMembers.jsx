@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { gsap } from "gsap";
 import { Plus, Instagram, Twitter, Facebook, ArrowRight } from "lucide-react";
@@ -92,11 +93,14 @@ const BoardMembers = () => {
           {members.map((m, idx) => (
             <div key={idx} className="member-card opacity-0 group">
               {/* Card image + hover effects */}
-              <div className="relative overflow-hidden rounded-2xl shadow-lg bg-gray-100">
-                <img
+              <div className="relative overflow-hidden rounded-2xl shadow-lg bg-gray-100 h-80">
+                <Image
                   src={m.img}
                   alt={m.name}
-                  className="w-full h-80 object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                  layout="fill"
+                  objectFit="cover"
+                  objectPosition="top"
+                  className="group-hover:scale-105 transition-transform duration-500"
                 />
 
                 {/* change 12: dark green gradient overlay on card hover */}

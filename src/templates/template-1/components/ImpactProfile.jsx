@@ -5,159 +5,7 @@ import { ArrowRight } from "lucide-react";
 
 const CURRENT_YEAR = new Date().getFullYear();
 
-/* ── World map outline as a subtle SVG watermark ── */
-function WorldMapBg() {
-  return (
-    <svg
-      className="absolute inset-0 w-full h-full"
-      viewBox="0 0 1000 500"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      preserveAspectRatio="xMidYMid slice"
-      aria-hidden="true"
-    >
-      {/* North America */}
-      <path
-        opacity="0.18"
-        fill="none"
-        stroke="white"
-        strokeWidth="1.2"
-        d="M60 80 C80 60 120 55 150 70 L200 65 C220 60 240 70 250 90 L260 120 C255 140 240 160 220 170 L200 190 C180 210 160 250 140 270 L120 300 C100 320 80 310 70 290 L55 260 C40 230 45 200 50 170 Z"
-      />
-      {/* Greenland */}
-      <path
-        opacity="0.18"
-        fill="none"
-        stroke="white"
-        strokeWidth="1.2"
-        d="M180 30 C200 20 230 25 245 45 L250 65 C245 80 225 85 205 75 L185 55 Z"
-      />
-      {/* South America */}
-      <path
-        opacity="0.18"
-        fill="none"
-        stroke="white"
-        strokeWidth="1.2"
-        d="M190 300 C210 290 240 295 255 315 L265 345 C270 375 260 410 245 440 L230 460 C210 475 190 465 180 445 L165 415 C150 380 155 340 170 315 Z"
-      />
-      {/* Europe */}
-      <path
-        opacity="0.18"
-        fill="none"
-        stroke="white"
-        strokeWidth="1.2"
-        d="M430 60 C450 50 480 55 495 75 L500 100 C495 120 475 130 455 125 L435 115 C415 105 410 85 430 60 Z"
-      />
-      {/* Africa */}
-      <path
-        opacity="0.18"
-        fill="none"
-        stroke="white"
-        strokeWidth="1.2"
-        d="M440 145 C465 135 495 140 510 165 L520 200 C530 240 525 290 510 330 L490 370 C470 400 445 405 425 385 L410 350 C395 310 395 265 405 225 L420 185 Z"
-      />
-      {/* Asia */}
-      <path
-        opacity="0.18"
-        fill="none"
-        stroke="white"
-        strokeWidth="1.2"
-        d="M510 55 C560 40 630 45 680 60 L740 70 C790 80 830 95 850 120 L865 150 C870 175 855 200 825 210 L780 220 C740 225 700 215 665 200 L620 185 C575 170 535 145 515 120 L505 90 Z"
-      />
-      {/* Australia */}
-      <path
-        opacity="0.18"
-        fill="none"
-        stroke="white"
-        strokeWidth="1.2"
-        d="M720 310 C750 295 800 300 830 325 L845 355 C850 385 835 415 810 425 L775 430 C745 432 720 415 710 390 L700 360 C698 335 710 318 720 310 Z"
-      />
-      {/* Latitude lines */}
-      <line
-        opacity="0.08"
-        stroke="white"
-        strokeWidth="0.8"
-        x1="0"
-        y1="120"
-        x2="1000"
-        y2="120"
-      />
-      <line
-        opacity="0.08"
-        stroke="white"
-        strokeWidth="0.8"
-        x1="0"
-        y1="180"
-        x2="1000"
-        y2="180"
-      />
-      <line
-        opacity="0.08"
-        stroke="white"
-        strokeWidth="0.8"
-        x1="0"
-        y1="240"
-        x2="1000"
-        y2="240"
-      />
-      <line
-        opacity="0.08"
-        stroke="white"
-        strokeWidth="0.8"
-        x1="0"
-        y1="300"
-        x2="1000"
-        y2="300"
-      />
-      <line
-        opacity="0.08"
-        stroke="white"
-        strokeWidth="0.8"
-        x1="0"
-        y1="360"
-        x2="1000"
-        y2="360"
-      />
-      {/* Longitude lines */}
-      <line
-        opacity="0.08"
-        stroke="white"
-        strokeWidth="0.8"
-        x1="200"
-        y1="0"
-        x2="200"
-        y2="500"
-      />
-      <line
-        opacity="0.08"
-        stroke="white"
-        strokeWidth="0.8"
-        x1="400"
-        y1="0"
-        x2="400"
-        y2="500"
-      />
-      <line
-        opacity="0.08"
-        stroke="white"
-        strokeWidth="0.8"
-        x1="600"
-        y1="0"
-        x2="600"
-        y2="500"
-      />
-      <line
-        opacity="0.08"
-        stroke="white"
-        strokeWidth="0.8"
-        x1="800"
-        y1="0"
-        x2="800"
-        y2="500"
-      />
-    </svg>
-  );
-}
+
 
 export default function ImpactProfile() {
   const sectionRef = useRef(null);
@@ -215,7 +63,11 @@ export default function ImpactProfile() {
           }}
         >
           {/* World map watermark */}
-          <WorldMapBg />
+          <img
+            src="/assets/map.svg"
+            alt="World Map"
+            className="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none"
+          />
 
           {/* Content */}
           <div className="relative z-10 px-8 md:px-16 py-14 text-white text-center">

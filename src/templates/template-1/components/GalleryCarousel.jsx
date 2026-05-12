@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { gsap } from "gsap";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
@@ -134,12 +135,13 @@ const GalleryCarousel = () => {
                   }}
                 >
                   <div
-                    className={`aspect-[4/3] overflow-hidden ${isCenter ? "" : "opacity-80"}`}
+                    className={`aspect-[4/3] overflow-hidden relative ${isCenter ? "" : "opacity-80"}`}
                   >
-                    <img
+                    <Image
                       src={item.src}
                       alt={item.title}
-                      className="w-full h-full object-cover"
+                      layout="fill"
+                      objectFit="cover"
                       style={{ filter: "grayscale(80%)" }}
                     />
                   </div>

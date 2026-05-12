@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import Image from "next/image";
 import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
 
 const testimonials = [
@@ -191,11 +192,14 @@ export default function Testimonials() {
 
                 {/* Author */}
                 <div className="flex items-center gap-4 pt-5 border-t border-white/10">
-                  <img
-                    src={t.img}
-                    alt={t.name}
-                    className="w-12 h-12 rounded-full object-cover ring-2 ring-[rgba(255,202,8,0.4)]"
-                  />
+                  <div className="relative w-12 h-12 rounded-full overflow-hidden ring-2 ring-[rgba(255,202,8,0.4)] flex-shrink-0">
+                    <Image
+                      src={t.img}
+                      alt={t.name}
+                      layout="fill"
+                      objectFit="cover"
+                    />
+                  </div>
 
                   <div>
                     <h4 className="text-white font-extrabold text-sm group-hover:text-brand-yellow transition-colors">

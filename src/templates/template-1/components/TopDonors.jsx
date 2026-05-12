@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import Image from "next/image";
 import { ChevronLeft, ChevronRight, Trophy, Heart } from "lucide-react";
 
 const donors = [
@@ -174,10 +175,11 @@ export default function TopDonors() {
                         d.rank <= 3 ? "#FFCA08" : "rgba(255,255,255,0.2)",
                     }}
                   >
-                    <img
+                    <Image
                       src={d.img}
                       alt={d.name}
-                      className="w-full h-full object-cover"
+                      layout="fill"
+                      objectFit="cover"
                     />
                   </div>
                   {/* Rank badge */}

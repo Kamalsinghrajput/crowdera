@@ -6,32 +6,38 @@ import { useRouter } from "next/router";
 const NAV_ITEMS = [
   { label: "Home", href: "#hero" },
   { label: "Services", href: "#services" },
-  { 
-    label: "About", 
+  {
+    label: "About",
     href: "#about",
     subItems: [
       { label: "Our Story", href: "#about" },
       { label: "Impact Profile", href: "#impact" },
       { label: "Global Reach", href: "#counter" },
-      { label: "Watch Video", href: "#video" }
-    ]
+      { label: "Watch Video", href: "#video" },
+    ],
   },
-  { 
-    label: "Causes", 
-    href: "#causes",
+  {
+    label: "Causes",
+    href: "/templates/template-2/initiatives?tab=campaigns",
     subItems: [
-      { label: "Active Causes", href: "#causes" },
-      { label: "Top Donors", href: "#top-donors" }
-    ]
+      {
+        label: "Active Causes",
+        href: "/templates/template-2/initiatives?tab=campaigns",
+      },
+      { label: "Top Donors", href: "#top-donors" },
+    ],
   },
-  { 
-    label: "Events", 
-    href: "#events",
+  {
+    label: "Events",
+    href: "/templates/template-2/initiatives?tab=events",
     subItems: [
-      { label: "Upcoming Events", href: "#events" },
+      {
+        label: "Upcoming Events",
+        href: "/templates/template-2/initiatives?tab=events",
+      },
       { label: "Volunteer", href: "#volunteer" },
-      { label: "Newsletter", href: "#newsletter" }
-    ]
+      { label: "Newsletter", href: "#newsletter" },
+    ],
   },
   { label: "Team", href: "#team" },
   { label: "Testimonials", href: "#testimonials" },
@@ -97,6 +103,20 @@ export default function Navbar() {
 
   return (
     <>
+      <style>{`
+        .t2-btn { display: inline-flex; align-items: center; gap: 0; text-decoration: none; border: none; background: none; cursor: pointer; padding: 0; }
+        .t2-btn span { position: relative; display: inline-flex; align-items: center; justify-content: center; height: 50px; padding: 0 35px; background-color: #121d18; color: white; border-radius: 25px; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; z-index: 1; overflow: hidden; transition: all 500ms ease; white-space: nowrap; }
+        .t2-btn span::before { content: ""; position: absolute; inset: 0; background-color: #FFA415; transform-origin: left; transform: scaleX(0); transition: transform 0.8s cubic-bezier(0, 0.96, 0.58, 1.1); z-index: -1; }
+        .t2-btn:hover span::before { transform: scaleX(1); transition: transform 1.2s cubic-bezier(0, 0.96, 0.58, 1.1); }
+        .t2-btn:hover span { color: white; }
+        .t2-btn i { position: relative; display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; background-color: #121d18; border-radius: 50%; font-size: 18px; color: white; overflow: hidden; transition: all 500ms ease; z-index: 2; margin-left: -10px; }
+        .t2-btn i::after { content: ""; position: absolute; inset: 0; background-color: #FFA415; transform-origin: right; transform: scaleX(0); transition: transform 0.8s cubic-bezier(0, 0.96, 0.58, 1.1); z-index: -1; }
+        .t2-btn:hover i::after { transform: scaleX(1); transition: transform 1.2s cubic-bezier(0, 0.96, 0.58, 1.1); }
+        .t2-btn:hover i { color: white; }
+        .t2-btn.t2-btn-secondary span, .t2-btn.t2-btn-secondary i { background-color: #FFA415; color: #121d18; }
+        .t2-btn.t2-btn-secondary span::before, .t2-btn.t2-btn-secondary i::after { background-color: #121d18; }
+        .t2-btn.t2-btn-secondary:hover span, .t2-btn.t2-btn-secondary:hover i { color: white; }
+      `}</style>
       <div style={{ height: scrolled ? "120px" : 0 }} />
 
       <header
@@ -171,7 +191,13 @@ export default function Navbar() {
             style={{ gap: 20 }}
           >
             {/* Left: Logo + Links */}
-            <div style={{ display: "flex", alignItems: "center", gap: "clamp(20px, 4vw, 80px)" }}>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "clamp(20px, 4vw, 80px)",
+              }}
+            >
               <a
                 href="#"
                 style={{
@@ -230,15 +256,24 @@ export default function Navbar() {
                     >
                       {item.label}
                       {item.subItems && (
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" style={{ transition: "transform 0.3s" }} className="group-hover:rotate-180">
-                          <path d="M6 9l6 6 6-6"/>
+                        <svg
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="3"
+                          style={{ transition: "transform 0.3s" }}
+                          className="group-hover:rotate-180"
+                        >
+                          <path d="M6 9l6 6 6-6" />
                         </svg>
                       )}
                     </a>
 
                     {/* Submenu Dropdown */}
                     {item.subItems && (
-                      <div 
+                      <div
                         className="absolute top-[100%] left-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-4 group-hover:translate-y-0"
                         style={{
                           background: "#fff",
@@ -327,19 +362,19 @@ export default function Navbar() {
               <div className="hidden lg:flex">
                 <a href="#" className="t2-btn t2-btn-secondary">
                   <span>Donate Now</span>
-                <i>
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path d="M7 17L17 7M17 7H7M17 7v10" />
-                  </svg>
-                </i>
-              </a>
+                  <i>
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <path d="M7 17L17 7M17 7H7M17 7v10" />
+                    </svg>
+                  </i>
+                </a>
               </div>
 
               {/* Overflow Hamburger for Desktop */}
@@ -577,13 +612,25 @@ export default function Navbar() {
                   >
                     <span>{item.label}</span>
                     {item.subItems && (
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M6 9l6 6 6-6"/>
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      >
+                        <path d="M6 9l6 6 6-6" />
                       </svg>
                     )}
                   </a>
                   {item.subItems && (
-                    <div style={{ background: "rgba(0,0,0,0.2)", padding: "10px 0" }}>
+                    <div
+                      style={{
+                        background: "rgba(0,0,0,0.2)",
+                        padding: "10px 0",
+                      }}
+                    >
                       {item.subItems.map((sub) => (
                         <a
                           key={sub.label}
@@ -607,7 +654,14 @@ export default function Navbar() {
               ))}
             </ul>
 
-            <div style={{ padding: "20px 25px 0", display: "flex", flexDirection: "column", gap: 10 }}>
+            <div
+              style={{
+                padding: "20px 25px 0",
+                display: "flex",
+                flexDirection: "column",
+                gap: 10,
+              }}
+            >
               <a
                 href="#"
                 style={{
@@ -627,21 +681,26 @@ export default function Navbar() {
               </a>
               <a
                 href="#"
-                className="sm:hidden"
+                className="t2-btn t2-btn-secondary"
                 style={{
-                  display: "block",
-                  border: "1px solid #FFA415",
-                  color: "#FFA415",
-                  padding: "12px 20px",
-                  fontSize: 15,
-                  fontWeight: 600,
-                  fontFamily: "Inter, sans-serif",
-                  textAlign: "center",
-                  textDecoration: "none",
-                  borderRadius: 4,
+                  display: "flex",
+                  width: "100%",
+                  justifyContent: "center",
                 }}
               >
-                Donate Now
+                <span>Donate Now</span>
+                <i>
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d="M7 17L17 7M17 7H7M17 7v10" />
+                  </svg>
+                </i>
               </a>
             </div>
 

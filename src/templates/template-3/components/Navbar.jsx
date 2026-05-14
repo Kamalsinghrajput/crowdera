@@ -16,22 +16,22 @@ const NAV_ITEMS = [
       { label: "Watch Video", href: "#video" },
     ],
   },
-  {
-    label: "Causes",
-    href: "#causes",
+  { 
+    label: "Causes", 
+    href: "/templates/template-3/initiatives?tab=campaigns",
     subItems: [
-      { label: "Active Causes", href: "#causes" },
-      { label: "Top Donors", href: "#top-donors" },
-    ],
+      { label: "Active Causes", href: "/templates/template-3/initiatives?tab=campaigns" },
+      { label: "Top Donors", href: "#top-donors" }
+    ]
   },
-  {
-    label: "Events",
-    href: "#events",
+  { 
+    label: "Events", 
+    href: "/templates/template-3/initiatives?tab=events",
     subItems: [
-      { label: "Upcoming Events", href: "#events" },
+      { label: "Upcoming Events", href: "/templates/template-3/initiatives?tab=events" },
       { label: "Volunteer", href: "#volunteer" },
-      { label: "Newsletter", href: "#newsletter" },
-    ],
+      { label: "Newsletter", href: "#newsletter" }
+    ]
   },
   { label: "Team", href: "#team" },
   { label: "Testimonials", href: "#testimonials" },

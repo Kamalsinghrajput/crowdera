@@ -145,7 +145,7 @@ export default function Event({ isAllEventsPage }) {
         {/* View All Events CTA */}
         {!isAllEventsPage && (
           <div className="flex justify-center mt-16 relative z-10">
-          <Link href="/templates/template-4/events">
+          <Link href="/templates/template-4/initiatives?tab=events">
             <a className="t2-btn t2-btn-secondary">
               <span>View All Events</span>
               <i>

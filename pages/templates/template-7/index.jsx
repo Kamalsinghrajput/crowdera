@@ -1,47 +1,50 @@
 import Head from 'next/head';
-import Link from 'next/link';
+import Initiatives from '../../../src/templates/template-7/components/Initiatives';
+import Navbar from '../../../src/templates/template-7/components/Navbar';
 
 export default function Template7() {
   return (
-    <div style={{ minHeight: '100vh', background: '#0a0a0a', display: 'flex', flexDirection: 'column', fontFamily: 'Inter, sans-serif' }}>
+    <div className="min-h-screen bg-white">
       <Head>
-        <title>Charifund | Template 7 - Coming Soon</title>
-        <meta name="description" content="Template 7 is under construction." />
-        <link rel="icon" href="/favicon.ico" />
+        <title>Charifund | Template 7 - Initiatives</title>
+        <meta name="description" content="Explore our initiatives." />
       </Head>
 
-      {/* Minimal placeholder header */}
-      <header style={{ padding: '1.5rem 2rem', borderBottom: '1px solid rgba(255,255,255,0.08)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <span style={{ color: '#f59e0b', fontWeight: 900, fontSize: '1.25rem', letterSpacing: '-0.02em' }}>CHARIFUND</span>
-        <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' }}>Template 7</span>
-      </header>
-
-      {/* Coming soon body */}
-      <main style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '4rem 1.5rem', textAlign: 'center' }}>
-        <div style={{ background: 'rgba(245,158,11,0.12)', border: '1px solid rgba(245,158,11,0.3)', borderRadius: '9999px', padding: '0.4rem 1.2rem', marginBottom: '2rem', display: 'inline-block' }}>
-          <span style={{ color: '#f59e0b', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' }}>Template {7}</span>
-        </div>
-        <h1 style={{ fontSize: 'clamp(3rem, 10vw, 6rem)', fontWeight: 900, color: '#ffffff', lineHeight: 1, marginBottom: '1.5rem', letterSpacing: '-0.04em' }}>
-          Coming<br />Soon
-        </h1>
-        <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '1.125rem', maxWidth: '28rem', marginBottom: '3rem', lineHeight: 1.6 }}>
-          This template slot is ready. Add your components to{' '}
-          <code style={{ color: '#f59e0b', background: 'rgba(245,158,11,0.1)', borderRadius: '4px', padding: '0.1em 0.4em', fontSize: '0.875em' }}>
-            templates/template-7/components/
-          </code>{' '}
-          and start building.
-        </p>
-        <Link href="/" legacyBehavior>
-          <a style={{ background: '#f59e0b', color: '#0a0a0a', fontWeight: 700, padding: '1rem 2.5rem', borderRadius: '9999px', textDecoration: 'none', fontSize: '0.95rem', display: 'inline-block', transition: 'opacity 0.2s' }}>
-            ← Back to Templates
-          </a>
-        </Link>
+      <Navbar />
+      
+      <main className="pt-24">
+        <Initiatives />
       </main>
 
-      {/* Minimal placeholder footer */}
-      <footer style={{ padding: '1.5rem 2rem', borderTop: '1px solid rgba(255,255,255,0.08)', textAlign: 'center', color: 'rgba(255,255,255,0.2)', fontSize: '0.8rem' }}>
-        Charifund — Template 7 placeholder footer
+      <footer className="bg-slate-900 py-32">
+        <div className="container mx-auto px-4 max-w-[1200px]">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 text-white">
+                <div className="col-span-1 lg:col-span-2">
+                    <span className="text-white font-black text-3xl tracking-tighter mb-8 block uppercase">Charifund</span>
+                    <p className="text-slate-400 text-lg max-w-sm">We are a global community dedicated to providing support and resources to those in need. Join us in making a difference.</p>
+                </div>
+                <div>
+                    <h4 className="text-indigo-400 font-bold uppercase tracking-widest text-[10px] mb-8">Navigation</h4>
+                    <ul className="space-y-4 text-slate-400 text-sm font-bold">
+                        <li><a href="#" className="hover:text-white transition-colors">Campaigns</a></li>
+                        <li><a href="#" className="hover:text-white transition-colors">Events</a></li>
+                        <li><a href="#" className="hover:text-white transition-colors">Fundraisers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 className="text-indigo-400 font-bold uppercase tracking-widest text-[10px] mb-8">Connect</h4>
+                    <ul className="space-y-4 text-slate-400 text-sm font-bold">
+                        <li><a href="#" className="hover:text-white transition-colors">Twitter</a></li>
+                        <li><a href="#" className="hover:text-white transition-colors">Instagram</a></li>
+                        <li><a href="#" className="hover:text-white transition-colors">Facebook</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div className="mt-24 pt-12 border-t border-slate-800 text-center text-slate-500 text-xs font-bold uppercase tracking-widest">
+                © 2024 Charifund. All rights reserved.
+            </div>
+        </div>
       </footer>
-    </div>);
-
+    </div>
+  );
 }

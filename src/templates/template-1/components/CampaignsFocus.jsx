@@ -230,13 +230,13 @@ const CampaignsFocus = () => {
                   }}
                 >
                   <div className="relative h-44 overflow-hidden">
-                  <Image
-                    src={c.img}
-                    alt={c.title}
-                    layout="fill"
-                    objectFit="cover"
-                    className="group-hover:scale-105 transition-transform duration-500"
-                  />
+                    <Image
+                      src={c.img}
+                      alt={c.title}
+                      layout="fill"
+                      objectFit="cover"
+                      className="group-hover:scale-105 transition-transform duration-500"
+                    />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                     <div className="absolute bottom-3 left-3 right-3 z-10">
                       <h3 className="text-white font-extrabold text-sm leading-snug mb-1.5">

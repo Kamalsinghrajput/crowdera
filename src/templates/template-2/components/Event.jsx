@@ -148,7 +148,7 @@ export default function Event() {
 
         {/* See All button */}
         <div className="text-center mt-16 relative z-10">
-          <Link href="/templates/template-2/events">
+          <Link href="/templates/template-2/initiatives?tab=events">
             <a className="t2-btn">
               <span>See All</span>
               <i>

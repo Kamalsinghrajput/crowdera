@@ -88,7 +88,7 @@ export default function Event({ isAllEventsPage }) {
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
               
               {/* Top Right Arrow Button */}
-              <Link href="/templates/template-8/events">
+              <Link href="/templates/template-8/initiatives?tab=events">
                 <a className="absolute top-6 right-6 w-[45px] h-[45px] rounded-full bg-[#d9a96e] flex items-center justify-center translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 shadow-md">
                   <FiArrowUpRight className="text-black" size={22} />
                 </a>
@@ -118,7 +118,7 @@ export default function Event({ isAllEventsPage }) {
             </div>
             
             <div>
-              <Link href="/templates/template-8/events">
+              <Link href="/templates/template-8/initiatives?tab=events">
                 <a className="inline-block px-10 py-[18px] bg-[#d9a96e] text-black font-bold text-[15px] transition-colors hover:bg-[#c4965d] shadow-sm">
                   Explore All
                 </a>

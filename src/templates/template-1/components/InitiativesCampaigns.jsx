@@ -121,38 +121,38 @@ export const campaigns = [
   },
 ];
 
-const InitiativesCampaigns = ({ data }) => {
-  const campaignsList = data || campaigns;
+const InitiativesCampaigns = ({ data: initialCampaignData }) => {
+  const campaignsList = initialCampaignData || campaigns;
 
   return (
     <>
-      {campaignsList.map((campaign) => {
+      {campaignsList.map((campaignItem) => {
         const progressPercentage = Math.min(
           100,
-          Math.round((campaign.raised / campaign.goal) * 100)
+          Math.round((campaignItem.raised / campaignItem.goal) * 100)
         );
         return (
           <div
-            key={campaign.id}
-            className="bg-white rounded-[2rem] overflow-hidden hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-all duration-500 group flex flex-col border-2 border-gray-200 opacity-0"
+            key={campaignItem.id}
+            className="bg-white rounded-[2rem] overflow-hidden hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-all duration-500 group flex flex-col border-2 border-gray-100 opacity-0"
           >
             {/* Image with Verified / Tax Exempt badges */}
             <div className="relative h-56 overflow-hidden">
               <Image
-                src={campaign.img}
-                alt={campaign.title}
+                src={campaignItem.img}
+                alt={campaignItem.title}
                 layout="fill"
                 objectFit="cover"
                 className="group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute top-4 left-4 flex gap-2 flex-wrap">
-                {campaign.isVerified && (
-                  <span className="bg-[#00715D] text-white text-[10px] font-black py-1.5 px-4 rounded-full uppercase tracking-widest shadow-lg">
+                {campaignItem.isVerified && (
+                  <span className="bg-[#223632] text-white text-[10px] font-black py-1.5 px-4 rounded-full uppercase tracking-widest shadow-lg">
                     Verified
                   </span>
                 )}
-                {campaign.isTaxExempt && (
-                  <span className="bg-[#FFCA08] text-[#091F1B] text-[10px] font-black py-1.5 px-4 rounded-full uppercase tracking-widest shadow-lg">
+                {campaignItem.isTaxExempt && (
+                  <span className="bg-[#FFCA08] text-[#223632] text-[10px] font-black py-1.5 px-4 rounded-full uppercase tracking-widest shadow-lg">
                     Tax Exempt
                   </span>
                 )}
@@ -162,47 +162,47 @@ const InitiativesCampaigns = ({ data }) => {
             {/* Content */}
             <div className="p-6 flex flex-col flex-grow">
               {/* Title */}
-              <h3 className="font-black text-lg leading-tight text-[#091F1B] group-hover:text-[#00715D] transition-colors line-clamp-2 mb-2">
-                {campaign.title}
+              <h3 className="font-black text-lg leading-tight text-[#223632] group-hover:text-[#FFCA08] transition-colors line-clamp-2 mb-2">
+                {campaignItem.title}
               </h3>
 
               {/* Organizer */}
               <div className="flex items-center gap-1.5 mb-3">
-                <Users size={14} className="text-[#00715D] shrink-0" />
-                <span className="text-sm text-[#00715D] font-black uppercase tracking-wider">
-                  {campaign.organizer}
+                <Users size={14} className="text-[#223632] shrink-0 opacity-70" />
+                <span className="text-sm text-[#223632] font-black uppercase tracking-wider opacity-70">
+                  {campaignItem.organizer}
                 </span>
               </div>
 
               {/* Description */}
               <p className="text-gray-500 text-sm leading-relaxed line-clamp-2 mb-6 font-medium">
-                {campaign.desc}
+                {campaignItem.desc}
               </p>
 
               {/* Fundraising Progress */}
-              <div className="bg-[#FAFAFA] rounded-2xl p-4 mb-6 border border-gray-50">
+              <div className="bg-gray-50 rounded-2xl p-4 mb-6 border border-gray-100">
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-xs font-black text-[#091F1B] uppercase tracking-widest">
+                  <span className="text-xs font-black text-[#223632] uppercase tracking-widest">
                     Fundraising Progress
                   </span>
-                  <span className="text-xs font-black text-[#00715D]">
+                  <span className="text-xs font-black text-[#223632]">
                     {progressPercentage}%
                   </span>
                 </div>
-                <div className="w-full bg-gray-100 rounded-full h-2 mb-2 overflow-hidden">
+                <div className="w-full bg-gray-200 rounded-full h-2 mb-2 overflow-hidden">
                   <div
                     className="h-full rounded-full transition-all duration-1000 ease-out"
                     style={{
                       width: `${progressPercentage}%`,
-                      background: `linear-gradient(to right, #FFCA08, #00715D)`,
+                      background: `#FFCA08`,
                     }}
                   />
                 </div>
                 <div className="flex justify-between text-[10px] font-bold text-gray-400 uppercase tracking-wider">
                   <span>
-                    Raised: ₹{campaign.raised.toLocaleString("en-IN")}
+                    Raised: ₹{campaignItem.raised.toLocaleString("en-IN")}
                   </span>
-                  <span>Goal: ₹{campaign.goal.toLocaleString("en-IN")}</span>
+                  <span>Goal: ₹{campaignItem.goal.toLocaleString("en-IN")}</span>
                 </div>
               </div>
 
@@ -210,36 +210,36 @@ const InitiativesCampaigns = ({ data }) => {
               <div className="flex items-center gap-1.5 mb-4">
                 <Heart
                   size={14}
-                  className="text-[#00715D]"
-                  fill="#00715D"
-                  fillOpacity="0.1"
+                  className="text-[#FFCA08]"
+                  fill="#FFCA08"
+                  fillOpacity="1"
                 />
-                <span className="text-sm font-black text-[#091F1B]">
-                  {campaign.donors} donors
+                <span className="text-sm font-black text-[#223632]">
+                  {campaignItem.donors} donors
                 </span>
               </div>
 
               {/* Category tag */}
               <div className="mb-6">
-                <span className="bg-[#FFCA08]/10 text-[#091F1B] text-[10px] font-black py-1.5 px-4 rounded-full uppercase tracking-widest border border-[#FFCA08]/20">
-                  {campaign.category}
+                <span className="bg-[#223632]/5 text-[#223632] text-[10px] font-black py-1.5 px-4 rounded-full uppercase tracking-widest border border-[#223632]/10">
+                  {campaignItem.category}
                 </span>
               </div>
 
               {/* SDG icons */}
-              {campaign.sdgs && campaign.sdgs.length > 0 && (
+              {campaignItem.sdgs && campaignItem.sdgs.length > 0 && (
                 <div className="flex gap-2 mb-6">
-                  {campaign.sdgs.map((sdgNumber) => (
+                  {campaignItem.sdgs.map((sustainableGoalId) => (
                     <div
-                      key={sdgNumber}
+                      key={sustainableGoalId}
                       className="w-9 h-9 rounded-xl flex items-center justify-center text-white text-[11px] font-black shadow-md hover:scale-110 transition-transform cursor-help"
                       style={{
                         background:
-                          SUSTAINABLE_GOAL_COLORS[sdgNumber] || "#555",
+                          SUSTAINABLE_GOAL_COLORS[sustainableGoalId] || "#555",
                       }}
-                      title={`SDG ${sdgNumber}`}
+                      title={`SDG ${sustainableGoalId}`}
                     >
-                      {sdgNumber}
+                      {sustainableGoalId}
                     </div>
                   ))}
                 </div>
@@ -248,14 +248,14 @@ const InitiativesCampaigns = ({ data }) => {
               {/* Buttons */}
               <div className="mt-auto space-y-3">
                 <div className="grid grid-cols-2 gap-3">
-                  <button className="bg-[#091F1B] text-white font-black py-3.5 rounded-xl text-[10px] uppercase tracking-widest hover:bg-[#00715D] transition-all shadow-md active:scale-95">
+                  <button className="bg-[#223632] text-white font-black py-3.5 rounded-xl text-[10px] uppercase tracking-widest hover:bg-[#FFCA08] hover:text-[#223632] transition-all shadow-md active:scale-95">
                     Donate
                   </button>
-                  <button className="bg-white text-[#091F1B] font-black py-3.5 rounded-xl text-[10px] uppercase tracking-widest border-2 border-[#091F1B] hover:bg-gray-50 transition-all active:scale-95">
+                  <button className="bg-white text-[#223632] font-black py-3.5 rounded-xl text-[10px] uppercase tracking-widest border-2 border-[#223632] hover:bg-gray-50 transition-all active:scale-95">
                     View
                   </button>
                 </div>
-                <button className="w-full bg-[#FFCA08] text-[#091F1B] font-black py-3.5 rounded-xl text-[10px] uppercase tracking-widest hover:opacity-90 transition-all shadow-md active:scale-95 border-2 border-transparent">
+                <button className="w-full bg-[#FFCA08] text-[#223632] font-black py-3.5 rounded-xl text-[10px] uppercase tracking-widest hover:opacity-90 transition-all shadow-md active:scale-95 border-2 border-transparent">
                   Fundraise
                 </button>
               </div>

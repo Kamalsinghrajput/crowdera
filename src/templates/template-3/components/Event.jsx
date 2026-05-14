@@ -484,7 +484,7 @@ export default function Event({ isAllEventsPage }) {
 
           {/* View All Events */}
           <div className="flex justify-center pb-16 relative z-10">
-            <Link href="/templates/template-3/events">
+            <Link href="/templates/template-3/initiatives?tab=events">
               <a className="t2-btn inline-flex">
                 <span>View All Events</span>
                 <i>

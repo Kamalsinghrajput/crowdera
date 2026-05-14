@@ -177,7 +177,7 @@ export default function Event({ isAllEventsPage }) {
         {/* View All Events Button */}
         {!isAllEventsPage && (
           <div className="text-center mt-12">
-            <Link href="/templates/template-5/events">
+            <Link href="/templates/template-5/initiatives?tab=events">
               <a className="inline-block bg-[#121d18] text-white font-['Montserrat'] font-bold text-[14px] uppercase px-10 py-[18px] transition-colors duration-300 hover:bg-[#ff5528] no-underline">
                 VIEW ALL EVENTS
               </a>

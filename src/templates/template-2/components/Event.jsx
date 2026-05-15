@@ -33,15 +33,12 @@ const EVENTS = [
 ];
 
 export default function Event() {
-  const primaryColor = "#007B39";
-  const secondaryColor = "#FFA415";
-  const bgColor = "#121d18";
-  const secondaryBgColor = "#f9f9f9";
+  // Colors handled by global CSS variables in index.jsx
 
 
   return (
     <section className="bg-white py-[120px] pb-[80px] relative overflow-hidden">
-      <style dangerouslySetInnerHTML={{ __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; --bg-color: ${bgColor}; --secondary-bg-color: ${secondaryBgColor}; }` }} />
+
       {/* Decorative SVG Blob (Left Side) */}
       <div
         className="absolute top-0 left-[-100px] w-96 h-96 opacity-10 pointer-events-none rotate-12"
@@ -54,7 +51,7 @@ export default function Event() {
           WebkitMaskRepeat: "no-repeat",
           maskPosition: "center",
           WebkitMaskPosition: "center",
-          backgroundColor: "var(--t2-secondary)",
+          backgroundColor: "var(--secondary)",
         }}
       />
       {/* Decorative SVG Blob (Right Side) */}
@@ -69,7 +66,7 @@ export default function Event() {
           WebkitMaskRepeat: "no-repeat",
           maskPosition: "center",
           WebkitMaskPosition: "center",
-          backgroundColor: "var(--t2-dark)",
+          backgroundColor: "var(--bg-color)",
         }}
       />
 
@@ -97,7 +94,7 @@ export default function Event() {
               WebkitMaskRepeat: "no-repeat",
               maskPosition: "center",
               WebkitMaskPosition: "center",
-              backgroundColor: "var(--t2-dark)",
+              backgroundColor: "var(--bg-color)",
             }}
           />
         </div>
@@ -125,7 +122,7 @@ export default function Event() {
 
               {/* Content */}
               <div className="p-8 flex flex-col justify-center gap-4 flex-grow">
-                <h3 className="text-[22px] text-[var(--bg-color)] leading-[1.4] transition-colors duration-300 group-hover:text-t2-secondary">
+                <h3 className="text-[22px] text-[var(--bg-color)] leading-[1.4] transition-colors duration-300 group-hover:text-[var(--secondary)]">
                   <a href="#" className="block">
                     {ev.title}
                   </a>

@@ -18,8 +18,8 @@ function FeatureBox({ item }) {
           width: 70,
           height: 70,
           borderRadius: "50%",
-          background: hovered ? "var(--secondary, #FFA415)" : "#F5F5F5",
-          color: hovered ? "#fff" : "var(--secondary, #FFA415)",
+          background: hovered ? "var(--secondary)" : "#F5F5F5",
+          color: hovered ? "#fff" : "var(--secondary)",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -34,7 +34,7 @@ function FeatureBox({ item }) {
       <h3
         style={{
           fontSize: 20,
-          color: "var(--t2-dark)",
+          color: "var(--bg-color)",
           marginBottom: 10,
         }}
       >
@@ -45,7 +45,7 @@ function FeatureBox({ item }) {
       <p
         style={{
           fontSize: 15,
-          color: "var(--t2-gray)",
+          color: "#6c6e76",
           lineHeight: 1.6,
           marginBottom: 14,
         }}
@@ -103,13 +103,13 @@ export default function About() {
                 width: 9,
                 height: 9,
                 borderRadius: "50%",
-                background: "var(--t2-secondary)",
+                background: "var(--secondary)",
               }}
             />
             <span
               style={{
                 fontSize: 16,
-                color: "var(--t2-dark)",
+                color: "var(--bg-color)",
                 fontStyle: "italic",
               }}
             >
@@ -120,7 +120,7 @@ export default function About() {
             style={{
               fontSize: "clamp(30px, 4vw, 52px)",
               lineHeight: 1.2,
-              color: "var(--t2-dark)",
+              color: "var(--bg-color)",
               marginTop: 0,
             }}
           >
@@ -136,7 +136,7 @@ export default function About() {
               style={{
                 fontSize: 16,
                 lineHeight: 1.9,
-                color: "var(--t2-gray)",
+                color: "#6c6e76",
                 marginBottom: 36,
               }}
             >
@@ -213,14 +213,14 @@ export default function About() {
                     <span
                       style={{
                         fontSize: 52,
-                        color: "var(--t2-dark)",
+                        color: "var(--bg-color)",
                         lineHeight: 1,
                       }}
                     >
                       25
                     </span>
                     <span
-                      style={{ fontSize: 28, color: "var(--t2-secondary)" }}
+                      style={{ fontSize: 28, color: "var(--secondary)" }}
                     >
                       +
                     </span>
@@ -241,7 +241,7 @@ export default function About() {
                       />
                       <text
                         fontSize="11"
-                        fill="var(--t2-gray)"
+                        fill="#6c6e76"
                         letterSpacing="2.5"
                       >
                         <textPath href="#circlePath" startOffset="0%">
@@ -267,7 +267,7 @@ export default function About() {
                     display: "flex",
                     alignItems: "center",
                     gap: 14,
-                    background: "var(--t2-light)",
+                    background: "#f9f9f9",
                     borderRadius: 10,
                     padding: "16px",
                   }}
@@ -288,7 +288,7 @@ export default function About() {
                     <p
                       style={{
                         fontSize: 13,
-                        color: "var(--t2-gray)",
+                        color: "#6c6e76",
                         margin: 0,
                       }}
                     >

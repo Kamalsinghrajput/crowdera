@@ -214,7 +214,7 @@ const Initiatives = ({ initialTab = "campaigns" }) => {
   return (
     <section className="bg-white">
       {/* Template 2 Specific Header */}
-      <div className="bg-[#121D18] py-24 lg:py-32 relative overflow-hidden">
+      <div className="bg-[var(--bg-color)] py-24 lg:py-32 relative overflow-hidden">
         <div
           className="absolute top-0 left-[-100px] w-96 h-96 opacity-[0.03] pointer-events-none rotate-12"
           style={{
@@ -226,7 +226,7 @@ const Initiatives = ({ initialTab = "campaigns" }) => {
             WebkitMaskRepeat: "no-repeat",
             maskPosition: "center",
             WebkitMaskPosition: "center",
-            backgroundColor: "#FFA415",
+            backgroundColor: "var(--secondary)",
           }}
         />
         <div
@@ -240,14 +240,14 @@ const Initiatives = ({ initialTab = "campaigns" }) => {
             WebkitMaskRepeat: "no-repeat",
             maskPosition: "center",
             WebkitMaskPosition: "center",
-            backgroundColor: "#007B39",
+            backgroundColor: "var(--primary)",
           }}
         />
 
         <div className="container mx-auto px-4 max-w-[1320px] relative z-10 text-center">
           <div className="inline-flex items-center gap-3 mb-6">
-            <div className="w-2 h-2 rounded-full bg-[#FFA415]" />
-            <span className="text-[#FFA415] text-[16px] italic">
+            <div className="w-2 h-2 rounded-full bg-[var(--secondary)]" />
+            <span className="text-[var(--secondary)] text-[16px] italic">
               Make a Real Impact
             </span>
           </div>
@@ -256,13 +256,13 @@ const Initiatives = ({ initialTab = "campaigns" }) => {
           </h1>
           <div className="max-w-2xl mx-auto relative group">
             <Search
-              className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-[#007B39] transition-colors"
+              className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-[var(--primary)] transition-colors"
               size={20}
             />
             <input
               type="text"
               placeholder="Search initiatives..."
-              className="w-full pl-16 pr-8 py-5 md:py-6 rounded-full bg-white text-gray-900 text-base font-medium shadow-2xl focus:outline-none focus:ring-4 focus:ring-[#FFA415]/20 transition-all border-none"
+              className="w-full pl-16 pr-8 py-5 md:py-6 rounded-full bg-white text-gray-900 text-base font-medium shadow-2xl focus:outline-none focus:ring-4 focus:ring-[var(--secondary)]/20 transition-all border-none"
               value={searchQuery}
               onChange={(event) => setSearchQuery(event.target.value)}
             />
@@ -278,11 +278,11 @@ const Initiatives = ({ initialTab = "campaigns" }) => {
                 <button
                   key={tabName}
                   onClick={() => handleTabChange(tabName)}
-                  className={`pb-5 text-sm font-bold uppercase tracking-widest transition-all relative ${activeTab === tabName ? "text-[#121D18]" : "text-gray-400 hover:text-[#007B39]"}`}
+                  className={`pb-5 text-sm font-bold uppercase tracking-widest transition-all relative ${activeTab === tabName ? "text-[var(--bg-color)]" : "text-gray-400 hover:text-[var(--primary)]"}`}
                 >
                   {tabName}
                   {activeTab === tabName && (
-                    <div className="absolute bottom-0 left-0 w-full h-1 bg-[#FFA415] rounded-full"></div>
+                    <div className="absolute bottom-0 left-0 w-full h-1 bg-[var(--secondary)] rounded-full"></div>
                   )}
                 </button>
               ))}
@@ -291,10 +291,10 @@ const Initiatives = ({ initialTab = "campaigns" }) => {
               <div className="relative min-w-[140px]">
                 <div
                   onClick={() => setIsFilterOpen(!isFilterOpen)}
-                  className={`flex items-center justify-between w-full bg-white border px-5 py-3.5 rounded-xl text-sm font-bold text-[#121D18] transition-all cursor-pointer ${isFilterOpen ? "border-[#FFA415] ring-2 ring-[#FFA415]/10" : "border-gray-200 hover:border-[#007B39]"}`}
+                  className={`flex items-center justify-between w-full bg-white border px-5 py-3.5 rounded-xl text-sm font-bold text-[var(--bg-color)] transition-all cursor-pointer ${isFilterOpen ? "border-[var(--secondary)] ring-2 ring-[var(--secondary)]/10" : "border-gray-200 hover:border-[var(--primary)]"}`}
                 >
                   <div className="flex items-center gap-2">
-                    <Filter size={14} className="text-[#007B39]" />
+                    <Filter size={14} className="text-[var(--primary)]" />
                     <span>Filter</span>
                   </div>
                   <ChevronDown
@@ -319,7 +319,7 @@ const Initiatives = ({ initialTab = "campaigns" }) => {
                               setEventFilter("All Events");
                               setIsFilterOpen(false);
                             }}
-                            className={`w-full text-left px-3 py-2 rounded-lg text-sm font-bold transition-colors ${eventFilter === "All Events" ? "bg-[#007B39] text-white" : "text-gray-700 hover:bg-gray-50"}`}
+                            className={`w-full text-left px-3 py-2 rounded-lg text-sm font-bold transition-colors ${eventFilter === "All Events" ? "bg-[var(--primary)] text-white" : "text-gray-700 hover:bg-gray-50"}`}
                           >
                             All Events
                           </button>
@@ -330,7 +330,7 @@ const Initiatives = ({ initialTab = "campaigns" }) => {
                                 setEventFilter(filterOption.value);
                                 setIsFilterOpen(false);
                               }}
-                              className={`w-full text-left px-3 py-2 rounded-lg text-sm font-bold transition-colors ${eventFilter === filterOption.value ? "bg-[#007B39] text-white" : "text-gray-700 hover:bg-gray-50"}`}
+                              className={`w-full text-left px-3 py-2 rounded-lg text-sm font-bold transition-colors ${eventFilter === filterOption.value ? "bg-[var(--primary)] text-white" : "text-gray-700 hover:bg-gray-50"}`}
                             >
                               {filterOption.label}
                             </button>
@@ -343,9 +343,9 @@ const Initiatives = ({ initialTab = "campaigns" }) => {
                               type="checkbox"
                               checked={isVerified}
                               onChange={(e) => setIsVerified(e.target.checked)}
-                              className="w-5 h-5 rounded border-gray-300 text-[#007B39] focus:ring-[#007B39]"
+                              className="w-5 h-5 rounded border-gray-300 text-[var(--primary)] focus:ring-[var(--primary)]"
                             />
-                            <span className="text-sm font-bold text-gray-700 group-hover/item:text-[#007B39]">
+                            <span className="text-sm font-bold text-gray-700 group-hover/item:text-[var(--primary)]">
                               Verified
                             </span>
                           </label>
@@ -354,9 +354,9 @@ const Initiatives = ({ initialTab = "campaigns" }) => {
                               type="checkbox"
                               checked={isTaxExempt}
                               onChange={(e) => setIsTaxExempt(e.target.checked)}
-                              className="w-5 h-5 rounded border-gray-300 text-[#007B39] focus:ring-[#007B39]"
+                              className="w-5 h-5 rounded border-gray-300 text-[var(--primary)] focus:ring-[var(--primary)]"
                             />
-                            <span className="text-sm font-bold text-gray-700 group-hover/item:text-[#007B39]">
+                            <span className="text-sm font-bold text-gray-700 group-hover/item:text-[var(--primary)]">
                               Tax Exempt
                             </span>
                           </label>
@@ -369,10 +369,10 @@ const Initiatives = ({ initialTab = "campaigns" }) => {
               <div className="relative min-w-[160px]">
                 <Tag
                   size={14}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 text-[#007B39]"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--primary)]"
                 />
                 <select
-                  className="w-full appearance-none bg-white border border-gray-200 pl-10 pr-10 py-3.5 rounded-xl text-sm font-bold text-[#121D18] focus:outline-none focus:ring-2 focus:ring-[#FFA415] cursor-pointer"
+                  className="w-full appearance-none bg-white border border-gray-200 pl-10 pr-10 py-3.5 rounded-xl text-sm font-bold text-[var(--bg-color)] focus:outline-none focus:ring-2 focus:ring-[var(--secondary)] cursor-pointer"
                   value={category}
                   onChange={(event) => setCategory(event.target.value)}
                 >
@@ -390,10 +390,10 @@ const Initiatives = ({ initialTab = "campaigns" }) => {
               <div className="relative min-w-[160px]">
                 <Globe
                   size={14}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 text-[#007B39]"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--primary)]"
                 />
                 <select
-                  className="w-full appearance-none bg-white border border-gray-200 pl-10 pr-10 py-3.5 rounded-xl text-sm font-bold text-[#121D18] focus:outline-none focus:ring-2 focus:ring-[#FFA415] cursor-pointer"
+                  className="w-full appearance-none bg-white border border-gray-200 pl-10 pr-10 py-3.5 rounded-xl text-sm font-bold text-[var(--bg-color)] focus:outline-none focus:ring-2 focus:ring-[var(--secondary)] cursor-pointer"
                   value={country}
                   onChange={(event) => setCountry(event.target.value)}
                 >
@@ -412,10 +412,10 @@ const Initiatives = ({ initialTab = "campaigns" }) => {
                 <div className="relative min-w-[160px]">
                   <SlidersHorizontal
                     size={14}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 text-[#007B39]"
+                    className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--primary)]"
                   />
                   <select
-                    className="w-full appearance-none bg-white border border-gray-200 pl-10 pr-10 py-3.5 rounded-xl text-sm font-bold text-[#121D18] focus:outline-none focus:ring-2 focus:ring-[#FFA415] cursor-pointer"
+                    className="w-full appearance-none bg-white border border-gray-200 pl-10 pr-10 py-3.5 rounded-xl text-sm font-bold text-[var(--bg-color)] focus:outline-none focus:ring-2 focus:ring-[var(--secondary)] cursor-pointer"
                     value={fundraiserType}
                     onChange={(event) => setFundraiserType(event.target.value)}
                   >
@@ -436,7 +436,7 @@ const Initiatives = ({ initialTab = "campaigns" }) => {
                   AZ
                 </div>
                 <select
-                  className="w-full appearance-none bg-white border border-gray-200 pl-10 pr-10 py-3.5 rounded-xl text-sm font-bold text-[#121D18] focus:outline-none focus:ring-2 focus:ring-[#FFA415] cursor-pointer"
+                  className="w-full appearance-none bg-white border border-gray-200 pl-10 pr-10 py-3.5 rounded-xl text-sm font-bold text-[var(--bg-color)] focus:outline-none focus:ring-2 focus:ring-[var(--secondary)] cursor-pointer"
                   value={sortBy}
                   onChange={(event) => setSortBy(event.target.value)}
                 >
@@ -453,7 +453,7 @@ const Initiatives = ({ initialTab = "campaigns" }) => {
               </div>
               <button
                 onClick={handleReset}
-                className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gray-50 hover:bg-gray-100 text-[#121D18] font-bold text-sm transition-all"
+                className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gray-50 hover:bg-gray-100 text-[var(--bg-color)] font-bold text-sm transition-all"
               >
                 <RefreshCw size={14} />
                 <span>Reset</span>
@@ -463,7 +463,7 @@ const Initiatives = ({ initialTab = "campaigns" }) => {
         </div>
 
         {loading ? (
-          <div className="flex flex-col items-center justify-center py-40 gap-4 text-[#007B39]">
+          <div className="flex flex-col items-center justify-center py-40 gap-4 text-[var(--primary)]">
             <Loader2 className="animate-spin" size={48} />
             <span className="font-bold text-lg uppercase tracking-widest">
               Loading Initiatives...
@@ -478,8 +478,8 @@ const Initiatives = ({ initialTab = "campaigns" }) => {
               (filteredCampaigns.length > 0 ? (
                 <InitiativesCampaigns
                   data={filteredCampaigns}
-                  primaryColor="#007B39"
-                  secondaryColor="#FFA415"
+                  primaryColor="var(--primary)"
+                  secondaryColor="var(--secondary)"
                 />
               ) : (
                 <div className="col-span-full py-24 text-center font-bold text-gray-400">
@@ -498,8 +498,8 @@ const Initiatives = ({ initialTab = "campaigns" }) => {
               (filteredFundraisers.length > 0 ? (
                 <InitiativesFundraisers
                   data={filteredFundraisers}
-                  primaryColor="#007B39"
-                  secondaryColor="#FFA415"
+                  primaryColor="var(--primary)"
+                  secondaryColor="var(--secondary)"
                 />
               ) : (
                 <div className="col-span-full py-24 text-center font-bold text-gray-400">

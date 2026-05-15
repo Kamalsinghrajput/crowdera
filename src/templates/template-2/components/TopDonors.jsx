@@ -44,10 +44,7 @@ const GAP = 30;
 const AUTO_MS = 3800;
 
 export default function TopDonors() {
-  const primaryColor = "#1A3A37";
-  const secondaryColor = "#FFA415";
-  const bgColor = "#121d18";
-  const secondaryBgColor = "#f9f9f9";
+  // Colors handled by global CSS variables in index.jsx
 
   const [index, setIndex] = useState(0);
   const [cardW, setCardW] = useState(0);
@@ -96,8 +93,8 @@ export default function TopDonors() {
   const translateX = cardW ? -(index * (cardW + GAP)) : 0;
 
   return (
-    <section className="py-[120px]" style={{ background: primaryColor }}>
-      <style dangerouslySetInnerHTML={{ __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; --bg-color: ${bgColor}; --secondary-bg-color: ${secondaryBgColor}; }` }} />
+    <section className="py-[120px]" style={{ background: "var(--primary)" }}>
+
       <div className="max-w-[1320px] mx-auto px-3">
         {/* Header */}
         <div className="text-center mb-[60px]">
@@ -154,7 +151,7 @@ export default function TopDonors() {
                 </div>
 
                 {/* Name */}
-                <h4 className="text-[20px] text-[var(--bg-color)] mb-2 group-hover:text-t2-secondary transition-colors">
+                <h4 className="text-[20px] text-[var(--bg-color)] mb-2 group-hover:text-[var(--secondary)] transition-colors">
                   {d.name}
                 </h4>
 
@@ -181,7 +178,7 @@ export default function TopDonors() {
                 style={{
                   width: i === index ? "24px" : "10px",
                   height: "10px",
-                  background: i === index ? "var(--t2-secondary)" : "#DDE3E3",
+                  background: i === index ? "var(--secondary)" : "#DDE3E3",
                 }}
               />
             ))}

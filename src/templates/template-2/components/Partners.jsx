@@ -47,12 +47,12 @@ export default function Partners() {
       <div className="max-w-[1320px] mx-auto px-3">
         <div className="mb-16 text-center">
           <div className="inline-flex items-center gap-3 mb-6">
-            <div className="w-2 h-2 rounded-full bg-[#FFA415]" />
-            <span className="text-[16px] text-[#121d18] italic">
+            <div className="w-2 h-2 rounded-full bg-[var(--secondary)]" />
+            <span className="text-[16px] text-[var(--bg-color)] italic">
               Global Reach
             </span>
           </div>
-          <h2 className="text-[clamp(32px,4vw,48px)] leading-[1.2] text-[#121d18] font-bold">
+          <h2 className="text-[clamp(32px,4vw,48px)] leading-[1.2] text-[var(--bg-color)] font-bold">
             Our Partners
           </h2>
           <p className="text-[#6c6e76] text-[16px] font-['Inter'] mt-4 max-w-[600px] mx-auto">

@@ -58,10 +58,7 @@ export default function Navbar() {
   const [overflowOpen, setOverflowOpen] = useState(false);
   const overflowRef = useRef(null);
 
-  const primaryColor = "#007B39";
-  const secondaryColor = "#FFA415";
-  const bgColor = "#121d18";
-  const secondaryBgColor = "#f9f9f9";
+  // Colors handled by global CSS variables in index.jsx
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
@@ -107,16 +104,16 @@ export default function Navbar() {
         dangerouslySetInnerHTML={{
           __html: `
         .t2-btn { display: inline-flex; align-items: center; gap: 0; text-decoration: none; border: none; background: none; cursor: pointer; padding: 0; }
-        .t2-btn span { position: relative; display: inline-flex; align-items: center; justify-content: center; height: 50px; padding: 0 35px; background-color: #121d18; color: white; border-radius: 25px; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; z-index: 1; overflow: hidden; transition: all 500ms ease; white-space: nowrap; }
-        .t2-btn span::before { content: ''; position: absolute; inset: 0; background-color: #FFA415; transform-origin: left; transform: scaleX(0); transition: transform 0.8s cubic-bezier(0, 0.96, 0.58, 1.1); z-index: -1; }
+        .t2-btn span { position: relative; display: inline-flex; align-items: center; justify-content: center; height: 50px; padding: 0 35px; background-color: var(--bg-color); color: white; border-radius: 25px; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; z-index: 1; overflow: hidden; transition: all 500ms ease; white-space: nowrap; }
+        .t2-btn span::before { content: ''; position: absolute; inset: 0; background-color: var(--secondary); transform-origin: left; transform: scaleX(0); transition: transform 0.8s cubic-bezier(0, 0.96, 0.58, 1.1); z-index: -1; }
         .t2-btn:hover span::before { transform: scaleX(1); transition: transform 1.2s cubic-bezier(0, 0.96, 0.58, 1.1); }
         .t2-btn:hover span { color: white; }
-        .t2-btn i { position: relative; display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; background-color: #121d18; border-radius: 50%; font-size: 18px; color: white; overflow: hidden; transition: all 500ms ease; z-index: 2; margin-left: -10px; }
-        .t2-btn i::after { content: ''; position: absolute; inset: 0; background-color: #FFA415; transform-origin: right; transform: scaleX(0); transition: transform 0.8s cubic-bezier(0, 0.96, 0.58, 1.1); z-index: -1; }
+        .t2-btn i { position: relative; display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; background-color: var(--bg-color); border-radius: 50%; font-size: 18px; color: white; overflow: hidden; transition: all 500ms ease; z-index: 2; margin-left: -10px; }
+        .t2-btn i::after { content: ''; position: absolute; inset: 0; background-color: var(--secondary); transform-origin: right; transform: scaleX(0); transition: transform 0.8s cubic-bezier(0, 0.96, 0.58, 1.1); z-index: -1; }
         .t2-btn:hover i::after { transform: scaleX(1); transition: transform 1.2s cubic-bezier(0, 0.96, 0.58, 1.1); }
         .t2-btn:hover i { color: white; }
-        .t2-btn.t2-btn-secondary span, .t2-btn.t2-btn-secondary i { background-color: #FFA415; color: #121d18; }
-        .t2-btn.t2-btn-secondary span::before, .t2-btn.t2-btn-secondary i::after { background-color: #121d18; }
+        .t2-btn.t2-btn-secondary span, .t2-btn.t2-btn-secondary i { background-color: var(--secondary); color: var(--bg-color); }
+        .t2-btn.t2-btn-secondary span::before, .t2-btn.t2-btn-secondary i::after { background-color: var(--bg-color); }
         .t2-btn.t2-btn-secondary:hover span, .t2-btn.t2-btn-secondary:hover i { color: white; }
       `,
         }}
@@ -128,7 +125,7 @@ export default function Navbar() {
       >
         {/* Top Bar */}
         {!scrolled && (
-          <div style={{ background: "#121D18" }}>
+          <div style={{ background: "var(--bg-color)" }}>
             <div className="max-w-[1320px] mx-auto px-3 flex items-center justify-center gap-6 py-[10px]">
               <p
                 style={{
@@ -155,14 +152,14 @@ export default function Navbar() {
                   textDecoration: "none",
                   transition: "all 0.3s",
                 }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "#fff";
-                  e.currentTarget.style.color = "#121D18";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = "#FFA415";
-                  e.currentTarget.style.color = "#fff";
-                }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "#fff";
+                    e.currentTarget.style.color = "var(--bg-color)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = "var(--secondary)";
+                    e.currentTarget.style.color = "#fff";
+                  }}
               >
                 <svg
                   width="14"
@@ -212,7 +209,7 @@ export default function Navbar() {
               >
                 <span
                   style={{
-                    color: "#FFA415",
+                    color: "var(--secondary)",
                     fontFamily: "Sora, sans-serif",
                     fontWeight: 800,
                     fontSize: "clamp(20px, 5vw, 28px)",
@@ -252,7 +249,7 @@ export default function Navbar() {
                         transition: "color 0.3s",
                       }}
                       onMouseEnter={(e) =>
-                        (e.currentTarget.style.color = "#FFA415")
+                        (e.currentTarget.style.color = "var(--secondary)")
                       }
                       onMouseLeave={(e) =>
                         (e.currentTarget.style.color = "#fff")
@@ -296,7 +293,7 @@ export default function Navbar() {
                             style={{
                               display: "block",
                               padding: "10px 20px",
-                              color: "#121D18",
+                              color: "var(--bg-color)",
                               fontFamily: "Inter, sans-serif",
                               fontSize: 15,
                               fontWeight: 500,
@@ -304,11 +301,11 @@ export default function Navbar() {
                               transition: "all 0.2s",
                             }}
                             onMouseEnter={(e) => {
-                              e.currentTarget.style.color = "#FFA415";
+                              e.currentTarget.style.color = "var(--secondary)";
                               e.currentTarget.style.paddingLeft = "26px";
                             }}
                             onMouseLeave={(e) => {
-                              e.currentTarget.style.color = "#121D18";
+                              e.currentTarget.style.color = "var(--bg-color)";
                               e.currentTarget.style.paddingLeft = "20px";
                             }}
                           >
@@ -342,7 +339,7 @@ export default function Navbar() {
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.background = "#fff";
-                  e.currentTarget.style.color = "#121D18";
+                  e.currentTarget.style.color = "var(--bg-color)";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.background = "transparent";
@@ -460,11 +457,11 @@ export default function Navbar() {
                             transition: "all 0.2s",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "#FFA415";
+                            e.currentTarget.style.color = "var(--secondary)";
                             e.currentTarget.style.paddingLeft = "26px";
                           }}
                           onMouseLeave={(e) => {
-                            e.currentTarget.style.color = "#121D18";
+                            e.currentTarget.style.color = "var(--bg-color)";
                             e.currentTarget.style.paddingLeft = "20px";
                           }}
                         >
@@ -661,7 +658,7 @@ export default function Navbar() {
                 href="#"
                 style={{
                   display: "block",
-                  background: "#FFA415",
+                  background: "var(--secondary)",
                   color: "#fff",
                   padding: "12px 20px",
                   fontSize: 15,

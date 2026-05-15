@@ -27,10 +27,7 @@ export default function Hero() {
   const [current, setCurrent] = useState(0);
   const [animKey, setAnimKey] = useState(0);
 
-  const primaryColor = "#007B39";
-  const secondaryColor = "#FFA415";
-  const bgColor = "#121d18";
-  const secondaryBgColor = "#f9f9f9";
+  // Using CSS variables defined in index.jsx
 
   useEffect(() => {
     const t = setInterval(() => {
@@ -54,7 +51,7 @@ export default function Hero() {
         background: "#000",
       }}
     >
-      <style dangerouslySetInnerHTML={{ __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; --bg-color: ${bgColor}; --secondary-bg-color: ${secondaryBgColor}; }` }} />
+
       {/* Slides */}
       {SLIDES.map((slide, i) => (
         <div
@@ -120,7 +117,7 @@ export default function Hero() {
                 transform: "rotate(180deg)",
                 transition: "color 0.3s",
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "#FFA415")}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--secondary)")}
               onMouseLeave={(e) =>
                 (e.currentTarget.style.color = "rgba(255,255,255,0.5)")
               }
@@ -161,13 +158,13 @@ export default function Hero() {
                   width: 9,
                   height: 9,
                   borderRadius: "50%",
-                  background: "#FFA415",
+                  background: "var(--secondary)",
                   flexShrink: 0,
                 }}
               />
               <span
                 style={{
-                  color: "#FFA415",
+                  color: "var(--secondary)",
                   fontFamily: "Sora, sans-serif",
                   fontWeight: 600,
                   fontSize: 18,
@@ -244,7 +241,7 @@ export default function Hero() {
               width: current === i ? 30 : 10,
               height: 10,
               borderRadius: current === i ? 5 : "50%",
-              background: current === i ? "#FFA415" : "rgba(255,255,255,0.4)",
+              background: current === i ? "var(--secondary)" : "rgba(255,255,255,0.4)",
               border: "none",
               cursor: "pointer",
               transition: "all 0.4s",

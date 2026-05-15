@@ -42,7 +42,7 @@ function AccordionItem({ faq, isOpen, onToggle, index }) {
         {/* Number + Question */}
         <div className="flex items-center gap-4 flex-1">
           <span
-            className={`  text-[14px] shrink-0 transition-colors duration-300 min-w-[28px] ${isOpen ? "text-[var(--secondary)]" : "text-t2-dark/30"}`}
+            className={`  text-[14px] shrink-0 transition-colors duration-300 min-w-[28px] ${isOpen ? "text-[var(--secondary)]" : "text-[var(--bg-color)]/30"}`}
           >
             {String(index + 1).padStart(2, "0")}
           </span>
@@ -60,7 +60,7 @@ function AccordionItem({ faq, isOpen, onToggle, index }) {
             height="14"
             viewBox="0 0 24 24"
             fill="none"
-            stroke={isOpen ? "#fff" : "var(--t2-dark)"}
+            stroke={isOpen ? "#fff" : "var(--bg-color)"}
             strokeWidth="3"
           >
             <path d="M12 5v14M5 12h14" />
@@ -82,17 +82,14 @@ function AccordionItem({ faq, isOpen, onToggle, index }) {
 }
 
 export default function Faq() {
-  const primaryColor = "#007B39";
-  const secondaryColor = "#FFA415";
-  const bgColor = "#121d18";
-  const secondaryBgColor = "#f9f9f9";
+  // Colors handled by global CSS variables in index.jsx
 
 
   const [open, setOpen] = useState(1);
 
   return (
     <section className="bg-[#F5F7F5] py-[120px] relative">
-      <style dangerouslySetInnerHTML={{ __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; --bg-color: ${bgColor}; --secondary-bg-color: ${secondaryBgColor}; }` }} />
+
       <div className="max-w-[1320px] mx-auto px-3">
         <div className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-20 items-start">
           {/* Left */}

@@ -1,12 +1,9 @@
 export default function VideoOne() {
   
-  const primaryColor = "#007B39";
-  const secondaryColor = "#FFA415";
-  const bgColor = "#121d18";
-  const secondaryBgColor = "#f9f9f9";
+  // Colors handled by global CSS variables in index.jsx
 return (
     <section style={{ position: "relative", overflow: "hidden", padding: "120px 0" }}>
-      <style dangerouslySetInnerHTML={{ __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; --bg-color: ${bgColor}; --secondary-bg-color: ${secondaryBgColor}; }` }} />
+
       {/* Background image */}
       <div style={{
         position: "absolute", inset: 0,
@@ -61,7 +58,7 @@ return (
               <div style={{ position: "relative", width: 116, height: 116, flexShrink: 0 }}>
                 <svg width="116" height="116" viewBox="0 0 116 116">
                   {/* Background circle */}
-                  <circle cx="58" cy="58" r="52" fill="none" stroke="var(--t2-primary)" strokeWidth="6" />
+                  <circle cx="58" cy="58" r="52" fill="none" stroke="var(--primary)" strokeWidth="6" />
                   {/* Progress circle */}
                   <circle
                     cx="58" cy="58" r="52" fill="none" stroke="#fff" strokeWidth="6"
@@ -77,7 +74,7 @@ return (
                 }}>70%</span>
               </div>
               <div>
-                <h3 style={{   fontSize: 36, color: "var(--t2-secondary)", margin: "0 0 4px" }}>$72,000</h3>
+                <h3 style={{   fontSize: 36, color: "var(--secondary)", margin: "0 0 4px" }}>$72,000</h3>
                 <p style={{  fontSize: 15, color: "rgba(255,255,255,0.6)", margin: 0 }}>Donation Collected</p>
               </div>
             </div>

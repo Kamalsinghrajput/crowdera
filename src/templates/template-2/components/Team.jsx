@@ -89,16 +89,13 @@ const TEAM = [
 
 
 export default function Team({ isAllTeamPage = false }) {
-  const primaryColor = "#007B39";
-  const secondaryColor = "#FFA415";
-  const bgColor = "#121d18";
-  const secondaryBgColor = "#f9f9f9";
+  // Colors handled by global CSS variables in index.jsx
 
   const displayTeam = isAllTeamPage ? TEAM : TEAM.slice(0, 4);
 
   return (
     <section className={`bg-[var(--secondary-bg-color)] ${isAllTeamPage ? 'pt-16' : 'pt-[120px]'} pb-[100px] relative`}>
-      <style dangerouslySetInnerHTML={{ __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; --bg-color: ${bgColor}; --secondary-bg-color: ${secondaryBgColor}; }` }} />
+
       <FloatingBird position="right" />
       <div className="max-w-[1320px] mx-auto px-3">
         {/* Section title */}

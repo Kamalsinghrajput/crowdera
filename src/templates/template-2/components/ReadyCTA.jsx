@@ -4,13 +4,13 @@ import Link from "next/link";
 
 export default function ReadyCTA() {
   return (
-    <section className="py-[120px] relative overflow-hidden text-center">
-      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80')] bg-cover bg-center bg-fixed" />
-      <div className="absolute inset-0 bg-[#121d18]/90" />
-
+    <section
+      className="py-[120px] relative overflow-hidden text-center"
+      style={{ background: "var(--primary)" }}
+    >
       <div className="max-w-[800px] mx-auto px-3 relative z-10">
         <div className="inline-flex items-center justify-center gap-3 mb-6 w-full">
-          <div className="w-2 h-2 rounded-full bg-[#FFA415]" />
+          <div className="w-2 h-2 rounded-full bg-[var(--secondary)]" />
           <span className="text-[16px] text-white italic">Get Involved</span>
         </div>
         <h2 className="text-[clamp(32px,4vw,48px)] leading-[1.2] text-white mb-6">

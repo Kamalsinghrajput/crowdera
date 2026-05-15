@@ -1,6 +1,5 @@
 export default function SiteFooter() {
-  const primaryColor = "#000000";
-  const secondaryColor = "#FFA415";
+  // Colors handled by global CSS variables in index.jsx
 
   const quickLinks = [
     "About Us",
@@ -22,10 +21,10 @@ export default function SiteFooter() {
       style={{
         position: "relative",
         overflow: "hidden",
-        background: primaryColor,
+        background: "#000",
       }}
     >
-      <style dangerouslySetInnerHTML={{ __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; }` }} />
+
       {/* Decorative circles */}
       <div
         style={{

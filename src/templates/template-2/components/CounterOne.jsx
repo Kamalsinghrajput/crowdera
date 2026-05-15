@@ -9,10 +9,7 @@ const STATS = [
 ];
 
 export default function CounterOne() {
-  const primaryColor = "#007B39";
-  const secondaryColor = "#FFA415";
-  const bgColor = "#121d18";
-  const secondaryBgColor = "#f9f9f9";
+  // Colors handled by global CSS variables in index.jsx
 
   const sectionRef = useRef(null);
   const countRefs = useRef([]);
@@ -50,7 +47,7 @@ export default function CounterOne() {
 
   return (
     <section ref={sectionRef} className="bg-white py-[60px] pb-[80px] border-t border-[#F0F0F0]">
-      <style dangerouslySetInnerHTML={{ __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; --bg-color: ${bgColor}; --secondary-bg-color: ${secondaryBgColor}; }` }} />
+
       <div className="max-w-[1320px] mx-auto px-3">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0">
           {STATS.map((stat, i) => (

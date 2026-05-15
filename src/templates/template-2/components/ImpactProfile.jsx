@@ -5,7 +5,7 @@ import Link from "next/link";
 const CURRENT_YEAR = new Date().getFullYear();
 
 export default function ImpactProfile() {
-  const primaryColor = "#000000";
+
 
   const [count, setCount] = useState(0);
   const target = 10000;
@@ -56,7 +56,7 @@ export default function ImpactProfile() {
         <div
           ref={sectionRef}
           className="relative rounded-[30px] overflow-hidden "
-          style={{ background: primaryColor }}
+          style={{ background: "var(--bg-color)" }}
         >
           {/* World map watermark */}
           <img
@@ -122,7 +122,7 @@ export default function ImpactProfile() {
               >
                 <span className="flex items-center gap-3">
                   View Annual Report {CURRENT_YEAR}
-                  <span className="w-10 h-10 rounded-full bg-[var(--secondary)] text-white flex items-center justify-center transition-all duration-300 group-hover:bg-white group-hover:text-t2-dark">
+                  <span className="w-10 h-10 rounded-full bg-[var(--secondary)] text-white flex items-center justify-center transition-all duration-300 group-hover:bg-white group-hover:text-[var(--bg-color)]">
                     <svg
                       width="18"
                       height="18"

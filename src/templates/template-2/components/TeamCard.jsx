@@ -42,8 +42,8 @@ export default function TeamCard({ member }) {
               layout="fill"
               className="object-cover object-top grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105"
             />
-            {/* Greenish tint overlay */}
-            <div className="absolute inset-0 bg-[rgba(0,123,57,0.40)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none mix-blend-multiply" />
+            {/* tint overlay */}
+            <div className="absolute inset-0 bg-[var(--primary)] opacity-0 group-hover:opacity-40 transition-opacity duration-500 pointer-events-none mix-blend-multiply" />
           </div>
         </div>
 
@@ -73,14 +73,13 @@ export default function TeamCard({ member }) {
               </Link>
             </div>
 
-          <div className="w-[50px] h-[50px] rounded-full bg-[var(--bg-color)] flex items-center justify-center shrink-0 cursor-pointer text-white transition-all duration-300 group-hover/social:bg-t2-secondary relative z-10">
+          <div className="w-[50px] h-[50px] rounded-full bg-[var(--bg-color)] flex items-center justify-center shrink-0 cursor-pointer text-white transition-all duration-300 group-hover/social:bg-[var(--secondary)] relative z-10">
             <FiPlus size={22} className="transition-transform duration-300 group-hover/social:rotate-45" />
           </div>
         </div>
 
-          {/* Text Stack */}
           <div className="flex flex-col text-left">
-            <h3 className="text-[20px] text-[var(--bg-color)] transition-colors duration-300 group-hover:text-t2-secondary leading-tight mb-1">
+            <h3 className="text-[20px] text-[var(--bg-color)] transition-colors duration-300 group-hover:text-[var(--secondary)] leading-tight mb-1">
               <button onClick={openModal} className="hover:underline">{member.name}</button>
             </h3>
             <p className="text-[14px] text-[#6c6e76] m-0">{member.role}</p>
@@ -124,7 +123,7 @@ export default function TeamCard({ member }) {
             {/* Right Content */}
             <div className="w-full md:w-1/2 p-8 md:p-10 flex flex-col text-left font-['Inter']">
               <div className="mb-4">
-                <span className="bg-[#FFA415] text-[#111] text-[11px] font-black py-1.5 px-3 rounded-md uppercase tracking-widest inline-block">
+                <span className="bg-[var(--secondary)] text-[#111] text-[11px] font-black py-1.5 px-3 rounded-md uppercase tracking-widest inline-block">
                   Board Member
                 </span>
               </div>
@@ -156,10 +155,10 @@ export default function TeamCard({ member }) {
 
               {/* Socials */}
               <div className="flex gap-4 mt-auto">
-                <Link href={member.socials.x} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-[#FFA415] text-[#111] flex items-center justify-center hover:opacity-90 transition-opacity">
+                <Link href={member.socials.x} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-[var(--secondary)] text-[#111] flex items-center justify-center hover:opacity-90 transition-opacity">
                   <FaTwitter size={16} />
                 </Link>
-                <Link href={member.socials.linkedin} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-[#FFA415] text-[#111] flex items-center justify-center hover:opacity-90 transition-opacity">
+                <Link href={member.socials.linkedin} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-[var(--secondary)] text-[#111] flex items-center justify-center hover:opacity-90 transition-opacity">
                   <FaLinkedinIn size={16} />
                 </Link>
               </div>

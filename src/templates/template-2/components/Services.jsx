@@ -94,7 +94,7 @@ function ServiceCard({ srv }) {
           style={{
             position: "absolute",
             inset: 0,
-            background: "rgba(18, 57, 38, 0.82)",
+            background: "color-mix(in srgb, var(--primary), transparent 40%)",
             opacity: hovered ? 1 : 0,
             transition: "opacity 0.45s ease",
             display: "flex",
@@ -140,7 +140,7 @@ function ServiceCard({ srv }) {
             width: 52,
             height: 52,
             borderRadius: "50%",
-            background: "var(--t2-secondary)",
+            background: "var(--secondary)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -163,33 +163,23 @@ function ServiceCard({ srv }) {
           </svg>
         </a>
       </div>
-
-      {/* Default content shown below image (not hovered) */}
     </div>
   );
 }
 
 export default function Services() {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
-  const primaryColor = "#1A3A37";
-  const secondaryColor = "#FFA415";
-  const bgColor = "#121d18";
-  const secondaryBgColor = "#f9f9f9";
+  // Colors handled by global CSS variables in index.jsx
 
   return (
     <section
       style={{
         position: "relative",
-        background: primaryColor,
+        background: "var(--primary)",
         padding: "110px 0 80px",
         overflow: "hidden",
       }}
     >
-      <style
-        dangerouslySetInnerHTML={{
-          __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; --bg-color: ${bgColor}; --secondary-bg-color: ${secondaryBgColor}; }`,
-        }}
-      />
       <FloatingBird position="left" invert={true} />
       {/* Section Title */}
       <div
@@ -209,7 +199,7 @@ export default function Services() {
               width: 9,
               height: 9,
               borderRadius: "50%",
-              background: "var(--t2-secondary)",
+              background: "var(--secondary)",
             }}
           />
           <span
@@ -342,7 +332,7 @@ export default function Services() {
           {/* Audio player */}
           <div
             style={{
-              background: "var(--t2-dark)",
+              background: "var(--bg-color)",
               borderRadius: 12,
               padding: "44px",
               display: "flex",
@@ -364,11 +354,10 @@ export default function Services() {
                     width: 52,
                     height: 52,
                     borderRadius: "50%",
-                    background: "var(--t2-secondary)",
+                    background: "var(--secondary)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    cursor: "pointer",
                     flexShrink: 0,
                   }}
                 >
@@ -380,16 +369,19 @@ export default function Services() {
                   <div
                     style={{
                       height: 4,
-                      background: "rgba(255,255,255,0.1)",
+                      background: "rgba(255,255,255,0.15)",
                       borderRadius: 2,
-                      overflow: "hidden",
+                      position: "relative",
                     }}
                   >
                     <div
                       style={{
-                        width: "35%",
+                        position: "absolute",
+                        left: 0,
+                        top: 0,
                         height: "100%",
-                        background: "var(--t2-secondary)",
+                        width: "35%",
+                        background: "var(--secondary)",
                         borderRadius: 2,
                       }}
                     />
@@ -398,7 +390,6 @@ export default function Services() {
                     style={{
                       marginTop: 8,
                       color: "rgba(255,255,255,0.4)",
-
                       fontSize: 12,
                     }}
                   >

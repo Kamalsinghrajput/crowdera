@@ -2,10 +2,7 @@
 import { useState } from "react";
 
 export default function NewsLetter() {
-  const primaryColor = "#007B39";
-  const secondaryColor = "#FFA415";
-  const bgColor = "#121d18";
-  const secondaryBgColor = "#f9f9f9";
+  // Colors handled by global CSS variables in index.jsx
 
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -21,7 +18,7 @@ export default function NewsLetter() {
 
   return (
     <section className="relative pt-[120px] pb-[80px] overflow-hidden bg-[var(--bg-color)]">
-      <style dangerouslySetInnerHTML={{ __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; --bg-color: ${bgColor}; --secondary-bg-color: ${secondaryBgColor}; }` }} />
+
       {/* Background image */}
       <div
         className="absolute inset-0 bg-cover bg-center grayscale"
@@ -56,7 +53,7 @@ export default function NewsLetter() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="w-full bg-transparent border border-white/20 rounded-full px-8 py-[18px] text-[16px] text-white placeholder:text-white/40 focus:outline-none focus:border-t2-secondary transition-colors pr-[70px]"
+            className="w-full bg-transparent border border-white/20 rounded-full px-8 py-[18px] text-[16px] text-white placeholder:text-white/40 focus:outline-none focus:border-[var(--secondary)] transition-colors pr-[70px]"
           />
           <button
             type="submit"

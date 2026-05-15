@@ -104,7 +104,7 @@ function BlogCard({ blog }) {
 
         <h3 className="text-[22px] text-[var(--bg-color)] leading-[1.4] mb-6 pr-4">
           <Link href="#" passHref>
-            <a className="transition-colors duration-300 group-hover:text-t2-secondary">
+            <a className="transition-colors duration-300 group-hover:text-[var(--secondary)]">
               {blog.title}
             </a>
           </Link>
@@ -127,10 +127,7 @@ function BlogCard({ blog }) {
 }
 
 export default function BLog() {
-  const primaryColor = "#007B39";
-  const secondaryColor = "#FFA415";
-  const bgColor = "#121d18";
-  const secondaryBgColor = "#f9f9f9";
+  // Colors handled by global CSS variables in index.jsx
 
   return (
     <section className="bg-white py-[120px] relative">

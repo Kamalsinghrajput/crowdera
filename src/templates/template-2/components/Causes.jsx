@@ -120,7 +120,7 @@ function CourseCard({ course }) {
         {/* Progress Bar */}
         <div className="w-full h-1.5 bg-[#E5E5E5] rounded-full mb-8 relative">
           <div
-            className="h-full bg-[var(--bg-color)] rounded-full"
+            className="h-full bg-[var(--primary)] rounded-full"
             style={{ width: `${course.percent}%` }}
           ></div>
         </div>
@@ -141,10 +141,7 @@ function CourseCard({ course }) {
 }
 
 export default function Causes() {
-  const primaryColor = "#007B39";
-  const secondaryColor = "#FFA415";
-  const bgColor = "#121d18";
-  const secondaryBgColor = "#f9f9f9";
+  // Colors handled by global CSS variables in index.jsx
 
   const [activeTab, setActiveTab] = useState("View All");
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -176,11 +173,7 @@ export default function Causes() {
 
   return (
     <section id="causes" className="relative bg-[var(--secondary-bg-color)] py-[120px] overflow-hidden">
-      <style
-        dangerouslySetInnerHTML={{
-          __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; --bg-color: ${bgColor}; --secondary-bg-color: ${secondaryBgColor}; }`,
-        }}
-      />
+
       <div className="hidden lg:block">
         <FloatingBird position="left" />
       </div>
@@ -235,7 +228,7 @@ export default function Causes() {
               <button
                 onClick={handlePrev}
                 disabled={currentIndex === 0}
-                className="w-12 h-12 rounded-full border border-[#E5E5E5] flex items-center justify-center text-[var(--bg-color)] transition-colors hover:bg-[var(--bg-color)] hover:text-white disabled:opacity-50 disabled:hover:bg-transparent disabled:hover:text-t2-dark"
+                className="w-12 h-12 rounded-full border border-[#E5E5E5] flex items-center justify-center text-[var(--bg-color)] transition-colors hover:bg-[var(--bg-color)] hover:text-white disabled:opacity-50 disabled:hover:bg-transparent disabled:hover:text-[var(--bg-color)]"
               >
                 <svg
                   width="18"
@@ -251,7 +244,7 @@ export default function Causes() {
               <button
                 onClick={handleNext}
                 disabled={currentIndex >= maxIndex}
-                className="w-12 h-12 rounded-full border border-[#E5E5E5] flex items-center justify-center text-[var(--bg-color)] transition-colors hover:bg-[var(--bg-color)] hover:text-white disabled:opacity-50 disabled:hover:bg-transparent disabled:hover:text-t2-dark"
+                className="w-12 h-12 rounded-full border border-[#E5E5E5] flex items-center justify-center text-[var(--bg-color)] transition-colors hover:bg-[var(--bg-color)] hover:text-white disabled:opacity-50 disabled:hover:bg-transparent disabled:hover:text-[var(--bg-color)]"
               >
                 <svg
                   width="18"

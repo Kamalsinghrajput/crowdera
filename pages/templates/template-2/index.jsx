@@ -28,18 +28,23 @@ const ScrollToTop = dynamic(
 
 export default function Template2() {
   const buttonStyles = `
+    :root {
+      --primary: #1A3A37;
+      --secondary: #FFA415;
+      --bg-color: #121D18;
+    }
     .t2-btn { display: inline-flex; align-items: center; gap: 0; text-decoration: none; border: none; background: none; cursor: pointer; padding: 0; }
-    .t2-btn span { position: relative; display: inline-flex; align-items: center; justify-content: center; height: 50px; padding: 0 35px; background-color: var(--bg-color, #121d18); color: white; border-radius: 25px; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; z-index: 1; overflow: hidden; transition: all 500ms ease; white-space: nowrap; }
-    .t2-btn span::before { content: ''; position: absolute; inset: 0; background-color: var(--secondary, #FFA415); transform-origin: left; transform: scaleX(0); transition: transform 0.8s cubic-bezier(0, 0.96, 0.58, 1.1); z-index: -1; }
+    .t2-btn span { position: relative; display: inline-flex; align-items: center; justify-content: center; height: 50px; padding: 0 35px; background-color: var(--bg-color); color: white; border-radius: 25px; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; z-index: 1; overflow: hidden; transition: all 500ms ease; white-space: nowrap; }
+    .t2-btn span::before { content: ''; position: absolute; inset: 0; background-color: var(--secondary); transform-origin: left; transform: scaleX(0); transition: transform 0.8s cubic-bezier(0, 0.96, 0.58, 1.1); z-index: -1; }
     .t2-btn:hover span::before { transform: scaleX(1); transition: transform 1.2s cubic-bezier(0, 0.96, 0.58, 1.1); }
     .t2-btn:hover span { color: white; }
     .t2-btn i { display: none; }
-    .t2-btn.t2-btn-primary span { background-color: var(--primary, #007B39); }
-    .t2-btn.t2-btn-secondary span { background-color: var(--secondary, #FFA415); color: var(--bg-color, #121d18); }
-    .t2-btn.t2-btn-secondary span::before { background-color: var(--bg-color, #121d18); }
+    .t2-btn.t2-btn-primary span { background-color: var(--primary); }
+    .t2-btn.t2-btn-secondary span { background-color: var(--secondary); color: var(--bg-color); }
+    .t2-btn.t2-btn-secondary span::before { background-color: var(--bg-color); }
     .t2-btn.t2-btn-secondary:hover span { color: white; }
-    .t2-text-btn { display: inline-flex; align-items: center; font-size: 13px; color: var(--primary, #007B39); text-decoration: none; text-transform: uppercase; font-weight: 500; letter-spacing: 0.1em; transition: color 0.3s; }
-    .t2-text-btn:hover { color: var(--secondary, #FFA415); }
+    .t2-text-btn { display: inline-flex; align-items: center; font-size: 13px; color: var(--primary); text-decoration: none; text-transform: uppercase; font-weight: 500; letter-spacing: 0.1em; transition: color 0.3s; }
+    .t2-text-btn:hover { color: var(--secondary); }
     .t2-text-btn svg { transition: transform 0.3s; }
     .t2-text-btn:hover svg { transform: translateX(5px); }
   `;

@@ -4,14 +4,9 @@ import SiteFooter from "../../../src/templates/template-2/components/SiteFooter"
 import BLog from "../../../src/templates/template-2/components/Blog";
 
 export default function BlogPage() {
-  const primaryColor = "#007B39";
-  const secondaryColor = "#FFA415";
-  const bgColor = "#121d18";
-  const secondaryBgColor = "#f9f9f9";
-
   return (
     <>
-      <style>{`:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; --bg-color: ${bgColor}; --secondary-bg-color: ${secondaryBgColor}; }`}</style>
+      <style>{`:root { --primary: #007B39; --secondary: #FFA415; --bg-color: #121d18; --secondary-bg-color: #f9f9f9; }`}</style>
       <Head>
         <title>Our Blog || Chioary</title>
       </Head>
@@ -24,7 +19,10 @@ export default function BlogPage() {
       >
         <Navbar />
         <main style={{ paddingTop: "120px" }}>
-          <div className="bg-t2-lightTeal py-[80px] text-center border-b border-[#E5E5E5]">
+          <div 
+            className="py-[80px] text-center border-b border-[#E5E5E5]"
+            style={{ background: "color-mix(in srgb, var(--primary), white 90%)" }}
+          >
             <h1 className="text-[48px] text-[var(--bg-color)]">
               All Blog Posts
             </h1>

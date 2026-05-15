@@ -67,10 +67,10 @@ const InitiativesEvents = ({ data: initialEventsData }) => {
               />
               <div className="absolute top-4 left-4 flex gap-2 flex-wrap">
                 {eventItem.isVerified && (
-                  <span className="bg-[#007B39] text-white text-[10px] font-bold py-1.5 px-4 rounded-full uppercase tracking-widest shadow-lg">Verified</span>
+                  <span className="bg-[var(--primary)] text-white text-[10px] font-bold py-1.5 px-4 rounded-full uppercase tracking-widest shadow-lg">Verified</span>
                 )}
                 {eventItem.isTaxExempt && (
-                  <span className="bg-[#FFA415] text-white text-[10px] font-bold py-1.5 px-4 rounded-full uppercase tracking-widest shadow-lg">Tax Exempt</span>
+                  <span className="bg-[var(--secondary)] text-white text-[10px] font-bold py-1.5 px-4 rounded-full uppercase tracking-widest shadow-lg">Tax Exempt</span>
                 )}
               </div>
             </div>
@@ -78,21 +78,21 @@ const InitiativesEvents = ({ data: initialEventsData }) => {
             {/* Content */}
             <div className="p-8 flex flex-col flex-grow text-left">
               {/* Title */}
-              <h3 className="text-2xl font-bold leading-tight text-[#121D18] group-hover:text-[#007B39] transition-colors line-clamp-2 mb-4 font-sora">
+              <h3 className="text-2xl font-bold leading-tight text-[var(--bg-color)] group-hover:text-[var(--primary)] transition-colors line-clamp-2 mb-4 font-sora">
                 {eventItem.title}
               </h3>
 
               {/* Organizer */}
               <div className="flex items-center gap-1.5 mb-4">
-                <Users size={14} className="text-[#007B39] shrink-0" />
-                <span className="text-sm text-[#007B39] font-black uppercase tracking-wider">{eventItem.organizer}</span>
+                <Users size={14} className="text-[var(--primary)] shrink-0" />
+                <span className="text-sm text-[var(--primary)] font-black uppercase tracking-wider">{eventItem.organizer}</span>
               </div>
 
               {/* Date / Time Box */}
               <div className="flex items-start gap-2 bg-gray-50 rounded-2xl px-4 py-3 mb-6 border border-gray-100">
-                <Calendar size={16} className="text-[#007B39] mt-0.5 shrink-0" />
+                <Calendar size={16} className="text-[var(--primary)] mt-0.5 shrink-0" />
                 <div>
-                  <div className="text-xs font-bold text-[#121D18] uppercase tracking-widest">{eventItem.date}</div>
+                  <div className="text-xs font-bold text-[var(--bg-color)] uppercase tracking-widest">{eventItem.date}</div>
                   <div className="text-[11px] font-bold text-gray-400">{eventItem.time}</div>
                 </div>
               </div>
@@ -103,14 +103,14 @@ const InitiativesEvents = ({ data: initialEventsData }) => {
               </p>
 
               {/* Fundraising Progress */}
-              <div className="bg-[#fcf8f1] rounded-2xl p-6 mb-8 border border-[#EBD3AF]/30">
+               <div className="bg-[#fcf8f1] rounded-2xl p-6 mb-8 border border-[#EBD3AF]/30">
                 <div className="flex justify-between items-center mb-3">
-                  <span className="text-[11px] font-black text-[#121D18] uppercase tracking-widest">Fundraising Progress</span>
-                  <span className="text-sm font-black text-[#007B39]">{progressPercentage}%</span>
+                  <span className="text-[11px] font-black text-[var(--bg-color)] uppercase tracking-widest">Fundraising Progress</span>
+                  <span className="text-sm font-black text-[var(--primary)]">{progressPercentage}%</span>
                 </div>
                 <div className="w-full bg-white rounded-full h-1.5 mb-3 overflow-hidden">
                   <div
-                    className="h-full rounded-full transition-all duration-1000 ease-out bg-[#007B39]"
+                    className="h-full rounded-full transition-all duration-1000 ease-out bg-[var(--primary)]"
                     style={{ width: `${progressPercentage}%` }}
                   />
                 </div>
@@ -122,7 +122,7 @@ const InitiativesEvents = ({ data: initialEventsData }) => {
 
               {/* Category tag */}
               <div className="mb-8">
-                <span className="bg-[#FFA415]/10 text-[#121D18] text-[10px] font-black py-1.5 px-4 rounded-full uppercase tracking-widest border border-[#FFA415]/20">
+                <span className="bg-[var(--secondary)]/10 text-[var(--bg-color)] text-[10px] font-black py-1.5 px-4 rounded-full uppercase tracking-widest border border-[var(--secondary)]/20">
                   {eventItem.category}
                 </span>
               </div>
@@ -133,11 +133,11 @@ const InitiativesEvents = ({ data: initialEventsData }) => {
                   <button className="t2-btn t2-btn-secondary t2-btn-sm">
                     <span>Donate Now</span>
                   </button>
-                  <button className="bg-white text-[#121D18] font-black h-[40px] px-6 rounded-full text-[11px] border-2 border-[#121D18] hover:bg-[#121D18] hover:text-white transition-all active:scale-95 uppercase tracking-widest">
+                  <button className="bg-white text-[var(--bg-color)] font-black h-[40px] px-6 rounded-full text-[11px] border-2 border-[var(--bg-color)] hover:bg-[var(--bg-color)] hover:text-white transition-all active:scale-95 uppercase tracking-widest">
                     View
                   </button>
                 </div>
-                <button className="w-full bg-[#FFA415] text-white font-black py-3 rounded-full text-[11px] uppercase tracking-widest hover:opacity-90 transition-all shadow-md active:scale-95 border-2 border-transparent">
+                <button className="w-full bg-[var(--secondary)] text-white font-black py-3 rounded-full text-[11px] uppercase tracking-widest hover:opacity-90 transition-all shadow-md active:scale-95 border-2 border-transparent">
                   Fundraise
                 </button>
               </div>

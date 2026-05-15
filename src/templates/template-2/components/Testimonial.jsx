@@ -29,10 +29,7 @@ const TESTIMONIALS = [
 ];
 
 export default function Testimonial() {
-  const primaryColor = "#007B39";
-  const secondaryColor = "#FFA415";
-  const bgColor = "#121d18";
-  const secondaryBgColor = "#f9f9f9";
+  // Colors handled by global CSS variables in index.jsx
 
   const originalLength = TESTIMONIALS.length;
   // Duplicate items at the end to allow smooth sliding and looping back
@@ -85,11 +82,6 @@ export default function Testimonial() {
 
   return (
     <section className="relative py-20 md:py-[140px] overflow-hidden bg-[var(--bg-color)]">
-      <style
-        dangerouslySetInnerHTML={{
-          __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; --bg-color: ${bgColor}; --secondary-bg-color: ${secondaryBgColor}; }`,
-        }}
-      />
       {/* Background */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-fixed grayscale"

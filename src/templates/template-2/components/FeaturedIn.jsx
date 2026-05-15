@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 
-
 export default function FeaturedIn() {
   const logos = [
     "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg",
@@ -45,13 +44,20 @@ export default function FeaturedIn() {
         </div>
 
         <div className="overflow-hidden bg-white py-12 px-4 shadow-sm rounded-xl">
-          <div 
+          <div
             className="flex items-center transition-transform duration-700 ease-in-out"
             style={{ transform: `translateX(-${currentIndex * 260}px)` }}
           >
             {logos.map((logo, idx) => (
-              <div key={idx} className="w-[200px] h-[50px] relative shrink-0 mx-[30px] transition-all duration-300 opacity-80 hover:opacity-100 cursor-pointer">
-                <img src={logo} alt="Featured Logo" className="w-full h-full object-contain" />
+              <div
+                key={idx}
+                className="w-[200px] h-[50px] relative shrink-0 mx-[30px] transition-all duration-300 opacity-80 hover:opacity-100 cursor-pointer"
+              >
+                <img
+                  src={logo}
+                  alt="Featured Logo"
+                  className="w-full h-full object-contain"
+                />
               </div>
             ))}
           </div>

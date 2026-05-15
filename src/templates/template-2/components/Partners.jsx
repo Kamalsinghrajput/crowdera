@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 
-
 export default function Partners() {
   const logos = [
     "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg",
@@ -29,31 +28,54 @@ export default function Partners() {
   }, [logos.length]);
 
   return (
-    <section className="py-[100px] bg-[#121D18] overflow-hidden">
+    <section className="py-[100px] bg-[#f9f9f9] overflow-hidden">
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+        .logo-item {
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          filter: drop-shadow(0 0 0px rgba(0,0,0,0));
+        }
+        .logo-item:hover {
+          filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+          transform: translateY(-5px) scale(1.05);
+          opacity: 1 !important;
+        }
+      `,
+        }}
+      />
       <div className="max-w-[1320px] mx-auto px-3">
         <div className="mb-16 text-center">
           <div className="inline-flex items-center gap-3 mb-6">
             <div className="w-2 h-2 rounded-full bg-[#FFA415]" />
-            <span className="text-[16px] text-white italic">
+            <span className="text-[16px] text-[#121d18] italic">
               Global Reach
             </span>
           </div>
-          <h2 className="text-[clamp(32px,4vw,48px)] leading-[1.2] text-white">
+          <h2 className="text-[clamp(32px,4vw,48px)] leading-[1.2] text-[#121d18] font-bold">
             Our Partners
           </h2>
-          <p className="text-[rgba(255,255,255,0.7)] text-[16px] font-['Inter'] mt-4 max-w-[600px] mx-auto">
-            We collaborate with incredible organizations to amplify our impact worldwide.
+          <p className="text-[#6c6e76] text-[16px] font-['Inter'] mt-4 max-w-[600px] mx-auto">
+            We collaborate with incredible organizations to amplify our impact
+            worldwide.
           </p>
         </div>
 
         <div className="overflow-hidden py-6">
-          <div 
+          <div
             className="flex items-center transition-transform duration-700 ease-in-out"
             style={{ transform: `translateX(-${currentIndex * 260}px)` }}
           >
             {logos.map((logo, idx) => (
-              <div key={idx} className="w-[200px] h-[50px] relative shrink-0 mx-[30px] transition-all duration-300 opacity-60 hover:opacity-100 cursor-pointer">
-                <img src={logo} alt="Partner Logo" className="w-full h-full object-contain invert" />
+              <div
+                key={idx}
+                className="logo-item w-[200px] h-[50px] relative shrink-0 mx-[30px] opacity-90 cursor-pointer"
+              >
+                <img
+                  src={logo}
+                  alt="Partner Logo"
+                  className="w-full h-full object-contain"
+                />
               </div>
             ))}
           </div>

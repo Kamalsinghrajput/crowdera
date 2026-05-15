@@ -10,8 +10,6 @@ export default function ScrollToTop() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  if (!visible) return null;
-
   return (
     <button
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -19,23 +17,27 @@ export default function ScrollToTop() {
       style={{
         position: "fixed", bottom: 30, right: 30, zIndex: 9999,
         width: 50, height: 50, borderRadius: "50%",
-        background: "var(--t2-secondary)", border: "none", cursor: "pointer",
+        background: "#FFA415",
+        border: "none", cursor: "pointer",
         display: "flex", alignItems: "center", justifyContent: "center",
-        boxShadow: "0 4px 20px rgba(255,164,21,0.45)",
-        transition: "background 0.3s, transform 0.3s"
+        boxShadow: "0 4px 20px rgba(255,164,21,0.5)",
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0)" : "translateY(20px)",
+        pointerEvents: visible ? "auto" : "none",
+        transition: "background 0.3s, transform 0.3s, opacity 0.3s",
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.background = "var(--t2-dark)";
+        e.currentTarget.style.background = "#007B39";
         e.currentTarget.style.transform = "translateY(-3px)";
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.background = "var(--t2-secondary)";
+        e.currentTarget.style.background = "#FFA415";
         e.currentTarget.style.transform = "translateY(0)";
-      }}>
-      
+      }}
+    >
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round">
         <path d="M18 15l-6-6-6 6" />
       </svg>
-    </button>);
-
+    </button>
+  );
 }

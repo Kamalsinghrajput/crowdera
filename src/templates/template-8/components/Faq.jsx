@@ -40,38 +40,25 @@ export default function Faq() {
         <div className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-20 items-start">
           {/* Left */}
           <div>
-            <div className="inline-flex items-center gap-3 mb-6">
-              <div className="w-2 h-2 rounded-full bg-[#007B39]" />
-              <span className="text-[16px] text-[#121d18] italic font-bold">
+            <div className="inline-flex items-center gap-3 mb-4">
+              <span className="text-[#005e46] font-bold text-[15px] uppercase tracking-wider">
                 Our FAQ
               </span>
             </div>
 
-            <h2 ref={headingRef} className="text-[clamp(28px,4vw,50px)] leading-[1.2] text-[#121d18] mb-5 font-bold">
-              Frequently Asking
+            <h2 ref={headingRef} className="text-[clamp(32px,4vw,46px)] leading-[1.15] text-[#1A1A1A] mb-5 font-extrabold">
+              Frequently Asked
               <br /> Questions.
             </h2>
 
-            <p className="text-[15px] text-[#121d18]/80 leading-[1.8] mb-10 font-semibold">
+            <p className="text-[16px] text-[#666666] leading-[1.8] mb-10">
               Have questions? We've got answers. Browse through our frequently
               asked questions to find the information you need.
             </p>
 
             <Link href="#">
-              <a className="t2-btn">
-                <span>More Questions</span>
-                <i>
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                  >
-                    <path d="M7 17L17 7M17 7H7M17 7v10" />
-                  </svg>
-                </i>
+              <a className="inline-block bg-[#d9a96e] text-black font-bold text-[15px] px-8 py-4 rounded-md transition-colors hover:bg-[#c4965d] no-underline">
+                More Questions
               </a>
             </Link>
 
@@ -85,10 +72,10 @@ export default function Faq() {
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-[rgba(18,29,24,0.55)] flex flex-col items-center justify-center">
-                <div className="text-[48px] text-[var(--secondary)] leading-none">
+                <div className="text-[48px] text-[#d9a96e] font-bold leading-none">
                   24/7
                 </div>
-                <div className="text-[14px] text-white/80 mt-2 tracking-[0.05em]">
+                <div className="text-[14px] text-white/80 mt-2 tracking-[0.05em] font-medium uppercase">
                   Support Available
                 </div>
               </div>

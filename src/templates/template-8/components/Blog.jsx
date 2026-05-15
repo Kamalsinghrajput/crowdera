@@ -34,10 +34,10 @@ export default function Blog({ isAllBlogsPage }) {
         
         {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="inline-block bg-[#00b86b] text-white font-['Montserrat'] font-bold text-[13px] uppercase tracking-[1px] px-5 py-2 rounded-full mb-5">
+          <span className="text-[#005e46] font-bold text-[15px] uppercase tracking-wider mb-3 block">
             OUR BLOG/NEWS
-          </div>
-          <h2 className="font-['Montserrat'] font-extrabold text-[clamp(32px,4vw,46px)] text-black leading-tight max-w-[800px] mx-auto m-0">
+          </span>
+          <h2 className="font-extrabold text-[clamp(32px,4vw,46px)] text-[#1A1A1A] leading-tight max-w-[800px] mx-auto m-0">
             Latest News & Articles
           </h2>
         </div>
@@ -51,9 +51,9 @@ export default function Blog({ isAllBlogsPage }) {
 
         {/* Section CTA */}
         {!isAllBlogsPage && (
-          <div className="text-center">
+          <div className="text-center mt-12">
             <Link href="/templates/template-8/blog">
-              <a className="inline-block bg-[#121d18] text-white font-['Montserrat'] font-bold text-[14px] uppercase px-12 py-[20px] transition-colors duration-300 hover:bg-[#00b86b] no-underline">
+              <a className="inline-block bg-[#d9a96e] text-black font-bold text-[15px] px-10 py-5 rounded-md transition-all hover:bg-[#c4965d] hover:shadow-lg no-underline uppercase tracking-wider">
                 READ MORE
               </a>
             </Link>

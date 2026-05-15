@@ -23,7 +23,7 @@ export default function InitiativesPage() {
       <Navbar />
 
       <main className="pt-[120px]">
-        <Initiatives initialTab={tab || "campaigns"} />
+        <Initiatives initialTab="campaigns" />
       </main>
 
       <SiteFooter />

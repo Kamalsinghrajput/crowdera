@@ -25,7 +25,9 @@ export default function BlogPage() {
         <Navbar />
         <main style={{ paddingTop: "120px" }}>
           <div className="bg-t2-lightTeal py-[80px] text-center border-b border-[#E5E5E5]">
-            <h1 className="text-[48px] text-[var(--bg-color)]">All Blog Posts</h1>
+            <h1 className="text-[48px] text-[var(--bg-color)]">
+              All Blog Posts
+            </h1>
             <p className="text-[#6c6e76] mt-4">
               Read our latest news and inspiring stories.
             </p>

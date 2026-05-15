@@ -1,6 +1,9 @@
 import Head from 'next/head';
-import Initiatives from '../../../src/templates/template-6/components/Initiatives';
+import dynamic from 'next/dynamic';
 import Navbar from '../../../src/templates/template-6/components/Navbar';
+import Initiatives from '../../../src/templates/template-6/components/Initiatives';
+
+import ImpactProfile from '../../../src/templates/template-6/components/ImpactProfile';
 
 export default function Template6() {
   return (
@@ -14,6 +17,7 @@ export default function Template6() {
       
       <main className="pt-20">
         <Initiatives />
+        <ImpactProfile />
       </main>
 
       <footer className="bg-[#0a0a0a] py-20">

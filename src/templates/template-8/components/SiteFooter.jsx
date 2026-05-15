@@ -37,9 +37,12 @@ export default function SiteFooter() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 py-[80px]">
           {/* Col 1: Logo + About + Form */}
           <div>
-            <h2 ref={headingRef} className="text-[32px] font-['Montserrat'] font-extrabold mb-6 tracking-wide">
-              <span className="text-[#ff5528]">Tam</span>
-              <span className="text-white">un</span>
+            <h2
+              ref={headingRef}
+              className="text-[32px] font-extrabold mb-6 tracking-wide"
+            >
+              <span className="text-[#005e46]">Char</span>
+              <span className="text-white">itia</span>
             </h2>
 
             <p className="text-white/70 leading-relaxed mb-8 text-[15px]">
@@ -55,7 +58,7 @@ export default function SiteFooter() {
               />
               <button
                 type="submit"
-                className="absolute right-0 top-0 bottom-0 px-4 bg-[#00b86b] text-white rounded-r-[5px] hover:bg-[#ff5528] transition-colors flex items-center justify-center"
+                className="absolute right-0 top-0 bottom-0 px-4 bg-[#d9a96e] text-black rounded-r-[5px] hover:bg-[#c4965d] transition-colors flex items-center justify-center"
               >
                 <svg
                   width="18"
@@ -80,7 +83,7 @@ export default function SiteFooter() {
             <ul className="space-y-4">
               {quickLinks.map((link) => (
                 <li key={link}>
-                  <a className="text-white/70 hover:text-[#ff5528] font-['Inter'] transition cursor-pointer text-[15px]">
+                  <a className="text-white/70 hover:text-[#d9a96e] transition cursor-pointer text-[15px]">
                     {link}
                   </a>
                 </li>
@@ -90,11 +93,13 @@ export default function SiteFooter() {
 
           {/* Col 3: Services */}
           <div>
-            <h3 className="text-[22px] font-['Montserrat'] font-bold mb-6 text-white">Services</h3>
+            <h3 className="text-[22px] font-['Montserrat'] font-bold mb-6 text-white">
+              Services
+            </h3>
             <ul className="space-y-4">
               {services.map((link) => (
                 <li key={link}>
-                  <a className="text-white/70 hover:text-[#ff5528] font-['Inter'] transition cursor-pointer text-[15px]">
+                  <a className="text-white/70 hover:text-[#d9a96e] transition cursor-pointer text-[15px]">
                     {link}
                   </a>
                 </li>
@@ -109,7 +114,7 @@ export default function SiteFooter() {
             </h3>
             <ul className="space-y-5">
               <li className="flex items-start gap-4 group cursor-pointer">
-                <div className="w-[40px] h-[40px] rounded-full bg-white/10 flex items-center justify-center shrink-0 group-hover:bg-[#ff5528] transition-colors duration-300">
+                <div className="w-[40px] h-[40px] rounded-full bg-white/10 flex items-center justify-center shrink-0 group-hover:bg-[#d9a96e] transition-colors duration-300">
                   <svg
                     width="18"
                     height="18"
@@ -128,7 +133,7 @@ export default function SiteFooter() {
                 </div>
               </li>
               <li className="flex items-center gap-4 group cursor-pointer">
-                <div className="w-[40px] h-[40px] rounded-full bg-white/10 flex items-center justify-center shrink-0 group-hover:bg-[#ff5528] transition-colors duration-300">
+                <div className="w-[40px] h-[40px] rounded-full bg-white/10 flex items-center justify-center shrink-0 group-hover:bg-[#d9a96e] transition-colors duration-300">
                   <svg
                     width="18"
                     height="18"
@@ -144,7 +149,7 @@ export default function SiteFooter() {
                 <div className="text-white/70 text-[15px]">(219) 555-0114</div>
               </li>
               <li className="flex items-center gap-4 group cursor-pointer">
-                <div className="w-[40px] h-[40px] rounded-full bg-white/10 flex items-center justify-center shrink-0 group-hover:bg-[#ff5528] transition-colors duration-300">
+                <div className="w-[40px] h-[40px] rounded-full bg-white/10 flex items-center justify-center shrink-0 group-hover:bg-[#d9a96e] transition-colors duration-300">
                   <svg
                     width="18"
                     height="18"
@@ -158,9 +163,7 @@ export default function SiteFooter() {
                     <polyline points="22,6 12,13 2,6" />
                   </svg>
                 </div>
-                <div className="text-white/70 text-[15px]">
-                  Tamun@gmail.com
-                </div>
+                <div className="text-white/70 text-[15px]">Tamun@gmail.com</div>
               </li>
             </ul>
           </div>
@@ -170,15 +173,15 @@ export default function SiteFooter() {
         <div className="border-t border-white/10 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-white/70 text-[15px]">
             © 1995–2024 All Rights For{" "}
-            <span className="text-[#ff5528] font-['Montserrat'] font-semibold">Tamun</span>{" "}
+            <span className="text-[#005e46] font-semibold">Tamun</span>{" "}
             Exclusive
           </p>
 
           <div className="flex gap-8 text-[15px] text-white/70">
-            <a className="hover:text-[#ff5528] transition cursor-pointer">
+            <a className="hover:text-[#d9a96e] transition cursor-pointer">
               Terms Of Service
             </a>
-            <a className="hover:text-[#ff5528] transition cursor-pointer">
+            <a className="hover:text-[#d9a96e] transition cursor-pointer">
               Privacy Policy
             </a>
           </div>

@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from "react-icons/fa";
-import { PiPhoneCall } from "react-icons/pi";
+import { PiBriefcase } from "react-icons/pi";
 
 const SOCIALS = [
   { key: "fb", Icon: FaFacebookF },
@@ -59,8 +59,8 @@ export default function TeamCard({ member }) {
         </h3>
 
         <div className="flex items-center justify-center gap-2 text-[#777777] font-['Montserrat'] font-medium text-[15px]">
-          <PiPhoneCall size={18} className="text-[#CAA166]" />
-          <span>Call: {member.phone || "+256 255 6579"}</span>
+          <PiBriefcase size={18} className="text-[#CAA166]" />
+          <span>{member.designation || "Executive"}</span>
         </div>
       </div>
     </div>

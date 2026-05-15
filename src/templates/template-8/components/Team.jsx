@@ -1,27 +1,28 @@
 "use client";
 
 import React, { useRef } from "react";
+import Link from "next/link";
 import { PiHandHeart, PiCaretLeft, PiCaretRight } from "react-icons/pi";
 import TeamCard from "./TeamCard";
 
 const TEAM = [
   {
     name: "Cathy Decosta",
-    role: "Volunteer",
+    role: "Core Team",
+    designation: "CEO",
     img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400&h=400",
-    phone: "+256 255 6579",
   },
   {
     name: "Thomas Ster",
-    role: "Volunteer",
+    role: "Core Team",
+    designation: "CTO",
     img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=400&h=400",
-    phone: "+256 255 6579",
   },
   {
     name: "Andren Willium",
-    role: "Volunteer",
+    role: "Core Team",
+    designation: "CFO",
     img: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=400&h=400",
-    phone: "+256 255 6579",
   },
 ];
 
@@ -53,14 +54,7 @@ export default function Team({ isAllTeamPage }) {
 
         {/* Team Content with Navigation */}
         <div className="relative">
-          {/* Navigation Arrows */}
-          <button className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 z-20 w-14 h-14 rounded-full bg-[#1A1A1A] text-white flex items-center justify-center transition-all duration-300 hover:bg-[#006755] shadow-lg hidden lg:flex">
-            <PiCaretLeft size={24} weight="bold" />
-          </button>
-          
-          <button className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 z-20 w-14 h-14 rounded-full bg-[#CAA166] text-black flex items-center justify-center transition-all duration-300 hover:bg-[#006755] hover:text-white shadow-lg hidden lg:flex">
-            <PiCaretRight size={24} weight="bold" />
-          </button>
+
 
           {/* Grid Layout */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -68,6 +62,16 @@ export default function Team({ isAllTeamPage }) {
               <TeamCard key={i} member={member} />
             ))}
           </div>
+
+          {!isAllTeamPage && (
+            <div className="mt-16 flex justify-center">
+              <Link href="/templates/template-8/team">
+                <a className="inline-block bg-[#006755] text-white font-['Montserrat'] font-bold text-[16px] px-8 py-4 rounded-full hover:bg-[#1A1A1A] transition-colors duration-300">
+                  View All
+                </a>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
 

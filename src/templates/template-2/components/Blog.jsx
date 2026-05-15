@@ -119,18 +119,6 @@ function BlogCard({ blog }) {
             // style={{ transform: "scale(0.85)", transformOrigin: "left center" }}
           >
             <span>Read More</span>
-            <i>
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-              >
-                <path d="M7 17L17 7M17 7H7M17 7v10" />
-              </svg>
-            </i>
           </a>
         </Link>
       </div>
@@ -166,18 +154,6 @@ export default function BLog() {
           <Link href="/templates/template-2/blog" passHref>
             <a className="t2-btn">
               <span>See All Blog</span>
-              <i>
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                >
-                  <path d="M7 17L17 7M17 7H7M17 7v10" />
-                </svg>
-              </i>
             </a>
           </Link>
         </div>

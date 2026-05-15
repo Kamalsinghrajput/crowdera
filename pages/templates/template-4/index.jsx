@@ -4,7 +4,6 @@ import Navbar from "../../../src/templates/template-4/components/Navbar";
 import Hero from "../../../src/templates/template-4/components/Hero";
 import Services from "../../../src/templates/template-4/components/Services";
 import About from "../../../src/templates/template-4/components/About";
-import CounterOne from "../../../src/templates/template-4/components/CounterOne";
 import Causes from "../../../src/templates/template-4/components/Causes";
 import Event from "../../../src/templates/template-4/components/Event";
 import RecentProjects from "../../../src/templates/template-4/components/RecentProjects";
@@ -16,8 +15,10 @@ import Faq from "../../../src/templates/template-4/components/Faq";
 import BLog from "../../../src/templates/template-4/components/Blog";
 import NewsLetter from "../../../src/templates/template-4/components/Newsletter";
 import SiteFooter from "../../../src/templates/template-4/components/SiteFooter";
-import ImpactProfile from "../../../src/templates/template-4/components/ImpactProfile";
 import TopDonors from "../../../src/templates/template-4/components/TopDonors";
+
+import ImpactProfile from "../../../src/templates/template-4/components/ImpactProfile";
+import CounterOne from "../../../src/templates/template-4/components/CounterOne";
 
 // ScrollToTop must be client-only to avoid hydration mismatch
 const ScrollToTop = dynamic(
@@ -40,11 +41,11 @@ export default function Template2() {
     }
     .t2-btn { display: inline-flex; align-items: center; gap: 0; text-decoration: none; border: none; background: none; cursor: pointer; padding: 0; }
     .t2-btn span { position: relative; display: inline-flex; align-items: center; justify-content: center; height: 50px; padding: 0 35px; background-color: var(--bg-color, #121d18); color: white; border-radius: 25px; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; z-index: 1; overflow: hidden; transition: all 500ms ease; white-space: nowrap; }
-    .t2-btn span::before { content: ""; position: absolute; inset: 0; background-color: var(--secondary, #FFA415); transform-origin: left; transform: scaleX(0); transition: transform 0.8s cubic-bezier(0, 0.96, 0.58, 1.1); z-index: -1; }
+    .t2-btn span::before { content: ''; position: absolute; inset: 0; background-color: var(--secondary, #FFA415); transform-origin: left; transform: scaleX(0); transition: transform 0.8s cubic-bezier(0, 0.96, 0.58, 1.1); z-index: -1; }
     .t2-btn:hover span::before { transform: scaleX(1); transition: transform 1.2s cubic-bezier(0, 0.96, 0.58, 1.1); }
     .t2-btn:hover span { color: white; }
     .t2-btn i { position: relative; display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; background-color: var(--bg-color, #121d18); border-radius: 50%; font-size: 18px; color: white; overflow: hidden; transition: all 500ms ease; z-index: 2; margin-left: -10px; }
-    .t2-btn i::after { content: ""; position: absolute; inset: 0; background-color: var(--secondary, #FFA415); transform-origin: right; transform: scaleX(0); transition: transform 0.8s cubic-bezier(0, 0.96, 0.58, 1.1); z-index: -1; }
+    .t2-btn i::after { content: ''; position: absolute; inset: 0; background-color: var(--secondary, #FFA415); transform-origin: right; transform: scaleX(0); transition: transform 0.8s cubic-bezier(0, 0.96, 0.58, 1.1); z-index: -1; }
     .t2-btn:hover i::after { transform: scaleX(1); transition: transform 1.2s cubic-bezier(0, 0.96, 0.58, 1.1); }
     .t2-btn:hover i { color: white; }
     .t2-btn.t2-btn-primary span, .t2-btn.t2-btn-primary i { background-color: var(--primary, #007B39); }

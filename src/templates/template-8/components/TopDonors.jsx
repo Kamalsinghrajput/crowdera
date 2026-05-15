@@ -46,7 +46,7 @@ const GAP = 30;
 const AUTO_MS = 3800;
 
 export default function TopDonors() {
-  const primaryColor = "#009E5C";
+  const primaryColor = "#005e46";
   const headingRef = useHeadingAnimation();
 
   const [index, setIndex] = useState(0);
@@ -100,15 +100,12 @@ export default function TopDonors() {
       <div className="max-w-[1320px] mx-auto px-3">
         {/* Header */}
         <div className="text-center mb-[60px]">
-          <div className="inline-flex items-center gap-3 mb-4">
-            <div className="w-2 h-2 rounded-full bg-[var(--secondary)]" />
-            <span className="text-[16px] text-[#121d18] italic font-bold">
-              Hall of Fame
-            </span>
-          </div>
+          <span className="text-white/80 font-bold text-[15px] uppercase tracking-wider mb-3 block">
+            Hall of Fame
+          </span>
           <h2
             ref={headingRef}
-            className="text-[clamp(32px,5vw,56px)] leading-[1.2] text-[#121d18] m-0 font-bold"
+            className="text-[clamp(32px,5vw,56px)] leading-[1.2] text-white m-0 font-extrabold"
           >
             Our Top Donors
           </h2>
@@ -153,10 +150,10 @@ export default function TopDonors() {
                   </div>
 
                   <div
-                    className={`absolute -top-2 -right-2 w-8 h-8 rounded-full flex items-center justify-center text-[14px] shadow-lg ${
+                    className={`absolute -top-2 -right-2 w-8 h-8 rounded-full flex items-center justify-center text-[14px] shadow-lg font-bold ${
                       d.rank <= 3
-                        ? "bg-[var(--secondary)] text-white"
-                        : "bg-[var(--bg-color)] text-white"
+                        ? "bg-[#d9a96e] text-black"
+                        : "bg-[#1A1A1A] text-white"
                     }`}
                   >
                     #{d.rank}
@@ -164,13 +161,13 @@ export default function TopDonors() {
                 </div>
 
                 {/* Name */}
-                <h4 className="text-[20px] text-[var(--bg-color)] mb-2 group-hover:text-[#FFA415] transition-colors">
+                <h4 className="text-[20px] text-[#1A1A1A] mb-2 group-hover:text-[#005e46] transition-colors font-bold">
                   {d.name}
                 </h4>
 
                 {/* Amount */}
                 <div className="flex items-center gap-1.5 mt-2">
-                  <span className="text-[22px] text-[var(--secondary)]">
+                  <span className="text-[22px] text-[#005e46] font-bold">
                     ${d.amount.toLocaleString("en-US")}
                   </span>
                 </div>
@@ -191,7 +188,7 @@ export default function TopDonors() {
                 style={{
                   width: i === index ? "24px" : "10px",
                   height: "10px",
-                  background: i === index ? "#FFA415" : "#DDE3E3",
+                  background: i === index ? "#d9a96e" : "rgba(255,255,255,0.3)",
                 }}
               />
             ))}
@@ -199,7 +196,7 @@ export default function TopDonors() {
           <div className="flex items-center gap-3">
             <button
               onClick={goPrev}
-              className="w-[50px] h-[50px] rounded-full border border-[#DDE3E3] flex items-center justify-center text-[#121d18] bg-white hover:border-[var(--secondary)] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300"
+              className="w-[50px] h-[50px] rounded-full border border-white/20 flex items-center justify-center text-white bg-transparent hover:bg-[#d9a96e] hover:text-black transition-all duration-300"
             >
               <svg
                 width="20"
@@ -214,7 +211,7 @@ export default function TopDonors() {
             </button>
             <button
               onClick={goNext}
-              className="w-[50px] h-[50px] rounded-full border border-[#DDE3E3] flex items-center justify-center text-[#121d18] bg-white hover:border-[var(--secondary)] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300"
+              className="w-[50px] h-[50px] rounded-full border border-white/20 flex items-center justify-center text-white bg-transparent hover:bg-[#d9a96e] hover:text-black transition-all duration-300"
             >
               <svg
                 width="20"

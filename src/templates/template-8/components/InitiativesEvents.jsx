@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { Users, Calendar } from "lucide-react";
+import { gsap } from "gsap";
 
 export const events = [
   {
@@ -25,12 +26,57 @@ export const events = [
 const InitiativesEvents = ({ data: initialEventsData, primaryColor = "#00715D", secondaryColor = "#D9A86A" }) => {
   const eventsList = initialEventsData || events;
 
+  const handleMouseMove = (e) => {
+    const card = e.currentTarget;
+    const { left, top, width, height } = card.getBoundingClientRect();
+    const x = (e.clientX - left - width / 2) / (width / 2);
+    const y = (e.clientY - top - height / 2) / (height / 2);
+
+    gsap.to(card, {
+      rotateX: -y * 10,
+      rotateY: x * 10,
+      duration: 0.2,
+      ease: "power2.out",
+    });
+  };
+
+  const handleMouseEnter = (e) => {
+    const card = e.currentTarget;
+    gsap.to(card, {
+      y: -10,
+      boxShadow: "0 25px 50px -12px rgba(0,0,0,0.15)",
+      duration: 0.4,
+      ease: "power2.out",
+      transformPerspective: 1000,
+      transformOrigin: "center center",
+    });
+  };
+
+  const handleMouseLeave = (e) => {
+    const card = e.currentTarget;
+    gsap.to(card, {
+      y: 0,
+      rotateX: 0,
+      rotateY: 0,
+      boxShadow: "0 1px 2px 0 rgba(0,0,0,0.05)",
+      duration: 0.5,
+      ease: "power2.out",
+    });
+  };
+
   return (
     <>
       {eventsList.map((eventItem) => {
         const progressPercentage = Math.min(100, Math.round((eventItem.raised / eventItem.goal) * 100));
         return (
-          <div key={eventItem.id} className="bg-white rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 group flex flex-col border border-gray-100 opacity-0">
+          <div 
+            key={eventItem.id} 
+            onMouseEnter={handleMouseEnter}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            className="bg-white rounded-2xl overflow-hidden group flex flex-col border border-gray-100 opacity-0 relative"
+            style={{ willChange: 'transform' }}
+          >
 
             {/* Image with Verified / Tax Exempt badges */}
             <div className="relative h-64 overflow-hidden">

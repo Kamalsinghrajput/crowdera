@@ -1,7 +1,9 @@
 import Head from "next/head";
+import dynamic from "next/dynamic";
 import Navbar from "../../../src/templates/template-10/components/Navbar";
 import HeroSection from "../../../src/templates/template-10/components/HeroSection";
 import AboutSection from "../../../src/templates/template-10/components/AboutSection";
+
 import ImpactSection from "../../../src/templates/template-10/components/ImpactSection";
 import DonationsSection from "../../../src/templates/template-10/components/DonationsSection";
 import CausesSection from "../../../src/templates/template-10/components/CausesSection";

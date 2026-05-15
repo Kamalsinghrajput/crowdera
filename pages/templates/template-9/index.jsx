@@ -1,6 +1,9 @@
 import Head from 'next/head';
-import Initiatives from '../../../src/templates/template-9/components/Initiatives';
+import dynamic from 'next/dynamic';
 import Navbar from '../../../src/templates/template-9/components/Navbar';
+import Initiatives from '../../../src/templates/template-9/components/Initiatives';
+
+import ImpactProfile from '../../../src/templates/template-9/components/ImpactProfile';
 
 export default function Template9() {
   return (
@@ -14,6 +17,7 @@ export default function Template9() {
       
       <main className="pt-20 md:pt-24">
         <Initiatives />
+        <ImpactProfile />
       </main>
 
       <footer className="bg-black py-48 border-t-4 border-red-600">

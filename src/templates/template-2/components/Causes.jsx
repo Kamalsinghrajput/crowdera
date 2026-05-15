@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import FloatingBird from "./FloatingBird";
 
 const TABS = [
@@ -132,18 +133,6 @@ function CourseCard({ course }) {
             style={{ transform: "scale(0.85)", transformOrigin: "left center" }}
           >
             <span>Donate Now</span>
-            <i>
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-              >
-                <path d="M7 17L17 7M17 7H7M17 7v10" />
-              </svg>
-            </i>
           </a>
         </div>
       </div>
@@ -186,7 +175,7 @@ export default function Causes() {
     setCurrentIndex((prev) => Math.min(prev + 1, maxIndex));
 
   return (
-    <section className="relative bg-[var(--secondary-bg-color)] py-[120px] overflow-hidden">
+    <section id="causes" className="relative bg-[var(--secondary-bg-color)] py-[120px] overflow-hidden">
       <style
         dangerouslySetInnerHTML={{
           __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; --bg-color: ${bgColor}; --secondary-bg-color: ${secondaryBgColor}; }`,
@@ -275,6 +264,15 @@ export default function Causes() {
                   <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
               </button>
+            </div>
+
+            {/* Explore More Button */}
+            <div className="mt-10">
+              <Link href="/templates/template-2/initiatives">
+                <a className="t2-btn">
+                  <span>Explore More</span>
+                </a>
+              </Link>
             </div>
           </div>
 

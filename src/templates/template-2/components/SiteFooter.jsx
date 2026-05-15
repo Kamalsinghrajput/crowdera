@@ -400,7 +400,7 @@ export default function SiteFooter() {
           <p
             style={{ fontSize: 14, color: "rgba(255,255,255,0.4)", margin: 0 }}
           >
-            © {new Date().getFullYear()}{" "}
+            © 2024{" "}
             <a
               href="#"
               style={{ color: "var(--secondary)", textDecoration: "none" }}

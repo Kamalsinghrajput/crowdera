@@ -176,9 +176,10 @@ const Hero = () => {
         </div>
 
         {/* Text Content */}
-        <div className="w-full px-6 lg:px-16 relative z-[15] flex items-center min-h-[92vh]">
-          <div ref={textRef} className="max-w-xl py-32">
-            <div className="hero-subtitle flex items-center text-[var(--primary)] text-lg lg:text-xl mb-5">
+        <div className="w-full relative z-[15] flex items-center min-h-[92vh]">
+          <div className="max-w-[1200px] mx-auto w-full px-6 lg:px-4">
+            <div ref={textRef} className="max-w-xl py-32">
+              <div className="hero-subtitle flex items-center text-[var(--primary)] text-lg lg:text-xl mb-5">
               <Heart
                 size={16}
                 fill="currentColor"
@@ -219,6 +220,7 @@ const Hero = () => {
                 </a>
               </Link>
             </div>
+          </div>
           </div>
         </div>
 

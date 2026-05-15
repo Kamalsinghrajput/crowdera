@@ -225,18 +225,6 @@ const InitiativesCampaigns = ({ data: initialCampaignData, primaryColor = "#007B
                 <div className="grid grid-cols-2 gap-3 items-center">
                   <button className="t2-btn t2-btn-secondary t2-btn-sm">
                     <span>Donate Now</span>
-                    <i>
-                      <svg
-                        width="12"
-                        height="12"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="3"
-                      >
-                        <path d="M7 17L17 7M17 7H7M17 7v10" />
-                      </svg>
-                    </i>
                   </button>
                   <button className="bg-white text-[#121D18] font-black h-[40px] px-6 rounded-full text-[11px] border-2 border-[#121D18] hover:bg-[#121D18] hover:text-white transition-all active:scale-95 uppercase tracking-widest">
                     View

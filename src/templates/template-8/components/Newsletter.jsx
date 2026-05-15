@@ -4,9 +4,9 @@ import { useHeadingAnimation } from "../hooks/useHeadingAnimation";
 
 export default function NewsLetter() {
   const headingRef = useHeadingAnimation();
-  const primaryColor = "#00b86b";
-  const secondaryColor = "#ff5528";
-  const bgColor = "#111111";
+  const primaryColor = "#005e46";
+  const secondaryColor = "#d9a96e";
+  const bgColor = "#1A1A1A";
   const secondaryBgColor = "#f9f9f9";
 
   const [email, setEmail] = useState("");
@@ -38,7 +38,7 @@ export default function NewsLetter() {
       />
 
       {/* Gradient overlay to blend with footer */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#111111]/40 via-[#111111]/80 to-[#111111]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#1A1A1A]/40 via-[#1A1A1A]/80 to-[#1A1A1A]" />
 
       <div className="max-w-[800px] mx-auto px-4 relative z-10 text-center">
         <h2 ref={headingRef} className="text-[clamp(32px,5vw,56px)] font-['Montserrat'] font-extrabold leading-[1.2] text-white mb-6">
@@ -62,11 +62,11 @@ export default function NewsLetter() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="w-full bg-transparent border border-white/20 rounded-full px-8 py-[18px] text-[16px] font-['Inter'] text-white placeholder:text-white/40 focus:outline-none focus:border-[#ff5528] transition-colors pr-[70px]"
+            className="w-full bg-transparent border border-white/20 rounded-full px-8 py-[18px] text-[16px] text-white placeholder:text-white/40 focus:outline-none focus:border-[#d9a96e] transition-colors pr-[70px]"
           />
           <button
             type="submit"
-            className="absolute right-2.5 top-1/2 -translate-y-1/2 w-[46px] h-[46px] rounded-full bg-[var(--secondary)] flex items-center justify-center text-white transition-transform duration-300 hover:scale-105"
+            className="absolute right-2.5 top-1/2 -translate-y-1/2 w-[46px] h-[46px] rounded-full bg-[#d9a96e] flex items-center justify-center text-black transition-transform duration-300 hover:scale-105"
           >
             {submitted ? (
               <svg

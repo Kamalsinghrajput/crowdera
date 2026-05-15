@@ -5,13 +5,13 @@ import Link from "next/link";
 const CURRENT_YEAR = new Date().getFullYear();
 
 export default function ImpactProfile() {
-  const primaryColor = "#005e46";
+  const primaryColor = "#dc2626"; // Template 9 Red
 
   const [count, setCount] = useState(0);
   const target = 10000;
   const sectionRef = useRef(null);
-  const [isMounted, setIsMounted] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
@@ -52,29 +52,30 @@ export default function ImpactProfile() {
 
 
   return (
-    <section className="py-[120px] bg-white font-sans">
-      <div className="max-w-[1200px] mx-auto px-4">
+    <section className="py-[100px] bg-white">
+      <div className="max-w-[1320px] mx-auto px-3">
         <div
           ref={sectionRef}
-          className="relative rounded-[20px] overflow-hidden "
+          className="relative rounded-[30px] overflow-hidden "
           style={{ background: primaryColor }}
         >
+          {/* World map watermark */}
           <div
-            className="absolute inset-0 bg-no-repeat bg-center bg-cover pointer-events-none opacity-[0.2]"
+            className="absolute inset-0 bg-no-repeat bg-center bg-cover pointer-events-none opacity-[0.25]"
             style={{ backgroundImage: "url(/assets/map.svg)" }}
           />
 
           {/* Content */}
           <div className="relative z-10 px-6 md:px-16 py-[80px] text-center">
             {/* Top tagline */}
-            <p className="tracking-[0.1em] text-white/80 text-[14px] mb-8 uppercase font-bold">
+            <p className="tracking-[0.1em] text-white text-[14px] mb-8 uppercase font-bold">
               To create a world where every life is valued, uplifted, and
               empowered without barriers.
             </p>
 
             {/* Big animated counter */}
             <div className="mb-4">
-              <span className="text-[clamp(40px,8vw,100px)] leading-none text-[#d9a96e] font-bold">
+              <span className="text-[clamp(40px,8vw,100px)] leading-none text-white font-bold">
                 {count.toLocaleString()}
               </span>
               <span className="ml-4 text-[clamp(24px,4vw,40px)] text-white font-bold">
@@ -83,7 +84,7 @@ export default function ImpactProfile() {
             </div>
 
             {/* Description */}
-            <p className="text-[17px] text-white/90 max-w-[700px] mx-auto mb-14 leading-[1.8] font-medium">
+            <p className="text-[16px] text-white max-w-[700px] mx-auto mb-14 leading-[1.8] font-semibold">
               To promote well-being and opportunity by creating awareness,
               providing support, and building positive, resilient communities
               worldwide.
@@ -95,7 +96,7 @@ export default function ImpactProfile() {
                 <h3 className="text-[20px] mb-3 text-white font-bold">
                   Community Development
                 </h3>
-                <p className="text-white/70 text-[15px] leading-[1.7] font-medium">
+                <p className="text-white text-[15px] leading-[1.7] font-medium">
                   Our foundation focuses on spreading awareness, offering direct
                   support, and encouraging individuals to lead balanced and
                   empowered lives through community-driven initiatives and
@@ -106,7 +107,7 @@ export default function ImpactProfile() {
                 <h3 className="text-[20px] mb-3 text-white font-bold">
                   Geographic Presence
                 </h3>
-                <p className="text-white/70 text-[15px] leading-[1.7] font-medium">
+                <p className="text-white text-[15px] leading-[1.7] font-medium">
                   Worldwide — active across Asia, Africa, and the Americas,
                   bringing hope and resources to those who need it most.
                 </p>
@@ -116,11 +117,24 @@ export default function ImpactProfile() {
             {/* View Annual Report button */}
             <div className="flex justify-center">
               <Link
-                href={`/templates/template-8/annual-report/${CURRENT_YEAR}`}
+                href={`/templates/template-9/annual-report/${CURRENT_YEAR}`}
+                className="inline-flex items-center gap-3 group text-white text-[16px] font-bold hover:text-black transition-colors duration-300"
               >
-                <a className="inline-block bg-[#d9a96e] text-black font-bold text-[15px] px-8 py-4 rounded-md transition-colors hover:bg-[#c4965d] no-underline">
+                <span className="flex items-center gap-3">
                   View Annual Report {CURRENT_YEAR}
-                </a>
+                  <span className="w-10 h-10 rounded-full bg-white text-red-600 flex items-center justify-center transition-all duration-300 group-hover:bg-black group-hover:text-white">
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                    >
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </span>
+                </span>
               </Link>
             </div>
           </div>

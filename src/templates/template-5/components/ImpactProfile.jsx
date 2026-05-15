@@ -10,9 +10,11 @@ export default function ImpactProfile() {
   const [count, setCount] = useState(0);
   const target = 10000;
   const sectionRef = useRef(null);
+  const [isMounted, setIsMounted] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -28,7 +30,7 @@ export default function ImpactProfile() {
   }, []);
 
   useEffect(() => {
-    if (isVisible) {
+    if (isVisible && isMounted) {
       const duration = 2000;
       const startTime = performance.now();
 
@@ -46,7 +48,8 @@ export default function ImpactProfile() {
       };
       requestAnimationFrame(animate);
     }
-  }, [isVisible]);
+  }, [isVisible, isMounted]);
+
 
   return (
     <section className="py-[100px]">
@@ -57,7 +60,7 @@ export default function ImpactProfile() {
           style={{ background: primaryColor }}
         >
           <div
-            className="absolute inset-0 bg-no-repeat bg-center bg-cover pointer-events-none opacity-[0.15]"
+            className="absolute inset-0 bg-no-repeat bg-center bg-cover pointer-events-none opacity-[0.25]"
             style={{ backgroundImage: "url(/assets/map.svg)" }}
           />
 
@@ -104,31 +107,35 @@ export default function ImpactProfile() {
                   Geographic Presence
                 </h3>
                 <p className="text-white text-[15px] leading-[1.7] font-medium">
-                  Worldwide Ã¢â‚¬â€ active across Asia, Africa, and the
-                  Americas, bringing hope and resources to those who need it
-                  most.
+                  Worldwide — active across Asia, Africa, and the Americas,
+                  bringing hope and resources to those who need it most.
                 </p>
               </div>
             </div>
 
             {/* View Annual Report button */}
-            <Link href={`/templates/template-2/annual-report/${CURRENT_YEAR}`}>
-              <a className="inline-flex items-center gap-3 group text-[#007B39] text-[16px] font-bold hover:text-[#121d18] transition-colors duration-300">
-                View Annual Report {CURRENT_YEAR}
-                <span className="w-10 h-10 rounded-full bg-[#007B39] text-white flex items-center justify-center transition-all duration-300 group-hover:bg-[#121d18] group-hover:text-white">
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                  >
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
+            <div className="flex justify-center">
+              <Link
+                href={`/templates/template-2/annual-report/${CURRENT_YEAR}`}
+                className="inline-flex items-center gap-3 group text-[#007B39] text-[16px] font-bold hover:text-[#121d18] transition-colors duration-300"
+              >
+                <span className="flex items-center gap-3">
+                  View Annual Report {CURRENT_YEAR}
+                  <span className="w-10 h-10 rounded-full bg-[#007B39] text-white flex items-center justify-center transition-all duration-300 group-hover:bg-[#121d18] group-hover:text-white">
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                    >
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </span>
                 </span>
-              </a>
-            </Link>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

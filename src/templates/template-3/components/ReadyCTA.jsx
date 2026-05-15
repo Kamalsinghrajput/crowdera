@@ -7,39 +7,15 @@ export default function ReadyCTA() {
     <section
       style={{
         padding: "120px 0",
-        position: "relative",
-        overflow: "hidden",
+        background: "#EBD3AF",
         textAlign: "center",
       }}
     >
-      {/* Background image */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          backgroundImage:
-            "url(https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80)",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundAttachment: "fixed",
-        }}
-      />
-      {/* Dark overlay */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          background: "rgba(18,29,24,0.88)",
-        }}
-      />
-
       <div
         style={{
           maxWidth: "800px",
           margin: "0 auto",
           padding: "0 16px",
-          position: "relative",
-          zIndex: 1,
         }}
       >
         {/* Badge */}
@@ -56,14 +32,14 @@ export default function ReadyCTA() {
               width: "8px",
               height: "8px",
               borderRadius: "50%",
-              background: "#FFA415",
+              background: "#007B39",
               display: "inline-block",
             }}
           />
           <span
             style={{
               fontSize: "16px",
-              color: "#fff",
+              color: "#121d18",
               fontStyle: "italic",
               fontWeight: 600,
             }}
@@ -76,7 +52,7 @@ export default function ReadyCTA() {
           style={{
             fontSize: "clamp(32px,4vw,48px)",
             lineHeight: 1.2,
-            color: "#fff",
+            color: "#121d18",
             marginBottom: "20px",
             fontWeight: 800,
           }}
@@ -87,8 +63,7 @@ export default function ReadyCTA() {
         <p
           style={{
             fontSize: "18px",
-            color: "rgba(255,255,255,0.85)",
-            marginBottom: "40px",
+            color: "rgba(18,29,24,0.72)",
             maxWidth: "600px",
             margin: "0 auto 40px",
             lineHeight: 1.7,
@@ -107,7 +82,7 @@ export default function ReadyCTA() {
           }}
         >
           <Link href="/templates/template-3/initiatives">
-            <a className="t2-btn t2-btn-secondary">
+            <a className="t2-btn">
               <span>Start a Campaign</span>
             </a>
           </Link>
@@ -117,7 +92,7 @@ export default function ReadyCTA() {
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "8px",
-                color: "#fff",
+                color: "#121d18",
                 fontWeight: 700,
                 fontSize: "15px",
                 textDecoration: "none",
@@ -125,8 +100,8 @@ export default function ReadyCTA() {
                 letterSpacing: "0.05em",
                 transition: "color 0.3s",
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "#FFA415")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "#fff")}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "#007B39")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "#121d18")}
             >
               Meet Our Team
               <svg

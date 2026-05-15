@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { useRouter } from "next/router";
-import { Search, ChevronDown, Filter, RefreshCw, Globe, Tag, Sparkles, SlidersHorizontal, Loader2 } from "lucide-react";
+import { Search, ChevronDown, Filter, RefreshCw, Globe, Tag, Zap, SlidersHorizontal, Loader2 } from "lucide-react";
 import InitiativesCampaigns from "./InitiativesCampaigns";
 import InitiativesEvents from "./InitiativesEvents";
 import InitiativesFundraisers from "./InitiativesFundraisers";
@@ -111,7 +111,7 @@ const Initiatives = ({ initialTab = "campaigns" }) => {
         
         <div className="container mx-auto px-4 max-w-[1200px] relative z-10 text-center">
             <div className="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/20 px-4 py-2 rounded-full mb-8">
-                <Sparkles size={14} className="text-indigo-400" />
+                <Zap size={14} className="text-indigo-400" />
                 <span className="text-indigo-300 text-[10px] font-black uppercase tracking-[0.2em]">Discover New Causes</span>
             </div>
             <h1 className="text-5xl md:text-8xl font-black text-white mb-10 tracking-tight leading-[0.9]">

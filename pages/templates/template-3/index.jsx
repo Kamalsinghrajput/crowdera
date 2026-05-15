@@ -18,10 +18,11 @@ import NewsLetter from "../../../src/templates/template-3/components/Newsletter"
 import SiteFooter from "../../../src/templates/template-3/components/SiteFooter";
 import ImpactProfile from "../../../src/templates/template-3/components/ImpactProfile";
 import TopDonors from "../../../src/templates/template-3/components/TopDonors";
+import ReadyCTA from "../../../src/templates/template-3/components/ReadyCTA";
 
 // ScrollToTop must be client-only to avoid hydration mismatch
 const ScrollToTop = dynamic(
-  () => import("../../../src/templates/template-2/components/ScrollToTop"),
+  () => import("../../../src/templates/template-3/components/ScrollToTop"),
   { ssr: false },
 );
 
@@ -100,6 +101,9 @@ export default function Template2() {
           </div>
           <div id="blog">
             <BLog />
+          </div>
+          <div id="ready-cta">
+            <ReadyCTA />
           </div>
           <div id="newsletter">
             <NewsLetter />

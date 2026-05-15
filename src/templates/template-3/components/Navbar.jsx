@@ -18,17 +18,17 @@ const NAV_ITEMS = [
   },
   { 
     label: "Causes", 
-    href: "/templates/template-3/initiatives?tab=campaigns",
+    href: "#causes",
     subItems: [
-      { label: "Active Causes", href: "/templates/template-3/initiatives?tab=campaigns" },
+      { label: "Active Causes", href: "#causes" },
       { label: "Top Donors", href: "#top-donors" }
     ]
   },
   { 
     label: "Events", 
-    href: "/templates/template-3/initiatives?tab=events",
+    href: "#events",
     subItems: [
-      { label: "Upcoming Events", href: "/templates/template-3/initiatives?tab=events" },
+      { label: "Upcoming Events", href: "#events" },
       { label: "Volunteer", href: "#volunteer" },
       { label: "Newsletter", href: "#newsletter" }
     ]
@@ -120,12 +120,13 @@ export default function Navbar() {
     .t2-btn i::after { content: ""; position: absolute; inset: 0; background-color: var(--bg-color, #121d18); transform-origin: right; transform: scaleX(0); transition: transform 0.8s cubic-bezier(0, 0.96, 0.58, 1.1); z-index: -1; }
     .t2-btn:hover i::after { transform: scaleX(1); transition: transform 1.2s cubic-bezier(0, 0.96, 0.58, 1.1); }
     .t2-btn:hover i { color: white; }
-    .t2-btn.t2-btn-black span, .t2-btn.t2-btn-black i { background-color: var(--bg-color, #121d18); }
-    .t2-btn.t2-btn-black span::before, .t2-btn.t2-btn-black i::after { background-color: var(--secondary, #FFA415); }
-    .t2-btn.t2-btn-primary span, .t2-btn.t2-btn-primary i { background-color: var(--primary, #007B39); }
-    .t2-btn.t2-btn-secondary span, .t2-btn.t2-btn-secondary i { background-color: var(--secondary, #FFA415); color: var(--bg-color, #121d18); }
-    .t2-btn.t2-btn-secondary span::before, .t2-btn.t2-btn-secondary i::after { background-color: var(--bg-color, #121d18); }
-    .t2-btn.t2-btn-secondary:hover span, .t2-btn.t2-btn-secondary:hover i { color: white; }
+    .t2-btn i { display: none; }
+    .t2-btn.t2-btn-black span { background-color: var(--bg-color, #121d18); }
+    .t2-btn.t2-btn-black span::before { background-color: var(--secondary, #FFA415); }
+    .t2-btn.t2-btn-primary span { background-color: var(--primary, #007B39); }
+    .t2-btn.t2-btn-secondary span { background-color: var(--secondary, #FFA415); color: var(--bg-color, #121d18); }
+    .t2-btn.t2-btn-secondary span::before { background-color: var(--bg-color, #121d18); }
+    .t2-btn.t2-btn-secondary:hover span { color: white; }
     .t2-text-btn { display: inline-flex; align-items: center; font-size: 13px; color: var(--primary, #007B39); text-decoration: none; text-transform: uppercase; font-weight: 500; letter-spacing: 0.1em; transition: color 0.3s; }
     .t2-text-btn:hover { color: var(--secondary, #FFA415); }
     .t2-text-btn svg { transition: transform 0.3s; }
@@ -296,19 +297,6 @@ export default function Navbar() {
                   style={{ textDecoration: "none" }}
                 >
                   <span>Donate Now</span>
-                  <i>
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      className="-rotate-45"
-                    >
-                      <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
-                  </i>
                 </a>
               </div>
 

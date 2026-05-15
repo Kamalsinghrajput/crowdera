@@ -100,19 +100,6 @@ export default function About() {
               <Link href="#about">
                 <a className="t2-btn  inline-flex">
                   <span>Read More</span>
-                  <i>
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      className="-rotate-45"
-                    >
-                      <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
-                  </i>
                 </a>
               </Link>
             </div>
@@ -293,11 +280,6 @@ export default function About() {
           <Link href="#contact">
             <a className="t2-btn inline-flex whitespace-nowrap">
               <span>Join Us</span>
-              <i>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="-rotate-45">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </i>
             </a>
           </Link>
         </div>

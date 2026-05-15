@@ -107,10 +107,7 @@ export default function Hero() {
               key={`btn-${animKey}`}
               style={{ animation: "slideInUp 0.7s 0.2s ease both" }}
             >
-              <a
-                href="#"
-                className="t2-btn  inline-flex"
-              >
+              <a href="#" className="t2-btn  inline-flex">
                 <span>Join With Us</span>
               </a>
             </div>
@@ -238,4 +235,3 @@ export default function Hero() {
     </section>
   );
 }
-

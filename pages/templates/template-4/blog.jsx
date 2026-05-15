@@ -4,11 +4,6 @@ import SiteFooter from "../../../src/templates/template-4/components/SiteFooter"
 import BLog from "../../../src/templates/template-4/components/Blog";
 
 export default function BlogPage() {
-  const primaryColor = "#007B39";
-  const secondaryColor = "#FFA415";
-  const bgColor = "#121d18";
-  const secondaryBgColor = "#f9f9f9";
-
   return (
     <>
       <Head>
@@ -23,7 +18,7 @@ export default function BlogPage() {
       >
         <Navbar />
         <main style={{ paddingTop: "120px" }}>
-          <div className="bg-t2-lightTeal py-[80px] text-center border-b border-[#E5E5E5]">
+          <div className="bg-[#f9f9f9] pt-[80px] text-center border-b border-[#E5E5E5]">
             <h1 className="text-[48px] text-[var(--bg-color)]">
               All Blog Posts
             </h1>

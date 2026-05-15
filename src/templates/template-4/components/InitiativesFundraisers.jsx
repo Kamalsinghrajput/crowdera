@@ -74,11 +74,11 @@ const InitiativesFundraisers = ({ data: initialFundraisersData, primaryColor = "
 
             {/* Buttons */}
             <div className="mt-auto grid grid-cols-2 gap-3">
-              <button className="bg-[#121D18] text-white font-black py-3 rounded-full text-xs uppercase tracking-widest hover:opacity-90 transition-all active:scale-95 shadow-md">
-                Donate
+              <button className="t2-btn t2-btn-primary w-full">
+                <span className="w-full" style={{ height: '44px', padding: '0 15px', fontSize: '11px', borderRadius: '12px' }}>Donate</span>
               </button>
-              <button className="bg-white text-[#121D18] font-black py-3 rounded-full text-xs border-2 border-[#121D18] hover:bg-[#121D18] hover:text-white transition-all active:scale-95 uppercase tracking-widest">
-                View
+              <button className="t2-btn w-full">
+                <span className="w-full" style={{ height: '44px', padding: '0 15px', fontSize: '11px', borderRadius: '12px', backgroundColor: '#fff', color: '#121d18', border: '1px solid #E5E5E5' }}>View</span>
               </button>
             </div>
 

@@ -456,16 +456,23 @@ export default function Navbar() {
                 alignItems: "center",
               }}
             >
-              <span
-                style={{
-                  color: "#FFA415",
-                  fontFamily: "Sora, sans-serif",
-                  fontWeight: 800,
-                  fontSize: 22,
-                }}
-              >
-                CHIOARY
-              </span>
+              <Link href="/templates/template-3">
+                <a
+                  style={{ textDecoration: "none" }}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  <span
+                    style={{
+                      color: "#FFA415",
+                      fontFamily: "Sora, sans-serif",
+                      fontWeight: 800,
+                      fontSize: 22,
+                    }}
+                  >
+                    CHIOARY
+                  </span>
+                </a>
+              </Link>
               <button
                 onClick={() => setMobileOpen(false)}
                 style={{

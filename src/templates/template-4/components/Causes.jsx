@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const TABS = [
   "View All",
@@ -234,19 +235,6 @@ export default function Causes() {
                     <div className="flex items-center gap-4">
                       <button className="t2-btn t2-btn-secondary">
                         <span>Donate Now</span>
-                        <i>
-                          <svg
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2.5"
-                            className="-rotate-45"
-                          >
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                          </svg>
-                        </i>
                       </button>
 
                       <button className="underline">View Details</button>
@@ -256,6 +244,15 @@ export default function Causes() {
               ))}
             </div>
           </div>
+        </div>
+
+        {/* View All Causes Button */}
+        <div className="flex justify-center mt-16 relative z-10">
+          <Link href="/templates/template-4/initiatives?tab=campaigns">
+            <a className="t2-btn t2-btn-secondary">
+              <span>View All Causes</span>
+            </a>
+          </Link>
         </div>
       </div>
     </section>

@@ -2,7 +2,7 @@ import React from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import Navbar from "../../../src/templates/template-4/components/Navbar";
-import Footer from "../../../src/templates/template-1/components/Footer"; // Assuming template 4 uses template 1 footer or similar
+import SiteFooter from "../../../src/templates/template-4/components/SiteFooter";
 import Initiatives from "../../../src/templates/template-4/components/Initiatives";
 
 export default function InitiativesPage() {
@@ -26,10 +26,7 @@ export default function InitiativesPage() {
         <Initiatives initialTab={tab || "campaigns"} />
       </main>
 
-      {/* Footer placeholder if template 4 doesn't have its own SiteFooter */}
-      <footer className="bg-[#121D18] py-10 text-center text-gray-500 text-sm">
-        &copy; {new Date().getFullYear()} Chioary. All rights reserved.
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

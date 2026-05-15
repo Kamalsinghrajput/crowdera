@@ -7,7 +7,7 @@ export default function ReadyCTA() {
     <section
       style={{
         padding: "120px 0",
-        background: "#EBD3AF",
+        background: "#121d18",
         textAlign: "center",
       }}
     >
@@ -32,14 +32,14 @@ export default function ReadyCTA() {
               width: "8px",
               height: "8px",
               borderRadius: "50%",
-              background: "#007B39",
+              background: "#FFA415",
               display: "inline-block",
             }}
           />
           <span
             style={{
               fontSize: "16px",
-              color: "#121d18",
+              color: "#FFA415",
               fontStyle: "italic",
               fontWeight: 600,
             }}
@@ -52,7 +52,7 @@ export default function ReadyCTA() {
           style={{
             fontSize: "clamp(32px,4vw,48px)",
             lineHeight: 1.2,
-            color: "#121d18",
+            color: "#ffffff",
             marginBottom: "20px",
             fontWeight: 800,
           }}
@@ -63,7 +63,7 @@ export default function ReadyCTA() {
         <p
           style={{
             fontSize: "18px",
-            color: "rgba(18,29,24,0.72)",
+            color: "rgba(255,255,255,0.72)",
             maxWidth: "600px",
             margin: "0 auto 40px",
             lineHeight: 1.7,
@@ -84,36 +84,6 @@ export default function ReadyCTA() {
           <Link href="/templates/template-3/initiatives">
             <a className="t2-btn">
               <span>Start a Campaign</span>
-            </a>
-          </Link>
-          <Link href="#team">
-            <a
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "8px",
-                color: "#121d18",
-                fontWeight: 700,
-                fontSize: "15px",
-                textDecoration: "none",
-                textTransform: "uppercase",
-                letterSpacing: "0.05em",
-                transition: "color 0.3s",
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "#007B39")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "#121d18")}
-            >
-              Meet Our Team
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
             </a>
           </Link>
         </div>

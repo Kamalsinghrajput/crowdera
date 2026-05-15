@@ -88,21 +88,23 @@ export default function Team({ isAllTeamPage }) {
       </div>
 
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 16px", position: "relative", zIndex: 1 }}>
-        {/* Header */}
-        <div style={{ textAlign: "center", marginBottom: "60px" }}>
-          <div style={{ display: "inline-flex", alignItems: "center", gap: "10px", marginBottom: "14px" }}>
-            <span style={{ width: "10px", height: "10px", borderRadius: "50%", background: "#007B39", display: "inline-block" }} />
-            <span style={{ fontSize: "16px", fontStyle: "italic", fontWeight: 700, color: "#121d18" }}>
-              Our Board Members
-            </span>
+        {/* Header - Only on Homepage */}
+        {!isAllTeamPage && (
+          <div style={{ textAlign: "center", marginBottom: "60px" }}>
+            <div style={{ display: "inline-flex", alignItems: "center", gap: "10px", marginBottom: "14px" }}>
+              <span style={{ width: "10px", height: "10px", borderRadius: "50%", background: "#007B39", display: "inline-block" }} />
+              <span style={{ fontSize: "16px", fontStyle: "italic", fontWeight: 700, color: "#121d18" }}>
+                Our Board Members
+              </span>
+            </div>
+            <h2
+              ref={headingRef}
+              style={{ fontSize: "clamp(36px, 4vw, 48px)", fontWeight: 800, lineHeight: 1.2, color: "#121d18", margin: 0 }}
+            >
+              Meet Our Dedicated Board Members
+            </h2>
           </div>
-          <h2
-            ref={headingRef}
-            style={{ fontSize: "clamp(36px, 4vw, 48px)", fontWeight: 800, lineHeight: 1.2, color: "#121d18", margin: 0 }}
-          >
-            Meet Our Dedicated Board Members
-          </h2>
-        </div>
+        )}
 
         {/* Grid */}
         <div

@@ -23,9 +23,9 @@ export default function TeamPage() {
       >
         <Navbar />
         <main style={{ paddingTop: "120px" }}>
-          <div className="bg-t2-lightTeal py-[80px] text-center border-b border-[#E5E5E5]">
+          <div className="bg-t2-lightTeal pt-[80px] text-center border-b border-[#E5E5E5]">
             <h1 className="text-[48px] text-[var(--bg-color)]">
-              All Team Members
+              All Board Members
             </h1>
             <p className="text-[#6c6e76] mt-4">
               Meet the dedicated people behind our mission.

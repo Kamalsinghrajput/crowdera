@@ -18,17 +18,17 @@ const NAV_ITEMS = [
   },
   { 
     label: "Causes", 
-    href: "/templates/template-4/initiatives?tab=campaigns",
+    href: "#causes",
     subItems: [
-      { label: "Active Causes", href: "/templates/template-4/initiatives?tab=campaigns" },
+      { label: "Active Causes", href: "#causes" },
       { label: "Top Donors", href: "#top-donors" }
     ]
   },
   { 
     label: "Events", 
-    href: "/templates/template-4/initiatives?tab=events",
+    href: "#events",
     subItems: [
-      { label: "Upcoming Events", href: "/templates/template-4/initiatives?tab=events" },
+      { label: "Upcoming Events", href: "#events" },
       { label: "Volunteer", href: "#volunteer" },
       { label: "Newsletter", href: "#newsletter" }
     ]
@@ -95,8 +95,37 @@ export default function Navbar() {
     }
   };
 
+  const buttonStyles = `
+    :root {
+      --primary: #007B39;
+      --secondary: #FFA415;
+      --bg-color: #121d18;
+      --secondary-bg-color: #f9f9f9;
+      --t2-primary: #007B39;
+      --t2-secondary: #FFA415;
+      --t2-dark: #121d18;
+      --t2-gray: #6c6e76;
+      --t2-light: #f9f9f9;
+    }
+    .t2-btn { display: inline-flex; align-items: center; gap: 0; text-decoration: none; border: none; background: none; cursor: pointer; padding: 0; }
+    .t2-btn span { position: relative; display: inline-flex; align-items: center; justify-content: center; height: 50px; padding: 0 35px; background-color: var(--bg-color, #121d18); color: white; border-radius: 25px; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; z-index: 1; overflow: hidden; transition: all 500ms ease; white-space: nowrap; }
+    .t2-btn span::before { content: ''; position: absolute; inset: 0; background-color: var(--secondary, #FFA415); transform-origin: left; transform: scaleX(0); transition: transform 0.8s cubic-bezier(0, 0.96, 0.58, 1.1); z-index: -1; }
+    .t2-btn:hover span::before { transform: scaleX(1); transition: transform 1.2s cubic-bezier(0, 0.96, 0.58, 1.1); }
+    .t2-btn:hover span { color: white; }
+    .t2-btn i { display: none; }
+    .t2-btn.t2-btn-primary span { background-color: var(--primary, #007B39); }
+    .t2-btn.t2-btn-secondary span { background-color: var(--secondary, #FFA415); color: var(--bg-color, #121d18); }
+    .t2-btn.t2-btn-secondary span::before { background-color: var(--bg-color, #121d18); }
+    .t2-btn.t2-btn-secondary:hover span { color: white; }
+    .t2-text-btn { display: inline-flex; align-items: center; font-size: 13px; color: var(--primary, #007B39); text-decoration: none; text-transform: uppercase; font-weight: 500; letter-spacing: 0.1em; transition: color 0.3s; }
+    .t2-text-btn:hover { color: var(--secondary, #FFA415); }
+    .t2-text-btn svg { transition: transform 0.3s; }
+    .t2-text-btn:hover svg { transform: translateX(5px); }
+  `;
+
   return (
     <>
+      <style dangerouslySetInnerHTML={{ __html: buttonStyles }} />
       <div style={{ height: scrolled ? "120px" : 0 }} />
 
       <header
@@ -124,26 +153,27 @@ export default function Navbar() {
                 gap: "clamp(20px, 4vw, 80px)",
               }}
             >
-              <a
-                href="#"
-                style={{
-                  padding: "14px 0",
-                  display: "block",
-                  textDecoration: "none",
-                }}
-              >
-                <span
+              <Link href="/templates/template-4">
+                <a
                   style={{
-                    color: "#FFA415",
-                    fontFamily: "Sora, sans-serif",
-                    fontWeight: 800,
-                    fontSize: "clamp(20px, 5vw, 28px)",
-                    letterSpacing: "0.02em",
+                    padding: "14px 0",
+                    display: "block",
+                    textDecoration: "none",
                   }}
                 >
-                  CHIOARY
-                </span>
-              </a>
+                  <span
+                    style={{
+                      color: "#FFA415",
+                      fontFamily: "Sora, sans-serif",
+                      fontWeight: 800,
+                      fontSize: "clamp(20px, 5vw, 28px)",
+                      letterSpacing: "0.02em",
+                    }}
+                  >
+                    CHIOARY
+                  </span>
+                </a>
+              </Link>
 
               {/* Desktop Main Links */}
               <ul
@@ -250,18 +280,6 @@ export default function Navbar() {
               <div className="hidden lg:flex">
                 <a href="#" className="t2-btn t2-btn-secondary">
                   <span>Donate Now</span>
-                  <i>
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    >
-                      <path d="M7 17L17 7M17 7H7M17 7v10" />
-                    </svg>
-                  </i>
                 </a>
               </div>
 
@@ -438,16 +456,23 @@ export default function Navbar() {
                 alignItems: "center",
               }}
             >
-              <span
-                style={{
-                  color: "#FFA415",
-                  fontFamily: "Sora, sans-serif",
-                  fontWeight: 800,
-                  fontSize: 22,
-                }}
-              >
-                CHIOARY
-              </span>
+              <Link href="/templates/template-4">
+                <a
+                  style={{ textDecoration: "none" }}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  <span
+                    style={{
+                      color: "#FFA415",
+                      fontFamily: "Sora, sans-serif",
+                      fontWeight: 800,
+                      fontSize: 22,
+                    }}
+                  >
+                    CHIOARY
+                  </span>
+                </a>
+              </Link>
               <button
                 onClick={() => setMobileOpen(false)}
                 style={{

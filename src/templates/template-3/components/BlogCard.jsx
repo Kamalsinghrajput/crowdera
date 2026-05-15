@@ -3,12 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { FiTag, FiMessageCircle } from "react-icons/fi";
-import { HiArrowRight } from "react-icons/hi";
 import BrushDateBadge from "./BrushDateBadge";
 
 export default function BlogCard({ blogData }) {
   const [imgHovered, setImgHovered] = useState(false);
-  const [footerHovered, setFooterHovered] = useState(false);
 
   return (
     <div
@@ -51,19 +49,39 @@ export default function BlogCard({ blogData }) {
           flexDirection: "column",
         }}
       >
-        {/* Category */}
+        {/* Meta Row */}
         <div
           style={{
             display: "flex",
             alignItems: "center",
-            gap: "8px",
-            color: "#6c6e76",
-            fontSize: "14px",
+            justifyContent: "space-between",
             marginBottom: "16px",
           }}
         >
-          <FiTag size={16} />
-          {blogData.category}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              color: "#6c6e76",
+              fontSize: "14px",
+            }}
+          >
+            <FiTag size={16} className="text-[#007B39]" />
+            {blogData.category}
+          </div>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              color: "#6c6e76",
+              fontSize: "14px",
+            }}
+          >
+            <FiMessageCircle size={16} className="text-[#007B39]" />
+            {blogData.comments}
+          </div>
         </div>
 
         {/* Title */}
@@ -73,7 +91,8 @@ export default function BlogCard({ blogData }) {
             fontWeight: 700,
             color: "#121d18",
             lineHeight: 1.4,
-            marginBottom: "30px",
+            marginBottom: "24px",
+            flexGrow: 1
           }}
         >
           <Link href="/templates/template-3/blog">
@@ -87,77 +106,14 @@ export default function BlogCard({ blogData }) {
           </Link>
         </h3>
 
-        {/* Footer row — full hover turns green */}
-        <Link href="/templates/template-3/blog">
-          <a
-            style={{
-              position: "relative",
-              overflow: "hidden",
-              marginTop: "auto",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              borderTop: "1px solid #EBEBEB",
-              margin: "auto -30px -30px",
-              padding: "16px 30px",
-              cursor: "pointer",
-              textDecoration: "none",
-            }}
-            onMouseEnter={() => setFooterHovered(true)}
-            onMouseLeave={() => setFooterHovered(false)}
-          >
-            {/* Animated Green Background */}
-            <div
-              style={{
-                position: "absolute",
-                bottom: 0,
-                left: 0,
-                right: 0,
-                height: footerHovered ? "100%" : "0%",
-                backgroundColor: "#007B39",
-                transition: "height 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-                zIndex: 0,
-              }}
-            />
-
-            {/* Comments */}
-            <div
-              style={{
-                position: "relative",
-                zIndex: 1,
-                display: "flex",
-                alignItems: "center",
-                gap: "8px",
-                color: footerHovered ? "#fff" : "#6c6e76",
-                fontSize: "14px",
-                transition: "color 0.4s ease",
-              }}
-            >
-              <FiMessageCircle size={16} />
-              {blogData.comments}
-            </div>
-
-            {/* Arrow button */}
-            <div
-              style={{
-                position: "relative",
-                zIndex: 1,
-                width: "44px",
-                height: "44px",
-                borderRadius: "50%",
-                backgroundColor: footerHovered ? "#fff" : "#121d18",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: footerHovered ? "#007B39" : "#fff",
-                transition: "background-color 0.4s ease, color 0.4s ease",
-                flexShrink: 0,
-              }}
-            >
-              <HiArrowRight size={18} />
-            </div>
-          </a>
-        </Link>
+        {/* Read More button */}
+        <div>
+          <Link href="/templates/template-3/blog">
+            <a className="t2-btn t2-btn-secondary" style={{ height: '44px' }}>
+              <span style={{ height: '44px', padding: '0 25px', fontSize: '13px' }}>Read More</span>
+            </a>
+          </Link>
+        </div>
       </div>
     </div>
   );

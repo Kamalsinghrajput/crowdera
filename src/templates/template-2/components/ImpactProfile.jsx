@@ -4,8 +4,6 @@ import Link from "next/link";
 
 const CURRENT_YEAR = new Date().getFullYear();
 
-
-
 export default function ImpactProfile() {
   const primaryColor = "#000000";
 
@@ -51,7 +49,6 @@ export default function ImpactProfile() {
       requestAnimationFrame(animate);
     }
   }, [isVisible, isMounted]);
-
 
   return (
     <section className="py-[100px] bg-white">

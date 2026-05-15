@@ -4,6 +4,7 @@ import Navbar from "../../../src/templates/template-3/components/Navbar";
 import Hero from "../../../src/templates/template-3/components/Hero";
 import Services from "../../../src/templates/template-3/components/Services";
 import Partners from "../../../src/templates/template-3/components/Partners";
+import FeaturedIn from "../../../src/templates/template-3/components/FeaturedIn";
 import About from "../../../src/templates/template-3/components/About";
 import CounterOne from "../../../src/templates/template-3/components/CounterOne";
 import Causes from "../../../src/templates/template-3/components/Causes";
@@ -69,6 +70,9 @@ export default function Template2() {
           </div>
           <div id="partners">
             <Partners />
+          </div>
+          <div id="featured-in">
+            <FeaturedIn />
           </div>
 
           <div id="impact">

@@ -33,7 +33,7 @@ export default function GetInTouch() {
               Have Questions? <br />
               Get In Touch!
             </h3>
-            <p className="text-[16px] text-[#4b5563] font-medium leading-[1.8] mb-8 max-w-[320px]">
+            <p className="text-[17px] text-[#4b5563] font-medium leading-[1.8] mb-8 max-w-[320px]">
               2118 Thornridge Cir. Syracuse, Connecticut <br />
               35624.
             </p>
@@ -56,7 +56,7 @@ export default function GetInTouch() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full h-[60px] px-6 bg-white border border-[#e5e7eb] rounded-[5px] text-[15px] text-[#121d18] focus:outline-none focus:border-[#007B39] transition-colors placeholder:text-[#9ca3af]"
+                  className="w-full h-[60px] px-6 bg-white border border-[#e5e7eb] rounded-[5px] text-[17px] text-[#121d18] focus:outline-none focus:border-[#007B39] transition-colors placeholder:text-[#9ca3af]"
                 />
                 <input
                   type="email"
@@ -65,7 +65,7 @@ export default function GetInTouch() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full h-[60px] px-6 bg-white border border-[#e5e7eb] rounded-[5px] text-[15px] text-[#121d18] focus:outline-none focus:border-[#007B39] transition-colors placeholder:text-[#9ca3af]"
+                  className="w-full h-[60px] px-6 bg-white border border-[#e5e7eb] rounded-[5px] text-[17px] text-[#121d18] focus:outline-none focus:border-[#007B39] transition-colors placeholder:text-[#9ca3af]"
                 />
               </div>
 
@@ -76,7 +76,7 @@ export default function GetInTouch() {
                 value={formData.subject}
                 onChange={handleChange}
                 required
-                className="w-full h-[60px] px-6 bg-white border border-[#e5e7eb] rounded-[5px] text-[15px] text-[#121d18] focus:outline-none focus:border-[#007B39] transition-colors placeholder:text-[#9ca3af]"
+                className="w-full h-[60px] px-6 bg-white border border-[#e5e7eb] rounded-[5px] text-[17px] text-[#121d18] focus:outline-none focus:border-[#007B39] transition-colors placeholder:text-[#9ca3af]"
               />
 
               <textarea
@@ -85,7 +85,7 @@ export default function GetInTouch() {
                 value={formData.message}
                 onChange={handleChange}
                 required
-                className="w-full h-[150px] px-6 py-5 bg-white border border-[#e5e7eb] rounded-[5px] text-[15px] text-[#121d18] focus:outline-none focus:border-[#007B39] transition-colors resize-none placeholder:text-[#9ca3af]"
+                className="w-full h-[150px] px-6 py-5 bg-white border border-[#e5e7eb] rounded-[5px] text-[17px] text-[#121d18] focus:outline-none focus:border-[#007B39] transition-colors resize-none placeholder:text-[#9ca3af]"
               ></textarea>
 
               <div className="flex items-center gap-3">
@@ -99,7 +99,7 @@ export default function GetInTouch() {
                 />
                 <label
                   htmlFor="agree"
-                  className="text-[15px] text-[#4b5563] cursor-pointer"
+                  className="text-[17px] text-[#4b5563] cursor-pointer"
                 >
                   I Agree that my data is collected and Stored.
                 </label>
@@ -117,4 +117,3 @@ export default function GetInTouch() {
     </section>
   );
 }
-

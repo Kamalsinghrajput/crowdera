@@ -3,7 +3,23 @@ import Image from "next/image";
 import { Users, Heart } from "lucide-react";
 
 const SUSTAINABLE_GOAL_COLORS = {
-  1: "#E5243B", 2: "#DDA63A", 3: "#4C9F38", 4: "#C5192D", 5: "#FF3A21", 6: "#26BDE2", 7: "#FCC30B", 8: "#A21942", 9: "#FD6925", 10: "#DD1367", 11: "#FD9D24", 12: "#BF8B2E", 13: "#3F7E44", 14: "#0A97D9", 15: "#56C02B", 16: "#00689D", 17: "#19486A",
+  1: "#E5243B",
+  2: "#DDA63A",
+  3: "#4C9F38",
+  4: "#C5192D",
+  5: "#FF3A21",
+  6: "#26BDE2",
+  7: "#FCC30B",
+  8: "#A21942",
+  9: "#FD6925",
+  10: "#DD1367",
+  11: "#FD9D24",
+  12: "#BF8B2E",
+  13: "#3F7E44",
+  14: "#0A97D9",
+  15: "#56C02B",
+  16: "#00689D",
+  17: "#19486A",
 };
 
 export const campaigns = [
@@ -57,7 +73,11 @@ export const campaigns = [
   },
 ];
 
-const InitiativesCampaigns = ({ data: initialCampaignData, primaryColor = "#007B39", secondaryColor = "#FFA415" }) => {
+const InitiativesCampaigns = ({
+  data: initialCampaignData,
+  primaryColor = "#007B39",
+  secondaryColor = "#FFA415",
+}) => {
   const campaignsList = initialCampaignData || campaigns;
 
   return (
@@ -65,7 +85,7 @@ const InitiativesCampaigns = ({ data: initialCampaignData, primaryColor = "#007B
       {campaignsList.map((campaignItem) => {
         const progressPercentage = Math.min(
           100,
-          Math.round((campaignItem.raised / campaignItem.goal) * 100)
+          Math.round((campaignItem.raised / campaignItem.goal) * 100),
         );
         return (
           <div
@@ -111,7 +131,7 @@ const InitiativesCampaigns = ({ data: initialCampaignData, primaryColor = "#007B
               </div>
 
               {/* Description */}
-              <p className="text-gray-500 text-[15px] leading-relaxed line-clamp-2 mb-8">
+              <p className="text-gray-500 text-[17px] leading-relaxed line-clamp-2 mb-8">
                 {campaignItem.desc}
               </p>
 
@@ -137,7 +157,9 @@ const InitiativesCampaigns = ({ data: initialCampaignData, primaryColor = "#007B
                   <span>
                     Raised: ₹{campaignItem.raised.toLocaleString("en-IN")}
                   </span>
-                  <span>Goal: ₹{campaignItem.goal.toLocaleString("en-IN")}</span>
+                  <span>
+                    Goal: ₹{campaignItem.goal.toLocaleString("en-IN")}
+                  </span>
                 </div>
               </div>
 
@@ -184,14 +206,46 @@ const InitiativesCampaigns = ({ data: initialCampaignData, primaryColor = "#007B
               <div className="mt-auto flex flex-col gap-3">
                 <div className="flex gap-3">
                   <button className="t2-btn t2-btn-primary flex-1">
-                    <span className="w-full" style={{ height: '44px', padding: '0 15px', fontSize: '11px', borderRadius: '12px' }}>Donate Now</span>
+                    <span
+                      className="w-full"
+                      style={{
+                        height: "44px",
+                        padding: "0 15px",
+                        fontSize: "11px",
+                        borderRadius: "12px",
+                      }}
+                    >
+                      Donate Now
+                    </span>
                   </button>
                   <button className="t2-btn flex-1">
-                    <span className="w-full" style={{ height: '44px', padding: '0 15px', fontSize: '11px', borderRadius: '12px', backgroundColor: '#fff', color: '#121d18', border: '1px solid #E5E5E5' }}>View Details</span>
+                    <span
+                      className="w-full"
+                      style={{
+                        height: "44px",
+                        padding: "0 15px",
+                        fontSize: "11px",
+                        borderRadius: "12px",
+                        backgroundColor: "#fff",
+                        color: "#121d18",
+                        border: "1px solid #E5E5E5",
+                      }}
+                    >
+                      View Details
+                    </span>
                   </button>
                 </div>
                 <button className="t2-btn t2-btn-secondary w-full">
-                  <span className="w-full" style={{ height: '44px', fontSize: '11px', borderRadius: '12px' }}>Start a Fundraiser</span>
+                  <span
+                    className="w-full"
+                    style={{
+                      height: "44px",
+                      fontSize: "11px",
+                      borderRadius: "12px",
+                    }}
+                  >
+                    Start a Fundraiser
+                  </span>
                 </button>
               </div>
             </div>

@@ -11,7 +11,7 @@ export default function InitiativesPage() {
 
   return (
     <div className="bg-white min-h-screen font-sans">
-      <style>{`:root { --primary: #00b86b; --bg-color: #111111; }`}</style>
+      <style>{`:root { --primary: #00b86b; --secondary: #ff5528; --bg-color: #111111; --secondary-bg-color: #f9f9f9; }`}</style>
       <Head>
         <title>Initiatives | Tamun - Campaigns, Events & Fundraisers</title>
         <meta

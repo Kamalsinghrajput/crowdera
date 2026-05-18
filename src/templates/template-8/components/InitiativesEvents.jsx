@@ -23,7 +23,11 @@ export const events = [
   },
 ];
 
-const InitiativesEvents = ({ data: initialEventsData, primaryColor = "#00715D", secondaryColor = "#D9A86A" }) => {
+const InitiativesEvents = ({
+  data: initialEventsData,
+  primaryColor = "#00715D",
+  secondaryColor = "#D9A86A",
+}) => {
   const eventsList = initialEventsData || events;
 
   const handleMouseMove = (e) => {
@@ -67,17 +71,19 @@ const InitiativesEvents = ({ data: initialEventsData, primaryColor = "#00715D", 
   return (
     <>
       {eventsList.map((eventItem) => {
-        const progressPercentage = Math.min(100, Math.round((eventItem.raised / eventItem.goal) * 100));
+        const progressPercentage = Math.min(
+          100,
+          Math.round((eventItem.raised / eventItem.goal) * 100),
+        );
         return (
-          <div 
-            key={eventItem.id} 
+          <div
+            key={eventItem.id}
             onMouseEnter={handleMouseEnter}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             className="bg-white rounded-2xl overflow-hidden group flex flex-col border border-gray-100 opacity-0 relative"
-            style={{ willChange: 'transform' }}
+            style={{ willChange: "transform" }}
           >
-
             {/* Image with Verified / Tax Exempt badges */}
             <div className="relative h-64 overflow-hidden">
               <Image
@@ -89,10 +95,14 @@ const InitiativesEvents = ({ data: initialEventsData, primaryColor = "#00715D", 
               />
               <div className="absolute top-4 left-4 flex gap-2 flex-wrap">
                 {eventItem.isVerified && (
-                  <span className="bg-[#00715D] text-white text-[10px] font-bold py-1.5 px-4 rounded uppercase tracking-widest shadow-lg">Verified</span>
+                  <span className="bg-[#00715D] text-white text-[10px] font-bold py-1.5 px-4 rounded uppercase tracking-widest shadow-lg">
+                    Verified
+                  </span>
                 )}
                 {eventItem.isTaxExempt && (
-                  <span className="bg-[#D9A86A] text-white text-[10px] font-bold py-1.5 px-4 rounded uppercase tracking-widest shadow-lg">Tax Exempt</span>
+                  <span className="bg-[#D9A86A] text-white text-[10px] font-bold py-1.5 px-4 rounded uppercase tracking-widest shadow-lg">
+                    Tax Exempt
+                  </span>
                 )}
               </div>
             </div>
@@ -107,28 +117,41 @@ const InitiativesEvents = ({ data: initialEventsData, primaryColor = "#00715D", 
               {/* Organizer */}
               <div className="flex items-center gap-1.5 mb-5">
                 <Users size={14} className="text-[#00715D] shrink-0" />
-                <span className="text-xs text-[#00715D] font-bold uppercase tracking-widest">{eventItem.organizer}</span>
+                <span className="text-xs text-[#00715D] font-bold uppercase tracking-widest">
+                  {eventItem.organizer}
+                </span>
               </div>
 
               {/* Date / Time Box */}
               <div className="flex items-start gap-2 bg-gray-50 rounded-xl px-4 py-4 mb-6 border border-gray-100">
-                <Calendar size={16} className="text-[#00715D] mt-0.5 shrink-0" />
+                <Calendar
+                  size={16}
+                  className="text-[#00715D] mt-0.5 shrink-0"
+                />
                 <div>
-                  <div className="text-xs font-bold text-[#111] uppercase tracking-widest">{eventItem.date}</div>
-                  <div className="text-[11px] font-bold text-gray-400">{eventItem.time}</div>
+                  <div className="text-xs font-bold text-[#111] uppercase tracking-widest">
+                    {eventItem.date}
+                  </div>
+                  <div className="text-[11px] font-bold text-gray-400">
+                    {eventItem.time}
+                  </div>
                 </div>
               </div>
 
               {/* Description */}
-              <p className="text-gray-500 text-[15px] leading-relaxed line-clamp-2 mb-8 font-medium">
+              <p className="text-gray-500 text-[17px] leading-relaxed line-clamp-2 mb-8 font-medium">
                 {eventItem.desc}
               </p>
 
               {/* Fundraising Progress */}
               <div className="bg-gray-50 rounded-xl p-6 mb-8 border border-gray-100">
                 <div className="flex justify-between items-center mb-3">
-                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Donation Progress</span>
-                  <span className="text-sm font-bold text-[#00715D]">{progressPercentage}%</span>
+                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+                    Donation Progress
+                  </span>
+                  <span className="text-sm font-bold text-[#00715D]">
+                    {progressPercentage}%
+                  </span>
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-1.5 mb-3 overflow-hidden">
                   <div
@@ -137,7 +160,9 @@ const InitiativesEvents = ({ data: initialEventsData, primaryColor = "#00715D", 
                   />
                 </div>
                 <div className="flex justify-between text-[11px] font-bold text-gray-400 uppercase tracking-wider">
-                  <span>Raised: ₹{eventItem.raised.toLocaleString("en-IN")}</span>
+                  <span>
+                    Raised: ₹{eventItem.raised.toLocaleString("en-IN")}
+                  </span>
                   <span>Goal: ₹{eventItem.goal.toLocaleString("en-IN")}</span>
                 </div>
               </div>
@@ -163,7 +188,6 @@ const InitiativesEvents = ({ data: initialEventsData, primaryColor = "#00715D", 
                   Fundraise
                 </button>
               </div>
-
             </div>
           </div>
         );

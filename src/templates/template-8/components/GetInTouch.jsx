@@ -29,14 +29,14 @@ export default function GetInTouch() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-[50px] items-start">
           {/* Left Column */}
           <div className="lg:col-span-5">
-            <span className="text-[#005e46] font-bold text-[15px] uppercase tracking-wider mb-4 block">
+            <span className="text-[#005e46] font-bold text-[17px] uppercase tracking-wider mb-4 block">
               Contact Us
             </span>
             <h3 className="text-[clamp(32px,5vw,50px)] font-extrabold text-[#1A1A1A] leading-[1.1] mb-6">
               Have Questions? <br />
               Get In Touch!
             </h3>
-            <p className="text-[16px] text-[#666666] leading-[1.8] mb-8 max-w-[320px]">
+            <p className="text-[17px] text-[#666666] leading-[1.8] mb-8 max-w-[320px]">
               2118 Thornridge Cir. Syracuse, Connecticut <br />
               35624.
             </p>
@@ -59,7 +59,7 @@ export default function GetInTouch() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full h-[60px] px-6 bg-white border border-[#e5e7eb] rounded-[8px] text-[15px] text-[#1A1A1A] focus:outline-none focus:border-[#005e46] transition-colors placeholder:text-[#9ca3af]"
+                  className="w-full h-[60px] px-6 bg-white border border-[#e5e7eb] rounded-[8px] text-[17px] text-[#1A1A1A] focus:outline-none focus:border-[#005e46] transition-colors placeholder:text-[#9ca3af]"
                 />
                 <input
                   type="email"
@@ -68,7 +68,7 @@ export default function GetInTouch() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full h-[60px] px-6 bg-white border border-[#e5e7eb] rounded-[8px] text-[15px] text-[#1A1A1A] focus:outline-none focus:border-[#005e46] transition-colors placeholder:text-[#9ca3af]"
+                  className="w-full h-[60px] px-6 bg-white border border-[#e5e7eb] rounded-[8px] text-[17px] text-[#1A1A1A] focus:outline-none focus:border-[#005e46] transition-colors placeholder:text-[#9ca3af]"
                 />
               </div>
 
@@ -79,7 +79,7 @@ export default function GetInTouch() {
                 value={formData.subject}
                 onChange={handleChange}
                 required
-                className="w-full h-[60px] px-6 bg-white border border-[#e5e7eb] rounded-[8px] text-[15px] text-[#1A1A1A] focus:outline-none focus:border-[#005e46] transition-colors placeholder:text-[#9ca3af]"
+                className="w-full h-[60px] px-6 bg-white border border-[#e5e7eb] rounded-[8px] text-[17px] text-[#1A1A1A] focus:outline-none focus:border-[#005e46] transition-colors placeholder:text-[#9ca3af]"
               />
 
               <textarea
@@ -88,7 +88,7 @@ export default function GetInTouch() {
                 value={formData.message}
                 onChange={handleChange}
                 required
-                className="w-full h-[150px] px-6 py-5 bg-white border border-[#e5e7eb] rounded-[8px] text-[15px] text-[#1A1A1A] focus:outline-none focus:border-[#005e46] transition-colors resize-none placeholder:text-[#9ca3af]"
+                className="w-full h-[150px] px-6 py-5 bg-white border border-[#e5e7eb] rounded-[8px] text-[17px] text-[#1A1A1A] focus:outline-none focus:border-[#005e46] transition-colors resize-none placeholder:text-[#9ca3af]"
               ></textarea>
 
               <div className="flex items-center gap-3">
@@ -102,14 +102,17 @@ export default function GetInTouch() {
                 />
                 <label
                   htmlFor="agree"
-                  className="text-[15px] text-[#666666] cursor-pointer"
+                  className="text-[17px] text-[#666666] cursor-pointer"
                 >
                   I Agree that my data is collected and Stored.
                 </label>
               </div>
 
               <div>
-                <button type="submit" className="inline-block bg-[#d9a96e] text-black font-bold text-[15px] px-10 py-5 rounded-md transition-all hover:bg-[#c4965d] hover:shadow-lg">
+                <button
+                  type="submit"
+                  className="inline-block bg-[#d9a96e] text-black font-bold text-[17px] px-10 py-5 rounded-md transition-all hover:bg-[#c4965d] hover:shadow-lg"
+                >
                   Submit Now
                 </button>
               </div>
@@ -120,4 +123,3 @@ export default function GetInTouch() {
     </section>
   );
 }
-

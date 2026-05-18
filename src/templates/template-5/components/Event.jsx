@@ -83,34 +83,34 @@ export default function Event({ isAllEventsPage }) {
 
       {/* Meta: Time */}
       <div className="flex items-center justify-center gap-2 text-[#777777] font-['Inter'] text-[14px] mb-4">
-        <FiClock className="text-[#00b86b]" />
+        <FiClock className="text-[var(--primary)]" />
         <span>{event.date} / {event.time}</span>
       </div>
 
       {/* Title */}
       <Link href="/templates/template-5/events">
-        <a className="font-['Montserrat'] font-extrabold text-[22px] text-black leading-[1.3] mb-4 no-underline hover:text-[#00b86b] transition-colors">
+        <a className="font-['Montserrat'] font-extrabold text-[22px] text-[var(--bg-color)] leading-[1.3] mb-4 no-underline hover:text-[var(--primary)] transition-colors">
           "{event.title}"
         </a>
       </Link>
 
       {/* Author & Org */}
       <p className="font-['Montserrat'] font-bold text-[14px] mb-6 uppercase tracking-wider">
-        BY : <span className="text-[#00b86b]">{event.by}</span> - <span className="text-[#ff5528]">{event.org}</span>
+        BY : <span className="text-[var(--primary)]">{event.by}</span> - <span className="text-[var(--secondary)]">{event.org}</span>
       </p>
 
       <div className="w-full h-[1px] bg-[#eeeeee] mb-6" />
 
       {/* Location */}
       <div className="flex items-center justify-center gap-2 text-[#777777] font-['Inter'] text-[14px] mb-6">
-        <FiMapPin className="text-[#ff5528]" />
+        <FiMapPin className="text-[var(--secondary)]" />
         <span>{event.location}</span>
       </div>
 
       {/* Details Button */}
       <div className="mt-auto">
         <Link href="/templates/template-5/events">
-          <a className="inline-block border-2 border-[#eeeeee] text-black font-['Montserrat'] font-bold text-[13px] uppercase px-8 py-3 rounded-full transition-colors duration-300 hover:bg-[#00b86b] hover:border-[#00b86b] hover:text-white no-underline">
+          <a className="inline-block border-2 border-[#eeeeee] text-[var(--bg-color)] font-['Montserrat'] font-bold text-[13px] uppercase px-8 py-3 rounded-full transition-colors duration-300 hover:bg-[var(--primary)] hover:border-[var(--primary)] hover:text-white no-underline">
             DETAILS
           </a>
         </Link>
@@ -130,14 +130,14 @@ export default function Event({ isAllEventsPage }) {
           layout="fill" 
           objectFit="cover" 
         />
-        <div className="absolute inset-0 bg-[#00b86b] opacity-90" />
+        <div className="absolute inset-0 bg-[var(--primary)] opacity-90" />
       </div>
 
       <div className="max-w-[1320px] mx-auto px-4 relative z-10">
         
         {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="inline-block bg-[#ff5528] text-white font-['Montserrat'] font-bold text-[13px] uppercase tracking-[1px] px-5 py-2 rounded-full mb-5">
+          <div className="inline-block bg-[var(--secondary)] text-white font-['Montserrat'] font-bold text-[13px] uppercase tracking-[1px] px-5 py-2 rounded-full mb-5">
             OUR EVENTS
           </div>
           <h2 className="font-['Montserrat'] font-extrabold text-[clamp(32px,4vw,46px)] text-white leading-tight max-w-[800px] mx-auto m-0">
@@ -178,7 +178,7 @@ export default function Event({ isAllEventsPage }) {
         {!isAllEventsPage && (
           <div className="text-center mt-12">
             <Link href="/templates/template-5/initiatives?tab=events">
-              <a className="inline-block bg-[#121d18] text-white font-['Montserrat'] font-bold text-[14px] uppercase px-10 py-[18px] transition-colors duration-300 hover:bg-[#ff5528] no-underline">
+              <a className="inline-block bg-[var(--bg-color)] text-white font-['Montserrat'] font-bold text-[14px] uppercase px-10 py-[18px] transition-colors duration-300 hover:bg-[var(--secondary)] no-underline rounded-full shadow-lg">
                 VIEW ALL EVENTS
               </a>
             </Link>

@@ -32,6 +32,7 @@ const ScrollToTop = dynamic(
 export default function Template2() {
   return (
     <>
+      <style>{`:root { --primary: #007B39; --secondary: #FFA415; --bg-color: #121d18; --secondary-bg-color: #f9f9f9; }`}</style>
       <Head>
         <title>Home One || Chioary - Crowdfunding & Charity</title>
         <meta

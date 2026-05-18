@@ -55,47 +55,47 @@ export default function Testimonial() {
   }, [maxIndex]);
 
   return (
-    <section className="py-24 bg-[#f9f9f9] overflow-hidden">
+    <section className="py-24 bg-[var(--secondary-bg-color)] overflow-hidden">
       <div className="max-w-[1200px] mx-auto px-4">
-        
         {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="inline-block bg-[#fbd431] text-black font-['Montserrat'] font-bold text-[13px] uppercase tracking-[1px] px-5 py-2 rounded-full mb-5">
+          <div className="inline-block bg-[var(--secondary)] text-white font-['Montserrat'] font-bold text-[13px] uppercase tracking-[1px] px-5 py-2 rounded-full mb-5">
             TESTIMONIALS
           </div>
-          <h2 className="font-['Montserrat'] font-extrabold text-[clamp(32px,4vw,46px)] text-black leading-tight max-w-[800px] mx-auto m-0">
+          <h2 className="font-['Montserrat'] font-extrabold text-[clamp(32px,4vw,46px)] text-[var(--bg-color)] leading-tight max-w-[800px] mx-auto m-0">
             What They Say About Our Great Journey
           </h2>
         </div>
 
         {/* Carousel */}
         <div className="w-full overflow-hidden px-2 pb-8">
-          <div 
+          <div
             className="flex transition-transform duration-700 ease-in-out"
-            style={{ transform: `translateX(-${currentIndex * (100 / visibleCount)}%)` }}
+            style={{
+              transform: `translateX(-${currentIndex * (100 / visibleCount)}%)`,
+            }}
           >
             {TESTIMONIALS.map((testimonial, idx) => (
-              <div 
-                key={idx} 
-                style={{ 
-                  width: `${100 / visibleCount}%`, 
+              <div
+                key={idx}
+                style={{
+                  width: `${100 / visibleCount}%`,
                   flexShrink: 0,
-                  padding: "0 15px"
+                  padding: "0 15px",
                 }}
               >
                 <div className="bg-white rounded-lg p-10 h-full flex flex-col justify-between transition-shadow duration-300 hover:shadow-lg relative">
-                  
                   {/* Quote Text */}
-                  <p className="font-['Inter'] text-[16px] text-[#777777] leading-[1.8] italic mb-10 z-10 relative">
+                  <p className="font-['Inter'] text-[17px] text-[#777777] leading-[1.8] italic mb-10 z-10 relative">
                     "{testimonial.text}"
                   </p>
 
                   <div className="flex items-center gap-5 relative z-10">
-                    <div className="w-[60px] h-[60px] rounded-full bg-[#00b86b] flex items-center justify-center flex-shrink-0">
+                    <div className="w-[60px] h-[60px] rounded-full bg-[var(--primary)] flex items-center justify-center flex-shrink-0">
                       <FaQuoteLeft size={24} className="text-white" />
                     </div>
                     <div>
-                      <h4 className="font-['Montserrat'] font-bold text-[18px] text-black m-0">
+                      <h4 className="font-['Montserrat'] font-bold text-[18px] text-[var(--bg-color)] m-0">
                         {testimonial.name}
                       </h4>
                       <span className="font-['Inter'] text-[14px] text-[#777777]">
@@ -105,16 +105,14 @@ export default function Testimonial() {
                   </div>
 
                   {/* Faded Quote Icon Circle in background */}
-                  <div className="absolute bottom-10 right-10 w-[65px] h-[65px] bg-[#00b86b] rounded-full flex items-center justify-center opacity-10">
-                     <FaQuoteLeft size={28} className="text-white" />
+                  <div className="absolute bottom-10 right-10 w-[65px] h-[65px] bg-[var(--primary)] rounded-full flex items-center justify-center opacity-10">
+                    <FaQuoteLeft size={28} className="text-white" />
                   </div>
-
                 </div>
               </div>
             ))}
           </div>
         </div>
-
       </div>
     </section>
   );

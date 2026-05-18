@@ -11,7 +11,7 @@ export default function InitiativesPage() {
 
   return (
     <div className="bg-white min-h-screen font-sans">
-      <style>{`:root { --primary: #007B39; --secondary: #FFA415; --bg-color: #121d18; }`}</style>
+      <style>{`:root { --primary: #007B39; --secondary: #FFA415; --bg-color: #121d18; --secondary-bg-color: #f9f9f9; }`}</style>
       <Head>
         <title>Initiatives | Chioary - Campaigns, Events & Fundraisers</title>
         <meta

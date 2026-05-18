@@ -83,21 +83,21 @@ export default function CounterOne() {
                 <div className="flex items-baseline justify-center gap-0.5 mb-2">
                   <span
                     ref={(el) => (countRefs.current[i] = el)}
-                    className="font-['Montserrat'] font-extrabold text-[clamp(40px,5vw,60px)] text-[#1c1c1c] leading-none"
+                    className="font-['Montserrat'] font-extrabold text-[clamp(40px,5vw,60px)] text-[var(--bg-color)] leading-none"
                   >
                     {hasAnimated ? stat.num : "0"}
                   </span>
                   <span
                     className={`font-['Montserrat'] font-extrabold ${
                       stat.suffix.includes("billion")
-                        ? "text-lg text-[#ff5528] ml-1"
-                        : "text-[clamp(24px,3vw,40px)] text-[#ff5528]"
+                        ? "text-lg text-[var(--secondary)] ml-1"
+                        : "text-[clamp(24px,3vw,40px)] text-[var(--secondary)]"
                     }`}
                   >
                     {stat.suffix}
                   </span>
                 </div>
-                <p className="font-['Montserrat'] text-[15px] text-[#777777] tracking-[1px] m-0 uppercase font-bold">
+                <p className="font-['Montserrat'] text-[17px] text-[#777777] tracking-[1px] m-0 uppercase font-bold">
                   {stat.label}
                 </p>
               </div>

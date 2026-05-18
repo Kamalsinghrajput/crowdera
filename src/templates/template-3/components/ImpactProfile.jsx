@@ -50,7 +50,6 @@ export default function ImpactProfile() {
     }
   }, [isVisible, isMounted]);
 
-
   return (
     <section className="py-[100px] bg-white">
       <div className="max-w-[1320px] mx-auto px-3">
@@ -83,7 +82,7 @@ export default function ImpactProfile() {
             </div>
 
             {/* Description */}
-            <p className="text-[16px] text-[#121d18]/80 max-w-[700px] mx-auto mb-14 leading-[1.8] font-semibold">
+            <p className="text-[17px] text-[#121d18]/80 max-w-[700px] mx-auto mb-14 leading-[1.8] font-semibold">
               To promote well-being and opportunity by creating awareness,
               providing support, and building positive, resilient communities
               worldwide.
@@ -95,7 +94,7 @@ export default function ImpactProfile() {
                 <h3 className="text-[20px] mb-3 text-[#121d18] font-bold">
                   Community Development
                 </h3>
-                <p className="text-[#121d18]/80 text-[15px] leading-[1.7] font-medium">
+                <p className="text-[#121d18]/80 text-[17px] leading-[1.7] font-medium">
                   Our foundation focuses on spreading awareness, offering direct
                   support, and encouraging individuals to lead balanced and
                   empowered lives through community-driven initiatives and
@@ -106,7 +105,7 @@ export default function ImpactProfile() {
                 <h3 className="text-[20px] mb-3 text-[#121d18] font-bold">
                   Geographic Presence
                 </h3>
-                <p className="text-[#121d18]/80 text-[15px] leading-[1.7] font-medium">
+                <p className="text-[#121d18]/80 text-[17px] leading-[1.7] font-medium">
                   Worldwide — active across Asia, Africa, and the Americas,
                   bringing hope and resources to those who need it most.
                 </p>
@@ -117,7 +116,7 @@ export default function ImpactProfile() {
             <div className="flex justify-center">
               <Link
                 href={`/templates/template-2/annual-report/${CURRENT_YEAR}`}
-                className="inline-flex items-center gap-3 group text-[#007B39] text-[16px] font-bold hover:text-[#121d18] transition-colors duration-300"
+                className="inline-flex items-center gap-3 group text-[#007B39] text-[17px] font-bold hover:text-[#121d18] transition-colors duration-300"
               >
                 <span className="flex items-center gap-3">
                   View Annual Report {CURRENT_YEAR}

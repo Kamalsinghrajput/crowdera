@@ -4,13 +4,9 @@ import SiteFooter from "../../../src/templates/template-4/components/SiteFooter"
 import Team from "../../../src/templates/template-4/components/Team";
 
 export default function TeamPage() {
-  const primaryColor = "#007B39";
-  const secondaryColor = "#FFA415";
-  const bgColor = "#121d18";
-  const secondaryBgColor = "#f9f9f9";
-
   return (
     <>
+      <style>{`:root { --primary: #007B39; --secondary: #FFA415; --bg-color: #121d18; --secondary-bg-color: #f9f9f9; }`}</style>
       <Head>
         <title>Our Team || Chioary</title>
       </Head>

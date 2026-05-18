@@ -94,13 +94,12 @@ export default function TopDonors() {
 
   return (
     <section className="py-[120px]" style={{ background: "var(--primary)" }}>
-
       <div className="max-w-[1320px] mx-auto px-3">
         {/* Header */}
         <div className="text-center mb-[60px]">
           <div className="inline-flex items-center gap-3 mb-4">
             <div className="w-2 h-2 rounded-full bg-[var(--secondary)]" />
-            <span className="text-[16px] text-white italic">Hall of Fame</span>
+            <span className="text-[17px] text-white italic">Hall of Fame</span>
           </div>
           <h2 className="text-[clamp(32px,5vw,56px)] leading-[1.2] text-white m-0">
             Our Top Donors

@@ -52,11 +52,6 @@ export default function Navbar() {
   const [overflowOpen, setOverflowOpen] = useState(false);
   const overflowRef = useRef(null);
 
-  const primaryColor = "#007B39";
-  const secondaryColor = "#FFA415";
-  const bgColor = "#121d18";
-  const secondaryBgColor = "#f9f9f9";
-
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -96,17 +91,6 @@ export default function Navbar() {
   };
 
   const buttonStyles = `
-    :root {
-      --primary: #007B39;
-      --secondary: #FFA415;
-      --bg-color: #121d18;
-      --secondary-bg-color: #f9f9f9;
-      --t2-primary: #007B39;
-      --t2-secondary: #FFA415;
-      --t2-dark: #121d18;
-      --t2-gray: #6c6e76;
-      --t2-light: #f9f9f9;
-    }
     .t2-btn { display: inline-flex; align-items: center; gap: 0; text-decoration: none; border: none; background: none; cursor: pointer; padding: 0; }
     .t2-btn span { position: relative; display: inline-flex; align-items: center; justify-content: center; height: 50px; padding: 0 35px; background-color: var(--bg-color, #121d18); color: white; border-radius: 25px; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; z-index: 1; overflow: hidden; transition: all 500ms ease; white-space: nowrap; }
     .t2-btn span::before { content: ''; position: absolute; inset: 0; background-color: var(--secondary, #FFA415); transform-origin: left; transform: scaleX(0); transition: transform 0.8s cubic-bezier(0, 0.96, 0.58, 1.1); z-index: -1; }

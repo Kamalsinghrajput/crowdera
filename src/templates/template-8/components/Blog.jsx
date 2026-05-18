@@ -31,10 +31,9 @@ export default function Blog({ isAllBlogsPage }) {
   return (
     <section className="py-24 bg-[#f5f5f5]">
       <div className="max-w-[1200px] mx-auto px-4">
-        
         {/* Section Header */}
         <div className="text-center mb-16">
-          <span className="text-[#005e46] font-bold text-[15px] uppercase tracking-wider mb-3 block">
+          <span className="text-[#005e46] font-bold text-[17px] uppercase tracking-wider mb-3 block">
             OUR BLOG/NEWS
           </span>
           <h2 className="font-extrabold text-[clamp(32px,4vw,46px)] text-[#1A1A1A] leading-tight max-w-[800px] mx-auto m-0">
@@ -53,13 +52,12 @@ export default function Blog({ isAllBlogsPage }) {
         {!isAllBlogsPage && (
           <div className="text-center mt-12">
             <Link href="/templates/template-8/blog">
-              <a className="inline-block bg-[#d9a96e] text-black font-bold text-[15px] px-10 py-5 rounded-md transition-all hover:bg-[#c4965d] hover:shadow-lg no-underline uppercase tracking-wider">
+              <a className="inline-block bg-[#d9a96e] text-black font-bold text-[17px] px-10 py-5 rounded-md transition-all hover:bg-[#c4965d] hover:shadow-lg no-underline uppercase tracking-wider">
                 READ MORE
               </a>
             </Link>
           </div>
         )}
-
       </div>
     </section>
   );

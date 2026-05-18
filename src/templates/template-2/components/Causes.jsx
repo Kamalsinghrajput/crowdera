@@ -95,7 +95,7 @@ function CourseCard({ course }) {
             {course.title}
           </a>
         </h3>
-        <p className="text-[15px] text-[#6c6e76] leading-relaxed mb-8 flex-grow">
+        <p className="text-[17px] text-[#6c6e76] leading-relaxed mb-8 flex-grow">
           {course.text}
         </p>
 
@@ -172,8 +172,10 @@ export default function Causes() {
     setCurrentIndex((prev) => Math.min(prev + 1, maxIndex));
 
   return (
-    <section id="causes" className="relative bg-[var(--secondary-bg-color)] py-[120px] overflow-hidden">
-
+    <section
+      id="causes"
+      className="relative bg-[var(--secondary-bg-color)] py-[120px] overflow-hidden"
+    >
       <div className="hidden lg:block">
         <FloatingBird position="left" />
       </div>
@@ -183,7 +185,7 @@ export default function Causes() {
           <div className="flex flex-col">
             <div className="flex items-center gap-2 mb-4 justify-start">
               <div className="w-2 h-2 rounded-full bg-[var(--secondary)]" />
-              <span className="text-[15px] italic text-[var(--bg-color)]">
+              <span className="text-[17px] italic text-[var(--bg-color)]">
                 Recent Causes
               </span>
             </div>
@@ -201,7 +203,7 @@ export default function Causes() {
                 >
                   <button
                     onClick={() => setActiveTab(tab)}
-                    className={`w-full flex items-center justify-start gap-3 py-4 text-left text-[15px] transition-colors ${
+                    className={`w-full flex items-center justify-start gap-3 py-4 text-left text-[17px] transition-colors ${
                       activeTab === tab
                         ? "text-[var(--secondary)]"
                         : "text-[var(--bg-color)] hover:text-[var(--secondary)]"

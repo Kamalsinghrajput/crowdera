@@ -71,47 +71,47 @@ export default function Services() {
   }, [maxIndex]);
 
   return (
-    <section id="services" className="bg-[#f7f7f7] py-24">
+    <section id="services" className="bg-[var(--secondary-bg-color)] py-24">
       <div className="max-w-[1200px] mx-auto px-4 text-center overflow-hidden">
-        
         {/* Section Header */}
-        <div className="inline-block bg-[#00b86b] text-white font-['Montserrat'] font-bold text-[13px] uppercase tracking-[1px] px-6 py-2 rounded-full mb-5">
+        <div className="inline-block bg-[var(--primary)] text-white font-['Montserrat'] font-bold text-[13px] uppercase tracking-[1px] px-6 py-2 rounded-full mb-5">
           DO WHAT I LOVE
         </div>
-        
-        <h2 className="font-['Montserrat'] font-extrabold text-[clamp(32px,4vw,46px)] text-black leading-tight mb-[60px] max-w-[800px] mx-auto">
-          You can check out our work. Are you ready for a better, more productive Progress?
+
+        <h2 className="font-['Montserrat'] font-extrabold text-[clamp(32px,4vw,46px)] text-[var(--bg-color)] leading-tight mb-[60px] max-w-[800px] mx-auto">
+          You can check out our work. Are you ready for a better, more
+          productive Progress?
         </h2>
 
         {/* Carousel Slider */}
         <div className="w-full overflow-hidden px-2 pb-4 pt-2">
-          <div 
+          <div
             className="flex transition-transform duration-700 ease-in-out"
-            style={{ transform: `translateX(-${currentIndex * (100 / visibleCount)}%)` }}
+            style={{
+              transform: `translateX(-${currentIndex * (100 / visibleCount)}%)`,
+            }}
           >
             {SERVICES.map((service, idx) => (
-              <div 
-                key={idx} 
-                style={{ 
-                  width: `${100 / visibleCount}%`, 
+              <div
+                key={idx}
+                style={{
+                  width: `${100 / visibleCount}%`,
                   flexShrink: 0,
-                  padding: "0 15px"
+                  padding: "0 15px",
                 }}
               >
                 <div className="bg-white px-10 py-12 flex flex-col items-center text-center transition-all duration-300 border border-[#eeeeee] h-full group hover:shadow-[0_15px_40px_rgba(0,0,0,0.08)] hover:-translate-y-[5px]">
-                  
-                  <div className="text-black mb-[30px] transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:text-[#00b86b] group-hover:[transform:rotateY(180deg)] [transform-style:preserve-3d]">
+                  <div className="text-[var(--bg-color)] mb-[30px] transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:text-[var(--primary)] group-hover:[transform:rotateY(180deg)] [transform-style:preserve-3d]">
                     {service.icon}
                   </div>
-                  
-                  <h3 className="font-['Montserrat'] font-extrabold text-[20px] text-black uppercase mb-5 transition-colors duration-300 group-hover:text-[#00b86b]">
+
+                  <h3 className="font-['Montserrat'] font-extrabold text-[20px] text-[var(--bg-color)] uppercase mb-5 transition-colors duration-300 group-hover:text-[var(--primary)]">
                     {service.title}
                   </h3>
-                  
-                  <p className="font-['Inter'] text-[15px] text-[#666666] leading-[1.8] m-0">
+
+                  <p className="font-['Inter'] text-[17px] text-[#666666] leading-[1.8] m-0">
                     {service.text}
                   </p>
-                  
                 </div>
               </div>
             ))}
@@ -119,9 +119,9 @@ export default function Services() {
         </div>
 
         {/* Single Global Read More Button */}
-        <a 
-          href="#services" 
-          className="inline-block bg-[#00b86b] text-white font-['Montserrat'] font-bold text-[14px] uppercase px-10 py-[18px] transition-colors duration-300 mt-[50px] hover:bg-[#009e5c]"
+        <a
+          href="#services"
+          className="inline-block bg-[var(--primary)] text-white font-['Montserrat'] font-bold text-[14px] uppercase px-10 py-[18px] transition-colors duration-300 mt-[50px] hover:bg-[var(--secondary)]"
         >
           READ MORE
         </a>

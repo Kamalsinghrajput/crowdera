@@ -20,24 +20,14 @@ const PROCESSES = [
 ];
 
 export default function WorkingProcess() {
-  const primaryColor = "#007B39";
-  const secondaryColor = "#FFA415";
-  const bgColor = "#121d18";
-  const secondaryBgColor = "#f9f9f9";
-
   return (
     <section className="bg-[var(--bg-color)] py-[120px] pb-[90px] relative overflow-hidden">
-      <style
-        dangerouslySetInnerHTML={{
-          __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; --bg-color: ${bgColor}; --secondary-bg-color: ${secondaryBgColor}; }`,
-        }}
-      />
       <div className="max-w-[1320px] mx-auto px-4 relative z-10">
         {/* Header */}
         <div className="text-center mb-16 relative">
           <div className="inline-flex items-center gap-3 mb-4 relative z-10">
             <div className="w-2 h-2 rounded-full bg-[var(--secondary)]" />
-            <span className="text-[16px] text-white italic">
+            <span className="text-[17px] text-white italic">
               Working Process
             </span>
           </div>

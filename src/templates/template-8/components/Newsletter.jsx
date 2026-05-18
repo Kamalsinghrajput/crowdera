@@ -41,12 +41,15 @@ export default function NewsLetter() {
       <div className="absolute inset-0 bg-gradient-to-b from-[#1A1A1A]/40 via-[#1A1A1A]/80 to-[#1A1A1A]" />
 
       <div className="max-w-[800px] mx-auto px-4 relative z-10 text-center">
-        <h2 ref={headingRef} className="text-[clamp(32px,5vw,56px)] font-['Montserrat'] font-extrabold leading-[1.2] text-white mb-6">
+        <h2
+          ref={headingRef}
+          className="text-[clamp(32px,5vw,56px)] font-['Montserrat'] font-extrabold leading-[1.2] text-white mb-6"
+        >
           Get Updated By Subscribing To
           <br /> Our Newsletter
         </h2>
 
-        <p className="text-[16px] font-['Inter'] text-white/80 leading-[1.7] mb-12 max-w-[650px] mx-auto">
+        <p className="text-[17px] font-['Inter'] text-white/80 leading-[1.7] mb-12 max-w-[650px] mx-auto">
           Join Our Community Of Supporters By Subscribing To Our Newsletter!
           <br />
           Get The Latest Updates On Our Projects,
@@ -62,7 +65,7 @@ export default function NewsLetter() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="w-full bg-transparent border border-white/20 rounded-full px-8 py-[18px] text-[16px] text-white placeholder:text-white/40 focus:outline-none focus:border-[#d9a96e] transition-colors pr-[70px]"
+            className="w-full bg-transparent border border-white/20 rounded-full px-8 py-[18px] text-[17px] text-white placeholder:text-white/40 focus:outline-none focus:border-[#d9a96e] transition-colors pr-[70px]"
           />
           <button
             type="submit"

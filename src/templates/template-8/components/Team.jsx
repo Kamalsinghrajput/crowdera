@@ -32,7 +32,6 @@ export default function Team({ isAllTeamPage }) {
   return (
     <section className="bg-[#fcfcfc] py-24 relative overflow-hidden">
       <div className="max-w-[1320px] mx-auto px-4 relative z-10">
-        
         {/* Header */}
         <div className="text-center mb-16">
           <p className="text-[#006755] font-['Montserrat'] font-bold text-[14px] uppercase tracking-[1px] mb-3">
@@ -41,7 +40,7 @@ export default function Team({ isAllTeamPage }) {
           <h2 className="text-[#1A1A1A] font-['Montserrat'] font-extrabold text-[42px] leading-tight mb-6">
             Meet Our Dedicated <br /> Team Members
           </h2>
-          
+
           {/* Custom Separator */}
           <div className="flex items-center justify-center gap-4">
             <div className="h-[2px] w-12 bg-[#006755]"></div>
@@ -54,8 +53,6 @@ export default function Team({ isAllTeamPage }) {
 
         {/* Team Content with Navigation */}
         <div className="relative">
-
-
           {/* Grid Layout */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {displayTeam.map((member, i) => (
@@ -66,7 +63,7 @@ export default function Team({ isAllTeamPage }) {
           {!isAllTeamPage && (
             <div className="mt-16 flex justify-center">
               <Link href="/templates/template-8/team">
-                <a className="inline-block bg-[#006755] text-white font-['Montserrat'] font-bold text-[16px] px-8 py-4 rounded-full hover:bg-[#1A1A1A] transition-colors duration-300">
+                <a className="inline-block bg-[#006755] text-white font-['Montserrat'] font-bold text-[17px] px-8 py-4 rounded-full hover:bg-[#1A1A1A] transition-colors duration-300">
                   View All
                 </a>
               </Link>
@@ -81,4 +78,3 @@ export default function Team({ isAllTeamPage }) {
     </section>
   );
 }
-

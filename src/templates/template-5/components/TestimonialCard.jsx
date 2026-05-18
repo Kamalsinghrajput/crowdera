@@ -13,7 +13,7 @@ export default function TestimonialCard({ testimonialData, cardWidth }) {
       }}
     >
       <div style={{ marginBottom: "24px" }}>
-        <FaQuoteLeft size={40} color="#121d18" />
+        <FaQuoteLeft size={40} color="var(--bg-color)" />
       </div>
       <p
         style={{
@@ -44,7 +44,7 @@ export default function TestimonialCard({ testimonialData, cardWidth }) {
             style={{
               fontSize: "20px",
               fontWeight: 700,
-              color: "#121d18",
+              color: "var(--bg-color)",
               marginBottom: "4px",
             }}
           >

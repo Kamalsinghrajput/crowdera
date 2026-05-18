@@ -18,7 +18,7 @@ const NAV_ITEMS = [
   },
   { 
     label: "Causes", 
-    href: "/templates/template-5/initiatives?tab=campaigns",
+    href: "#causes",
     subItems: [
       { label: "Active Causes", href: "/templates/template-5/initiatives?tab=campaigns" },
       { label: "Top Donors", href: "#top-donors" }
@@ -26,7 +26,7 @@ const NAV_ITEMS = [
   },
   { 
     label: "Events", 
-    href: "/templates/template-5/initiatives?tab=events",
+    href: "#events",
     subItems: [
       { label: "Upcoming Events", href: "/templates/template-5/initiatives?tab=events" },
       { label: "Volunteer", href: "#volunteer" },
@@ -99,7 +99,7 @@ export default function Navbar() {
     }
   };
 
-  const primaryGreen = "#00b86b";
+  const primaryGreen = "var(--primary)";
 
   const customStyles = `
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap');
@@ -160,7 +160,7 @@ export default function Navbar() {
     }
 
     .tamun-donate-btn:hover {
-      background-color: #009e5c;
+      background-color: var(--secondary);
     }
 
     @keyframes fadeDown {
@@ -172,7 +172,7 @@ export default function Navbar() {
       to { transform: translateX(0); }
     }
     
-    .t3-submenu-item:hover { background: rgba(0,184,107,0.06); }
+    .t3-submenu-item:hover { background: color-mix(in srgb, var(--primary) 6%, transparent); }
     .t3-submenu-item:hover a { color: ${primaryGreen} !important; padding-left: 25px; }
     .t3-submenu-item a { transition: all 0.3s ease; }
   `;
@@ -486,7 +486,7 @@ export default function Navbar() {
               left: 0,
               bottom: 0,
               width: "300px",
-              background: "#111",
+              background: "var(--bg-color)",
               overflow: "auto",
               padding: "30px 0",
               boxShadow: "4px 0 30px rgba(0,0,0,0.4)",

@@ -37,12 +37,15 @@ export default function SiteFooter() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 py-[80px]">
           {/* Col 1: Logo + About + Form */}
           <div>
-            <h2 ref={headingRef} className="text-[32px] font-bold mb-6 tracking-wide">
+            <h2
+              ref={headingRef}
+              className="text-[32px] font-bold mb-6 tracking-wide"
+            >
               <span className="text-[#FFA415]">Chio</span>
               <span className="text-white">ary</span>
             </h2>
 
-            <p className="text-white/70 leading-relaxed mb-8 text-[15px]">
+            <p className="text-white/70 leading-relaxed mb-8 text-[17px]">
               Charity and donation is category that
               <br /> involves giving.
             </p>
@@ -80,7 +83,7 @@ export default function SiteFooter() {
             <ul className="space-y-4">
               {quickLinks.map((link) => (
                 <li key={link}>
-                  <a className="text-white/70 hover:text-[#FFA415] transition cursor-pointer text-[15px]">
+                  <a className="text-white/70 hover:text-[#FFA415] transition cursor-pointer text-[17px]">
                     {link}
                   </a>
                 </li>
@@ -94,7 +97,7 @@ export default function SiteFooter() {
             <ul className="space-y-4">
               {services.map((link) => (
                 <li key={link}>
-                  <a className="text-white/70 hover:text-[#FFA415] transition cursor-pointer text-[15px]">
+                  <a className="text-white/70 hover:text-[#FFA415] transition cursor-pointer text-[17px]">
                     {link}
                   </a>
                 </li>
@@ -123,7 +126,7 @@ export default function SiteFooter() {
                     <circle cx="12" cy="10" r="3" />
                   </svg>
                 </div>
-                <div className="text-white/70 text-[15px] leading-[1.6]">
+                <div className="text-white/70 text-[17px] leading-[1.6]">
                   4140 Parker Rd. Allentown, New Mexico 31134
                 </div>
               </li>
@@ -141,7 +144,7 @@ export default function SiteFooter() {
                     <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
                   </svg>
                 </div>
-                <div className="text-white/70 text-[15px]">(219) 555-0114</div>
+                <div className="text-white/70 text-[17px]">(219) 555-0114</div>
               </li>
               <li className="flex items-center gap-4 group cursor-pointer">
                 <div className="w-[40px] h-[40px] rounded-full bg-white/10 flex items-center justify-center shrink-0 group-hover:bg-[#FFA415] transition-colors duration-300">
@@ -158,7 +161,7 @@ export default function SiteFooter() {
                     <polyline points="22,6 12,13 2,6" />
                   </svg>
                 </div>
-                <div className="text-white/70 text-[15px]">
+                <div className="text-white/70 text-[17px]">
                   Chioary@gmail.com
                 </div>
               </li>
@@ -168,13 +171,13 @@ export default function SiteFooter() {
 
         {/* BOTTOM BAR */}
         <div className="border-t border-white/10 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-white/70 text-[15px]">
+          <p className="text-white/70 text-[17px]">
             © 1995–2024 All Rights For{" "}
             <span className="text-[#FFA415] font-semibold">Chioary</span>{" "}
             Exclusive
           </p>
 
-          <div className="flex gap-8 text-[15px] text-white/70">
+          <div className="flex gap-8 text-[17px] text-white/70">
             <a className="hover:text-[#FFA415] transition cursor-pointer">
               Terms Of Service
             </a>

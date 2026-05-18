@@ -26,11 +26,6 @@ export default function Hero() {
   const [current, setCurrent] = useState(0);
   const [animKey, setAnimKey] = useState(0);
 
-  const primaryColor = "#007B39";
-  const secondaryColor = "#FFA415";
-  const bgColor = "#121d18";
-  const secondaryBgColor = "#f9f9f9";
-
   useEffect(() => {
     const t = setInterval(() => {
       setCurrent((p) => (p + 1) % SLIDES.length);
@@ -85,12 +80,6 @@ export default function Hero() {
         background: "#000",
       }}
     >
-      <style
-        dangerouslySetInnerHTML={{
-          __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; --bg-color: ${bgColor}; --secondary-bg-color: ${secondaryBgColor}; }`,
-        }}
-      />
-
       {/* Slides */}
       {SLIDES.map((slide, i) => (
         <div

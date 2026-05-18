@@ -3,7 +3,23 @@ import Image from "next/image";
 import { Users, Heart } from "lucide-react";
 
 const SUSTAINABLE_GOAL_COLORS = {
-  1: "#E5243B", 2: "#DDA63A", 3: "#4C9F38", 4: "#C5192D", 5: "#FF3A21", 6: "#26BDE2", 7: "#FCC30B", 8: "#A21942", 9: "#FD6925", 10: "#DD1367", 11: "#FD9D24", 12: "#BF8B2E", 13: "#3F7E44", 14: "#0A97D9", 15: "#56C02B", 16: "#00689D", 17: "#19486A",
+  1: "#E5243B",
+  2: "#DDA63A",
+  3: "#4C9F38",
+  4: "#C5192D",
+  5: "#FF3A21",
+  6: "#26BDE2",
+  7: "#FCC30B",
+  8: "#A21942",
+  9: "#FD6925",
+  10: "#DD1367",
+  11: "#FD9D24",
+  12: "#BF8B2E",
+  13: "#3F7E44",
+  14: "#0A97D9",
+  15: "#56C02B",
+  16: "#00689D",
+  17: "#19486A",
 };
 
 export const campaigns = [
@@ -25,7 +41,10 @@ export const campaigns = [
   },
 ];
 
-const InitiativesCampaigns = ({ data: initialCampaignData, primaryColor = "#e8547a" }) => {
+const InitiativesCampaigns = ({
+  data: initialCampaignData,
+  primaryColor = "#e8547a",
+}) => {
   const campaignsList = initialCampaignData || campaigns;
 
   return (
@@ -33,7 +52,7 @@ const InitiativesCampaigns = ({ data: initialCampaignData, primaryColor = "#e854
       {campaignsList.map((campaignItem) => {
         const progressPercentage = Math.min(
           100,
-          Math.round((campaignItem.raised / campaignItem.goal) * 100)
+          Math.round((campaignItem.raised / campaignItem.goal) * 100),
         );
         return (
           <div
@@ -79,7 +98,7 @@ const InitiativesCampaigns = ({ data: initialCampaignData, primaryColor = "#e854
               </div>
 
               {/* Description */}
-              <p className="text-gray-500 text-[15px] leading-relaxed line-clamp-2 mb-8 font-medium">
+              <p className="text-gray-500 text-[17px] leading-relaxed line-clamp-2 mb-8 font-medium">
                 {campaignItem.desc}
               </p>
 
@@ -105,7 +124,9 @@ const InitiativesCampaigns = ({ data: initialCampaignData, primaryColor = "#e854
                   <span>
                     Raised: ₹{campaignItem.raised.toLocaleString("en-IN")}
                   </span>
-                  <span>Goal: ₹{campaignItem.goal.toLocaleString("en-IN")}</span>
+                  <span>
+                    Goal: ₹{campaignItem.goal.toLocaleString("en-IN")}
+                  </span>
                 </div>
               </div>
 

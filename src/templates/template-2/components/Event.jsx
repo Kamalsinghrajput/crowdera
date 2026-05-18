@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-
 const EVENTS = [
   {
     date: "10 August",
@@ -35,10 +34,8 @@ const EVENTS = [
 export default function Event() {
   // Colors handled by global CSS variables in index.jsx
 
-
   return (
     <section className="bg-white py-[120px] pb-[80px] relative overflow-hidden">
-
       {/* Decorative SVG Blob (Left Side) */}
       <div
         className="absolute top-0 left-[-100px] w-96 h-96 opacity-10 pointer-events-none rotate-12"
@@ -75,7 +72,9 @@ export default function Event() {
         <div className="text-center mb-16 relative">
           <div className="inline-flex items-center gap-3 mb-4 relative z-10">
             <div className="w-2 h-2 rounded-full bg-[var(--secondary)]" />
-            <span className="text-[16px] text-[var(--bg-color)] italic">Our Events</span>
+            <span className="text-[17px] text-[var(--bg-color)] italic">
+              Our Events
+            </span>
           </div>
           <h2 className="text-[clamp(32px,4vw,48px)] leading-[1.2] text-[var(--bg-color)] relative z-10">
             Events Schedule Upcoming
@@ -128,9 +127,11 @@ export default function Event() {
                   </a>
                 </h3>
 
-                <p className="text-[15px] text-[#6c6e76]">
+                <p className="text-[17px] text-[#6c6e76]">
                   By {ev.by}{" "}
-                  <span className="ml-3 text-[var(--secondary)]">{ev.time}</span>
+                  <span className="ml-3 text-[var(--secondary)]">
+                    {ev.time}
+                  </span>
                 </p>
 
                 {/* Read More Link */}

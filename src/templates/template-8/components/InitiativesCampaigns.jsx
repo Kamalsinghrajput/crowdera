@@ -4,7 +4,23 @@ import { Users, Heart } from "lucide-react";
 import { gsap } from "gsap";
 
 const SUSTAINABLE_GOAL_COLORS = {
-  1: "#E5243B", 2: "#DDA63A", 3: "#4C9F38", 4: "#C5192D", 5: "#FF3A21", 6: "#26BDE2", 7: "#FCC30B", 8: "#A21942", 9: "#FD6925", 10: "#DD1367", 11: "#FD9D24", 12: "#BF8B2E", 13: "#3F7E44", 14: "#0A97D9", 15: "#56C02B", 16: "#00689D", 17: "#19486A",
+  1: "#E5243B",
+  2: "#DDA63A",
+  3: "#4C9F38",
+  4: "#C5192D",
+  5: "#FF3A21",
+  6: "#26BDE2",
+  7: "#FCC30B",
+  8: "#A21942",
+  9: "#FD6925",
+  10: "#DD1367",
+  11: "#FD9D24",
+  12: "#BF8B2E",
+  13: "#3F7E44",
+  14: "#0A97D9",
+  15: "#56C02B",
+  16: "#00689D",
+  17: "#19486A",
 };
 
 export const campaigns = [
@@ -26,7 +42,11 @@ export const campaigns = [
   },
 ];
 
-const InitiativesCampaigns = ({ data: initialCampaignData, primaryColor = "#00715D", secondaryColor = "#D9A86A" }) => {
+const InitiativesCampaigns = ({
+  data: initialCampaignData,
+  primaryColor = "#00715D",
+  secondaryColor = "#D9A86A",
+}) => {
   const campaignsList = initialCampaignData || campaigns;
 
   const handleMouseMove = (e) => {
@@ -72,7 +92,7 @@ const InitiativesCampaigns = ({ data: initialCampaignData, primaryColor = "#0071
       {campaignsList.map((campaignItem) => {
         const progressPercentage = Math.min(
           100,
-          Math.round((campaignItem.raised / campaignItem.goal) * 100)
+          Math.round((campaignItem.raised / campaignItem.goal) * 100),
         );
         return (
           <div
@@ -81,7 +101,7 @@ const InitiativesCampaigns = ({ data: initialCampaignData, primaryColor = "#0071
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             className="bg-white rounded-2xl overflow-hidden group flex flex-col border border-gray-100 opacity-0 relative"
-            style={{ willChange: 'transform' }}
+            style={{ willChange: "transform" }}
           >
             {/* Image with Verified / Tax Exempt badges */}
             <div className="relative h-64 overflow-hidden">
@@ -122,7 +142,7 @@ const InitiativesCampaigns = ({ data: initialCampaignData, primaryColor = "#0071
               </div>
 
               {/* Description */}
-              <p className="text-gray-500 text-[15px] leading-relaxed line-clamp-2 mb-8 font-medium">
+              <p className="text-gray-500 text-[17px] leading-relaxed line-clamp-2 mb-8 font-medium">
                 {campaignItem.desc}
               </p>
 
@@ -148,7 +168,9 @@ const InitiativesCampaigns = ({ data: initialCampaignData, primaryColor = "#0071
                   <span>
                     Raised: ₹{campaignItem.raised.toLocaleString("en-IN")}
                   </span>
-                  <span>Goal: ₹{campaignItem.goal.toLocaleString("en-IN")}</span>
+                  <span>
+                    Goal: ₹{campaignItem.goal.toLocaleString("en-IN")}
+                  </span>
                 </div>
               </div>
 

@@ -74,7 +74,9 @@ function AccordionItem({ faq, isOpen, onToggle, index }) {
         style={{ height }}
       >
         <div ref={contentRef} className="px-6 pb-6 pl-[70px]">
-          <p className="text-[15px] text-[#6c6e76] leading-[1.85] m-0">{faq.a}</p>
+          <p className="text-[17px] text-[#6c6e76] leading-[1.85] m-0">
+            {faq.a}
+          </p>
         </div>
       </div>
     </div>
@@ -84,19 +86,19 @@ function AccordionItem({ faq, isOpen, onToggle, index }) {
 export default function Faq() {
   // Colors handled by global CSS variables in index.jsx
 
-
   const [open, setOpen] = useState(1);
 
   return (
     <section className="bg-[#F5F7F5] py-[120px] relative">
-
       <div className="max-w-[1320px] mx-auto px-3">
         <div className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-20 items-start">
           {/* Left */}
           <div>
             <div className="inline-flex items-center gap-3 mb-6">
               <div className="w-2 h-2 rounded-full bg-[var(--secondary)]" />
-              <span className="text-[16px] text-[var(--bg-color)] italic">Our FAQ</span>
+              <span className="text-[17px] text-[var(--bg-color)] italic">
+                Our FAQ
+              </span>
             </div>
 
             <h2 className="text-[clamp(28px,4vw,50px)] leading-[1.2] text-[var(--bg-color)] mb-5">
@@ -104,7 +106,7 @@ export default function Faq() {
               <br /> Questions.
             </h2>
 
-            <p className="text-[15px] text-[#6c6e76] leading-[1.8] mb-10">
+            <p className="text-[17px] text-[#6c6e76] leading-[1.8] mb-10">
               Have questions? We've got answers. Browse through our frequently
               asked questions to find the information you need.
             </p>

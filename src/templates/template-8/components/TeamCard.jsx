@@ -3,7 +3,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from "react-icons/fa";
+import {
+  FaFacebookF,
+  FaTwitter,
+  FaLinkedinIn,
+  FaInstagram,
+} from "react-icons/fa";
 import { PiBriefcase } from "react-icons/pi";
 
 const SOCIALS = [
@@ -51,14 +56,14 @@ export default function TeamCard({ member }) {
         <p className="text-[#006755] font-['Montserrat'] font-bold text-[14px] mb-2 uppercase tracking-[0.5px]">
           {member.role || "Volunteer"}
         </p>
-        
+
         <h3 className="font-['Montserrat'] font-extrabold text-[24px] text-[#1A1A1A] mb-3 transition-colors duration-300 group-hover:text-[#006755]">
           <Link href="#">
             <a className="no-underline color-inherit">{member.name}</a>
           </Link>
         </h3>
 
-        <div className="flex items-center justify-center gap-2 text-[#777777] font-['Montserrat'] font-medium text-[15px]">
+        <div className="flex items-center justify-center gap-2 text-[#777777] font-['Montserrat'] font-medium text-[17px]">
           <PiBriefcase size={18} className="text-[#CAA166]" />
           <span>{member.designation || "Executive"}</span>
         </div>
@@ -66,4 +71,3 @@ export default function TeamCard({ member }) {
     </div>
   );
 }
-

@@ -45,11 +45,6 @@ const GAP = 30;
 const AUTO_MS = 3800;
 
 export default function TopDonors() {
-  const primaryColor = "#121D18";
-  const secondaryColor = "#FFA415";
-  const bgColor = "#121d18";
-  const secondaryBgColor = "#f9f9f9";
-
   const [index, setIndex] = useState(0);
   const [cardW, setCardW] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -97,18 +92,13 @@ export default function TopDonors() {
   const translateX = cardW ? -(index * (cardW + GAP)) : 0;
 
   return (
-    <section className="py-[120px]" style={{ background: primaryColor }}>
-      <style
-        dangerouslySetInnerHTML={{
-          __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; --bg-color: ${bgColor}; --secondary-bg-color: ${secondaryBgColor}; }`,
-        }}
-      />
+    <section className="py-[120px] bg-[var(--bg-color)]">
       <div className="max-w-[1320px] mx-auto px-3">
         {/* Header */}
         <div className="text-center mb-[60px]">
           <div className="inline-flex items-center gap-3 mb-4">
             <div className="w-2 h-2 rounded-full bg-[var(--secondary)]" />
-            <span className="text-[16px] text-white italic">Hall of Fame</span>
+            <span className="text-[17px] text-white italic">Hall of Fame</span>
           </div>
           <h2 className="text-[clamp(32px,5vw,56px)] leading-[1.2] text-white m-0">
             Our Top Donors

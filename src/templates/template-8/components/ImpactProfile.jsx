@@ -50,7 +50,6 @@ export default function ImpactProfile() {
     }
   }, [isVisible, isMounted]);
 
-
   return (
     <section className="py-[120px] bg-white font-sans">
       <div className="max-w-[1200px] mx-auto px-4">
@@ -95,7 +94,7 @@ export default function ImpactProfile() {
                 <h3 className="text-[20px] mb-3 text-white font-bold">
                   Community Development
                 </h3>
-                <p className="text-white/70 text-[15px] leading-[1.7] font-medium">
+                <p className="text-white/70 text-[17px] leading-[1.7] font-medium">
                   Our foundation focuses on spreading awareness, offering direct
                   support, and encouraging individuals to lead balanced and
                   empowered lives through community-driven initiatives and
@@ -106,7 +105,7 @@ export default function ImpactProfile() {
                 <h3 className="text-[20px] mb-3 text-white font-bold">
                   Geographic Presence
                 </h3>
-                <p className="text-white/70 text-[15px] leading-[1.7] font-medium">
+                <p className="text-white/70 text-[17px] leading-[1.7] font-medium">
                   Worldwide — active across Asia, Africa, and the Americas,
                   bringing hope and resources to those who need it most.
                 </p>
@@ -118,7 +117,7 @@ export default function ImpactProfile() {
               <Link
                 href={`/templates/template-8/annual-report/${CURRENT_YEAR}`}
               >
-                <a className="inline-block bg-[#d9a96e] text-black font-bold text-[15px] px-8 py-4 rounded-md transition-colors hover:bg-[#c4965d] no-underline">
+                <a className="inline-block bg-[#d9a96e] text-black font-bold text-[17px] px-8 py-4 rounded-md transition-colors hover:bg-[#c4965d] no-underline">
                   View Annual Report {CURRENT_YEAR}
                 </a>
               </Link>

@@ -20,7 +20,7 @@ export default function TeamPage() {
         <main style={{ paddingTop: "50px" }}>
           <div className="bg-[#EBD3AF] py-[80px] text-center border-b border-[#E5E5E5]">
             <h1 className="text-[48px] text-[#121d18] font-bold">
-              All Team Members
+              All Board Members
             </h1>
             <p className="text-[#6c6e76] mt-4">
               Meet the dedicated people behind our mission.

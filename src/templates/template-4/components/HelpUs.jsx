@@ -3,11 +3,6 @@ import Image from "next/image";
 import { useState } from "react";
 
 export default function HelpUs() {
-  const primaryColor = "#007B39";
-  const secondaryColor = "#FFA415";
-  const bgColor = "#121d18";
-  const secondaryBgColor = "#f9f9f9";
-
   const [activeTab, setActiveTab] = useState("monthly");
   const [selectedAmount, setSelectedAmount] = useState(50);
   const [customAmount, setCustomAmount] = useState("");
@@ -16,11 +11,6 @@ export default function HelpUs() {
 
   return (
     <section className="relative py-[120px] bg-[#121D18] overflow-hidden">
-      <style
-        dangerouslySetInnerHTML={{
-          __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; --bg-color: ${bgColor}; --secondary-bg-color: ${secondaryBgColor}; }`,
-        }}
-      />
       <div className="max-w-[1320px] mx-auto px-4">
         <div className="flex flex-col lg:flex-row gap-12 items-center">
           {/* Left Column - Image & Title */}
@@ -55,7 +45,7 @@ export default function HelpUs() {
               {/* Tabs */}
               <div className="inline-flex bg-black/20 rounded-full p-2 mb-10">
                 <button
-                  className={`px-8 py-3 rounded-full text-[16px] font-semibold transition-colors ${
+                  className={`px-8 py-3 rounded-full text-[17px] font-semibold transition-colors ${
                     activeTab === "monthly"
                       ? "bg-[var(--secondary)] text-white"
                       : "text-white hover:text-[var(--secondary)]"
@@ -65,7 +55,7 @@ export default function HelpUs() {
                   Monthly
                 </button>
                 <button
-                  className={`px-8 py-3 rounded-full text-[16px] font-semibold transition-colors ${
+                  className={`px-8 py-3 rounded-full text-[17px] font-semibold transition-colors ${
                     activeTab === "onetime"
                       ? "bg-[var(--secondary)] text-white"
                       : "text-white hover:text-[var(--secondary)]"
@@ -104,7 +94,7 @@ export default function HelpUs() {
                       setCustomAmount(e.target.value);
                       setSelectedAmount(0);
                     }}
-                    className="h-[50px] px-6 rounded-full border border-[#2b3831] bg-transparent text-white placeholder-[#9ca3af] focus:outline-none focus:border-[var(--secondary)] w-[180px] text-[15px]"
+                    className="h-[50px] px-6 rounded-full border border-[#2b3831] bg-transparent text-white placeholder-[#9ca3af] focus:outline-none focus:border-[var(--secondary)] w-[180px] text-[17px]"
                   />
                   {amounts.map((amt) => (
                     <button
@@ -113,7 +103,7 @@ export default function HelpUs() {
                         setSelectedAmount(amt);
                         setCustomAmount("");
                       }}
-                      className={`h-[50px] px-6 rounded-full border transition-all duration-300 font-medium text-[15px] ${
+                      className={`h-[50px] px-6 rounded-full border transition-all duration-300 font-medium text-[17px] ${
                         selectedAmount === amt && !customAmount
                           ? "border-[var(--secondary)] bg-transparent text-white"
                           : "border-[#2b3831] bg-transparent text-white hover:border-[var(--secondary)]"
@@ -133,7 +123,7 @@ export default function HelpUs() {
                   />
                   <label
                     htmlFor="coverFees"
-                    className="text-[15px] text-[#9ca3af] leading-relaxed cursor-pointer"
+                    className="text-[17px] text-[#9ca3af] leading-relaxed cursor-pointer"
                   >
                     Well, I&apos;ll Generously Add $20.00 Per Month To Cover
                     Transaction Fees.
@@ -154,7 +144,7 @@ export default function HelpUs() {
                   </div>
                 </form>
 
-                <p className="text-[var(--secondary)] text-[15px] mb-8 cursor-pointer hover:underline">
+                <p className="text-[var(--secondary)] text-[17px] mb-8 cursor-pointer hover:underline">
                   Click To Give In Honor Of Other Person
                 </p>
 

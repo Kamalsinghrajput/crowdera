@@ -28,18 +28,17 @@ export default function About() {
   return (
     <section className="py-[110px] bg-white overflow-hidden">
       <div className="max-w-[1320px] mx-auto px-4">
-
         {/* Outer row — left col + right col */}
         <div className="flex flex-col lg:flex-row gap-16 items-stretch">
-
           {/* ============ LEFT COLUMN ============ */}
           <div className="w-full lg:w-[55%] flex flex-col">
-
             {/* Header */}
             <div className="mb-10 pt-2">
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-2 h-2 bg-[var(--secondary)] rounded-full" />
-                <span className="italic text-sm text-[var(--bg-color)] font-semibold">Our About</span>
+                <span className="italic text-sm text-[var(--bg-color)] font-semibold">
+                  Our About
+                </span>
               </div>
               <h2 className="text-[clamp(36px,4vw,56px)] font-bold leading-[1.1] text-[var(--bg-color)] m-0">
                 Empowering Lives Through Compassion.
@@ -48,7 +47,6 @@ export default function About() {
 
             {/* Body — vertical image + text side by side */}
             <div className="flex flex-col sm:flex-row gap-8 flex-1">
-
               {/* Left vertical image */}
               <div className="w-full sm:w-[260px] relative shrink-0 overflow-hidden rounded-[30px] rounded-tr-[10px] min-h-[300px]">
                 <Image
@@ -61,7 +59,7 @@ export default function About() {
 
               {/* Text content */}
               <div className="flex flex-col justify-between flex-1 py-2">
-                <p className="text-[#6c6e76] text-[15px] leading-[1.8] m-0 mb-6">
+                <p className="text-[#6c6e76] text-[17px] leading-[1.8] m-0 mb-6">
                   &ldquo;Empowering Lives Through Compassion&rdquo; Is A
                   Powerful And Inspiring Heading That Perfectly Captures The
                   Essence Of Your Charity&apos;s Mission. It&apos;s A Great
@@ -129,7 +127,12 @@ export default function About() {
                     d="M 65,65 m -50,0 a 50,50 0 1,1 100,0 a 50,50 0 1,1 -100,0"
                   />
                 </defs>
-                <text fill="#121d18" fontSize="9" letterSpacing="2" fontWeight="bold">
+                <text
+                  fill="#121d18"
+                  fontSize="9"
+                  letterSpacing="2"
+                  fontWeight="bold"
+                >
                   <textPath href="#circlePath">{ROTATING_TEXT}</textPath>
                 </text>
               </svg>
@@ -138,7 +141,6 @@ export default function About() {
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>

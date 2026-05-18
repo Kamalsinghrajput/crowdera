@@ -98,7 +98,7 @@ export default function Testimonial() {
       <div className="max-w-[1200px] mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <span className="text-[#007b5e] font-bold text-[15px] mb-3 block">
+          <span className="text-[#007b5e] font-bold text-[17px] mb-3 block">
             Supporting Our Cause Together
           </span>
           <h2 className="font-extrabold text-[clamp(32px,4vw,46px)] text-black leading-tight max-w-[800px] mx-auto m-0 mb-4">

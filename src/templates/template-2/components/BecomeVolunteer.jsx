@@ -8,7 +8,7 @@ export default function BecomeVolunteer() {
           __html: `
             .t2-btn.t2-btn-vol-left span, .t2-btn.t2-btn-vol-left i { background-color: var(--secondary) !important; color: white !important; }
             .t2-btn.t2-btn-vol-left span::before, .t2-btn.t2-btn-vol-left i::after { background-color: var(--primary) !important; }
-            
+
             .t2-btn.t2-btn-vol-right span, .t2-btn.t2-btn-vol-right i { background-color: var(--primary) !important; color: white !important; }
             .t2-btn.t2-btn-vol-right span::before, .t2-btn.t2-btn-vol-right i::after { background-color: var(--secondary) !important; }
           `,
@@ -30,7 +30,7 @@ export default function BecomeVolunteer() {
             <h3 className="font-['Inter'] font-bold text-[clamp(28px,3vw,36px)] text-white italic mb-4 leading-[1.3]">
               Join Us Volunteer
             </h3>
-            <p className="font-['Sora'] text-[15px] text-white/80 leading-[1.8] mb-8 max-w-md">
+            <p className="font-['Sora'] text-[17px] text-white/80 leading-[1.8] mb-8 max-w-md">
               Becoming A Volunteer With Chioary Means Joining A Dedicated Team
               Committed To Making A Difference. We Welcome Individuals From All
               Walks Of Life Who Are Passionate
@@ -59,7 +59,7 @@ export default function BecomeVolunteer() {
             <h3 className="font-['Inter'] font-bold text-[clamp(28px,3vw,36px)] text-white italic mb-4 leading-[1.3]">
               Become Volunteer
             </h3>
-            <p className="font-['Sora'] text-[15px] text-white/80 leading-[1.8] mb-8 max-w-md">
+            <p className="font-['Sora'] text-[17px] text-white/80 leading-[1.8] mb-8 max-w-md">
               Becoming A Volunteer With Chioary Means Joining A Dedicated Team
               Committed To Making A Difference. We Welcome Individuals From All
               Walks Of Life Who Are Passionate

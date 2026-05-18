@@ -91,7 +91,7 @@ export default function Services() {
           <h2 className="text-[#1a2b28] text-[clamp(32px,4vw,46px)] font-extrabold leading-[1.2] mb-6 max-w-[500px]">
             Donate Support To Make Difference Way
           </h2>
-          <p className="text-[#666] text-[15px] leading-[1.8] mb-10 max-w-[600px]">
+          <p className="text-[#666] text-[17px] leading-[1.8] mb-10 max-w-[600px]">
             Charity is the voluntary act of giving help, typically in the form
             of money, time, or resources, to those in need. Charitable
             organizations aim to solve social, environmental, and economic
@@ -123,7 +123,7 @@ export default function Services() {
                 {TAB_DATA[activeTab].list.map((item, i) => (
                   <li
                     key={i}
-                    className="flex items-start gap-3 text-[#666] text-[15px] font-medium"
+                    className="flex items-start gap-3 text-[#666] text-[17px] font-medium"
                   >
                     <FiCheck
                       size={20}
@@ -157,7 +157,7 @@ export default function Services() {
                           className="transition-all duration-1000 ease-out"
                         />
                       </svg>
-                      <span className="text-[#1a2b28] font-bold text-[15px]">
+                      <span className="text-[#1a2b28] font-bold text-[17px]">
                         {stat.percent}%
                       </span>
                     </div>

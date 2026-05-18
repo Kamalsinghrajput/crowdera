@@ -15,7 +15,7 @@ export default function AccordionItem({ faqData, isOpen, onToggle, index }) {
     <div
       className={`rounded-[10px] overflow-hidden bg-white transition-all duration-350 border-[1.5px] ${
         isOpen
-          ? "border-[#007B39] shadow-[0_8px_30px_rgba(0,123,57,0.12)]"
+          ? "border-[var(--primary)] shadow-[0_8px_30px_color-mix(in_srgb,var(--primary)_12%,transparent)]"
           : "border-[#e5e7eb] shadow-[0_2px_10px_rgba(0,0,0,0.05)]"
       }`}
     >
@@ -26,19 +26,19 @@ export default function AccordionItem({ faqData, isOpen, onToggle, index }) {
         <div className="flex items-center gap-4 flex-1">
           <span
             className={`text-[14px] shrink-0 transition-colors duration-300 min-w-[28px] ${
-              isOpen ? "text-[#007B39]" : "text-[#121d18]/40"
+              isOpen ? "text-[var(--primary)]" : "text-[var(--bg-color)]/40"
             }`}
           >
             {String(index + 1).padStart(2, "0")}
           </span>
-          <h4 className="text-[17px] text-[#121d18] m-0 leading-[1.4] font-bold">
+          <h4 className="text-[17px] text-[var(--bg-color)] m-0 leading-[1.4] font-bold">
             {faqData.question}
           </h4>
         </div>
 
         <div
           className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 transition-all duration-350 ${
-            isOpen ? "bg-[#007B39] rotate-45" : "bg-[#f3f4f6] rotate-0"
+            isOpen ? "bg-[var(--primary)] rotate-45" : "bg-[#f3f4f6] rotate-0"
           }`}
         >
           <svg
@@ -59,7 +59,7 @@ export default function AccordionItem({ faqData, isOpen, onToggle, index }) {
         style={{ height }}
       >
         <div ref={contentRef} className="px-6 pb-6 pl-[70px]">
-          <p className="text-[15px] text-[#4b5563] leading-[1.85] m-0 font-medium">
+          <p className="text-[17px] text-[#4b5563] leading-[1.85] m-0 font-medium">
             {faqData.answer}
           </p>
         </div>

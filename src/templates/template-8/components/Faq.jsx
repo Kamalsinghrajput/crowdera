@@ -41,23 +41,26 @@ export default function Faq() {
           {/* Left */}
           <div>
             <div className="inline-flex items-center gap-3 mb-4">
-              <span className="text-[#005e46] font-bold text-[15px] uppercase tracking-wider">
+              <span className="text-[#005e46] font-bold text-[17px] uppercase tracking-wider">
                 Our FAQ
               </span>
             </div>
 
-            <h2 ref={headingRef} className="text-[clamp(32px,4vw,46px)] leading-[1.15] text-[#1A1A1A] mb-5 font-extrabold">
+            <h2
+              ref={headingRef}
+              className="text-[clamp(32px,4vw,46px)] leading-[1.15] text-[#1A1A1A] mb-5 font-extrabold"
+            >
               Frequently Asked
               <br /> Questions.
             </h2>
 
-            <p className="text-[16px] text-[#666666] leading-[1.8] mb-10">
+            <p className="text-[17px] text-[#666666] leading-[1.8] mb-10">
               Have questions? We've got answers. Browse through our frequently
               asked questions to find the information you need.
             </p>
 
             <Link href="#">
-              <a className="inline-block bg-[#d9a96e] text-black font-bold text-[15px] px-8 py-4 rounded-md transition-colors hover:bg-[#c4965d] no-underline">
+              <a className="inline-block bg-[#d9a96e] text-black font-bold text-[17px] px-8 py-4 rounded-md transition-colors hover:bg-[#c4965d] no-underline">
                 More Questions
               </a>
             </Link>

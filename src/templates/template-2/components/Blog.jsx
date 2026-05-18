@@ -138,7 +138,7 @@ export default function BLog() {
           <div>
             <div className="inline-flex items-center gap-3 mb-6">
               <div className="w-2 h-2 rounded-full bg-[var(--secondary)]" />
-              <span className="text-[16px] text-[var(--bg-color)] italic">
+              <span className="text-[17px] text-[var(--bg-color)] italic">
                 Our Blog
               </span>
             </div>

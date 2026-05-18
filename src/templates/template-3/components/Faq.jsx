@@ -41,17 +41,20 @@ export default function Faq() {
           <div>
             <div className="inline-flex items-center gap-3 mb-6">
               <div className="w-2 h-2 rounded-full bg-[#007B39]" />
-              <span className="text-[16px] text-[#121d18] italic font-bold">
+              <span className="text-[17px] text-[#121d18] italic font-bold">
                 Our FAQ
               </span>
             </div>
 
-            <h2 ref={headingRef} className="text-[clamp(28px,4vw,50px)] leading-[1.2] text-[#121d18] mb-5 font-bold">
+            <h2
+              ref={headingRef}
+              className="text-[clamp(28px,4vw,50px)] leading-[1.2] text-[#121d18] mb-5 font-bold"
+            >
               Frequently Asking
               <br /> Questions.
             </h2>
 
-            <p className="text-[15px] text-[#121d18]/80 leading-[1.8] mb-10 font-semibold">
+            <p className="text-[17px] text-[#121d18]/80 leading-[1.8] mb-10 font-semibold">
               Have questions? We've got answers. Browse through our frequently
               asked questions to find the information you need.
             </p>

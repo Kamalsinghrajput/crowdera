@@ -2,11 +2,6 @@
 import { useState } from "react";
 
 export default function NewsLetter() {
-  const primaryColor = "#007B39";
-  const secondaryColor = "#FFA415";
-  const bgColor = "#121d18";
-  const secondaryBgColor = "#f9f9f9";
-
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
@@ -21,7 +16,6 @@ export default function NewsLetter() {
 
   return (
     <section className="relative pt-[120px] pb-[80px] overflow-hidden bg-[var(--bg-color)]">
-      <style dangerouslySetInnerHTML={{ __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; --bg-color: ${bgColor}; --secondary-bg-color: ${secondaryBgColor}; }` }} />
       {/* Background image */}
       <div
         className="absolute inset-0 bg-cover bg-center grayscale"
@@ -40,7 +34,7 @@ export default function NewsLetter() {
           <br /> Our Newsletter
         </h2>
 
-        <p className="text-[16px] text-white/80 leading-[1.7] mb-12 max-w-[650px] mx-auto">
+        <p className="text-[17px] text-white/80 leading-[1.7] mb-12 max-w-[650px] mx-auto">
           Join Our Community Of Supporters By Subscribing To Our Newsletter!
           <br />
           Get The Latest Updates On Our Projects,
@@ -56,7 +50,7 @@ export default function NewsLetter() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="w-full bg-transparent border border-white/20 rounded-full px-8 py-[18px] text-[16px] text-white placeholder:text-white/40 focus:outline-none focus:border-[#FFA415] transition-colors pr-[70px]"
+            className="w-full bg-transparent border border-white/20 rounded-full px-8 py-[18px] text-[17px] text-white placeholder:text-white/40 focus:outline-none focus:border-[#FFA415] transition-colors pr-[70px]"
           />
           <button
             type="submit"

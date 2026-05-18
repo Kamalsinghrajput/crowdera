@@ -28,10 +28,15 @@ const InitiativesEvents = ({ data: initialEventsData }) => {
   return (
     <>
       {eventsList.map((eventItem) => {
-        const progressPercentage = Math.min(100, Math.round((eventItem.raised / eventItem.goal) * 100));
+        const progressPercentage = Math.min(
+          100,
+          Math.round((eventItem.raised / eventItem.goal) * 100),
+        );
         return (
-          <div key={eventItem.id} className="bg-white rounded-2xl overflow-hidden hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-all duration-500 group flex flex-col border border-gray-100 opacity-0">
-
+          <div
+            key={eventItem.id}
+            className="bg-white rounded-2xl overflow-hidden hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-all duration-500 group flex flex-col border border-gray-100 opacity-0"
+          >
             {/* Image with Verified / Tax Exempt badges */}
             <div className="relative h-64 overflow-hidden">
               <Image
@@ -43,10 +48,14 @@ const InitiativesEvents = ({ data: initialEventsData }) => {
               />
               <div className="absolute top-4 left-4 flex gap-2 flex-wrap">
                 {eventItem.isVerified && (
-                  <span className="bg-[#00b86b] text-white text-[10px] font-bold py-1.5 px-4 rounded uppercase tracking-widest shadow-lg">Verified</span>
+                  <span className="bg-[var(--primary)] text-white text-[10px] font-bold py-1.5 px-4 rounded uppercase tracking-widest shadow-lg">
+                    Verified
+                  </span>
                 )}
                 {eventItem.isTaxExempt && (
-                  <span className="bg-[#111111] text-white text-[10px] font-bold py-1.5 px-4 rounded uppercase tracking-widest shadow-lg">Tax Exempt</span>
+                  <span className="bg-[var(--bg-color)] text-white text-[10px] font-bold py-1.5 px-4 rounded uppercase tracking-widest shadow-lg">
+                    Tax Exempt
+                  </span>
                 )}
               </div>
             </div>
@@ -54,51 +63,74 @@ const InitiativesEvents = ({ data: initialEventsData }) => {
             {/* Content */}
             <div className="p-8 flex flex-col flex-grow text-left">
               {/* Title */}
-              <h3 className="text-2xl font-bold leading-tight text-[#111111] group-hover:text-[#00b86b] transition-colors line-clamp-2 mb-4 font-montserrat">
+              <h3 className="text-2xl font-bold leading-tight text-[var(--bg-color)] group-hover:text-[var(--primary)] transition-colors line-clamp-2 mb-4 font-montserrat">
                 {eventItem.title}
               </h3>
 
               {/* Organizer */}
               <div className="flex items-center gap-1.5 mb-4">
-                <Users size={14} className="text-[#00b86b] shrink-0" />
-                <span className="text-sm text-[#00b86b] font-bold uppercase tracking-wider">{eventItem.organizer}</span>
+                <Users size={14} className="text-[var(--primary)] shrink-0" />
+                <span className="text-sm text-[var(--primary)] font-bold uppercase tracking-wider">
+                  {eventItem.organizer}
+                </span>
               </div>
 
               {/* Date / Time Box */}
               <div className="flex items-start gap-2 bg-gray-50 rounded-xl px-4 py-3 mb-6 border border-gray-100">
-                <Calendar size={16} className="text-[#00b86b] mt-0.5 shrink-0" />
+                <Calendar
+                  size={16}
+                  className="text-[var(--primary)] mt-0.5 shrink-0"
+                />
                 <div>
-                  <div className="text-xs font-bold text-[#111111] uppercase tracking-widest">{eventItem.date}</div>
-                  <div className="text-[11px] font-bold text-gray-400">{eventItem.time}</div>
+                  <div className="text-xs font-bold text-[var(--bg-color)] uppercase tracking-widest">
+                    {eventItem.date}
+                  </div>
+                  <div className="text-[11px] font-bold text-gray-400">
+                    {eventItem.time}
+                  </div>
                 </div>
               </div>
 
               {/* Description */}
-              <p className="text-gray-500 text-[15px] leading-relaxed line-clamp-2 mb-8 font-medium">
+              <p className="text-gray-500 text-[17px] leading-relaxed line-clamp-2 mb-8 font-medium">
                 {eventItem.desc}
               </p>
 
               {/* Fundraising Progress */}
               <div className="bg-gray-50 rounded-xl p-6 mb-8 border border-gray-100">
                 <div className="flex justify-between items-center mb-3">
-                  <span className="text-[11px] font-bold text-[#111111] uppercase tracking-widest">Fundraising Progress</span>
-                  <span className="text-sm font-bold text-[#00b86b]">{progressPercentage}%</span>
+                  <span className="text-[11px] font-bold text-[var(--bg-color)] uppercase tracking-widest">
+                    Fundraising Progress
+                  </span>
+                  <span className="text-sm font-bold text-[var(--primary)]">
+                    {progressPercentage}%
+                  </span>
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-1.5 mb-3 overflow-hidden">
                   <div
-                    className="h-full rounded-full transition-all duration-1000 ease-out bg-[#00b86b]"
+                    className="h-full rounded-full transition-all duration-1000 ease-out bg-[var(--primary)]"
                     style={{ width: `${progressPercentage}%` }}
                   />
                 </div>
                 <div className="flex justify-between text-[11px] font-bold text-gray-400 uppercase tracking-wider">
-                  <span>Raised: ₹{eventItem.raised.toLocaleString("en-IN")}</span>
+                  <span>
+                    Raised: ₹{eventItem.raised.toLocaleString("en-IN")}
+                  </span>
                   <span>Goal: ₹{eventItem.goal.toLocaleString("en-IN")}</span>
                 </div>
               </div>
 
               {/* Category tag */}
               <div className="mb-8">
-                <span className="bg-[#111111]/5 text-[#111111] text-[10px] font-bold py-1.5 px-4 rounded uppercase tracking-widest border border-[#111111]/10">
+                <span
+                  className="text-[var(--bg-color)] text-[10px] font-bold py-1.5 px-4 rounded uppercase tracking-widest border"
+                  style={{
+                    backgroundColor:
+                      "color-mix(in srgb, var(--bg-color) 5%, transparent)",
+                    borderColor:
+                      "color-mix(in srgb, var(--bg-color) 10%, transparent)",
+                  }}
+                >
                   {eventItem.category}
                 </span>
               </div>
@@ -106,18 +138,17 @@ const InitiativesEvents = ({ data: initialEventsData }) => {
               {/* Buttons */}
               <div className="mt-auto space-y-3">
                 <div className="grid grid-cols-2 gap-3">
-                  <button className="bg-[#111111] text-white font-bold py-3 rounded text-xs uppercase tracking-widest hover:bg-[#00b86b] transition-all active:scale-95">
+                  <button className="bg-[var(--bg-color)] text-white font-bold py-3 rounded text-xs uppercase tracking-widest hover:bg-[var(--primary)] transition-all active:scale-95">
                     Donate
                   </button>
-                  <button className="bg-white text-[#111111] font-bold py-3 rounded text-xs border-2 border-[#111111] hover:bg-[#111111] hover:text-white transition-all active:scale-95 uppercase tracking-widest">
+                  <button className="bg-white text-[var(--bg-color)] font-bold py-3 rounded text-xs border-2 border-[var(--bg-color)] hover:bg-[var(--bg-color)] hover:text-white transition-all active:scale-95 uppercase tracking-widest">
                     View
                   </button>
                 </div>
-                <button className="w-full bg-[#FFA415] text-white font-bold py-3.5 rounded text-xs uppercase tracking-widest hover:opacity-90 transition-all shadow-md active:scale-95 border-2 border-transparent">
+                <button className="w-full bg-[var(--secondary)] text-white font-bold py-3.5 rounded text-xs uppercase tracking-widest hover:opacity-90 transition-all shadow-md active:scale-95 border-2 border-transparent">
                   Fundraise
                 </button>
               </div>
-
             </div>
           </div>
         );

@@ -1,11 +1,6 @@
 import Link from "next/link";
 import { MapPin, Calendar, ArrowRight } from "lucide-react";
 
-
-
-
-
-
 export default function EventCard({ event }) {
   const primaryColor = "#e8547a";
   const secondaryColor = "#9b59b6";
@@ -18,8 +13,9 @@ export default function EventCard({ event }) {
         <img
           src={event.img}
           alt={event.title}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-        
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        />
+
         <div className="absolute top-3 left-3 bg-gradient-to-br from-t10-rose to-t10-roseDark text-white text-center rounded-lg px-2.5 py-1.5 min-w-[48px] shadow-lg">
           <div className="text-xl font-black leading-none">{event.day}</div>
           <div className="text-[9px] font-bold uppercase tracking-wider opacity-80">
@@ -31,7 +27,7 @@ export default function EventCard({ event }) {
       {/* Content */}
       <div className="p-5 flex flex-col justify-between flex-grow">
         <div>
-          <h3 className="font-extrabold text-gray-800 text-[15px] mb-1 leading-snug group-hover:text-t10-rose transition-colors duration-300">
+          <h3 className="font-extrabold text-gray-800 text-[17px] mb-1 leading-snug group-hover:text-t10-rose transition-colors duration-300">
             {event.title}
           </h3>
           <p className="text-[11px] text-gray-400 font-semibold mb-1.5">
@@ -54,6 +50,6 @@ export default function EventCard({ event }) {
           </span>
         </Link>
       </div>
-    </div>);
-
+    </div>
+  );
 }

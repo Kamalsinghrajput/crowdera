@@ -10,7 +10,8 @@ export default function JoinUsVolunteer() {
       image:
         "https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&q=80&w=1000",
       link: "#",
-      btnClass: "t2-btn inline-flex border-none",
+      btnClass:
+        "inline-flex items-center gap-2 bg-[var(--primary)] text-white font-['Montserrat'] font-bold text-[14px] uppercase px-8 py-4 rounded-full shadow-lg transition-all duration-300 hover:bg-[var(--secondary)] no-underline",
     },
     {
       title: "Become Volunteer",
@@ -18,7 +19,8 @@ export default function JoinUsVolunteer() {
       image:
         "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80&w=1000",
       link: "#",
-      btnClass: "t2-btn t2-btn-secondary inline-flex border-none",
+      btnClass:
+        "inline-flex items-center gap-2 bg-[var(--secondary)] text-white font-['Montserrat'] font-bold text-[14px] uppercase px-8 py-4 rounded-full shadow-lg transition-all duration-300 hover:bg-[var(--primary)] no-underline",
     },
   ];
 
@@ -29,7 +31,7 @@ export default function JoinUsVolunteer() {
           {cards.map((card, idx) => (
             <div
               key={idx}
-              className="relative rounded-[20px] overflow-hidden min-h-[450px] group flex flex-col justify-end p-8 md:p-12"
+              className="relative rounded-[20px] overflow-hidden min-h-[450px] group flex flex-col justify-end p-8 md:p-12 shadow-xl"
             >
               {/* Background Image */}
               <div className="absolute inset-0 z-0">
@@ -47,14 +49,14 @@ export default function JoinUsVolunteer() {
 
               {/* Content */}
               <div className="relative z-10">
-                <h3 className="text-[32px] md:text-[40px] font-bold text-white mb-4 leading-tight">
+                <h3 className="text-[32px] md:text-[40px] font-bold text-white mb-4 leading-tight font-['Montserrat']">
                   <Link href={card.link}>
                     <a className="hover:text-[var(--secondary)] transition-colors duration-300">
                       {card.title}
                     </a>
                   </Link>
                 </h3>
-                <p className="text-white/80 text-[16px] leading-[1.8] mb-8 max-w-[450px]">
+                <p className="text-white/80 text-[17px] leading-[1.8] mb-8 max-w-[450px]">
                   {card.text}
                 </p>
 

@@ -27,8 +27,8 @@ const SLIDES = [
 export default function Hero() {
   const [current, setCurrent] = useState(0);
   const [animKey, setAnimKey] = useState(0);
-  const primaryGreen = "#00b86b";
-  const primaryOrange = "#f15b43";
+  const primaryGreen = "var(--primary)";
+  const primaryOrange = "var(--secondary)";
 
   useEffect(() => {
     const t = setInterval(() => {
@@ -51,7 +51,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative w-full h-[80vh] min-h-[700px] overflow-hidden flex items-center justify-center bg-[#111]">
+    <section className="relative w-full h-[80vh] min-h-[700px] overflow-hidden flex items-center justify-center bg-[var(--bg-color)]">
       <style
         dangerouslySetInnerHTML={{
           __html: `

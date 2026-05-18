@@ -13,7 +13,7 @@ const TEAM = [
     organization: "Joyful Minds",
     joinedAt: "01-01-2010",
     status: "Active",
-    socials: { x: "#", linkedin: "#" }
+    socials: { x: "#", linkedin: "#" },
   },
   {
     name: "Priya Desai",
@@ -23,7 +23,7 @@ const TEAM = [
     organization: "Joyful Minds",
     joinedAt: "15-05-2014",
     status: "Active",
-    socials: { x: "#", linkedin: "#" }
+    socials: { x: "#", linkedin: "#" },
   },
   {
     name: "Marcus Johnson",
@@ -33,7 +33,7 @@ const TEAM = [
     organization: "Joyful Minds",
     joinedAt: "10-08-2018",
     status: "Active",
-    socials: { x: "#", linkedin: "#" }
+    socials: { x: "#", linkedin: "#" },
   },
   {
     name: "Sarah Lin",
@@ -43,7 +43,7 @@ const TEAM = [
     organization: "Joyful Minds",
     joinedAt: "22-11-2020",
     status: "Active",
-    socials: { x: "#", linkedin: "#" }
+    socials: { x: "#", linkedin: "#" },
   },
   {
     name: "Dr. Elena Rostova",
@@ -53,7 +53,7 @@ const TEAM = [
     organization: "Joyful Minds",
     joinedAt: "05-03-2015",
     status: "Active",
-    socials: { x: "#", linkedin: "#" }
+    socials: { x: "#", linkedin: "#" },
   },
   {
     name: "David Okafor",
@@ -63,7 +63,7 @@ const TEAM = [
     organization: "Joyful Minds",
     joinedAt: "12-09-2019",
     status: "Active",
-    socials: { x: "#", linkedin: "#" }
+    socials: { x: "#", linkedin: "#" },
   },
   {
     name: "Anita Singh",
@@ -73,7 +73,7 @@ const TEAM = [
     organization: "Joyful Minds",
     joinedAt: "22-01-2016",
     status: "Active",
-    socials: { x: "#", linkedin: "#" }
+    socials: { x: "#", linkedin: "#" },
   },
   {
     name: "Michael Chen",
@@ -83,10 +83,9 @@ const TEAM = [
     organization: "Joyful Minds",
     joinedAt: "18-07-2021",
     status: "Active",
-    socials: { x: "#", linkedin: "#" }
-  }
+    socials: { x: "#", linkedin: "#" },
+  },
 ];
-
 
 export default function Team({ isAllTeamPage = false }) {
   // Colors handled by global CSS variables in index.jsx
@@ -94,15 +93,16 @@ export default function Team({ isAllTeamPage = false }) {
   const displayTeam = isAllTeamPage ? TEAM : TEAM.slice(0, 4);
 
   return (
-    <section className={`bg-[var(--secondary-bg-color)] ${isAllTeamPage ? 'pt-16' : 'pt-[120px]'} pb-[100px] relative`}>
-
+    <section
+      className={`bg-[var(--secondary-bg-color)] ${isAllTeamPage ? "pt-16" : "pt-[120px]"} pb-[100px] relative`}
+    >
       <FloatingBird position="right" />
       <div className="max-w-[1320px] mx-auto px-3">
         {/* Section title */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-3 mb-6">
             <div className="w-2 h-2 rounded-full bg-[var(--secondary)]" />
-            <span className="text-[16px] text-[var(--bg-color)] italic">
+            <span className="text-[17px] text-[var(--bg-color)] italic">
               Our Board Members
             </span>
           </div>

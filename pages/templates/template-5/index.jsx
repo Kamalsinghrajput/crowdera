@@ -18,6 +18,8 @@ import NewsLetter from "../../../src/templates/template-5/components/Newsletter"
 import SiteFooter from "../../../src/templates/template-5/components/SiteFooter";
 import ImpactProfile from "../../../src/templates/template-5/components/ImpactProfile";
 import TopDonors from "../../../src/templates/template-5/components/TopDonors";
+import FeaturedIn from "../../../src/templates/template-5/components/FeaturedIn";
+import ReadyCTA from "../../../src/templates/template-5/components/ReadyCTA";
 
 // ScrollToTop must be client-only to avoid hydration mismatch
 const ScrollToTop = dynamic(
@@ -28,6 +30,7 @@ const ScrollToTop = dynamic(
 export default function Template2() {
   return (
     <>
+      <style>{`:root { --primary: #00b86b; --secondary: #ff5528; --bg-color: #111111; --secondary-bg-color: #f9f9f9; }`}</style>
       <Head>
         <title>Home One || Tamun - Crowdfunding & Charity</title>
         <meta
@@ -66,12 +69,16 @@ export default function Template2() {
           <div id="services">
             <Services />
           </div>
-          <div id="partners">
-            <Partners />
+
+          <div id="featured-in">
+            <FeaturedIn />
           </div>
 
           <div id="impact">
             <ImpactProfile />
+          </div>
+          <div id="partners">
+            <Partners />
           </div>
           <div id="counter">
             <CounterOne />
@@ -100,6 +107,9 @@ export default function Template2() {
           </div>
           <div id="blog">
             <BLog />
+          </div>
+          <div id="ready-cta">
+            <ReadyCTA />
           </div>
           <div id="newsletter">
             <NewsLetter />

@@ -11,7 +11,7 @@ export default function ReadyCTA() {
       <div className="max-w-[800px] mx-auto px-3 relative z-10">
         <div className="inline-flex items-center justify-center gap-3 mb-6 w-full">
           <div className="w-2 h-2 rounded-full bg-[var(--secondary)]" />
-          <span className="text-[16px] text-white italic">Get Involved</span>
+          <span className="text-[17px] text-white italic">Get Involved</span>
         </div>
         <h2 className="text-[clamp(32px,4vw,48px)] leading-[1.2] text-white mb-6">
           Ready to Make a Difference?

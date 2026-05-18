@@ -46,7 +46,7 @@ const GAP = 30;
 const AUTO_MS = 3800;
 
 export default function TopDonors() {
-  const primaryColor = "#009E5C";
+  const primaryColor = "var(--primary)";
   const headingRef = useHeadingAnimation();
 
   const [index, setIndex] = useState(0);
@@ -102,13 +102,13 @@ export default function TopDonors() {
         <div className="text-center mb-[60px]">
           <div className="inline-flex items-center gap-3 mb-4">
             <div className="w-2 h-2 rounded-full bg-[var(--secondary)]" />
-            <span className="text-[16px] text-[#121d18] italic font-bold">
+            <span className="text-[17px] text-[var(--bg-color)] italic font-bold">
               Hall of Fame
             </span>
           </div>
           <h2
             ref={headingRef}
-            className="text-[clamp(32px,5vw,56px)] leading-[1.2] text-[#121d18] m-0 font-bold"
+            className="text-[clamp(32px,5vw,56px)] leading-[1.2] text-[var(--bg-color)] m-0 font-bold"
           >
             Our Top Donors
           </h2>
@@ -164,7 +164,7 @@ export default function TopDonors() {
                 </div>
 
                 {/* Name */}
-                <h4 className="text-[20px] text-[var(--bg-color)] mb-2 group-hover:text-[#FFA415] transition-colors">
+                <h4 className="text-[20px] text-[var(--bg-color)] mb-2 group-hover:text-[var(--secondary)] transition-colors">
                   {d.name}
                 </h4>
 
@@ -191,7 +191,7 @@ export default function TopDonors() {
                 style={{
                   width: i === index ? "24px" : "10px",
                   height: "10px",
-                  background: i === index ? "#FFA415" : "#DDE3E3",
+                  background: i === index ? "var(--secondary)" : "#DDE3E3",
                 }}
               />
             ))}
@@ -199,7 +199,7 @@ export default function TopDonors() {
           <div className="flex items-center gap-3">
             <button
               onClick={goPrev}
-              className="w-[50px] h-[50px] rounded-full border border-[#DDE3E3] flex items-center justify-center text-[#121d18] bg-white hover:border-[var(--secondary)] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300"
+              className="w-[50px] h-[50px] rounded-full border border-[#DDE3E3] flex items-center justify-center text-[var(--bg-color)] bg-white hover:border-[var(--secondary)] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300"
             >
               <svg
                 width="20"
@@ -214,7 +214,7 @@ export default function TopDonors() {
             </button>
             <button
               onClick={goNext}
-              className="w-[50px] h-[50px] rounded-full border border-[#DDE3E3] flex items-center justify-center text-[#121d18] bg-white hover:border-[var(--secondary)] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300"
+              className="w-[50px] h-[50px] rounded-full border border-[#DDE3E3] flex items-center justify-center text-[var(--bg-color)] bg-white hover:border-[var(--secondary)] hover:bg-[var(--secondary)] hover:text-white transition-all duration-300"
             >
               <svg
                 width="20"

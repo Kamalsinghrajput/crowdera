@@ -82,12 +82,14 @@ export default function Blog({ isAllBlogsPage }) {
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-3 mb-5">
               <div className="w-2 h-2 rounded-full bg-[#FFA415]" />
-              <span className="text-[16px] text-[#121d18] italic font-semibold">
+              <span className="text-[17px] text-[#121d18] italic font-semibold">
                 Our Latest Blog
               </span>
             </div>
             <h2 className="text-[clamp(32px,4vw,48px)] font-bold text-[#121d18] leading-tight">
-              How Collective Efforts<br />Change Lives
+              How Collective Efforts
+              <br />
+              Change Lives
             </h2>
           </div>
         )}
@@ -116,7 +118,9 @@ export default function Blog({ isAllBlogsPage }) {
                 <div
                   key={i}
                   className={`w-3 h-1 rounded-full transition-all duration-300 ${
-                    i === index % BLOGS.length ? "bg-[#FFA415] w-8" : "bg-gray-300"
+                    i === index % BLOGS.length
+                      ? "bg-[#FFA415] w-8"
+                      : "bg-gray-300"
                   }`}
                 />
               ))}

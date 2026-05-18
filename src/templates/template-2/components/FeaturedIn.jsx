@@ -34,7 +34,7 @@ export default function FeaturedIn() {
         <div className="mb-16 text-center">
           <div className="inline-flex items-center gap-3 mb-6">
             <div className="w-2 h-2 rounded-full bg-[var(--secondary)]" />
-            <span className="text-[16px] text-[var(--bg-color)] italic">
+            <span className="text-[17px] text-[var(--bg-color)] italic">
               Recognized By
             </span>
           </div>

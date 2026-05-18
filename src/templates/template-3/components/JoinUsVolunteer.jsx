@@ -54,7 +54,7 @@ export default function JoinUsVolunteer() {
                     </a>
                   </Link>
                 </h3>
-                <p className="text-white/80 text-[16px] leading-[1.8] mb-8 max-w-[450px]">
+                <p className="text-white/80 text-[17px] leading-[1.8] mb-8 max-w-[450px]">
                   {card.text}
                 </p>
 

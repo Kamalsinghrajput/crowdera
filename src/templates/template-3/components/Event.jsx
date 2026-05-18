@@ -5,13 +5,6 @@ import Image from "next/image";
 import { gsap } from "gsap";
 import { useHeadingAnimation } from "../hooks/useHeadingAnimation";
 
-const GREEN = "#007B39";
-const ORANGE = "#FFA415";
-const BG = "#F9F9F9";
-const ACTIVE_H = "600px";
-const SIDE_H = "480px";
-const OPACITY_SIDE = 0.65;
-
 const EVENTS = [
   {
     date: "10 August",
@@ -153,7 +146,7 @@ export default function Event({ isAllEventsPage }) {
   return (
     <section
       style={{
-        background: BG,
+        background: "#F9F9F9",
         paddingTop: "100px",
         paddingBottom: "0",
         overflow: "hidden",
@@ -182,7 +175,7 @@ export default function Event({ isAllEventsPage }) {
               width: "10px",
               height: "10px",
               borderRadius: "50%",
-              background: GREEN,
+              background: "#007B39",
               display: "inline-block",
             }}
           />
@@ -254,7 +247,7 @@ export default function Event({ isAllEventsPage }) {
                   zIndex: 2,
                 }}
               >
-                <BrushBadge date={eventData.date} color={GREEN} />
+                <BrushBadge date={eventData.date} color="#007B39" />
               </div>
 
               {/* bottom info */}
@@ -304,7 +297,7 @@ export default function Event({ isAllEventsPage }) {
             ref={viewportRef}
             style={{
               width: "100%",
-              height: ACTIVE_H,
+              height: "600px",
               overflow: "hidden",
               position: "relative",
             }}
@@ -320,7 +313,7 @@ export default function Event({ isAllEventsPage }) {
             >
               {ITEMS.map((eventData, index) => {
                 const isActive = index === activeTrackIndex;
-                const accent = isActive ? GREEN : ORANGE;
+                const accent = isActive ? "#007B39" : "#FFA415";
                 return (
                   <div
                     key={index}
@@ -332,11 +325,11 @@ export default function Event({ isAllEventsPage }) {
                       flexShrink: 0,
                       width:
                         cardWidth > 0 ? `${cardWidth}px` : `${100 / views}vw`,
-                      height: isActive ? ACTIVE_H : SIDE_H,
+                      height: isActive ? "600px" : "480px",
                       position: "relative",
                       overflow: "hidden",
                       cursor: isActive ? "default" : "pointer",
-                      opacity: isActive ? 1 : OPACITY_SIDE,
+                      opacity: isActive ? 1 : 0.65,
                       transition:
                         "height 0.65s cubic-bezier(.77,0,.18,1), opacity 0.5s ease",
                     }}
@@ -470,8 +463,8 @@ export default function Event({ isAllEventsPage }) {
                 style={{
                   width: "11px",
                   height: "11px",
-                  border: `1.5px solid ${index === activeDot ? GREEN : "#bbb"}`,
-                  background: index === activeDot ? GREEN : "transparent",
+                  border: `1.5px solid ${index === activeDot ? "#007B39" : "#bbb"}`,
+                  background: index === activeDot ? "#007B39" : "transparent",
                   cursor: "pointer",
                   padding: 0,
                   outline: "none",

@@ -102,11 +102,14 @@ export default function TopDonors() {
         <div className="text-center mb-[60px]">
           <div className="inline-flex items-center gap-3 mb-4">
             <div className="w-2 h-2 rounded-full bg-[var(--secondary)]" />
-            <span className="text-[16px] text-[#121d18] italic font-bold">
+            <span className="text-[17px] text-[#121d18] italic font-bold">
               Hall of Fame
             </span>
           </div>
-          <h2 ref={headingRef} className="text-[clamp(32px,5vw,56px)] leading-[1.2] text-[#121d18] m-0 font-bold">
+          <h2
+            ref={headingRef}
+            className="text-[clamp(32px,5vw,56px)] leading-[1.2] text-[#121d18] m-0 font-bold"
+          >
             Our Top Donors
           </h2>
         </div>

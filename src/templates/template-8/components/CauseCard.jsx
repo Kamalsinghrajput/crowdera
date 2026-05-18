@@ -10,7 +10,8 @@ export default function CauseCard({ course }) {
 
   const handleMouseMove = (e) => {
     if (!cardRef.current) return;
-    const { left, top, width, height } = cardRef.current.getBoundingClientRect();
+    const { left, top, width, height } =
+      cardRef.current.getBoundingClientRect();
     const x = (e.clientX - left - width / 2) / (width / 2); // -1 to 1
     const y = (e.clientY - top - height / 2) / (height / 2); // -1 to 1
 
@@ -45,13 +46,13 @@ export default function CauseCard({ course }) {
   };
 
   return (
-    <div 
+    <div
       ref={cardRef}
       onMouseEnter={handleMouseEnter}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       className="bg-white rounded-2xl shadow-sm flex flex-col h-full border border-gray-100 group relative"
-      style={{ willChange: 'transform' }}
+      style={{ willChange: "transform" }}
     >
       {/* Image container */}
       <div className="relative w-full h-[240px] rounded-t-2xl overflow-hidden">
@@ -74,14 +75,16 @@ export default function CauseCard({ course }) {
         <h3 className="font-extrabold text-[20px] text-black mb-3">
           {course.title}
         </h3>
-        <p className="text-[#666666] text-[15px] leading-[1.6] mb-6 flex-grow">
+        <p className="text-[#666666] text-[17px] leading-[1.6] mb-6 flex-grow">
           Lorem ipsum dolor sit amet, consete sadipscing elitr, sed diam nonum
         </p>
 
         {/* Progress Area */}
         <div className="bg-[#f8f9fa] rounded-lg p-5">
           <div className="flex justify-between items-center mb-2">
-            <span className="text-[#333333] font-bold text-[14px]">Donation</span>
+            <span className="text-[#333333] font-bold text-[14px]">
+              Donation
+            </span>
             <span className="text-[#333333] font-bold text-[14px]">
               {course.percent}%
             </span>
@@ -107,7 +110,7 @@ export default function CauseCard({ course }) {
 
       {/* Bottom Button */}
       <Link href={`/causes/${course.id}`}>
-        <a className="w-full bg-[#007b5e] hover:bg-[#d9a96e] transition-colors duration-300 text-white font-bold text-[16px] px-8 py-5 rounded-b-2xl flex items-center justify-between mt-auto">
+        <a className="w-full bg-[#007b5e] hover:bg-[#d9a96e] transition-colors duration-300 text-white font-bold text-[17px] px-8 py-5 rounded-b-2xl flex items-center justify-between mt-auto">
           Donate Now
           <FiArrowUpRight size={20} />
         </a>

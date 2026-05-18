@@ -76,10 +76,14 @@ export default function Team({ isAllTeamPage }) {
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-3 mb-5">
               <div className="w-2 h-2 rounded-full bg-[#FFA415]" />
-              <span className="text-[16px] text-[#121d18] italic">Our Board Members</span>
+              <span className="text-[17px] text-[#121d18] italic">
+                Our Board Members
+              </span>
             </div>
             <h2 className="text-[clamp(32px,4vw,48px)] leading-[1.2] text-[#121d18] font-bold">
-              Meet Our Dedicated<br />Board Members.
+              Meet Our Dedicated
+              <br />
+              Board Members.
             </h2>
           </div>
         )}

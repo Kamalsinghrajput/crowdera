@@ -99,14 +99,14 @@ export default function Causes({ isAllCausesPage }) {
   }, [maxIndex, isAllCausesPage]);
 
   return (
-    <section id="causes" className="bg-[#f9f9f9] py-24">
+    <section id="causes" className="bg-[var(--secondary-bg-color)] py-24">
       <div className="max-w-[1200px] mx-auto px-4">
         {/* ── Section Header ── */}
         <div className="text-center mb-16">
-          <div className="inline-block bg-[#ff5528] text-white font-['Montserrat'] font-bold text-[13px] uppercase tracking-[1px] px-6 py-2 rounded-full mb-5">
+          <div className="inline-block bg-[var(--secondary)] text-white font-['Montserrat'] font-bold text-[13px] uppercase tracking-[1px] px-6 py-2 rounded-full mb-5">
             OUR CAUSES
           </div>
-          <h2 className="font-['Montserrat'] font-extrabold text-[clamp(32px,4vw,46px)] text-black leading-tight max-w-[800px] mx-auto m-0">
+          <h2 className="font-['Montserrat'] font-extrabold text-[clamp(32px,4vw,46px)] text-[var(--bg-color)] leading-tight max-w-[800px] mx-auto m-0">
             You can check out our work. Are you ready for a better, Our Active
             Campaigns.
           </h2>
@@ -146,8 +146,8 @@ export default function Causes({ isAllCausesPage }) {
         {/* ── View All Causes Button ── */}
         {!isAllCausesPage && (
           <div className="text-center mt-12">
-            <Link href="/templates/template-5/causes">
-              <a className="inline-block bg-[#00b86b] text-white font-['Montserrat'] font-bold text-[14px] uppercase px-10 py-[18px] transition-colors duration-300 hover:bg-[#009e5c] no-underline">
+            <Link href="/templates/template-5/initiatives?tab=campaigns">
+              <a className="inline-block bg-[var(--primary)] text-white font-['Montserrat'] font-bold text-[14px] uppercase px-10 py-[18px] transition-colors duration-300 hover:bg-[var(--secondary)] no-underline rounded-full shadow-lg">
                 VIEW ALL CAUSES
               </a>
             </Link>

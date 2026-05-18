@@ -34,21 +34,10 @@ const EVENTS = [
 ];
 
 export default function Event({ isAllEventsPage }) {
-  const primaryColor = "#007B39";
-  const secondaryColor = "#FFA415";
-  const bgColor = "#121d18";
-  const secondaryBgColor = "#f9f9f9";
-
   const displayEvents = isAllEventsPage ? [...EVENTS, ...EVENTS] : EVENTS;
 
   return (
     <section className="bg-[var(--bg-color)] py-[120px] pb-[80px] relative overflow-hidden">
-      <style
-        dangerouslySetInnerHTML={{
-          __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; --bg-color: ${bgColor}; --secondary-bg-color: ${secondaryBgColor}; }`,
-        }}
-      />
-
       {/* Decorative blobs unchanged */}
       <div
         className="absolute top-0 left-[-100px] w-96 h-96 opacity-10 pointer-events-none rotate-12"
@@ -85,9 +74,7 @@ export default function Event({ isAllEventsPage }) {
         <div className="text-center mb-16 relative">
           <div className="inline-flex items-center gap-3 mb-4 relative z-10">
             <div className="w-2 h-2 rounded-full bg-[var(--secondary)]" />
-            <span className="text-[16px] text-white italic">
-              Our Events
-            </span>
+            <span className="text-[17px] text-white italic">Our Events</span>
           </div>
           <h2 className="text-[clamp(32px,4vw,48px)] leading-[1.2] text-white relative z-10">
             Events Schedule Upcoming
@@ -126,7 +113,7 @@ export default function Event({ isAllEventsPage }) {
                   </a>
                 </h3>
 
-                <p className="text-[15px] text-[#9ca3af]">
+                <p className="text-[17px] text-[#9ca3af]">
                   By {ev.by}
                   <span className="ml-3 text-[var(--secondary)]">
                     {ev.time}
@@ -145,12 +132,12 @@ export default function Event({ isAllEventsPage }) {
         {/* View All Events CTA */}
         {!isAllEventsPage && (
           <div className="flex justify-center mt-16 relative z-10">
-          <Link href="/templates/template-4/initiatives?tab=events">
-            <a className="t2-btn t2-btn-secondary">
-              <span>View All Events</span>
-            </a>
-          </Link>
-        </div>
+            <Link href="/templates/template-4/initiatives?tab=events">
+              <a className="t2-btn t2-btn-secondary">
+                <span>View All Events</span>
+              </a>
+            </Link>
+          </div>
         )}
       </div>
     </section>

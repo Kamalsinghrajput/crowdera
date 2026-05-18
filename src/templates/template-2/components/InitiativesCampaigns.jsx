@@ -73,7 +73,11 @@ export const campaigns = [
   },
 ];
 
-const InitiativesCampaigns = ({ data: initialCampaignData, primaryColor = "#007B39", secondaryColor = "#FFA415" }) => {
+const InitiativesCampaigns = ({
+  data: initialCampaignData,
+  primaryColor = "#007B39",
+  secondaryColor = "#FFA415",
+}) => {
   const campaignsList = initialCampaignData || campaigns;
 
   return (
@@ -97,16 +101,16 @@ const InitiativesCampaigns = ({ data: initialCampaignData, primaryColor = "#007B
         .t2-btn.t2-btn-secondary span, .t2-btn.t2-btn-secondary i { background-color: var(--secondary, #FFA415); color: var(--bg-color, #121d18); }
         .t2-btn.t2-btn-secondary span::before, .t2-btn.t2-btn-secondary i::after { background-color: var(--bg-color, #121d18); }
         .t2-btn.t2-btn-secondary:hover span, .t2-btn.t2-btn-secondary:hover i { color: white; }
-        
+
         /* Small Variant for Card */
         .t2-btn-sm span { height: 40px; padding: 0 20px; font-size: 11px; }
         .t2-btn-sm i { width: 40px; height: 40px; font-size: 14px; }
       `}</style>
-      
+
       {campaignsList.map((campaignItem) => {
         const progressPercentage = Math.min(
           100,
-          Math.round((campaignItem.raised / campaignItem.goal) * 100)
+          Math.round((campaignItem.raised / campaignItem.goal) * 100),
         );
         return (
           <div
@@ -152,7 +156,7 @@ const InitiativesCampaigns = ({ data: initialCampaignData, primaryColor = "#007B
               </div>
 
               {/* Description */}
-              <p className="text-gray-500 text-[15px] leading-relaxed line-clamp-2 mb-8">
+              <p className="text-gray-500 text-[17px] leading-relaxed line-clamp-2 mb-8">
                 {campaignItem.desc}
               </p>
 
@@ -178,7 +182,9 @@ const InitiativesCampaigns = ({ data: initialCampaignData, primaryColor = "#007B
                   <span>
                     Raised: ₹{campaignItem.raised.toLocaleString("en-IN")}
                   </span>
-                  <span>Goal: ₹{campaignItem.goal.toLocaleString("en-IN")}</span>
+                  <span>
+                    Goal: ₹{campaignItem.goal.toLocaleString("en-IN")}
+                  </span>
                 </div>
               </div>
 

@@ -247,7 +247,7 @@ const Initiatives = ({ initialTab = "campaigns" }) => {
         <div className="container mx-auto px-4 max-w-[1320px] relative z-10 text-center">
           <div className="inline-flex items-center gap-3 mb-6">
             <div className="w-2 h-2 rounded-full bg-[var(--secondary)]" />
-            <span className="text-[var(--secondary)] text-[16px] italic">
+            <span className="text-[var(--secondary)] text-[17px] italic">
               Make a Real Impact
             </span>
           </div>

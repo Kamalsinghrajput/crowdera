@@ -6,6 +6,7 @@ import BLog from "../../../src/templates/template-4/components/Blog";
 export default function BlogPage() {
   return (
     <>
+      <style>{`:root { --primary: #007B39; --secondary: #FFA415; --bg-color: #121d18; --secondary-bg-color: #f9f9f9; }`}</style>
       <Head>
         <title>Our Blog || Chioary</title>
       </Head>

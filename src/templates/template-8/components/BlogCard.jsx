@@ -7,7 +7,6 @@ import { FiArrowRight } from "react-icons/fi";
 export default function BlogCard({ blogData }) {
   return (
     <div className="bg-white rounded-[20px] overflow-hidden flex flex-col md:flex-row shadow-sm hover:shadow-xl transition-all duration-300 group relative z-0">
-      
       {/* Animated Green Background Overlay */}
       <div className="absolute inset-0 bg-[#005e46] scale-y-0 origin-bottom group-hover:scale-y-100 transition-transform duration-500 ease-in-out -z-10" />
 
@@ -28,7 +27,6 @@ export default function BlogCard({ blogData }) {
 
       {/* Content */}
       <div className="w-full md:w-[60%] p-8 md:p-10 flex flex-col justify-center z-10">
-        
         {/* Meta */}
         <p className="font-['Inter'] text-[12px] text-[#999999] group-hover:text-[rgba(255,255,255,0.7)] transition-colors duration-500 uppercase font-bold tracking-widest mb-3">
           USER BY: ADMIN
@@ -42,18 +40,23 @@ export default function BlogCard({ blogData }) {
         </Link>
 
         {/* Excerpt/Category as placeholder */}
-        <p className="font-['Inter'] text-[#777777] group-hover:text-white transition-colors duration-500 text-[15px] leading-[1.8] line-clamp-2 mb-8">
-          We explore the broader issues that affect our community and discuss how collective efforts can make a massive impact in areas like {blogData.category}.
+        <p className="font-['Inter'] text-[#777777] group-hover:text-white transition-colors duration-500 text-[17px] leading-[1.8] line-clamp-2 mb-8">
+          We explore the broader issues that affect our community and discuss
+          how collective efforts can make a massive impact in areas like{" "}
+          {blogData.category}.
         </p>
 
         {/* CTA */}
         <Link href="/templates/template-8/blog">
           <a className="inline-flex items-center gap-2 font-extrabold text-[14px] text-[#1A1A1A] group-hover:text-white transition-colors duration-500 uppercase tracking-[1px] no-underline mt-auto">
             <span>READ MORE</span>
-            <FiArrowRight size={18} strokeWidth={3} className="text-[#005e46] group-hover:text-white transition-colors" />
+            <FiArrowRight
+              size={18}
+              strokeWidth={3}
+              className="text-[#005e46] group-hover:text-white transition-colors"
+            />
           </a>
         </Link>
-
       </div>
     </div>
   );

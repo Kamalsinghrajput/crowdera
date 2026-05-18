@@ -89,11 +89,11 @@ export default function Causes({ isAllCausesPage }) {
 
   useEffect(() => {
     if (isAllCausesPage || causes.length <= visibleCount) return;
-    
+
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
     }, 4000);
-    
+
     return () => clearInterval(timer);
   }, [maxIndex, isAllCausesPage, visibleCount]);
 
@@ -102,7 +102,7 @@ export default function Causes({ isAllCausesPage }) {
       <div className="max-w-[1200px] mx-auto px-4">
         {/* ── Section Header ── */}
         <div className="text-center mb-16">
-          <span className="text-[#007b5e] font-bold text-[15px] mb-3 block">
+          <span className="text-[#007b5e] font-bold text-[17px] mb-3 block">
             Supporting Our Cause Together
           </span>
           <h2 className="font-extrabold text-[clamp(32px,4vw,46px)] text-black leading-[1.2] max-w-[700px] mx-auto m-0 mb-4">
@@ -153,7 +153,7 @@ export default function Causes({ isAllCausesPage }) {
         {!isAllCausesPage && (
           <div className="text-center mt-10">
             <Link href="/templates/template-8/causes">
-              <a className="inline-block bg-[#d9a96e] text-black font-bold text-[15px] px-10 py-4 rounded-md transition-colors duration-300 hover:bg-[#c4965d] no-underline shadow-md">
+              <a className="inline-block bg-[#d9a96e] text-black font-bold text-[17px] px-10 py-4 rounded-md transition-colors duration-300 hover:bg-[#c4965d] no-underline shadow-md">
                 Explore All
               </a>
             </Link>

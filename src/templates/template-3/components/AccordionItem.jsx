@@ -59,7 +59,7 @@ export default function AccordionItem({ faqData, isOpen, onToggle, index }) {
         style={{ height }}
       >
         <div ref={contentRef} className="px-6 pb-6 pl-[70px]">
-          <p className="text-[15px] text-[#4b5563] leading-[1.85] m-0 font-medium">
+          <p className="text-[17px] text-[#4b5563] leading-[1.85] m-0 font-medium">
             {faqData.answer}
           </p>
         </div>

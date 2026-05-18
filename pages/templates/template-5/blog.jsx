@@ -6,6 +6,7 @@ import BLog from "../../../src/templates/template-5/components/Blog";
 export default function BlogPage() {
   return (
     <>
+      <style>{`:root { --primary: #00b86b; --secondary: #ff5528; --bg-color: #111111; --secondary-bg-color: #f9f9f9; }`}</style>
       <Head>
         <title>Our Blog || Tamun</title>
       </Head>
@@ -18,7 +19,7 @@ export default function BlogPage() {
       >
         <Navbar />
         <main style={{ paddingTop: "50px" }}>
-          <div className="bg-[#00b86b] py-[80px] text-center border-b-0">
+          <div className="bg-[var(--primary)] py-[80px] text-center border-b-0">
             <h1 className="text-[48px] text-white font-['Montserrat'] font-bold">
               All Blog Posts
             </h1>

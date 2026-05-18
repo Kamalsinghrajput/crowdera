@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import React, { useState } from "react";
 
 export default function GetInTouch() {
@@ -29,24 +29,24 @@ export default function GetInTouch() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-[50px] items-start">
           {/* Left Column */}
           <div className="lg:col-span-5">
-            <h3 className="text-[clamp(32px,5vw,50px)] font-bold text-[#121d18] leading-[1.1] mb-6">
+            <h3 className="text-[clamp(32px,5vw,50px)] font-bold text-[var(--bg-color)] leading-[1.1] mb-6">
               Have Questions? <br />
               Get In Touch!
             </h3>
-            <p className="text-[16px] text-[#4b5563] font-medium leading-[1.8] mb-8 max-w-[320px]">
+            <p className="text-[17px] text-[#4b5563] font-medium leading-[1.8] mb-8 max-w-[320px]">
               2118 Thornridge Cir. Syracuse, Connecticut <br />
               35624.
             </p>
             <a
               href="mailto:info@gmail.com"
-              className="text-[20px] font-bold text-[#007B39] hover:text-[#FFA415] transition-colors"
+              className="text-[20px] font-bold text-[var(--primary)] hover:text-[var(--secondary)] transition-colors"
             >
               info@gmail.com
             </a>
           </div>
 
           {/* Right Column */}
-          <div className="lg:col-span-7 bg-[#f9f9f9] p-[40px] md:p-[50px] rounded-[10px]">
+          <div className="lg:col-span-7 bg-[var(--secondary-bg-color)] p-[40px] md:p-[50px] rounded-[10px]">
             <form onSubmit={handleSubmit} className="flex flex-col gap-[30px]">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-[30px]">
                 <input
@@ -56,7 +56,7 @@ export default function GetInTouch() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full h-[60px] px-6 bg-white border border-[#e5e7eb] rounded-[5px] text-[15px] text-[#121d18] focus:outline-none focus:border-[#007B39] transition-colors placeholder:text-[#9ca3af]"
+                  className="w-full h-[60px] px-6 bg-white border border-[#e5e7eb] rounded-[5px] text-[17px] text-[var(--bg-color)] focus:outline-none focus:border-[var(--primary)] transition-colors placeholder:text-[#9ca3af]"
                 />
                 <input
                   type="email"
@@ -65,7 +65,7 @@ export default function GetInTouch() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full h-[60px] px-6 bg-white border border-[#e5e7eb] rounded-[5px] text-[15px] text-[#121d18] focus:outline-none focus:border-[#007B39] transition-colors placeholder:text-[#9ca3af]"
+                  className="w-full h-[60px] px-6 bg-white border border-[#e5e7eb] rounded-[5px] text-[17px] text-[var(--bg-color)] focus:outline-none focus:border-[var(--primary)] transition-colors placeholder:text-[#9ca3af]"
                 />
               </div>
 
@@ -76,7 +76,7 @@ export default function GetInTouch() {
                 value={formData.subject}
                 onChange={handleChange}
                 required
-                className="w-full h-[60px] px-6 bg-white border border-[#e5e7eb] rounded-[5px] text-[15px] text-[#121d18] focus:outline-none focus:border-[#007B39] transition-colors placeholder:text-[#9ca3af]"
+                className="w-full h-[60px] px-6 bg-white border border-[#e5e7eb] rounded-[5px] text-[17px] text-[var(--bg-color)] focus:outline-none focus:border-[var(--primary)] transition-colors placeholder:text-[#9ca3af]"
               />
 
               <textarea
@@ -85,7 +85,7 @@ export default function GetInTouch() {
                 value={formData.message}
                 onChange={handleChange}
                 required
-                className="w-full h-[150px] px-6 py-5 bg-white border border-[#e5e7eb] rounded-[5px] text-[15px] text-[#121d18] focus:outline-none focus:border-[#007B39] transition-colors resize-none placeholder:text-[#9ca3af]"
+                className="w-full h-[150px] px-6 py-5 bg-white border border-[#e5e7eb] rounded-[5px] text-[17px] text-[var(--bg-color)] focus:outline-none focus:border-[var(--primary)] transition-colors resize-none placeholder:text-[#9ca3af]"
               ></textarea>
 
               <div className="flex items-center gap-3">
@@ -95,18 +95,18 @@ export default function GetInTouch() {
                   name="agree"
                   checked={formData.agree}
                   onChange={handleChange}
-                  className="w-[18px] h-[18px] accent-[#007B39] cursor-pointer"
+                  className="w-[18px] h-[18px] accent-[var(--primary)] cursor-pointer"
                 />
                 <label
                   htmlFor="agree"
-                  className="text-[15px] text-[#4b5563] cursor-pointer"
+                  className="text-[17px] text-[#4b5563] cursor-pointer"
                 >
                   I Agree that my data is collected and Stored.
                 </label>
               </div>
 
               <div>
-                <button type="submit" className="t2-btn border-none">
+                <button type="submit" className="inline-flex items-center gap-2 bg-[var(--primary)] text-white font-['Montserrat'] font-bold text-[14px] uppercase px-10 py-[18px] transition-all duration-300 hover:bg-[var(--secondary)] rounded-full shadow-lg">
                   <span>Submit Now</span>
                   <i>
                     <svg
@@ -130,4 +130,3 @@ export default function GetInTouch() {
     </section>
   );
 }
-

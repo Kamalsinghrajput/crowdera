@@ -18,7 +18,6 @@ export default function NewsLetter() {
 
   return (
     <section className="relative pt-[120px] pb-[80px] overflow-hidden bg-[var(--bg-color)]">
-
       {/* Background image */}
       <div
         className="absolute inset-0 bg-cover bg-center grayscale"
@@ -37,7 +36,7 @@ export default function NewsLetter() {
           <br /> Our Newsletter
         </h2>
 
-        <p className="text-[16px] text-white/80 leading-[1.7] mb-12 max-w-[650px] mx-auto">
+        <p className="text-[17px] text-white/80 leading-[1.7] mb-12 max-w-[650px] mx-auto">
           Join Our Community Of Supporters By Subscribing To Our Newsletter!
           <br />
           Get The Latest Updates On Our Projects,
@@ -53,7 +52,7 @@ export default function NewsLetter() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="w-full bg-transparent border border-white/20 rounded-full px-8 py-[18px] text-[16px] text-white placeholder:text-white/40 focus:outline-none focus:border-[var(--secondary)] transition-colors pr-[70px]"
+            className="w-full bg-transparent border border-white/20 rounded-full px-8 py-[18px] text-[17px] text-white placeholder:text-white/40 focus:outline-none focus:border-[var(--secondary)] transition-colors pr-[70px]"
           />
           <button
             type="submit"

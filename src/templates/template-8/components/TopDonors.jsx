@@ -100,7 +100,7 @@ export default function TopDonors() {
       <div className="max-w-[1320px] mx-auto px-3">
         {/* Header */}
         <div className="text-center mb-[60px]">
-          <span className="text-white/80 font-bold text-[15px] uppercase tracking-wider mb-3 block">
+          <span className="text-white/80 font-bold text-[17px] uppercase tracking-wider mb-3 block">
             Hall of Fame
           </span>
           <h2

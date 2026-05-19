@@ -39,8 +39,18 @@ export default function TeamCard({ member }) {
     const onKey = (e) => {
       if (e.key === "Escape") closeModal();
     };
-    if (showModal) window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+
+    if (showModal) {
+      window.addEventListener("keydown", onKey);
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = ""; // Reset scroll style on unmount
+    };
   }, [showModal]);
 
   return (
@@ -154,7 +164,7 @@ export default function TeamCard({ member }) {
             {/* Right Content */}
             <div className="w-full md:w-1/2 p-8 md:p-10 flex flex-col text-left font-['Inter']">
               <div className="mb-4">
-                <span className="bg-[var(--secondary)] text-white text-[11px] font-black py-1.5 rounded-md uppercase tracking-widest inline-block">
+                <span className="bg-[var(--secondary)] text-white text-[11px] font-black p-1.5 rounded-md uppercase tracking-widest inline-block">
                   Board Member
                 </span>
               </div>

@@ -58,7 +58,7 @@ export default function FeaturedIn() {
           </h2>
         </div>
 
-        <div className="overflow-hidden bg-white py-12 px-4 shadow-sm rounded-xl">
+        <div className="overflow-hidden py-12 px-4 ">
           <div
             className="flex items-center transition-transform duration-700 ease-in-out"
             style={{ transform: `translateX(-${currentIndex * 260}px)` }}

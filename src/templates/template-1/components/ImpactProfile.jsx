@@ -123,12 +123,13 @@ export default function ImpactProfile() {
             </div>
 
             {/* View Annual Report button */}
-            <Link href={`/templates/template-1/annual-report/${CURRENT_YEAR}`}>
-              <a className="inline-flex items-center gap-2 text-white font-bold border-b-2 border-white/60 pb-0.5 hover:border-white hover:gap-3 transition-all duration-200 text-base">
-                View Annual Report {CURRENT_YEAR}
-                <ArrowRight size={16} />
-              </a>
-            </Link>
+            <div className="flex justify-center">
+              <Link href={`/templates/template-1/annual-report/${CURRENT_YEAR}`}>
+                <a className="inline-flex items-center gap-2 bg-white text-[#E8961A] font-bold text-[17px] px-8 py-4 rounded-md hover:opacity-90 transition-opacity">
+                  View Annual Report {CURRENT_YEAR}
+                </a>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

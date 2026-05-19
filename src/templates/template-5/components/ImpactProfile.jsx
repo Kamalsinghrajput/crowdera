@@ -115,24 +115,11 @@ export default function ImpactProfile() {
             {/* View Annual Report button */}
             <div className="flex justify-center">
               <Link
-                href={`/templates/template-2/annual-report/${CURRENT_YEAR}`}
-                className="inline-flex items-center gap-3 group text-white text-[17px] font-bold hover:text-[var(--secondary)] transition-colors duration-300"
+                href={`/templates/template-5/annual-report/${CURRENT_YEAR}`}
               >
-                <span className="flex items-center gap-3">
+                <a className="inline-block bg-[var(--secondary)] text-white font-bold text-[17px] px-8 py-4 rounded-md transition-colors hover:opacity-90 no-underline">
                   View Annual Report {CURRENT_YEAR}
-                  <span className="w-10 h-10 rounded-full bg-[var(--bg-color)] text-white flex items-center justify-center transition-all duration-300 group-hover:bg-[var(--secondary)] group-hover:text-white">
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                    >
-                      <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
-                  </span>
-                </span>
+                </a>
               </Link>
             </div>
           </div>

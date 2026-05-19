@@ -98,7 +98,7 @@ export default function Testimonial() {
                       <h4 className="font-['Montserrat'] font-bold text-[18px] text-[var(--bg-color)] m-0">
                         {testimonial.name}
                       </h4>
-                      <span className="font-['Inter'] text-[14px] text-[#777777]">
+                      <span className="font-['Inter'] text-[15px] text-[#777777]">
                         {testimonial.role}
                       </span>
                     </div>

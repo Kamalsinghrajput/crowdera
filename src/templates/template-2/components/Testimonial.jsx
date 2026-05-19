@@ -98,7 +98,7 @@ export default function Testimonial() {
         <div className="text-center mb-20">
           <div className="flex items-center justify-center gap-2 mb-4">
             <div className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]" />
-            <span className="text-[14px] text-white font-bold tracking-wider italic">
+            <span className="text-[15px] text-white font-bold tracking-wider italic">
               Our Testimonial
             </span>
           </div>
@@ -192,7 +192,7 @@ export default function Testimonial() {
                     <h4 className="text-[18px] text-white font-bold leading-tight mb-1">
                       {testimonial.name}
                     </h4>
-                    <span className="text-[14px] text-white/80 font-medium">
+                    <span className="text-[15px] text-white/80 font-medium">
                       {testimonial.role}
                     </span>
                   </div>

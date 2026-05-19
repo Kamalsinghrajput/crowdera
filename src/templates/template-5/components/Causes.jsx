@@ -147,7 +147,7 @@ export default function Causes({ isAllCausesPage }) {
         {!isAllCausesPage && (
           <div className="text-center mt-12">
             <Link href="/templates/template-5/initiatives?tab=campaigns">
-              <a className="inline-block bg-[var(--primary)] text-white font-['Montserrat'] font-bold text-[14px] uppercase px-10 py-[18px] transition-colors duration-300 hover:bg-[var(--secondary)] no-underline rounded-full shadow-lg">
+              <a className="inline-block bg-[var(--primary)] text-white font-['Montserrat'] font-bold text-[15px] uppercase px-10 py-[18px] transition-colors duration-300 hover:bg-[var(--secondary)] no-underline rounded-full shadow-lg">
                 VIEW ALL CAUSES
               </a>
             </Link>

@@ -1,87 +1,160 @@
 import React from "react";
 import Image from "next/image";
 import { Heart } from "lucide-react";
+import { gsap } from "gsap";
 
 export const fundraisers = [
   {
-    id: "fund-9-1",
-    img: "https://images.unsplash.com/photo-1532629345422-7515f3d16bb8?auto=format&fit=crop&w=600&q=80",
-    name: "Wilson Family",
-    campaignName: "Memorial Fund for James",
-    category: "Memorial",
-    desc: "A memorial fund dedicated to supporting the family and honoring the legacy of James Wilson.",
-    raised: 12000,
+    id: "fund-1",
+    img: "https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&auto=format&fit=crop&q=80",
+    name: "Alex Johnson",
+    campaignName: "Mental Health Outreach",
+    category: "Healthcare",
+    desc: "Helping people access therapy and mental health resources during difficult times.",
+    raised: 12500,
     goal: 20000,
-    donors: 85,
+    donors: 42,
     isVerified: true,
-    isTaxExempt: true,
+    isTaxExempt: false,
   },
 ];
 
-const InitiativesFundraisers = ({ data: initialFundraisersData, primaryColor = "#dc2626" }) => {
+const InitiativesFundraisers = ({
+  data: initialFundraisersData,
+  primaryColor = "var(--primary)",
+  secondaryColor = "var(--secondary)",
+}) => {
   const fundraisersList = initialFundraisersData || fundraisers;
+
+  const handleMouseMove = (e) => {
+    const card = e.currentTarget;
+    const { left, top, width, height } = card.getBoundingClientRect();
+    const x = (e.clientX - left - width / 2) / (width / 2);
+    const y = (e.clientY - top - height / 2) / (height / 2);
+
+    gsap.to(card, {
+      rotateX: -y * 10,
+      rotateY: x * 10,
+      duration: 0.2,
+      ease: "power2.out",
+    });
+  };
+
+  const handleMouseEnter = (e) => {
+    const card = e.currentTarget;
+    gsap.to(card, {
+      y: -10,
+      boxShadow: "0 25px 50px -12px rgba(0,0,0,0.15)",
+      duration: 0.4,
+      ease: "power2.out",
+      transformPerspective: 1000,
+      transformOrigin: "center center",
+    });
+  };
+
+  const handleMouseLeave = (e) => {
+    const card = e.currentTarget;
+    gsap.to(card, {
+      y: 0,
+      rotateX: 0,
+      rotateY: 0,
+      boxShadow: "0 1px 2px 0 rgba(0,0,0,0.05)",
+      duration: 0.5,
+      ease: "power2.out",
+    });
+  };
 
   return (
     <>
       {fundraisersList.map((fundraiserItem) => {
-        const progressPercentage = Math.min(100, Math.round((fundraiserItem.raised / fundraiserItem.goal) * 100));
+        const progressPercentage = Math.min(
+          100,
+          Math.round((fundraiserItem.raised / fundraiserItem.goal) * 100),
+        );
         return (
-          <div key={fundraiserItem.id} className="bg-white border-4 border-black hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 group flex flex-col opacity-0 p-8 text-left">
-
+          <div
+            key={fundraiserItem.id}
+            onMouseEnter={handleMouseEnter}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            className="bg-white rounded-2xl group flex flex-col border border-gray-100 opacity-0 p-8 text-left relative"
+            style={{ willChange: "transform" }}
+          >
             {/* Profile Avatar + Name + Subtitle */}
             <div className="flex items-center gap-4 mb-8">
-              <div className="relative w-16 h-16 bg-black flex-shrink-0 border-4 border-black overflow-hidden shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                <Image src={fundraiserItem.img} alt={fundraiserItem.name} layout="fill" objectFit="cover" className="grayscale group-hover:grayscale-0 transition-all duration-500" />
+              <div className="relative w-16 h-16 rounded-full overflow-hidden flex-shrink-0 border-2 border-[var(--secondary)]/20 shadow-md">
+                <Image
+                  src={fundraiserItem.img}
+                  alt={fundraiserItem.name}
+                  layout="fill"
+                  objectFit="cover"
+                />
               </div>
               <div className="min-w-0">
-                <div className="font-black text-black text-2xl leading-none uppercase tracking-tighter italic">{fundraiserItem.name}</div>
-                <div className="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em] mt-1 truncate">SUPPORTING {fundraiserItem.campaignName || fundraiserItem.organizer}</div>
+                <div className="font-bold text-[#111] text-xl leading-tight">
+                  {fundraiserItem.name}
+                </div>
+                <div className="text-[12px] font-bold text-gray-500 uppercase tracking-widest mt-1 truncate">
+                  Supporting{" "}
+                  {fundraiserItem.campaignName || fundraiserItem.organizer}
+                </div>
               </div>
             </div>
 
             {/* Badges */}
             <div className="flex gap-2 flex-wrap mb-6">
               {fundraiserItem.isVerified && (
-                <span className="bg-black text-white text-[10px] font-black py-1 px-4 uppercase tracking-[0.2em]">VERIFIED</span>
+                <span className="bg-[var(--primary)] text-white text-[12px] font-bold py-1.5 px-4 rounded uppercase tracking-widest shadow-sm">
+                  Verified
+                </span>
               )}
               {fundraiserItem.isTaxExempt && (
-                <span className="bg-red-600 text-white text-[10px] font-black py-1 px-4 uppercase tracking-[0.2em]">TAX EXEMPT</span>
+                <span className="bg-[var(--secondary)] text-[#2b1f18] text-[12px] font-bold py-1.5 px-4 rounded uppercase tracking-widest shadow-sm">
+                  Tax Exempt
+                </span>
               )}
             </div>
 
-            {/* Description — brutalist style */}
-            <p className="text-black text-sm leading-tight mb-8 line-clamp-3 font-black uppercase tracking-tight italic border-l-4 border-red-600 pl-4">
+            {/* Description — using primary color for consistency with design style */}
+            <p className="text-[var(--primary)] text-[17px] leading-relaxed mb-8 line-clamp-3 font-semibold">
               {fundraiserItem.desc}
             </p>
 
             {/* Fundraising Progress */}
-            <div className="bg-white border-2 border-black p-6 mb-8">
-              <div className="flex justify-between items-end mb-3">
-                <span className="text-[10px] font-black text-black uppercase tracking-[0.2em]">PROGRESS</span>
-                <span className="text-xl font-black text-red-600 italic leading-none">{progressPercentage}%</span>
+            <div className="bg-gray-50 rounded-xl p-6 mb-8 border border-gray-100">
+              <div className="flex justify-between items-center mb-3">
+                <span className="text-[12px] font-black text-[#111] uppercase tracking-widest">
+                  Donation Progress
+                </span>
+                <span className="text-sm font-black text-[var(--primary)]">
+                  {progressPercentage}%
+                </span>
               </div>
-              <div className="w-full bg-gray-100 h-4 border-2 border-black mb-3 overflow-hidden">
+              <div className="w-full bg-gray-200 rounded-full h-1.5 mb-3 overflow-hidden">
                 <div
-                  className="h-full bg-red-600 transition-all duration-1000 ease-out"
+                  className="h-full rounded-full transition-all duration-1000 ease-out bg-[var(--primary)]"
                   style={{ width: `${progressPercentage}%` }}
                 />
               </div>
-              <div className="flex justify-between text-[10px] font-black text-black uppercase tracking-widest">
-                <span>RAISED: ₹{fundraiserItem.raised.toLocaleString("en-IN")}</span>
-                <span>GOAL: ₹{fundraiserItem.goal.toLocaleString("en-IN")}</span>
+              <div className="flex justify-between text-[12px] font-bold text-gray-500 uppercase tracking-wider">
+                <span>
+                  Raised: ₹{fundraiserItem.raised.toLocaleString("en-IN")}
+                </span>
+                <span>
+                  Goal: ₹{fundraiserItem.goal.toLocaleString("en-IN")}
+                </span>
               </div>
             </div>
 
             {/* Buttons */}
-            <div className="mt-auto grid grid-cols-2 gap-4">
-              <button className="bg-black text-white font-black py-4 text-xs uppercase tracking-[0.3em] hover:bg-red-600 transition-all active:translate-y-1 active:shadow-none shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                DONATE
+            <div className="mt-auto grid grid-cols-2 gap-3">
+              <button className="bg-[var(--primary)] text-white font-bold py-3.5 rounded-full text-[12px] uppercase tracking-widest hover:bg-[#111] transition-all active:scale-95 shadow-md">
+                Donate
               </button>
-              <button className="bg-white text-black font-black py-4 text-xs uppercase tracking-[0.3em] border-4 border-black hover:bg-gray-100 transition-all active:translate-y-1 active:shadow-none shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                VIEW
+              <button className="bg-white text-[#111] font-bold py-3.5 rounded-full text-[12px] uppercase tracking-widest border-2 border-[#111] hover:bg-gray-50 transition-all active:scale-95">
+                View
               </button>
             </div>
-
           </div>
         );
       })}

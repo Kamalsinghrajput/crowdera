@@ -31,7 +31,6 @@ export default function Blog({ isAllBlogsPage }) {
   return (
     <section className="py-24 bg-[var(--secondary-bg-color)]">
       <div className="max-w-[1200px] mx-auto px-4">
-        
         {/* Section Header */}
         <div className="text-center mb-16">
           <div className="inline-block bg-[var(--primary)] text-white font-['Montserrat'] font-bold text-[13px] uppercase tracking-[1px] px-5 py-2 rounded-full mb-5">
@@ -53,13 +52,12 @@ export default function Blog({ isAllBlogsPage }) {
         {!isAllBlogsPage && (
           <div className="text-center">
             <Link href="/templates/template-5/blog">
-              <a className="inline-block bg-[var(--primary)] text-white font-['Montserrat'] font-bold text-[14px] uppercase px-12 py-[20px] transition-colors duration-300 hover:bg-[var(--secondary)] no-underline shadow-lg rounded-full">
+              <a className="inline-block bg-[var(--primary)] text-white font-['Montserrat'] font-bold text-[15px] uppercase px-12 py-[20px] transition-colors duration-300 hover:bg-[var(--secondary)] no-underline shadow-lg rounded-full">
                 READ MORE
               </a>
             </Link>
           </div>
         )}
-
       </div>
     </section>
   );

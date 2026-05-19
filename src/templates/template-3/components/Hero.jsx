@@ -88,7 +88,7 @@ export default function Hero() {
               className="flex items-center gap-3 mb-6 animate-[slideInUp_0.7s_ease_forwards]"
             >
               <div className="w-3 h-3 rounded-full bg-[#007B39]" />
-              <span className="text-[14px] md:text-[17px] font-bold text-[#121d18] tracking-[0.1em] uppercase font-sans">
+              <span className="text-[15px] md:text-[17px] font-bold text-[#121d18] tracking-[0.1em] uppercase font-sans">
                 {slide.subtitle}
               </span>
             </div>

@@ -29,18 +29,18 @@ const NAV_ITEMS = [
   },
   { 
     label: "Causes", 
-    href: "/templates/template-8/initiatives?tab=campaigns",
+    href: "#causes",
     subItems: [
-      { label: "Active Causes", href: "/templates/template-8/initiatives?tab=campaigns" },
+      { label: "Active Causes", href: "#causes" },
       { label: "Top Donors", href: "#top-donors" }
     ]
   },
   { 
     label: "Events", 
-    href: "/templates/template-8/initiatives?tab=events",
+    href: "#events",
     subItems: [
-      { label: "Upcoming Events", href: "/templates/template-8/initiatives?tab=events" },
-      { label: "Volunteer", href: "#volunteer" },
+      { label: "Upcoming Events", href: "#events" },
+      { label: "Volunteer", href: "#join-us-volunteer" },
       { label: "Newsletter", href: "#newsletter" }
     ]
   },
@@ -127,7 +127,7 @@ export default function Navbar() {
       <header className="absolute top-0 left-0 right-0 z-[999]">
         {/* TOP BAR */}
         <div
-          className={`bg-[#00715D] overflow-hidden transition-all duration-300 ${
+          className={`bg-[var(--primary)] overflow-hidden transition-all duration-300 ${
             scrolled ? "h-0" : "h-[80px]"
           }`}
         >
@@ -174,8 +174,8 @@ export default function Navbar() {
                     <a
                       href={item.href}
                       onClick={(e) => scrollTo(e, item.href)}
-                      className="relative text-sm font-bold uppercase py-8 flex items-center gap-1 hover:text-[#D9A86A]
-                      after:absolute after:bottom-6 after:left-0 after:h-[2px] after:w-0 after:bg-[#D9A86A]
+                      className="relative text-sm font-bold uppercase py-8 flex items-center gap-1 hover:text-[var(--secondary)]
+                      after:absolute after:bottom-6 after:left-0 after:h-[2px] after:w-0 after:bg-[var(--secondary)]
                       after:transition-all group-hover:after:w-full"
                     >
                       {item.label}
@@ -183,13 +183,13 @@ export default function Navbar() {
                     </a>
 
                     {item.subItems && (
-                      <div className="absolute top-full left-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-3 group-hover:translate-y-0 bg-white shadow-xl border-t-4 border-[#00715D] rounded-b-lg min-w-[240px]">
+                      <div className="absolute top-full left-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-3 group-hover:translate-y-0 bg-white shadow-xl border-t-4 border-[var(--primary)] rounded-b-lg min-w-[240px]">
                         {item.subItems.map((sub) => (
                           <a
                             key={sub.label}
                             href={sub.href}
                             onClick={(e) => scrollTo(e, sub.href)}
-                            className="block px-5 py-3 text-sm hover:bg-[#00b86b]/10 hover:text-[#00b86b] hover:pl-7 transition-all"
+                            className="block px-5 py-3 text-sm hover:bg-[var(--primary)]/10 hover:text-[var(--primary)] hover:pl-7 transition-all"
                           >
                             {sub.label}
                           </a>
@@ -205,7 +205,7 @@ export default function Navbar() {
                 <a
                   href="#donate"
                   onClick={(e) => scrollTo(e, "#donate")}
-                  className="hidden lg:flex bg-[#D9A86A]  px-6 py-3 rounded-full text-sm font-bold shadow-md hover:-translate-y-1 transition hover:bg-[#00715D] hover:text-white"
+                  className="hidden lg:flex bg-[var(--secondary)]  px-6 py-3 rounded-full text-sm font-bold shadow-md hover:-translate-y-1 transition hover:bg-[var(--primary)] hover:text-white"
                 >
                   Donate Now
                 </a>
@@ -221,13 +221,13 @@ export default function Navbar() {
                     </button>
 
                     {overflowOpen && (
-                      <div className="absolute right-0 top-[calc(100%+10px)] bg-white shadow-xl border-t-4 border-[#00b86b] rounded-b-lg animate-fadeDown">
+                      <div className="absolute right-0 top-[calc(100%+10px)] bg-white shadow-xl border-t-4 border-[var(--primary)] rounded-b-lg animate-fadeDown">
                         {overflowLinks.map((link) => (
                           <a
                             key={link.label}
                             href={link.href}
                             onClick={(e) => scrollTo(e, link.href)}
-                            className="block px-5 py-3 hover:bg-[#00b86b]/10 hover:text-[#00b86b]"
+                            className="block px-5 py-3 hover:bg-[var(--primary)]/10 hover:text-[var(--primary)]"
                           >
                             {link.label}
                           </a>
@@ -240,7 +240,7 @@ export default function Navbar() {
                 {/* MOBILE BTN */}
                 <button
                   onClick={() => setMobileOpen(true)}
-                  className="lg:hidden bg-[#00b86b] text-white p-2 rounded"
+                  className="lg:hidden bg-[var(--primary)] text-white p-2 rounded"
                 >
                   <FiMenu size={24} />
                 </button>

@@ -42,7 +42,7 @@ function AccordionItem({ faq, isOpen, onToggle, index }) {
         {/* Number + Question */}
         <div className="flex items-center gap-4 flex-1">
           <span
-            className={`  text-[14px] shrink-0 transition-colors duration-300 min-w-[28px] ${isOpen ? "text-[var(--secondary)]" : "text-[var(--bg-color)]/30"}`}
+            className={`  text-[15px] shrink-0 transition-colors duration-300 min-w-[28px] ${isOpen ? "text-[var(--secondary)]" : "text-[var(--bg-color)]/30"}`}
           >
             {String(index + 1).padStart(2, "0")}
           </span>
@@ -126,7 +126,7 @@ export default function Faq() {
                 <div className="text-[48px] text-[var(--secondary)] leading-none">
                   24/7
                 </div>
-                <div className="text-[14px] text-white/80 mt-2 tracking-[0.05em]">
+                <div className="text-[15px] text-white/80 mt-2 tracking-[0.05em]">
                   Support Available
                 </div>
               </div>

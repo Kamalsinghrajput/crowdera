@@ -11,7 +11,7 @@ export default function JoinUsVolunteer() {
         "https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&q=80&w=1000",
       link: "#",
       btnClass:
-        "inline-flex items-center gap-2 bg-[var(--primary)] text-white font-['Montserrat'] font-bold text-[14px] uppercase px-8 py-4 rounded-full shadow-lg transition-all duration-300 hover:bg-[var(--secondary)] no-underline",
+        "inline-flex items-center gap-2 bg-[var(--primary)] text-white font-['Montserrat'] font-bold text-[15px] uppercase px-8 py-4 rounded-full shadow-lg transition-all duration-300 hover:bg-[var(--secondary)] no-underline",
     },
     {
       title: "Become Volunteer",
@@ -20,7 +20,7 @@ export default function JoinUsVolunteer() {
         "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80&w=1000",
       link: "#",
       btnClass:
-        "inline-flex items-center gap-2 bg-[var(--secondary)] text-white font-['Montserrat'] font-bold text-[14px] uppercase px-8 py-4 rounded-full shadow-lg transition-all duration-300 hover:bg-[var(--primary)] no-underline",
+        "inline-flex items-center gap-2 bg-[var(--secondary)] text-white font-['Montserrat'] font-bold text-[15px] uppercase px-8 py-4 rounded-full shadow-lg transition-all duration-300 hover:bg-[var(--primary)] no-underline",
     },
   ];
 

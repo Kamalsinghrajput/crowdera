@@ -8,7 +8,7 @@ export default function BlogCard({ blogData }) {
   return (
     <div className="bg-white rounded-[20px] overflow-hidden flex flex-col md:flex-row shadow-sm hover:shadow-xl transition-all duration-300 group relative z-0">
       {/* Animated Green Background Overlay */}
-      <div className="absolute inset-0 bg-[#005e46] scale-y-0 origin-bottom group-hover:scale-y-100 transition-transform duration-500 ease-in-out -z-10" />
+      <div className="absolute inset-0 bg-[var(--primary)] scale-y-0 origin-bottom group-hover:scale-y-100 transition-transform duration-500 ease-in-out -z-10" />
 
       {/* Thumbnail */}
       <div className="w-full md:w-[40%] relative min-h-[250px] overflow-hidden flex-shrink-0 z-10">
@@ -20,7 +20,7 @@ export default function BlogCard({ blogData }) {
           className="transition-transform duration-700 ease-in-out group-hover:scale-110"
         />
         {/* Date badge on image */}
-        <div className="absolute top-4 left-4 bg-[#d9a96e] text-black font-bold text-[12px] uppercase px-3 py-1 rounded">
+        <div className="absolute top-4 left-4 bg-[var(--secondary)] text-black font-bold text-[12px] uppercase px-3 py-1 rounded">
           {blogData.date}
         </div>
       </div>
@@ -40,7 +40,7 @@ export default function BlogCard({ blogData }) {
         </Link>
 
         {/* Excerpt/Category as placeholder */}
-        <p className="font-['Inter'] text-[#777777] group-hover:text-white transition-colors duration-500 text-[17px] leading-[1.8] line-clamp-2 mb-8">
+        <p className="font-['Inter'] text-[var(--text-color)] group-hover:text-white transition-colors duration-500 text-[17px] leading-[1.8] line-clamp-2 mb-8">
           We explore the broader issues that affect our community and discuss
           how collective efforts can make a massive impact in areas like{" "}
           {blogData.category}.
@@ -48,12 +48,12 @@ export default function BlogCard({ blogData }) {
 
         {/* CTA */}
         <Link href="/templates/template-8/blog">
-          <a className="inline-flex items-center gap-2 font-extrabold text-[14px] text-[#1A1A1A] group-hover:text-white transition-colors duration-500 uppercase tracking-[1px] no-underline mt-auto">
+          <a className="inline-flex items-center gap-2 font-extrabold text-[15px] text-[var(--bg-color)] group-hover:text-white transition-colors duration-500 uppercase tracking-[1px] no-underline mt-auto">
             <span>READ MORE</span>
             <FiArrowRight
               size={18}
               strokeWidth={3}
-              className="text-[#005e46] group-hover:text-white transition-colors"
+              className="text-[var(--primary)] group-hover:text-white transition-colors"
             />
           </a>
         </Link>

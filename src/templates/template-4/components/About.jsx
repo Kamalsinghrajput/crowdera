@@ -82,7 +82,7 @@ export default function About() {
                             className="text-[var(--bg-color)] group-hover:text-white transition-colors duration-300"
                           />
                         </div>
-                        <span className="text-[14px] font-bold text-[var(--bg-color)]">
+                        <span className="text-[15px] font-bold text-[var(--bg-color)]">
                           {tab.key}
                         </span>
                       </div>

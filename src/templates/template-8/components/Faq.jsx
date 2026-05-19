@@ -41,14 +41,14 @@ export default function Faq() {
           {/* Left */}
           <div>
             <div className="inline-flex items-center gap-3 mb-4">
-              <span className="text-[#005e46] font-bold text-[17px] uppercase tracking-wider">
+              <span className="text-[var(--primary)] font-bold text-[17px] uppercase tracking-wider">
                 Our FAQ
               </span>
             </div>
 
             <h2
               ref={headingRef}
-              className="text-[clamp(32px,4vw,46px)] leading-[1.15] text-[#1A1A1A] mb-5 font-extrabold"
+              className="text-[clamp(32px,4vw,46px)] leading-[1.15] text-[var(--bg-color)] mb-5 font-extrabold"
             >
               Frequently Asked
               <br /> Questions.
@@ -60,7 +60,7 @@ export default function Faq() {
             </p>
 
             <Link href="#">
-              <a className="inline-block bg-[#d9a96e] text-black font-bold text-[17px] px-8 py-4 rounded-md transition-colors hover:bg-[#c4965d] no-underline">
+              <a className="inline-block bg-[var(--secondary)] text-black font-bold text-[17px] px-8 py-4 rounded-md transition-colors hover:bg-[#c4965d] no-underline">
                 More Questions
               </a>
             </Link>
@@ -75,10 +75,10 @@ export default function Faq() {
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-[rgba(18,29,24,0.55)] flex flex-col items-center justify-center">
-                <div className="text-[48px] text-[#d9a96e] font-bold leading-none">
+                <div className="text-[48px] text-[var(--secondary)] font-bold leading-none">
                   24/7
                 </div>
-                <div className="text-[14px] text-white/80 mt-2 tracking-[0.05em] font-medium uppercase">
+                <div className="text-[15px] text-white/80 mt-2 tracking-[0.05em] font-medium uppercase">
                   Support Available
                 </div>
               </div>

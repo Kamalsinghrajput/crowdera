@@ -44,8 +44,8 @@ export const campaigns = [
 
 const InitiativesCampaigns = ({
   data: initialCampaignData,
-  primaryColor = "#00715D",
-  secondaryColor = "#D9A86A",
+  primaryColor = "var(--primary)",
+  secondaryColor = "var(--secondary)",
 }) => {
   const campaignsList = initialCampaignData || campaigns;
 
@@ -114,12 +114,12 @@ const InitiativesCampaigns = ({
               />
               <div className="absolute top-4 left-4 flex gap-2 flex-wrap">
                 {campaignItem.isVerified && (
-                  <span className="bg-[#00715D] text-white text-[10px] font-bold py-1.5 px-4 rounded uppercase tracking-widest shadow-lg">
+                  <span className="bg-[var(--primary)] text-white text-[10px] font-bold py-1.5 px-4 rounded uppercase tracking-widest shadow-lg">
                     Verified
                   </span>
                 )}
                 {campaignItem.isTaxExempt && (
-                  <span className="bg-[#D9A86A] text-white text-[10px] font-bold py-1.5 px-4 rounded uppercase tracking-widest shadow-lg">
+                  <span className="bg-[var(--secondary)] text-white text-[10px] font-bold py-1.5 px-4 rounded uppercase tracking-widest shadow-lg">
                     Tax Exempt
                   </span>
                 )}
@@ -129,14 +129,14 @@ const InitiativesCampaigns = ({
             {/* Content */}
             <div className="p-8 flex flex-col flex-grow text-left">
               {/* Title */}
-              <h3 className="text-2xl font-bold leading-tight text-[#111] group-hover:text-[#00715D] transition-colors line-clamp-2 mb-4">
+              <h3 className="text-2xl font-bold leading-tight text-[#111] group-hover:text-[var(--primary)] transition-colors line-clamp-2 mb-4">
                 {campaignItem.title}
               </h3>
 
               {/* Organizer */}
               <div className="flex items-center gap-1.5 mb-5">
-                <Users size={14} className="text-[#00715D] shrink-0" />
-                <span className="text-xs text-[#00715D] font-bold uppercase tracking-widest">
+                <Users size={14} className="text-[var(--primary)] shrink-0" />
+                <span className="text-xs text-[var(--primary)] font-bold uppercase tracking-widest">
                   {campaignItem.organizer}
                 </span>
               </div>
@@ -152,13 +152,13 @@ const InitiativesCampaigns = ({
                   <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">
                     Donation Progress
                   </span>
-                  <span className="text-sm font-bold text-[#00715D]">
+                  <span className="text-sm font-bold text-[var(--primary)]">
                     {progressPercentage}%
                   </span>
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-1.5 mb-3 overflow-hidden">
                   <div
-                    className="h-full rounded-full transition-all duration-1000 ease-out bg-[#00715D]"
+                    className="h-full rounded-full transition-all duration-1000 ease-out bg-[var(--primary)]"
                     style={{
                       width: `${progressPercentage}%`,
                     }}
@@ -178,8 +178,8 @@ const InitiativesCampaigns = ({
               <div className="flex items-center gap-1.5 mb-4">
                 <Heart
                   size={14}
-                  className="text-[#D9A86A]"
-                  fill="#D9A86A"
+                  className="text-[var(--secondary)]"
+                  fill="var(--secondary)"
                   fillOpacity="0.1"
                 />
                 <span className="text-sm font-bold text-[#111]">
@@ -189,7 +189,7 @@ const InitiativesCampaigns = ({
 
               {/* Category tag */}
               <div className="mb-6">
-                <span className="bg-[#D9A86A]/10 text-[#D9A86A] text-[10px] font-bold py-1.5 px-4 rounded uppercase tracking-widest border border-[#D9A86A]/20">
+                <span className="bg-[var(--secondary)]/10 text-[var(--secondary)] text-[10px] font-bold py-1.5 px-4 rounded uppercase tracking-widest border border-[var(--secondary)]/20">
                   {campaignItem.category}
                 </span>
               </div>
@@ -216,14 +216,14 @@ const InitiativesCampaigns = ({
               {/* Buttons */}
               <div className="mt-auto space-y-3">
                 <div className="grid grid-cols-2 gap-3">
-                  <button className="bg-[#00715D] text-white font-bold py-3.5 rounded-full text-[10px] uppercase tracking-widest hover:bg-[#111] transition-all active:scale-95 shadow-md">
+                  <button className="bg-[var(--primary)] text-white font-bold py-3.5 rounded-full text-[10px] uppercase tracking-widest hover:bg-[#111] transition-all active:scale-95 shadow-md">
                     Donate
                   </button>
                   <button className="bg-white text-[#111] font-bold py-3.5 rounded-full text-[10px] uppercase tracking-widest border-2 border-[#111] hover:bg-gray-50 transition-all active:scale-95">
                     View
                   </button>
                 </div>
-                <button className="w-full bg-[#D9A86A] text-white font-bold py-3.5 rounded-full text-[10px] uppercase tracking-widest hover:opacity-90 transition-all shadow-md active:scale-95 border-2 border-transparent">
+                <button className="w-full bg-[var(--secondary)] text-white font-bold py-3.5 rounded-full text-[10px] uppercase tracking-widest hover:opacity-90 transition-all shadow-md active:scale-95 border-2 border-transparent">
                   Fundraise
                 </button>
               </div>

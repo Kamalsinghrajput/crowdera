@@ -153,7 +153,7 @@ export default function TopDonors() {
                   </div>
 
                   <div
-                    className={`absolute -top-2 -right-2 w-8 h-8 rounded-full flex items-center justify-center text-[14px] shadow-lg ${
+                    className={`absolute -top-2 -right-2 w-8 h-8 rounded-full flex items-center justify-center text-[15px] shadow-lg ${
                       d.rank <= 3
                         ? "bg-[var(--secondary)] text-white"
                         : "bg-[var(--bg-color)] text-white"
@@ -174,7 +174,7 @@ export default function TopDonors() {
                     ${d.amount.toLocaleString("en-US")}
                   </span>
                 </div>
-                <p className="text-[14px] text-[#6c6e76] mt-2">Total Donated</p>
+                <p className="text-[15px] text-[#6c6e76] mt-2">Total Donated</p>
               </div>
             ))}
           </div>

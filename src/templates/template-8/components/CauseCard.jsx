@@ -66,7 +66,7 @@ export default function CauseCard({ course }) {
       </div>
 
       {/* Category Badge */}
-      <div className="absolute top-[220px] right-6 bg-[#007b5e] group-hover:bg-[#d9a96e] transition-colors duration-300 text-white font-bold text-[14px] px-6 py-2 rounded-md shadow-md z-10 pointer-events-none">
+      <div className="absolute top-[220px] right-6 bg-[#007b5e] group-hover:bg-[var(--secondary)] transition-colors duration-300 text-white font-bold text-[15px] px-6 py-2 rounded-md shadow-md z-10 pointer-events-none">
         {course.tag}
       </div>
 
@@ -82,10 +82,10 @@ export default function CauseCard({ course }) {
         {/* Progress Area */}
         <div className="bg-[#f8f9fa] rounded-lg p-5">
           <div className="flex justify-between items-center mb-2">
-            <span className="text-[#333333] font-bold text-[14px]">
+            <span className="text-[#333333] font-bold text-[15px]">
               Donation
             </span>
-            <span className="text-[#333333] font-bold text-[14px]">
+            <span className="text-[#333333] font-bold text-[15px]">
               {course.percent}%
             </span>
           </div>
@@ -102,7 +102,7 @@ export default function CauseCard({ course }) {
             <span className="text-[#666]">Raised: {course.raised}</span>
             <span className="text-[#666]">
               Goal:{" "}
-              <span className="text-[#d9a96e] font-bold">{course.goal}</span>
+              <span className="text-[var(--secondary)] font-bold">{course.goal}</span>
             </span>
           </div>
         </div>
@@ -110,7 +110,7 @@ export default function CauseCard({ course }) {
 
       {/* Bottom Button */}
       <Link href={`/causes/${course.id}`}>
-        <a className="w-full bg-[#007b5e] hover:bg-[#d9a96e] transition-colors duration-300 text-white font-bold text-[17px] px-8 py-5 rounded-b-2xl flex items-center justify-between mt-auto">
+        <a className="w-full bg-[#007b5e] hover:bg-[var(--secondary)] transition-colors duration-300 text-white font-bold text-[17px] px-8 py-5 rounded-b-2xl flex items-center justify-between mt-auto">
           Donate Now
           <FiArrowUpRight size={20} />
         </a>

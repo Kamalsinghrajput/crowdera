@@ -1,9 +1,26 @@
 import React from "react";
 import Image from "next/image";
 import { Users, Heart } from "lucide-react";
+import { gsap } from "gsap";
 
 const SUSTAINABLE_GOAL_COLORS = {
-  1: "#E5243B", 2: "#DDA63A", 3: "#4C9F38", 4: "#C5192D", 5: "#FF3A21", 6: "#26BDE2", 7: "#FCC30B", 8: "#A21942", 9: "#FD6925", 10: "#DD1367", 11: "#FD9D24", 12: "#BF8B2E", 13: "#3F7E44", 14: "#0A97D9", 15: "#56C02B", 16: "#00689D", 17: "#19486A",
+  1: "#E5243B",
+  2: "#DDA63A",
+  3: "#4C9F38",
+  4: "#C5192D",
+  5: "#FF3A21",
+  6: "#26BDE2",
+  7: "#FCC30B",
+  8: "#A21942",
+  9: "#FD6925",
+  10: "#DD1367",
+  11: "#FD9D24",
+  12: "#BF8B2E",
+  13: "#3F7E44",
+  14: "#0A97D9",
+  15: "#56C02B",
+  16: "#00689D",
+  17: "#19486A",
 };
 
 export const campaigns = [
@@ -25,38 +42,84 @@ export const campaigns = [
   },
 ];
 
-const InitiativesCampaigns = ({ data: initialCampaignData, primaryColor = "#dc2626" }) => {
+const InitiativesCampaigns = ({
+  data: initialCampaignData,
+  primaryColor = "var(--primary)",
+  secondaryColor = "var(--secondary)",
+}) => {
   const campaignsList = initialCampaignData || campaigns;
+
+  const handleMouseMove = (e) => {
+    const card = e.currentTarget;
+    const { left, top, width, height } = card.getBoundingClientRect();
+    const x = (e.clientX - left - width / 2) / (width / 2);
+    const y = (e.clientY - top - height / 2) / (height / 2);
+
+    gsap.to(card, {
+      rotateX: -y * 10,
+      rotateY: x * 10,
+      duration: 0.2,
+      ease: "power2.out",
+    });
+  };
+
+  const handleMouseEnter = (e) => {
+    const card = e.currentTarget;
+    gsap.to(card, {
+      y: -10,
+      boxShadow: "0 25px 50px -12px rgba(0,0,0,0.15)",
+      duration: 0.4,
+      ease: "power2.out",
+      transformPerspective: 1000,
+      transformOrigin: "center center",
+    });
+  };
+
+  const handleMouseLeave = (e) => {
+    const card = e.currentTarget;
+    gsap.to(card, {
+      y: 0,
+      rotateX: 0,
+      rotateY: 0,
+      boxShadow: "0 1px 2px 0 rgba(0,0,0,0.05)",
+      duration: 0.5,
+      ease: "power2.out",
+    });
+  };
 
   return (
     <>
       {campaignsList.map((campaignItem) => {
         const progressPercentage = Math.min(
           100,
-          Math.round((campaignItem.raised / campaignItem.goal) * 100)
+          Math.round((campaignItem.raised / campaignItem.goal) * 100),
         );
         return (
           <div
             key={campaignItem.id}
-            className="bg-white rounded-none border-b-8 border-black overflow-hidden hover:shadow-2xl transition-all duration-500 group flex flex-col opacity-0"
+            onMouseEnter={handleMouseEnter}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            className="bg-white rounded-2xl overflow-hidden group flex flex-col border border-gray-100 opacity-0 relative"
+            style={{ willChange: "transform" }}
           >
             {/* Image with Verified / Tax Exempt badges */}
-            <div className="relative h-72 overflow-hidden border-b-4 border-black">
+            <div className="relative h-64 overflow-hidden">
               <Image
                 src={campaignItem.img}
                 alt={campaignItem.title}
                 layout="fill"
                 objectFit="cover"
-                className="grayscale group-hover:grayscale-0 transition-all duration-700"
+                className="group-hover:scale-110 transition-transform duration-700"
               />
-              <div className="absolute top-0 left-0 flex flex-col gap-0">
+              <div className="absolute top-4 left-4 flex gap-2 flex-wrap">
                 {campaignItem.isVerified && (
-                  <span className="bg-black text-white text-[10px] font-black py-2 px-6 uppercase tracking-[0.2em] w-fit">
+                  <span className="bg-[var(--primary)] text-white text-[12px] font-bold py-1.5 px-4 rounded uppercase tracking-widest shadow-lg">
                     Verified
                   </span>
                 )}
                 {campaignItem.isTaxExempt && (
-                  <span className="bg-red-600 text-white text-[10px] font-black py-2 px-6 uppercase tracking-[0.2em] w-fit">
+                  <span className="bg-[var(--secondary)] text-[#2b1f18] text-[12px] font-bold py-1.5 px-4 rounded uppercase tracking-widest shadow-lg">
                     Tax Exempt
                   </span>
                 )}
@@ -66,79 +129,78 @@ const InitiativesCampaigns = ({ data: initialCampaignData, primaryColor = "#dc26
             {/* Content */}
             <div className="p-8 flex flex-col flex-grow text-left">
               {/* Title */}
-              <h3 className="font-black text-3xl text-black mb-6 uppercase tracking-tighter leading-none group-hover:text-red-600 transition-colors">
+              <h3 className="text-2xl font-bold leading-tight text-[#111] group-hover:text-[var(--primary)] transition-colors line-clamp-2 mb-4">
                 {campaignItem.title}
               </h3>
 
               {/* Organizer */}
-              <div className="flex items-center gap-2 mb-6 bg-gray-100 p-3 border-l-4 border-red-600">
-                <Users size={16} className="text-black shrink-0" />
-                <span className="text-xs text-black font-black uppercase tracking-[0.1em]">
+              <div className="flex items-center gap-1.5 mb-5">
+                <Users size={14} className="text-[var(--primary)] shrink-0" />
+                <span className="text-[13px] text-[var(--primary)] font-bold uppercase tracking-widest">
                   {campaignItem.organizer}
                 </span>
               </div>
 
               {/* Description */}
-              <p className="text-gray-600 text-sm leading-tight mb-8 font-bold uppercase tracking-tight">
+              <p className="text-gray-600 text-[17px] leading-relaxed line-clamp-2 mb-8 font-medium">
                 {campaignItem.desc}
               </p>
 
               {/* Fundraising Progress */}
-              <div className="border-4 border-black p-6 mb-8">
-                <div className="flex justify-between items-center mb-4">
-                  <span className="text-[10px] font-black text-black uppercase tracking-[0.2em] italic">
-                    Live Progress
+              <div className="bg-gray-50 rounded-xl p-6 mb-8 border border-gray-100">
+                <div className="flex justify-between items-center mb-3">
+                  <span className="text-[12px] font-bold text-gray-500 uppercase tracking-widest">
+                    Donation Progress
                   </span>
-                  <span className="text-2xl font-black text-red-600 italic">
+                  <span className="text-sm font-bold text-[var(--primary)]">
                     {progressPercentage}%
                   </span>
                 </div>
-                <div className="w-full bg-gray-200 h-6 mb-4 border-2 border-black relative overflow-hidden">
+                <div className="w-full bg-gray-200 rounded-full h-1.5 mb-3 overflow-hidden">
                   <div
-                    className="h-full bg-red-600 transition-all duration-1000 ease-out"
+                    className="h-full rounded-full transition-all duration-1000 ease-out bg-[var(--primary)]"
                     style={{
                       width: `${progressPercentage}%`,
                     }}
                   />
                 </div>
-                <div className="grid grid-cols-2 gap-0 border-t-2 border-black pt-4 mt-2">
-                  <div className="border-r-2 border-black">
-                    <span className="block text-[9px] font-black text-gray-400 uppercase tracking-widest mb-1">Raised</span>
-                    <span className="text-sm font-black text-black">₹{campaignItem.raised.toLocaleString("en-IN")}</span>
-                  </div>
-                  <div className="text-right pl-4">
-                    <span className="block text-[9px] font-black text-gray-400 uppercase tracking-widest mb-1">Target</span>
-                    <span className="text-sm font-black text-black">₹{campaignItem.goal.toLocaleString("en-IN")}</span>
-                  </div>
+                <div className="flex justify-between text-[12px] font-bold text-gray-500 uppercase tracking-wider">
+                  <span>
+                    Raised: ₹{campaignItem.raised.toLocaleString("en-IN")}
+                  </span>
+                  <span>
+                    Goal: ₹{campaignItem.goal.toLocaleString("en-IN")}
+                  </span>
                 </div>
               </div>
 
               {/* Donors count */}
-              <div className="flex items-center gap-2 mb-6 italic">
+              <div className="flex items-center gap-1.5 mb-4">
                 <Heart
-                  size={16}
-                  className="text-red-600"
-                  fill="#dc2626"
+                  size={14}
+                  className="text-[var(--secondary)]"
+                  fill="var(--secondary)"
+                  fillOpacity="0.1"
                 />
-                <span className="text-sm font-black text-black uppercase tracking-widest">
+                <span className="text-sm font-bold text-[#111]">
                   {campaignItem.donors} donors
                 </span>
               </div>
 
               {/* Category tag */}
-              <div className="mb-8">
-                <span className="bg-black text-white text-[10px] font-black py-2 px-6 uppercase tracking-[0.2em]">
+              <div className="mb-6">
+                <span className="bg-[var(--secondary)]/10 text-[var(--secondary)] text-[12px] font-bold py-1.5 px-4 rounded uppercase tracking-widest border border-[var(--secondary)]/20">
                   {campaignItem.category}
                 </span>
               </div>
 
               {/* SDG icons */}
               {campaignItem.sdgs && campaignItem.sdgs.length > 0 && (
-                <div className="flex gap-2 mb-10 flex-wrap">
+                <div className="flex gap-2 mb-8">
                   {campaignItem.sdgs.map((sustainableGoalId) => (
                     <div
                       key={sustainableGoalId}
-                      className="w-10 h-10 rounded-none border-2 border-black flex items-center justify-center text-white text-[12px] font-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all cursor-help"
+                      className="w-9 h-9 rounded-lg flex items-center justify-center text-white text-[12px] font-black shadow-md hover:scale-110 transition-transform cursor-help"
                       style={{
                         background:
                           SUSTAINABLE_GOAL_COLORS[sustainableGoalId] || "#555",
@@ -152,16 +214,16 @@ const InitiativesCampaigns = ({ data: initialCampaignData, primaryColor = "#dc26
               )}
 
               {/* Buttons */}
-              <div className="mt-auto space-y-4">
-                <div className="grid grid-cols-2 gap-4">
-                  <button className="bg-black text-white font-black py-5 uppercase tracking-[0.2em] text-xs hover:bg-red-600 transition-all active:translate-y-1">
+              <div className="mt-auto space-y-3">
+                <div className="grid grid-cols-2 gap-3">
+                  <button className="bg-[var(--primary)] text-white font-bold py-3.5 rounded-full text-[12px] uppercase tracking-widest hover:bg-[#111] transition-all active:scale-95 shadow-md">
                     Donate
                   </button>
-                  <button className="bg-white text-black font-black py-5 uppercase tracking-[0.2em] text-xs border-4 border-black hover:bg-gray-100 transition-all active:translate-y-1">
+                  <button className="bg-white text-[#111] font-bold py-3.5 rounded-full text-[12px] uppercase tracking-widest border-2 border-[#111] hover:bg-gray-50 transition-all active:scale-95">
                     View
                   </button>
                 </div>
-                <button className="w-full bg-red-600 text-white font-black py-6 uppercase tracking-[0.3em] text-xs shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all active:translate-y-2">
+                <button className="w-full bg-[var(--secondary)] text-[#2b1f18] font-bold py-3.5 rounded-full text-[12px] uppercase tracking-widest hover:opacity-90 transition-all shadow-md active:scale-95 border-2 border-transparent">
                   Fundraise
                 </button>
               </div>

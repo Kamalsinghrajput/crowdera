@@ -70,21 +70,22 @@ export default function Event({ isAllEventsPage }) {
 
   const EventCard = ({ event }) => (
     <div className="bg-white rounded-[20px] pt-16 pb-8 px-8 flex flex-col items-center text-center relative mt-16 shadow-lg h-[calc(100%-64px)]">
-      
       {/* Overlapping Circular Image */}
       <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-[120px] h-[120px] rounded-full border-[8px] border-white shadow-md overflow-hidden z-10 bg-white">
-        <Image 
-          src={event.img} 
-          alt={event.title} 
-          layout="fill" 
-          objectFit="cover" 
+        <Image
+          src={event.img}
+          alt={event.title}
+          layout="fill"
+          objectFit="cover"
         />
       </div>
 
       {/* Meta: Time */}
-      <div className="flex items-center justify-center gap-2 text-[#777777] font-['Inter'] text-[14px] mb-4">
+      <div className="flex items-center justify-center gap-2 text-[#777777] font-['Inter'] text-[15px] mb-4">
         <FiClock className="text-[var(--primary)]" />
-        <span>{event.date} / {event.time}</span>
+        <span>
+          {event.date} / {event.time}
+        </span>
       </div>
 
       {/* Title */}
@@ -95,14 +96,15 @@ export default function Event({ isAllEventsPage }) {
       </Link>
 
       {/* Author & Org */}
-      <p className="font-['Montserrat'] font-bold text-[14px] mb-6 uppercase tracking-wider">
-        BY : <span className="text-[var(--primary)]">{event.by}</span> - <span className="text-[var(--secondary)]">{event.org}</span>
+      <p className="font-['Montserrat'] font-bold text-[15px] mb-6 uppercase tracking-wider">
+        BY : <span className="text-[var(--primary)]">{event.by}</span> -{" "}
+        <span className="text-[var(--secondary)]">{event.org}</span>
       </p>
 
       <div className="w-full h-[1px] bg-[#eeeeee] mb-6" />
 
       {/* Location */}
-      <div className="flex items-center justify-center gap-2 text-[#777777] font-['Inter'] text-[14px] mb-6">
+      <div className="flex items-center justify-center gap-2 text-[#777777] font-['Inter'] text-[15px] mb-6">
         <FiMapPin className="text-[var(--secondary)]" />
         <span>{event.location}</span>
       </div>
@@ -115,26 +117,23 @@ export default function Event({ isAllEventsPage }) {
           </a>
         </Link>
       </div>
-
     </div>
   );
 
   return (
     <section className="py-24 relative overflow-hidden">
-      
       {/* Background Image with Green Overlay */}
       <div className="absolute inset-0 z-0">
-        <Image 
-          src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1920&q=80" 
-          alt="Events Background" 
-          layout="fill" 
-          objectFit="cover" 
+        <Image
+          src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1920&q=80"
+          alt="Events Background"
+          layout="fill"
+          objectFit="cover"
         />
         <div className="absolute inset-0 bg-[var(--primary)] opacity-90" />
       </div>
 
       <div className="max-w-[1320px] mx-auto px-4 relative z-10">
-        
         {/* Section Header */}
         <div className="text-center mb-16">
           <div className="inline-block bg-[var(--secondary)] text-white font-['Montserrat'] font-bold text-[13px] uppercase tracking-[1px] px-5 py-2 rounded-full mb-5">
@@ -154,17 +153,19 @@ export default function Event({ isAllEventsPage }) {
           </div>
         ) : (
           <div className="w-full overflow-hidden px-2 pb-8 pt-2">
-            <div 
+            <div
               className="flex transition-transform duration-700 ease-in-out items-stretch"
-              style={{ transform: `translateX(-${currentIndex * (100 / visibleCount)}%)` }}
+              style={{
+                transform: `translateX(-${currentIndex * (100 / visibleCount)}%)`,
+              }}
             >
               {EVENTS.map((event, idx) => (
-                <div 
-                  key={idx} 
-                  style={{ 
-                    width: `${100 / visibleCount}%`, 
+                <div
+                  key={idx}
+                  style={{
+                    width: `${100 / visibleCount}%`,
                     flexShrink: 0,
-                    padding: "0 15px"
+                    padding: "0 15px",
                   }}
                 >
                   <EventCard event={event} />
@@ -178,13 +179,12 @@ export default function Event({ isAllEventsPage }) {
         {!isAllEventsPage && (
           <div className="text-center mt-12">
             <Link href="/templates/template-5/initiatives?tab=events">
-              <a className="inline-block bg-[var(--bg-color)] text-white font-['Montserrat'] font-bold text-[14px] uppercase px-10 py-[18px] transition-colors duration-300 hover:bg-[var(--secondary)] no-underline rounded-full shadow-lg">
+              <a className="inline-block bg-[var(--bg-color)] text-white font-['Montserrat'] font-bold text-[15px] uppercase px-10 py-[18px] transition-colors duration-300 hover:bg-[var(--secondary)] no-underline rounded-full shadow-lg">
                 VIEW ALL EVENTS
               </a>
             </Link>
           </div>
         )}
-
       </div>
     </section>
   );

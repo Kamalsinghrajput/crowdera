@@ -51,7 +51,7 @@ export default function Services() {
         {/* Left Side: Images */}
         <div className="w-full lg:w-[45%] relative">
           {/* Dotted pattern top-left */}
-          <div className="absolute -top-8 -left-8 w-[140px] h-[140px] bg-[radial-gradient(#d9a96e_2.5px,transparent_2.5px)] [background-size:20px_20px] opacity-60 z-0"></div>
+          <div className="absolute -top-8 -left-8 w-[140px] h-[140px] bg-[radial-gradient(var(--secondary)_2.5px,transparent_2.5px)] [background-size:20px_20px] opacity-60 z-0"></div>
 
           {/* Main Large Image */}
           <div className="relative z-10 rounded-[30px] overflow-hidden w-[90%] h-[550px]">
@@ -66,7 +66,7 @@ export default function Services() {
 
             {/* Play button */}
             <button className="absolute top-1/2 left-[55%] -translate-x-1/2 -translate-y-1/2 z-20 group">
-              <div className="w-[65px] h-[65px] bg-[#d9a96e] rounded-full flex items-center justify-center pl-1 group-hover:scale-110 transition-transform shadow-lg">
+              <div className="w-[65px] h-[65px] bg-[var(--secondary)] rounded-full flex items-center justify-center pl-1 group-hover:scale-110 transition-transform shadow-lg">
                 <FiPlay size={24} className="text-black" />
               </div>
             </button>
@@ -85,7 +85,7 @@ export default function Services() {
 
         {/* Right Side: Content */}
         <div className="w-full lg:w-[55%] lg:pl-10 mt-20 lg:mt-0">
-          <span className="text-[#007b5e] font-bold text-[14px] mb-4 block">
+          <span className="text-[#007b5e] font-bold text-[15px] mb-4 block">
             Start Donating Poor People
           </span>
           <h2 className="text-[#1a2b28] text-[clamp(32px,4vw,46px)] font-extrabold leading-[1.2] mb-6 max-w-[500px]">
@@ -127,7 +127,7 @@ export default function Services() {
                   >
                     <FiCheck
                       size={20}
-                      className="text-[#d9a96e] mt-1 flex-shrink-0"
+                      className="text-[var(--secondary)] mt-1 flex-shrink-0"
                       strokeWidth={3}
                     />
                     <span className="leading-[1.6]">{item}</span>
@@ -161,7 +161,7 @@ export default function Services() {
                         {stat.percent}%
                       </span>
                     </div>
-                    <div className="text-[14px] font-bold text-[#1a2b28] leading-[1.4] whitespace-pre-line">
+                    <div className="text-[15px] font-bold text-[#1a2b28] leading-[1.4] whitespace-pre-line">
                       {stat.label}
                     </div>
                   </div>
@@ -180,7 +180,7 @@ export default function Services() {
                     height="45"
                     viewBox="0 0 24 24"
                     fill="none"
-                    stroke="#d9a96e"
+                    stroke="var(--secondary)"
                     strokeWidth="1.5"
                     className="mb-4"
                   >
@@ -195,7 +195,7 @@ export default function Services() {
                   <span className="text-[#1a2b28] font-bold text-[17px] mb-1">
                     Donate Now
                   </span>
-                  <span className="text-[#d9a96e] font-bold text-[20px]">
+                  <span className="text-[var(--secondary)] font-bold text-[20px]">
                     $40,456
                   </span>
                 </div>

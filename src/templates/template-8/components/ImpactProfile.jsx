@@ -5,7 +5,7 @@ import Link from "next/link";
 const CURRENT_YEAR = new Date().getFullYear();
 
 export default function ImpactProfile() {
-  const primaryColor = "#005e46";
+  const primaryColor = "var(--primary)";
 
   const [count, setCount] = useState(0);
   const target = 10000;
@@ -66,14 +66,14 @@ export default function ImpactProfile() {
           {/* Content */}
           <div className="relative z-10 px-6 md:px-16 py-[80px] text-center">
             {/* Top tagline */}
-            <p className="tracking-[0.1em] text-white/80 text-[14px] mb-8 uppercase font-bold">
+            <p className="tracking-[0.1em] text-white/80 text-[15px] mb-8 uppercase font-bold">
               To create a world where every life is valued, uplifted, and
               empowered without barriers.
             </p>
 
             {/* Big animated counter */}
             <div className="mb-4">
-              <span className="text-[clamp(40px,8vw,100px)] leading-none text-[#d9a96e] font-bold">
+              <span className="text-[clamp(40px,8vw,100px)] leading-none text-[var(--secondary)] font-bold">
                 {count.toLocaleString()}
               </span>
               <span className="ml-4 text-[clamp(24px,4vw,40px)] text-white font-bold">
@@ -117,7 +117,7 @@ export default function ImpactProfile() {
               <Link
                 href={`/templates/template-8/annual-report/${CURRENT_YEAR}`}
               >
-                <a className="inline-block bg-[#d9a96e] text-black font-bold text-[17px] px-8 py-4 rounded-md transition-colors hover:bg-[#c4965d] no-underline">
+                <a className="inline-block bg-[var(--secondary)] text-black font-bold text-[17px] px-8 py-4 rounded-md transition-colors hover:bg-[#c4965d] no-underline">
                   View Annual Report {CURRENT_YEAR}
                 </a>
               </Link>

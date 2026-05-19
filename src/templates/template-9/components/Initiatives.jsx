@@ -1,11 +1,24 @@
 import React, { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { useRouter } from "next/router";
-import { Search, Filter, RefreshCw, X, Globe, Tag, SlidersHorizontal, Loader2, CheckSquare, Square } from "lucide-react";
+import {
+  Search,
+  ChevronDown,
+  Filter,
+  RefreshCw,
+  Globe,
+  Tag,
+  SlidersHorizontal,
+  Loader2,
+} from "lucide-react";
 import InitiativesCampaigns from "./InitiativesCampaigns";
 import InitiativesEvents from "./InitiativesEvents";
 import InitiativesFundraisers from "./InitiativesFundraisers";
-import { fetchCampaigns, fetchEvents, fetchFundraisers } from "../../../services/initiativesService";
+import {
+  fetchCampaigns,
+  fetchEvents,
+  fetchFundraisers,
+} from "../../../services/initiativesService";
 
 const Initiatives = ({ initialTab = "campaigns" }) => {
   const router = useRouter();
@@ -17,14 +30,19 @@ const Initiatives = ({ initialTab = "campaigns" }) => {
 
   // Sync tab with URL
   useEffect(() => {
-    if (router.query.tab && ["campaigns", "events", "fundraisers"].includes(router.query.tab)) {
+    if (
+      router.query.tab &&
+      ["campaigns", "events", "fundraisers"].includes(router.query.tab)
+    ) {
       setActiveTab(router.query.tab);
     }
   }, [router.query.tab]);
 
   const handleTabChange = (tabName) => {
     setActiveTab(tabName);
-    router.push({ query: { ...router.query, tab: tabName } }, undefined, { shallow: true });
+    router.push({ query: { ...router.query, tab: tabName } }, undefined, {
+      shallow: true,
+    });
   };
 
   // Fetch data from service
@@ -35,7 +53,7 @@ const Initiatives = ({ initialTab = "campaigns" }) => {
         const [campaignsData, eventsData, fundraisersData] = await Promise.all([
           fetchCampaigns(),
           fetchEvents(),
-          fetchFundraisers()
+          fetchFundraisers(),
         ]);
         setCampaigns(campaignsData);
         setEvents(eventsData);
@@ -50,6 +68,7 @@ const Initiatives = ({ initialTab = "campaigns" }) => {
   }, []);
 
   const [searchQuery, setSearchQuery] = useState("");
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
   const [isTaxExempt, setIsTaxExempt] = useState(false);
   const [country, setCountry] = useState("All Countries");
@@ -59,15 +78,44 @@ const Initiatives = ({ initialTab = "campaigns" }) => {
   const [eventFilter, setEventFilter] = useState("All Events");
 
   const eventFilterOptions = [
-    { label: "Active Events", value: "active" }, { label: "Physical Events", value: "physical" }, { label: "Virtual Events", value: "virtual" }, { label: "Hybrid Events", value: "hybrid" }, { label: "Verified", value: "verified" }, { label: "Self Events", value: "self" }, { label: "Global Events", value: "global" },
+    { label: "Active Events", value: "active" },
+    { label: "Physical Events", value: "physical" },
+    { label: "Virtual Events", value: "virtual" },
+    { label: "Hybrid Events", value: "hybrid" },
+    { label: "Verified", value: "verified" },
+    { label: "Self Events", value: "self" },
+    { label: "Global Events", value: "global" },
   ];
-  const categories = ["All Categories", "Education", "Healthcare", "Environment", "Children & Elderly", "Community", "Water"];
-  const countries = ["All Countries", "India", "United States", "United Kingdom", "Canada", "Australia", "Singapore"];
+  const categories = [
+    "All Categories",
+    "Education",
+    "Healthcare",
+    "Environment",
+    "Children & Elderly",
+    "Community",
+    "Water",
+  ];
+  const countries = [
+    "All Countries",
+    "India",
+    "United States",
+    "United Kingdom",
+    "Canada",
+    "Australia",
+    "Singapore",
+  ];
   const sortOptions = ["Newest", "Most Funded"];
   const fundraiserOptions = ["All Fundraisers", "Campaigns", "Events"];
 
   const handleReset = () => {
-    setSearchQuery(""); setIsVerified(false); setIsTaxExempt(false); setCountry("All Countries"); setCategory("All Categories"); setSortBy("Newest"); setFundraiserType("All Fundraisers"); setEventFilter("All Events");
+    setSearchQuery("");
+    setIsVerified(false);
+    setIsTaxExempt(false);
+    setCountry("All Countries");
+    setCategory("All Categories");
+    setSortBy("Newest");
+    setFundraiserType("All Fundraisers");
+    setEventFilter("All Events");
   };
 
   const gridRef = useRef(null);
@@ -75,24 +123,85 @@ const Initiatives = ({ initialTab = "campaigns" }) => {
     if (loading) return;
     const gsapContext = gsap.context(() => {
       if (gridRef.current && gridRef.current.children.length > 0) {
-        gsap.fromTo(gridRef.current.children, { x: -20, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, stagger: 0.1, ease: "power1.out", overwrite: true });
+        gsap.fromTo(
+          gridRef.current.children,
+          { y: 60, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.7,
+            stagger: 0.1,
+            ease: "power2.out",
+            overwrite: true,
+            delay: 0.1,
+          },
+        );
       }
     }, gridRef);
     return () => gsapContext.revert();
-  }, [activeTab, category, country, sortBy, isVerified, isTaxExempt, fundraiserType, eventFilter, searchQuery, loading]);
+  }, [
+    activeTab,
+    category,
+    country,
+    sortBy,
+    isVerified,
+    isTaxExempt,
+    fundraiserType,
+    eventFilter,
+    searchQuery,
+    loading,
+  ]);
 
   const filterData = (data) => {
-    return data.filter((initiativeItem) => {
-        const matchesSearch = initiativeItem.title.toLowerCase().includes(searchQuery.toLowerCase()) || (initiativeItem.desc && initiativeItem.desc.toLowerCase().includes(searchQuery.toLowerCase()));
-        const matchesCategory = category === "All Categories" || initiativeItem.tag === category || initiativeItem.category === category;
-        const matchesCountry = country === "All Countries" || (initiativeItem.location && initiativeItem.location.includes(country));
+    return data
+      .filter((initiativeItem) => {
+        const matchesSearch =
+          initiativeItem.title
+            .toLowerCase()
+            .includes(searchQuery.toLowerCase()) ||
+          (initiativeItem.desc &&
+            initiativeItem.desc
+              .toLowerCase()
+              .includes(searchQuery.toLowerCase()));
+        const matchesCategory =
+          category === "All Categories" ||
+          initiativeItem.tag === category ||
+          initiativeItem.category === category;
+        const matchesCountry =
+          country === "All Countries" ||
+          (initiativeItem.location &&
+            initiativeItem.location.includes(country));
         const matchesVerified = !isVerified || initiativeItem.isVerified;
         const matchesTaxExempt = !isTaxExempt || initiativeItem.isTaxExempt;
-        const matchesFundraiserType = activeTab !== "fundraisers" || fundraiserType === "All Fundraisers" || initiativeItem.type === fundraiserType;
-        const matchesEventFilter = activeTab !== "events" || eventFilter === "All Events" || { active: initiativeItem.status === "active", physical: initiativeItem.eventType === "physical", virtual: initiativeItem.eventType === "virtual", hybrid: initiativeItem.eventType === "hybrid", verified: initiativeItem.isVerified, self: initiativeItem.isSelf, global: initiativeItem.isGlobal }[eventFilter];
-        return matchesSearch && matchesCategory && matchesCountry && matchesVerified && matchesTaxExempt && matchesFundraiserType && matchesEventFilter;
-      }).sort((a, b) => {
-        if (sortBy === "Most Funded") return b.raised / b.goal - a.raised / a.goal;
+        const matchesFundraiserType =
+          activeTab !== "fundraisers" ||
+          fundraiserType === "All Fundraisers" ||
+          initiativeItem.type === fundraiserType;
+        const matchesEventFilter =
+          activeTab !== "events" ||
+          eventFilter === "All Events" ||
+          {
+            active: initiativeItem.status === "active",
+            physical: initiativeItem.eventType === "physical",
+            virtual: initiativeItem.eventType === "virtual",
+            hybrid: initiativeItem.eventType === "hybrid",
+            verified: initiativeItem.isVerified,
+            self: initiativeItem.isSelf,
+            global: initiativeItem.isGlobal,
+          }[eventFilter];
+        return (
+          matchesSearch &&
+          matchesCategory &&
+          matchesCountry &&
+          matchesVerified &&
+          matchesTaxExempt &&
+          matchesFundraiserType &&
+          matchesEventFilter
+        );
+      })
+      .sort((a, b) => {
+        if (sortBy === "Most Funded")
+          return b.raised / b.goal - a.raised / a.goal;
         return b.id.localeCompare(a.id);
       });
   };
@@ -102,114 +211,280 @@ const Initiatives = ({ initialTab = "campaigns" }) => {
   const filteredFundraisers = filterData(fundraisers);
 
   return (
-    <section className="bg-white min-h-screen font-sans">
-      {/* Template 9 Specific Header - Brutalist Red/Black */}
-      <div className="bg-red-600 py-32 lg:py-48 relative overflow-hidden">
-        <div className="container mx-auto px-4 max-w-[1400px] relative z-10">
-            <h1 className="text-6xl md:text-[10vw] font-black text-black mb-12 tracking-tighter leading-[0.8] uppercase">
-                Urgent<br /><span className="text-white">Action.</span>
-            </h1>
-            <div className="max-w-4xl relative group">
-                <input type="text" placeholder="WHAT ARE YOU LOOKING FOR?" className="w-full bg-black text-white text-xl md:text-3xl font-black p-8 md:p-12 focus:outline-none focus:bg-white focus:text-black transition-all placeholder:text-white/20 uppercase tracking-tighter" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
-                <div className="absolute right-8 top-1/2 -translate-y-1/2 hidden md:block">
-                    <Search size={40} className="text-white group-focus-within:text-black" />
-                </div>
-            </div>
+    <section className="bg-[#F9F5EC] py-16 font-sans relative overflow-hidden z-20">
+      <div className="container mx-auto px-6 max-w-[1200px] relative z-20">
+        
+        {/* Search Bar */}
+        <div className="max-w-2xl mx-auto relative group mb-12">
+          <Search
+            className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-[var(--primary)] transition-colors"
+            size={20}
+          />
+          <input
+            type="text"
+            placeholder="Search initiatives..."
+            className="w-full pl-16 pr-8 py-5 rounded-full bg-white text-[#2b1f18] text-base font-bold shadow-md focus:outline-none focus:ring-4 focus:ring-[var(--primary)]/10 transition-all border border-black/[0.04]"
+            value={searchQuery}
+            onChange={(event) => setSearchQuery(event.target.value)}
+          />
         </div>
-      </div>
 
-      <div className="container mx-auto px-4 max-w-[1400px] relative z-20">
-        <div className="flex flex-col lg:flex-row gap-0 border-x-4 border-black border-b-4">
-            <div className="lg:w-1/4 border-b-4 lg:border-b-0 lg:border-r-4 border-black p-8 bg-black text-white overflow-y-auto no-scrollbar max-h-screen sticky top-0">
-                <div className="space-y-10">
-                    <div>
-                        <h3 className="text-[10px] font-black uppercase tracking-[0.4em] mb-6 text-red-600">Categories</h3>
-                        <div className="flex flex-col gap-3">
-                            {categories.map((c) => (
-                                <button key={c} onClick={() => setCategory(c)} className={`text-left text-sm font-black uppercase tracking-widest transition-all ${category === c ? "text-red-600 translate-x-2" : "hover:text-red-600"}`}>
-                                    {c}
-                                </button>
-                            ))}
-                        </div>
-                    </div>
-
-                    <div>
-                        <h3 className="text-[10px] font-black uppercase tracking-[0.4em] mb-6 text-red-600">Location</h3>
-                        <select className="w-full bg-white text-black font-black uppercase p-3 border-4 border-red-600 focus:outline-none" value={country} onChange={(e) => setCountry(e.target.value)}>
-                            {countries.map(c => <option key={c} value={c}>{c}</option>)}
-                        </select>
-                    </div>
-
-                    <div>
-                        <h3 className="text-[10px] font-black uppercase tracking-[0.4em] mb-6 text-red-600">Sort By</h3>
-                        <select className="w-full bg-white text-black font-black uppercase p-3 border-4 border-red-600 focus:outline-none" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-                            {sortOptions.map(o => <option key={o} value={o}>{o}</option>)}
-                        </select>
-                    </div>
-
-                    {activeTab === "fundraisers" && (
-                        <div>
-                            <h3 className="text-[10px] font-black uppercase tracking-[0.4em] mb-6 text-red-600">Type</h3>
-                            <select className="w-full bg-white text-black font-black uppercase p-3 border-4 border-red-600 focus:outline-none" value={fundraiserType} onChange={(e) => setFundraiserType(e.target.value)}>
-                                {fundraiserOptions.map(o => <option key={o} value={o}>{o}</option>)}
-                            </select>
-                        </div>
-                    )}
-
-                    {activeTab === "events" ? (
-                        <div>
-                            <h3 className="text-[10px] font-black uppercase tracking-[0.4em] mb-6 text-red-600">Event Type</h3>
-                            <select className="w-full bg-white text-black font-black uppercase p-3 border-4 border-red-600 focus:outline-none" value={eventFilter} onChange={(e) => setEventFilter(e.target.value)}>
-                                <option value="All Events">ALL EVENTS</option>
-                                {eventFilterOptions.map(o => <option key={o.value} value={o.value}>{o.label.toUpperCase()}</option>)}
-                            </select>
-                        </div>
-                    ) : (
-                        <div className="space-y-4">
-                            <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-red-600">Badges</h3>
-                            <button onClick={() => setIsVerified(!isVerified)} className="flex items-center gap-3 w-full text-left">
-                                {isVerified ? <CheckSquare className="text-red-600" size={20} /> : <Square size={20} />}
-                                <span className="text-sm font-black uppercase tracking-widest">Verified</span>
-                            </button>
-                            <button onClick={() => setIsTaxExempt(!isTaxExempt)} className="flex items-center gap-3 w-full text-left">
-                                {isTaxExempt ? <CheckSquare className="text-red-600" size={20} /> : <Square size={20} />}
-                                <span className="text-sm font-black uppercase tracking-widest">Tax Exempt</span>
-                            </button>
-                        </div>
-                    )}
-
-                    <button onClick={handleReset} className="flex items-center gap-3 text-sm font-black uppercase tracking-widest hover:text-red-600 transition-all border-t-4 border-red-600 pt-6 w-full">
-                        <RefreshCw size={16} />
-                        <span>Reset All</span>
-                    </button>
-                </div>
+        {/* Tab & Filters Card */}
+        <div className="bg-white rounded-[2.5rem] p-8 mb-16 shadow-sm border border-black/[0.03]">
+          <div className="flex flex-col gap-8">
+            
+            {/* Tabs */}
+            <div className="flex items-center justify-center sm:justify-start gap-10 md:gap-14 border-b border-black/[0.05] overflow-x-auto no-scrollbar">
+              {["campaigns", "events", "fundraisers"].map((tabName) => (
+                <button
+                  key={tabName}
+                  onClick={() => handleTabChange(tabName)}
+                  className={`pb-5 text-[13px] font-black uppercase tracking-widest transition-all relative whitespace-nowrap ${activeTab === tabName ? "text-[var(--primary)]" : "text-[#2b1f18]/40 hover:text-[var(--primary)]"}`}
+                >
+                  {tabName}
+                  {activeTab === tabName && (
+                    <div className="absolute bottom-0 left-0 w-full h-1 bg-[var(--primary)]"></div>
+                  )}
+                </button>
+              ))}
             </div>
 
-            <div className="lg:w-3/4 bg-white">
-                <div className="flex border-b-4 border-black overflow-x-auto no-scrollbar">
-                    {["campaigns", "events", "fundraisers"].map((tabName) => (
-                        <button key={tabName} onClick={() => handleTabChange(tabName)} className={`px-12 py-8 text-xs font-black uppercase tracking-[0.3em] transition-all relative border-r-4 border-black last:border-r-0 whitespace-nowrap ${activeTab === tabName ? "bg-black text-white" : "hover:bg-red-600 hover:text-white"}`}>
-                            {tabName}
-                        </button>
+            {/* Filters Row */}
+            <div className="flex flex-wrap items-center gap-4 justify-center sm:justify-start">
+              
+              {/* Toggle Filter Button */}
+              <div className="relative min-w-[140px]">
+                <div
+                  onClick={() => setIsFilterOpen(!isFilterOpen)}
+                  className={`flex items-center justify-between w-full bg-white border px-5 py-3.5 rounded-full text-xs font-black uppercase tracking-wider transition-all cursor-pointer ${isFilterOpen ? "border-[var(--primary)]" : "border-black/[0.08] hover:border-[var(--primary)]"}`}
+                >
+                  <div className="flex items-center gap-2">
+                    <Filter size={14} className="text-[var(--primary)]" />
+                    <span>Filter</span>
+                  </div>
+                  <ChevronDown
+                    size={14}
+                    className={`text-gray-400 transition-transform ${isFilterOpen ? "rotate-180" : ""}`}
+                  />
+                </div>
+                {isFilterOpen && (
+                  <>
+                    <div
+                      className="fixed inset-0 z-40"
+                      onClick={() => setIsFilterOpen(false)}
+                    ></div>
+                    <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-2xl shadow-2xl border border-black/[0.05] p-4 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+                      {activeTab === "events" ? (
+                        <div className="space-y-1">
+                          <div className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2 px-2">
+                            Event Options
+                          </div>
+                          <button
+                            onClick={() => {
+                              setEventFilter("All Events");
+                              setIsFilterOpen(false);
+                            }}
+                            className={`w-full text-left px-3 py-2 rounded-lg text-xs font-black uppercase transition-colors ${eventFilter === "All Events" ? "bg-[var(--primary)] text-white" : "text-gray-700 hover:bg-gray-50"}`}
+                          >
+                            All Events
+                          </button>
+                          {eventFilterOptions.map((filterOption) => (
+                            <button
+                              key={filterOption.value}
+                              onClick={() => {
+                                setEventFilter(filterOption.value);
+                                setIsFilterOpen(false);
+                              }}
+                              className={`w-full text-left px-3 py-2 rounded-lg text-xs font-black uppercase transition-colors ${eventFilter === filterOption.value ? "bg-[var(--primary)] text-white" : "text-gray-700 hover:bg-gray-50"}`}
+                            >
+                              {filterOption.label}
+                            </button>
+                          ))}
+                        </div>
+                      ) : (
+                        <div className="space-y-3">
+                          <label className="flex items-center gap-3 cursor-pointer group/item">
+                            <input
+                              type="checkbox"
+                              checked={isVerified}
+                              onChange={(e) => setIsVerified(e.target.checked)}
+                              className="w-5 h-5 rounded border-gray-300 text-[var(--primary)] focus:ring-[var(--primary)]"
+                            />
+                            <span className="text-xs font-black uppercase tracking-wider text-gray-700 group-hover/item:text-[var(--primary)]">
+                              Verified
+                            </span>
+                          </label>
+                          <label className="flex items-center gap-3 cursor-pointer group/item">
+                            <input
+                              type="checkbox"
+                              checked={isTaxExempt}
+                              onChange={(e) => setIsTaxExempt(e.target.checked)}
+                              className="w-5 h-5 rounded border-gray-300 text-[var(--primary)] focus:ring-[var(--primary)]"
+                            />
+                            <span className="text-xs font-black uppercase tracking-wider text-gray-700 group-hover/item:text-[var(--primary)]">
+                              Tax Exempt
+                            </span>
+                          </label>
+                        </div>
+                      )}
+                    </div>
+                  </>
+                )}
+              </div>
+
+              {/* Category Select */}
+              <div className="relative min-w-[160px]">
+                <Tag
+                  size={14}
+                  className="absolute left-6 top-1/2 -translate-y-1/2 text-[var(--primary)]"
+                />
+                <select
+                  className="w-full appearance-none bg-white border border-black/[0.08] pl-12 pr-10 py-3.5 rounded-full text-xs font-black uppercase tracking-wider text-[#2b1f18] focus:outline-none focus:ring-2 focus:ring-[var(--primary)] cursor-pointer"
+                  value={category}
+                  onChange={(event) => setCategory(event.target.value)}
+                >
+                  {categories.map((categoryItem) => (
+                    <option key={categoryItem} value={categoryItem}>
+                      {categoryItem}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"
+                  size={16}
+                />
+              </div>
+
+              {/* Country Select */}
+              <div className="relative min-w-[160px]">
+                <Globe
+                  size={14}
+                  className="absolute left-6 top-1/2 -translate-y-1/2 text-[var(--primary)]"
+                />
+                <select
+                  className="w-full appearance-none bg-white border border-black/[0.08] pl-12 pr-10 py-3.5 rounded-full text-xs font-black uppercase tracking-wider text-[#2b1f18] focus:outline-none focus:ring-2 focus:ring-[var(--primary)] cursor-pointer"
+                  value={country}
+                  onChange={(event) => setCountry(event.target.value)}
+                >
+                  {countries.map((countryItem) => (
+                    <option key={countryItem} value={countryItem}>
+                      {countryItem}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"
+                  size={16}
+                />
+              </div>
+
+              {activeTab === "fundraisers" && (
+                <div className="relative min-w-[160px]">
+                  <SlidersHorizontal
+                    size={14}
+                    className="absolute left-6 top-1/2 -translate-y-1/2 text-[var(--primary)]"
+                  />
+                  <select
+                    className="w-full appearance-none bg-white border border-black/[0.08] pl-12 pr-10 py-3.5 rounded-full text-xs font-black uppercase tracking-wider text-[#2b1f18] focus:outline-none focus:ring-2 focus:ring-[var(--primary)] cursor-pointer"
+                    value={fundraiserType}
+                    onChange={(event) => setFundraiserType(event.target.value)}
+                  >
+                    {fundraiserOptions.map((typeOption) => (
+                      <option key={typeOption} value={typeOption}>
+                        {typeOption}
+                      </option>
                     ))}
+                  </select>
+                  <ChevronDown
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"
+                    size={16}
+                  />
                 </div>
+              )}
 
-                <div className="p-8 md:p-12 min-h-screen">
-                    {loading ? (
-                        <div className="flex flex-col items-center justify-center py-40 gap-4 text-black">
-                            <Loader2 className="animate-spin" size={64} strokeWidth={4} />
-                            <span className="font-black text-2xl uppercase tracking-[0.3em]">Processing...</span>
-                        </div>
-                    ) : (
-                        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                            {activeTab === "campaigns" && (filteredCampaigns.length > 0 ? <InitiativesCampaigns data={filteredCampaigns} primaryColor="#dc2626" /> : <div className="col-span-full py-20 text-center font-black text-black uppercase tracking-widest italic text-2xl">0 Results Found.</div>)}
-                            {activeTab === "events" && (filteredEvents.length > 0 ? <InitiativesEvents data={filteredEvents} primaryColor="#dc2626" /> : <div className="col-span-full py-20 text-center font-black text-black uppercase tracking-widest italic text-2xl">0 Results Found.</div>)}
-                            {activeTab === "fundraisers" && (filteredFundraisers.length > 0 ? <InitiativesFundraisers data={filteredFundraisers} primaryColor="#dc2626" /> : <div className="col-span-full py-20 text-center font-black text-black uppercase tracking-widest italic text-2xl">0 Results Found.</div>)}
-                        </div>
-                    )}
+              {/* Sort By Select */}
+              <div className="relative min-w-[160px]">
+                <div className="absolute left-6 top-1/2 -translate-y-1/2 text-[var(--primary)] text-[10px] font-black">
+                  AZ
                 </div>
+                <select
+                  className="w-full appearance-none bg-white border border-black/[0.08] pl-12 pr-10 py-3.5 rounded-full text-xs font-black uppercase tracking-wider text-[#2b1f18] focus:outline-none focus:ring-2 focus:ring-[var(--primary)] cursor-pointer"
+                  value={sortBy}
+                  onChange={(event) => setSortBy(event.target.value)}
+                >
+                  {sortOptions.map((sortOption) => (
+                    <option key={sortOption} value={sortOption}>
+                      {sortOption}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"
+                  size={16}
+                />
+              </div>
+
+              {/* Reset Filters */}
+              <button
+                onClick={handleReset}
+                className="flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-black/[0.04] hover:bg-black/[0.08] text-[#2b1f18] font-black text-xs uppercase tracking-wider transition-all"
+              >
+                <RefreshCw size={14} />
+                <span>Reset</span>
+              </button>
+
             </div>
+
+          </div>
         </div>
+
+        {/* Loading / Data Grid */}
+        {loading ? (
+          <div className="flex flex-col items-center justify-center py-40 gap-4 text-[var(--primary)]">
+            <Loader2 className="animate-spin" size={48} />
+            <span className="font-black text-xs uppercase tracking-widest">
+              Loading Initiatives...
+            </span>
+          </div>
+        ) : (
+          <div
+            ref={gridRef}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10"
+          >
+            {activeTab === "campaigns" &&
+              (filteredCampaigns.length > 0 ? (
+                <InitiativesCampaigns
+                  data={filteredCampaigns}
+                  primaryColor="var(--primary)"
+                  secondaryColor="var(--secondary)"
+                />
+              ) : (
+                <div className="col-span-full py-24 text-center font-bold text-gray-400">
+                  No campaigns found matching your search.
+                </div>
+              ))}
+            {activeTab === "events" &&
+              (filteredEvents.length > 0 ? (
+                <InitiativesEvents data={filteredEvents} />
+              ) : (
+                <div className="col-span-full py-24 text-center font-bold text-gray-400">
+                  No events found matching your search.
+                </div>
+              ))}
+            {activeTab === "fundraisers" &&
+              (filteredFundraisers.length > 0 ? (
+                <InitiativesFundraisers
+                  data={filteredFundraisers}
+                  primaryColor="var(--primary)"
+                  secondaryColor="var(--secondary)"
+                />
+              ) : (
+                <div className="col-span-full py-24 text-center font-bold text-gray-400">
+                  No fundraisers found matching your search.
+                </div>
+              ))}
+          </div>
+        )}
       </div>
     </section>
   );

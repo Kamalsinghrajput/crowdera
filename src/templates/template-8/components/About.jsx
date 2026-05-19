@@ -4,6 +4,9 @@ import Link from "next/link";
 import { FiPlay, FiCheck } from "react-icons/fi";
 import { FaTrophy } from "react-icons/fa";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function About() {
   const sectionRef = useRef(null);
@@ -46,7 +49,7 @@ export default function About() {
           {/* ====== LEFT COLUMN — Visuals ====== */}
           <div className="w-full lg:w-1/2 relative about-img pl-6 pb-12">
             {/* Tan background block */}
-            <div className="absolute top-1/2 -translate-y-1/2 left-0 w-[100px] h-[70%] bg-[#d9a96e] z-0" />
+            <div className="absolute top-1/2 -translate-y-1/2 left-0 w-[100px] h-[70%] bg-[var(--secondary)] z-0" />
 
             {/* Main Image */}
             <div className="relative z-10 w-[85%] h-[550px] rounded-2xl overflow-hidden ml-6 shadow-lg">
@@ -59,9 +62,9 @@ export default function About() {
             </div>
 
             {/* Play Button Badge */}
-            <div className="absolute top-6 right-[5%] z-20 w-[120px] h-[120px] bg-[#005e46] rounded-full flex items-center justify-center shadow-xl">
-              <button className="w-[60px] h-[60px] bg-[#d9a96e] rounded-full flex items-center justify-center transition-transform hover:scale-110">
-                <FiPlay size={24} className="text-[#005e46] ml-1" />
+            <div className="absolute top-6 right-[5%] z-20 w-[120px] h-[120px] bg-[var(--primary)] rounded-full flex items-center justify-center shadow-xl">
+              <button className="w-[60px] h-[60px] bg-[var(--secondary)] rounded-full flex items-center justify-center transition-transform hover:scale-110">
+                <FiPlay size={24} className="text-[var(--primary)] ml-1" />
               </button>
             </div>
 
@@ -78,12 +81,12 @@ export default function About() {
             {/* 15+ Years Experience Card */}
             <div className="absolute bottom-0 left-[15%] z-30 bg-white rounded-2xl p-6 shadow-[0_10px_40px_rgba(0,0,0,0.1)] flex flex-col items-center justify-center min-w-[160px]">
               <div className="flex items-center gap-2 mb-2">
-                <span className="text-[#005e46] text-[42px] font-bold leading-none">
+                <span className="text-[var(--primary)] text-[42px] font-bold leading-none">
                   15+
                 </span>
                 <FaTrophy size={32} className="text-blue-600" />
               </div>
-              <span className="text-[#777777] text-[13px] font-medium uppercase tracking-wider">
+              <span className="text-[var(--text-color)] text-[13px] font-medium uppercase tracking-wider">
                 Years Experience
               </span>
             </div>
@@ -133,7 +136,7 @@ export default function About() {
                   <span className="text-black text-[36px] font-bold leading-none mb-1">
                     999+
                   </span>
-                  <span className="text-[#777777] text-[14px]">
+                  <span className="text-[var(--text-color)] text-[15px]">
                     Active Reviews
                   </span>
                 </div>
@@ -161,7 +164,7 @@ export default function About() {
 
             <div className="mt-4">
               <Link href="/about">
-                <a className="inline-block bg-[#d9a96e] text-black font-bold text-[17px] px-8 py-4 rounded-md transition-colors hover:bg-[#c4965d]">
+                <a className="inline-block bg-[var(--secondary)] text-black font-bold text-[17px] px-8 py-4 rounded-md transition-colors hover:bg-[#c4965d]">
                   More About Us
                 </a>
               </Link>

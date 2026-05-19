@@ -48,7 +48,7 @@ export default function BlogCard({ blogData }) {
 
         {/* CTA */}
         <Link href="/templates/template-5/blog">
-          <a className="inline-flex items-center gap-2 font-['Montserrat'] font-extrabold text-[14px] text-[var(--bg-color)] group-hover:text-white transition-colors duration-500 uppercase tracking-[1px] no-underline mt-auto">
+          <a className="inline-flex items-center gap-2 font-['Montserrat'] font-extrabold text-[15px] text-[var(--bg-color)] group-hover:text-white transition-colors duration-500 uppercase tracking-[1px] no-underline mt-auto">
             <span>READ MORE</span>
             <FiArrowRight size={18} strokeWidth={3} />
           </a>

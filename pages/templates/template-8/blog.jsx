@@ -11,6 +11,10 @@ export default function BlogPage() {
       </Head>
       <div
         style={{
+          "--primary": "#006755",
+          "--secondary": "#CAA166",
+          "--bg-color": "#1A1A1A",
+          "--text-color": "#777777",
           position: "relative",
           overflowX: "hidden",
           background: "#fff",
@@ -18,7 +22,7 @@ export default function BlogPage() {
       >
         <Navbar />
         <main style={{ paddingTop: "50px" }}>
-          <div className="bg-[#00b86b] py-[80px] text-center border-b-0">
+          <div className="bg-[var(--primary)] py-[80px] text-center border-b-0 mt-[30px]">
             <h1 className="text-[48px] text-white font-['Montserrat'] font-bold">
               All Blog Posts
             </h1>

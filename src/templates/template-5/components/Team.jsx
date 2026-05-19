@@ -214,7 +214,7 @@ export default function Team({ isAllTeamPage }) {
         {!isAllTeamPage && (
           <div style={{ display: "flex", justifyContent: "center" }}>
             <Link href="/templates/template-5/team">
-              <a className="inline-block bg-[var(--primary)] text-white font-['Montserrat'] font-bold text-[14px] uppercase px-10 py-[18px] transition-colors duration-300 hover:bg-[var(--secondary)] no-underline shadow-lg rounded-full">
+              <a className="inline-block bg-[var(--primary)] text-white font-['Montserrat'] font-bold text-[15px] uppercase px-10 py-[18px] transition-colors duration-300 hover:bg-[var(--secondary)] no-underline shadow-lg rounded-full">
                 VIEW ALL BOARD MEMBERS
               </a>
             </Link>

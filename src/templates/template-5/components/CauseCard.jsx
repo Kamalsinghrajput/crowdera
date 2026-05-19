@@ -22,7 +22,7 @@ export default function CauseCard({ course }) {
         </Link>
 
         {/* Meta */}
-        <p className="font-['Inter'] text-[#999999] text-[14px] mb-6">
+        <p className="font-['Inter'] text-[#999999] text-[15px] mb-6">
           By : admin
         </p>
 
@@ -36,7 +36,7 @@ export default function CauseCard({ course }) {
               {/* The Knob */}
               <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-[12px] h-[12px] bg-[var(--secondary)] rounded-full" />
               {/* Percentage Label */}
-              <div className="absolute right-0 bottom-full mb-2 translate-x-1/2 font-['Montserrat'] font-bold text-[14px] text-[var(--bg-color)]">
+              <div className="absolute right-0 bottom-full mb-2 translate-x-1/2 font-['Montserrat'] font-bold text-[15px] text-[var(--bg-color)]">
                 {course.percent}%
               </div>
             </div>
@@ -56,7 +56,7 @@ export default function CauseCard({ course }) {
 
           {/* CTA Link */}
           <Link href="/templates/template-5/causes">
-            <a className="inline-flex items-center gap-2 font-['Montserrat'] font-extrabold text-[14px] text-[var(--bg-color)] uppercase tracking-[1px] no-underline group/cta">
+            <a className="inline-flex items-center gap-2 font-['Montserrat'] font-extrabold text-[15px] text-[var(--bg-color)] uppercase tracking-[1px] no-underline group/cta">
               <span className="transition-colors duration-300 group-hover/cta:text-[var(--primary)]">
                 READ MORE
               </span>

@@ -88,7 +88,7 @@ export default function Faq() {
                 <div className="text-[48px] text-[var(--secondary)] leading-none">
                   24/7
                 </div>
-                <div className="text-[14px] text-white/80 mt-2 tracking-[0.05em]">
+                <div className="text-[15px] text-white/80 mt-2 tracking-[0.05em]">
                   Support Available
                 </div>
               </div>

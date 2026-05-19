@@ -46,7 +46,7 @@ function AccordionItem({ faq, isOpen, onToggle, index }) {
       >
         <div className="flex items-center gap-4 flex-1">
           <span
-            className={`text-[14px] shrink-0 transition-colors duration-300 min-w-[28px] ${
+            className={`text-[15px] shrink-0 transition-colors duration-300 min-w-[28px] ${
               isOpen ? "text-[#FFA415]" : "text-white/30"
             }`}
           >
@@ -128,7 +128,7 @@ export default function Faq() {
                 <div className="text-[48px] text-[var(--secondary)] leading-none">
                   24/7
                 </div>
-                <div className="text-[14px] text-white/80 mt-2 tracking-[0.05em]">
+                <div className="text-[15px] text-white/80 mt-2 tracking-[0.05em]">
                   Support Available
                 </div>
               </div>

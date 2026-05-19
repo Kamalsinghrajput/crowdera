@@ -10,13 +10,13 @@ export default function JoinUsVolunteer() {
     >
       {/* Decorative large background heart outline */}
       <div className="absolute right-[5%] top-10 opacity-30 z-0">
-        <FiHeart size={400} className="text-[#d9a96e]" strokeWidth={0.5} />
+        <FiHeart size={400} className="text-[var(--secondary)]" strokeWidth={0.5} />
       </div>
 
       <div className="max-w-[1200px] mx-auto px-4 relative z-10">
         {/* Section Header */}
         <div className="mb-12">
-          <span className="text-white text-[14px] font-bold block mb-2">
+          <span className="text-white text-[15px] font-bold block mb-2">
             Start donating poor people
           </span>
           <h2 className="text-white text-[clamp(32px,4vw,46px)] font-extrabold leading-[1.2] max-w-[600px] m-0">
@@ -34,10 +34,10 @@ export default function JoinUsVolunteer() {
 
             {/* Notice Box */}
             <div className="bg-[#fff9eb] border border-[#f5e3b5] rounded-xl p-4 flex items-start gap-4 mb-8">
-              <div className="text-[#d9a96e] mt-0.5">
+              <div className="text-[var(--secondary)] mt-0.5">
                 <FiAlertTriangle size={20} />
               </div>
-              <p className="text-[#666] text-[14px] leading-[1.6] m-0">
+              <p className="text-[#666] text-[15px] leading-[1.6] m-0">
                 <strong>Notice:</strong> Test mode is enabled. While in test
                 mode no live donations are processed.
               </p>
@@ -66,7 +66,7 @@ export default function JoinUsVolunteer() {
                 {["20", "50", "100", "200", "Custom"].map((val, i) => (
                   <button
                     key={i}
-                    className={`px-6 py-2.5 rounded-full border text-[14px] font-bold transition-colors
+                    className={`px-6 py-2.5 rounded-full border text-[15px] font-bold transition-colors
                       ${
                         val === "100"
                           ? "bg-[#091f1b] border-[#091f1b] text-white"
@@ -102,7 +102,7 @@ export default function JoinUsVolunteer() {
                         <div className="w-2 h-2 rounded-full bg-[#007b5e]"></div>
                       )}
                     </div>
-                    <span className="text-[#555] text-[14px] font-medium">
+                    <span className="text-[#555] text-[15px] font-medium">
                       {method.label}
                     </span>
                   </label>
@@ -112,7 +112,7 @@ export default function JoinUsVolunteer() {
 
             {/* Donate Button */}
             <div>
-              <button className="bg-[#d9a96e] hover:bg-[#c4965d] text-black font-bold text-[17px] px-10 py-4 rounded-md transition-colors">
+              <button className="bg-[var(--secondary)] hover:bg-[#c4965d] text-black font-bold text-[17px] px-10 py-4 rounded-md transition-colors">
                 Donate Now
               </button>
             </div>

@@ -135,7 +135,7 @@ export default function TeamCard({ member }) {
                 {member.name}
               </button>
             </h3>
-            <p className="text-[14px] text-[#6c6e76] m-0">{member.role}</p>
+            <p className="text-[15px] text-[#6c6e76] m-0">{member.role}</p>
           </div>
         </div>
       </div>

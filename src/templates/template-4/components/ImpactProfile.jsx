@@ -66,7 +66,7 @@ export default function ImpactProfile() {
           {/* Content */}
           <div className="relative z-10 px-6 md:px-16 py-[80px] text-center">
             {/* Top tagline */}
-            <p className="tracking-[0.1em] text-white/70 text-[14px] mb-8 uppercase">
+            <p className="tracking-[0.1em] text-white/70 text-[15px] mb-8 uppercase">
               To create a world where every life is valued, uplifted, and
               empowered without barriers.
             </p>

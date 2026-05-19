@@ -106,7 +106,10 @@ export default function GetInTouch() {
               </div>
 
               <div>
-                <button type="submit" className="inline-flex items-center gap-2 bg-[var(--primary)] text-white font-['Montserrat'] font-bold text-[14px] uppercase px-10 py-[18px] transition-all duration-300 hover:bg-[var(--secondary)] rounded-full shadow-lg">
+                <button
+                  type="submit"
+                  className="inline-flex items-center gap-2 bg-[var(--primary)] text-white font-['Montserrat'] font-bold text-[15px] uppercase px-10 py-[18px] transition-all duration-300 hover:bg-[var(--secondary)] rounded-full shadow-lg"
+                >
                   <span>Submit Now</span>
                   <i>
                     <svg

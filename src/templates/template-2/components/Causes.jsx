@@ -103,7 +103,7 @@ function CourseCard({ course }) {
         <div className="flex items-center justify-between mb-4 relative z-10">
           <div className="text-[17px] text-[var(--bg-color)]">
             {course.raised}{" "}
-            <span className="text-[14px] text-[#6c6e76]">Raised</span>
+            <span className="text-[15px] text-[#6c6e76]">Raised</span>
           </div>
 
           {/* Percentage Circle */}
@@ -113,7 +113,7 @@ function CourseCard({ course }) {
 
           <div className="text-[17px] text-[var(--bg-color)]">
             {course.goal}{" "}
-            <span className="text-[14px] text-[#6c6e76]">Goal</span>
+            <span className="text-[15px] text-[#6c6e76]">Goal</span>
           </div>
         </div>
 

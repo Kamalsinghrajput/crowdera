@@ -1,7 +1,11 @@
+import React, { useEffect, useRef } from "react";
 import Head from "next/head";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import dynamic from "next/dynamic";
 import Navbar from "../../../src/templates/template-8/components/Navbar";
 import Hero from "../../../src/templates/template-8/components/Hero";
+import FeaturedIn from "../../../src/templates/template-8/components/FeaturedIn";
 import Services from "../../../src/templates/template-8/components/Services";
 import Partners from "../../../src/templates/template-8/components/Partners";
 import About from "../../../src/templates/template-8/components/About";
@@ -14,6 +18,7 @@ import Faq from "../../../src/templates/template-8/components/Faq";
 import JoinUsVolunteer from "../../../src/templates/template-8/components/JoinUsVolunteer";
 import GetInTouch from "../../../src/templates/template-8/components/GetInTouch";
 import BLog from "../../../src/templates/template-8/components/Blog";
+import ReadyCTA from "../../../src/templates/template-8/components/ReadyCTA";
 import NewsLetter from "../../../src/templates/template-8/components/Newsletter";
 import SiteFooter from "../../../src/templates/template-8/components/SiteFooter";
 import ImpactProfile from "../../../src/templates/template-8/components/ImpactProfile";
@@ -26,6 +31,83 @@ const ScrollToTop = dynamic(
 );
 
 export default function Template2() {
+  const mainRef = useRef(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    
+    let ctx = gsap.context(() => {
+      const sections = gsap.utils.toArray('main > div');
+      
+      sections.forEach((section) => {
+        if (section.id === "hero") return; // Skip hero to avoid double animation if it has its own
+        
+        const headings = section.querySelectorAll('h1, h2, h3');
+        const structuralElements = section.querySelectorAll('.container .grid > div, .container > .flex > div:not(.absolute), .container > p');
+
+        // Animate headings
+        if (headings.length > 0) {
+          gsap.fromTo(
+            headings,
+            { y: 40, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.8,
+              stagger: 0.15,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: section,
+                start: "top 85%",
+                toggleActions: "play none none reverse",
+              }
+            }
+          );
+        }
+
+        // Animate structural content items (cards, grid elements, flex children)
+        if (structuralElements.length > 0) {
+          gsap.fromTo(
+            structuralElements,
+            { y: 50, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.8,
+              stagger: 0.1,
+              ease: "power3.out",
+              delay: 0.2, // slightly after headings
+              scrollTrigger: {
+                trigger: section,
+                start: "top 80%",
+                toggleActions: "play none none reverse",
+              }
+            }
+          );
+        } else if (headings.length === 0) {
+            // Fallback for sections without specific headings/grids
+            gsap.fromTo(
+              section,
+              { y: 30, opacity: 0 },
+              {
+                y: 0,
+                opacity: 1,
+                duration: 0.8,
+                ease: "power3.out",
+                scrollTrigger: {
+                  trigger: section,
+                  start: "top 85%",
+                  toggleActions: "play none none reverse",
+                }
+              }
+            );
+        }
+      });
+    }, mainRef);
+    
+    return () => ctx.revert();
+  }, []);
+
   return (
     <>
       <Head>
@@ -49,7 +131,12 @@ export default function Template2() {
       </Head>
 
       <div
+        ref={mainRef}
         style={{
+          "--primary": "#006755",
+          "--secondary": "#CAA166",
+          "--bg-color": "#1A1A1A",
+          "--text-color": "#777777",
           position: "relative",
           overflowX: "hidden",
           background: "#fff",
@@ -60,11 +147,15 @@ export default function Template2() {
           <div id="hero">
             <Hero />
           </div>
-          <div id="partners">
-            <Partners />
+          <div id="featured-in">
+            <FeaturedIn />
           </div>
+
           <div id="about">
             <About />
+          </div>
+          <div id="partners">
+            <Partners />
           </div>
           <div id="causes">
             <Causes />
@@ -102,6 +193,9 @@ export default function Template2() {
           </div>
           <div id="blog">
             <BLog />
+          </div>
+          <div id="ready-cta">
+            <ReadyCTA />
           </div>
           <div id="newsletter">
             <NewsLetter />

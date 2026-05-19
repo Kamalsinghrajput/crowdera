@@ -46,7 +46,7 @@ export default function Event({ isAllEventsPage }) {
           height="400"
           viewBox="0 0 24 24"
           fill="none"
-          stroke="#d9a96e"
+          stroke="var(--secondary)"
           strokeWidth="0.4"
         >
           <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
@@ -57,7 +57,7 @@ export default function Event({ isAllEventsPage }) {
       <div className="max-w-[1200px] mx-auto px-4 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <span className="text-[#007b5e] font-bold text-[14px] mb-3 block">
+          <span className="text-[#007b5e] font-bold text-[15px] mb-3 block">
             Join Us for Exciting Experiences
           </span>
           <h2 className="text-[#1a2b28] text-[clamp(32px,4vw,46px)] font-extrabold leading-[1.2] mb-6">
@@ -109,7 +109,7 @@ export default function Event({ isAllEventsPage }) {
 
               {/* Top Right Arrow Button */}
               <Link href="/templates/template-8/initiatives?tab=events">
-                <a className="absolute top-6 right-6 w-[45px] h-[45px] rounded-full bg-[#d9a96e] flex items-center justify-center translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 shadow-md">
+                <a className="absolute top-6 right-6 w-[45px] h-[45px] rounded-full bg-[var(--secondary)] flex items-center justify-center translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 shadow-md">
                   <FiArrowUpRight className="text-black" size={22} />
                 </a>
               </Link>
@@ -119,7 +119,7 @@ export default function Event({ isAllEventsPage }) {
                 <span className="text-white text-[13px] font-medium mb-2 block tracking-wide">
                   {event.category}
                 </span>
-                <h3 className="text-[#d9a96e] text-[22px] font-bold m-0 leading-tight">
+                <h3 className="text-[var(--secondary)] text-[22px] font-bold m-0 leading-tight">
                   {event.title}
                 </h3>
               </div>
@@ -142,7 +142,7 @@ export default function Event({ isAllEventsPage }) {
 
             <div>
               <Link href="/templates/template-8/initiatives?tab=events">
-                <a className="inline-block px-10 py-[18px] bg-[#d9a96e] text-black font-bold text-[17px] transition-colors hover:bg-[#c4965d] shadow-sm">
+                <a className="inline-block px-10 py-[18px] bg-[var(--secondary)] text-black font-bold text-[17px] transition-colors hover:bg-[#c4965d] shadow-sm">
                   Explore All
                 </a>
               </Link>

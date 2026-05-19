@@ -152,8 +152,8 @@ export default function Causes({ isAllCausesPage }) {
         {/* ── View All Causes Button ── */}
         {!isAllCausesPage && (
           <div className="text-center mt-10">
-            <Link href="/templates/template-8/causes">
-              <a className="inline-block bg-[#d9a96e] text-black font-bold text-[17px] px-10 py-4 rounded-md transition-colors duration-300 hover:bg-[#c4965d] no-underline shadow-md">
+            <Link href="/templates/template-8/initiatives?tab=campaigns">
+              <a className="inline-block bg-[var(--secondary)] text-black font-bold text-[17px] px-10 py-4 rounded-md transition-colors duration-300 hover:bg-[#c4965d] no-underline shadow-md">
                 Explore All
               </a>
             </Link>

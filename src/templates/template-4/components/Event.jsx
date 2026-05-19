@@ -100,7 +100,7 @@ export default function Event({ isAllEventsPage }) {
                 />
 
                 {/* Date badge */}
-                <div className="absolute bottom-0 left-0 bg-[var(--primary)] text-white px-5 py-2.5 text-[14px]">
+                <div className="absolute bottom-0 left-0 bg-[var(--primary)] text-white px-5 py-2.5 text-[15px]">
                   {ev.date}
                 </div>
               </div>

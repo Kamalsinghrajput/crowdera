@@ -140,7 +140,7 @@ export default function TeamCard({ member }) {
                 {member.name}
               </button>
             </h3>
-            <p className="text-[14px] text-[#6c6e76] m-0 font-medium">
+            <p className="text-[15px] text-[#6c6e76] m-0 font-medium">
               {member.role}
             </p>
           </div>

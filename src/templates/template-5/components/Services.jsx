@@ -121,7 +121,7 @@ export default function Services() {
         {/* Single Global Read More Button */}
         <a
           href="#services"
-          className="inline-block bg-[var(--primary)] text-white font-['Montserrat'] font-bold text-[14px] uppercase px-10 py-[18px] transition-colors duration-300 mt-[50px] hover:bg-[var(--secondary)]"
+          className="inline-block bg-[var(--primary)] text-white font-['Montserrat'] font-bold text-[15px] uppercase px-10 py-[18px] transition-colors duration-300 mt-[50px] hover:bg-[var(--secondary)]"
         >
           READ MORE
         </a>

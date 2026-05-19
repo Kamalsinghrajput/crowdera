@@ -122,7 +122,7 @@ export default function Testimonial() {
           style={{ perspective: "1500px" }}
         >
           {/* The thick Tan curved background edge */}
-          <div className="absolute right-0 top-0 bottom-0 w-[100px] bg-[#d9a96e] rounded-r-full hidden md:block shadow-lg z-0"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-[100px] bg-[var(--secondary)] rounded-r-full hidden md:block shadow-lg z-0"></div>
 
           {/* Main White Card Container */}
           <div className="absolute inset-0 md:right-8 bg-white rounded-2xl md:rounded-l-2xl md:rounded-r-[100px] shadow-2xl overflow-hidden z-10 flex flex-col justify-center">
@@ -135,9 +135,9 @@ export default function Testimonial() {
               {/* Left Image Side */}
               <div className="w-full md:w-[45%] relative flex justify-center mb-8 md:mb-0">
                 {/* Dark green curved decorative line */}
-                <div className="absolute top-0 right-[15%] w-[80%] h-[110%] border-t-[8px] border-r-[8px] border-[#005e46] rounded-tr-[50px] z-0 m-[-20px]">
+                <div className="absolute top-0 right-[15%] w-[80%] h-[110%] border-t-[8px] border-r-[8px] border-[var(--primary)] rounded-tr-[50px] z-0 m-[-20px]">
                   {/* Little circle on the line */}
-                  <div className="absolute -top-[12px] right-8 w-4 h-4 rounded-full bg-[#83b5a6] border-[3px] border-[#005e46]"></div>
+                  <div className="absolute -top-[12px] right-8 w-4 h-4 rounded-full bg-[#83b5a6] border-[3px] border-[var(--primary)]"></div>
                 </div>
 
                 <div className="relative z-10 w-[240px] h-[240px] md:w-[280px] md:h-[280px] rounded-[40px] overflow-hidden bg-gray-200 shadow-md">
@@ -155,7 +155,7 @@ export default function Testimonial() {
                 {/* Stars */}
                 <div className="flex items-center gap-2 mb-6">
                   {[...Array(5)].map((_, i) => (
-                    <FaStar key={i} className="text-[#d9a96e]" size={22} />
+                    <FaStar key={i} className="text-[var(--secondary)]" size={22} />
                   ))}
                 </div>
 
@@ -166,14 +166,14 @@ export default function Testimonial() {
 
                 {/* Bottom Row - Profile Info */}
                 <div className="flex items-center gap-4">
-                  <div className="w-[50px] h-[50px] rounded-full bg-[#005e46] flex items-center justify-center shadow-md">
+                  <div className="w-[50px] h-[50px] rounded-full bg-[var(--primary)] flex items-center justify-center shadow-md">
                     <FaQuoteLeft size={20} className="text-white" />
                   </div>
                   <div>
                     <span className="text-[#007b5e] text-[13px] font-bold block mb-1">
                       {testimonial.role}
                     </span>
-                    <h4 className="text-[#d9a96e] text-[24px] font-bold m-0">
+                    <h4 className="text-[var(--secondary)] text-[24px] font-bold m-0">
                       {testimonial.name}
                     </h4>
                   </div>
@@ -185,13 +185,13 @@ export default function Testimonial() {
             <div className="absolute bottom-10 right-10 z-20 flex items-center gap-3">
               <button
                 onClick={() => changeSlide(-1)}
-                className="w-[45px] h-[45px] rounded-full bg-[#122f2a] hover:bg-[#005e46] flex items-center justify-center transition-colors shadow-md"
+                className="w-[45px] h-[45px] rounded-full bg-[#122f2a] hover:bg-[var(--primary)] flex items-center justify-center transition-colors shadow-md"
               >
                 <FaChevronLeft size={16} className="text-white mr-1" />
               </button>
               <button
                 onClick={() => changeSlide(1)}
-                className="w-[45px] h-[45px] rounded-full bg-[#d9a96e] hover:bg-[#c4965d] flex items-center justify-center transition-colors shadow-md"
+                className="w-[45px] h-[45px] rounded-full bg-[var(--secondary)] hover:bg-[#c4965d] flex items-center justify-center transition-colors shadow-md"
               >
                 <FaChevronRight size={16} className="text-black ml-1" />
               </button>

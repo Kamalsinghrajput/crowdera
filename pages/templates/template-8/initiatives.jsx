@@ -11,7 +11,7 @@ export default function InitiativesPage() {
 
   return (
     <div className="bg-white min-h-screen font-sans">
-      <style>{`:root { --primary: #00715D; --secondary: #D9A86A; }`}</style>
+      <style>{`:root { --primary: #006755; --secondary: #CAA166; --bg-color: #1A1A1A; --text-color: #777777; }`}</style>
       <Head>
         <title>Initiatives | Charitia - Campaigns, Events & Fundraisers</title>
         <meta

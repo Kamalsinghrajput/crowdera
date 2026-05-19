@@ -97,7 +97,7 @@ export default function About() {
                 </div>
                 {/* Pill Label */}
                 <div className="absolute -bottom-4 bg-white border border-[#eeeeee] px-6 py-2 rounded-full shadow-sm z-10">
-                  <span className="font-['Montserrat'] font-bold text-[14px] text-[var(--bg-color)] uppercase">
+                  <span className="font-['Montserrat'] font-bold text-[15px] text-[var(--bg-color)] uppercase">
                     Charity
                   </span>
                 </div>
@@ -139,7 +139,7 @@ export default function About() {
                 </div>
                 {/* Pill Label */}
                 <div className="absolute -bottom-4 bg-white border border-[#eeeeee] px-6 py-2 rounded-full shadow-sm z-10">
-                  <span className="font-['Montserrat'] font-bold text-[14px] text-[var(--bg-color)] uppercase">
+                  <span className="font-['Montserrat'] font-bold text-[15px] text-[var(--bg-color)] uppercase">
                     Donations
                   </span>
                 </div>

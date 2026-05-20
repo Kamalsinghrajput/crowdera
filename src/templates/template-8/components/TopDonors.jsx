@@ -96,7 +96,7 @@ export default function TopDonors() {
   const translateX = cardW ? -(index * (cardW + GAP)) : 0;
 
   return (
-    <section className="py-[120px]" style={{ background: primaryColor }}>
+    <section className="py-[120px] font-sans" style={{ background: primaryColor }}>
       <div className="max-w-[1320px] mx-auto px-3">
         {/* Header */}
         <div className="text-center mb-[60px]">

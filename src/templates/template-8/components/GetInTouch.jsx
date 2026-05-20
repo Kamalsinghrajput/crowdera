@@ -24,7 +24,7 @@ export default function GetInTouch() {
   };
 
   return (
-    <section className="py-[120px] bg-white relative">
+    <section className="py-[120px] bg-white relative font-sans">
       <div className="max-w-[1320px] mx-auto px-3">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-[50px] items-start">
           {/* Left Column */}

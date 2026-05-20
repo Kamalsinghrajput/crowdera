@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function ReadyCTA() {
   return (
     <section
-      className="py-[120px] relative overflow-hidden text-center"
+      className="py-[120px] relative overflow-hidden text-center font-sans"
       style={{ background: "var(--primary)" }}
     >
       <div className="max-w-[800px] mx-auto px-3 relative z-10">
@@ -13,7 +13,7 @@ export default function ReadyCTA() {
           <div className="w-2 h-2 rounded-full bg-[var(--secondary)]" />
           <span className="text-[17px] text-white italic">Get Involved</span>
         </div>
-        <h2 className="text-[clamp(32px,4vw,48px)] leading-[1.2] text-white mb-6">
+        <h2 className="font-extrabold text-[clamp(32px,4vw,46px)] leading-[1.15] text-white mb-6">
           Ready to Make a Difference?
         </h2>
         <p className="text-[18px] md:text-[20px] text-[rgba(255,255,255,0.9)] font-['Inter'] mb-10 max-w-[600px] mx-auto leading-relaxed">

@@ -29,7 +29,7 @@ export default function FeaturedIn() {
   }, [logos.length]);
 
   return (
-    <section className="py-[80px] bg-[#f9f9f9] border-t border-[#e5e5e5] overflow-hidden">
+    <section className="py-[80px] bg-[#f9f9f9] border-t border-[#e5e5e5] overflow-hidden font-sans">
       <style
         dangerouslySetInnerHTML={{
           __html: `
@@ -48,12 +48,11 @@ export default function FeaturedIn() {
       <div className="max-w-[1320px] mx-auto px-3">
         <div className="mb-16 text-center">
           <div className="inline-flex items-center gap-3 mb-6">
-            <div className="w-2 h-2 rounded-full bg-[var(--secondary)]" />
-            <span className="text-[17px] text-[var(--bg-color)] italic">
+            <span className="text-[var(--primary)] font-bold text-[17px]">
               Recognized By
             </span>
           </div>
-          <h2 className="text-[clamp(32px,4vw,48px)] leading-[1.2] text-[var(--bg-color)]">
+          <h2 className="font-extrabold font-sans text-[clamp(32px,4vw,46px)] text-black leading-[1.15] m-0">
             As Featured In
           </h2>
         </div>

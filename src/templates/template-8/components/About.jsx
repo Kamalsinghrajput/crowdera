@@ -98,7 +98,7 @@ export default function About() {
               <span className="text-[var(--primary)] font-bold text-[17px] mb-3">
                 Supporting Our Cause Together
               </span>
-              <h2 className="font-extrabold text-[clamp(32px,4vw,46px)] text-black leading-[1.15] m-0">
+              <h2 className="font-extrabold font-sans text-[clamp(32px,4vw,46px)] text-black leading-[1.15] m-0">
                 Support Our Mission And Make A Difference
               </h2>
             </div>

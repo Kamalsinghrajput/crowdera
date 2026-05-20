@@ -60,7 +60,7 @@ export default function Faq() {
             </p>
 
             <Link href="#">
-              <a className="inline-block bg-[var(--secondary)] text-black font-bold text-[17px] px-8 py-4 rounded-md transition-colors hover:bg-[#c4965d] no-underline">
+              <a className="inline-block bg-[var(--secondary)] text-black font-bold text-[17px] px-8 py-4 rounded-md transition-colors hover:brightness-95 no-underline">
                 More Questions
               </a>
             </Link>

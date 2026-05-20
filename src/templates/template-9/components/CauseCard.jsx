@@ -25,7 +25,7 @@ export default function CauseCard({ course, index }) {
       </div>
 
       {/* Category Tag Badge */}
-      <div className="inline-block self-start bg-[#E3692A] text-white font-black text-[9px] px-4 py-2 rounded-full mb-4 tracking-wider uppercase">
+      <div className="inline-block self-start bg-[var(--primary)] text-white font-black text-[9px] px-4 py-2 rounded-full mb-4 tracking-wider uppercase">
         {course.tag}
       </div>
 
@@ -54,7 +54,7 @@ export default function CauseCard({ course, index }) {
           {/* Progress Bar */}
           <div className="w-full bg-black/[0.06] h-[6px] rounded-full overflow-hidden">
             <div
-              className="bg-[#E3692A] h-full rounded-full transition-all duration-1000"
+              className="bg-[var(--primary)] h-full rounded-full transition-all duration-1000"
               style={{ width: `${Math.min(100, course.percent)}%` }}
             />
           </div>

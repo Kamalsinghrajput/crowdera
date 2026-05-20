@@ -20,8 +20,8 @@ export const fundraisers = [
 
 const InitiativesFundraisers = ({
   data: initialFundraisersData,
-  primaryColor = "#007B39",
-  secondaryColor = "#FFA415",
+  primaryColor = "var(--primary)",
+  secondaryColor = "var(--secondary)",
 }) => {
   const fundraisersList = initialFundraisersData || fundraisers;
 
@@ -39,7 +39,7 @@ const InitiativesFundraisers = ({
           >
             {/* Profile Avatar + Name + Subtitle */}
             <div className="flex items-center gap-4 mb-8">
-              <div className="relative w-16 h-16 rounded-full overflow-hidden flex-shrink-0 border-2 border-[#FFA415]/20 shadow-md">
+              <div className="relative w-16 h-16 rounded-full overflow-hidden flex-shrink-0 border-2 border-[var(--secondary)]/20 shadow-md">
                 <Image
                   src={fundraiserItem.img}
                   alt={fundraiserItem.name}
@@ -61,19 +61,19 @@ const InitiativesFundraisers = ({
             {/* Badges */}
             <div className="flex gap-2 flex-wrap mb-6">
               {fundraiserItem.isVerified && (
-                <span className="bg-[#007B39] text-white text-[10px] font-bold py-1.5 px-4 rounded-full uppercase tracking-widest shadow-sm">
+                <span className="bg-[var(--primary)] text-white text-[10px] font-bold py-1.5 px-4 rounded-full uppercase tracking-widest shadow-sm">
                   Verified
                 </span>
               )}
               {fundraiserItem.isTaxExempt && (
-                <span className="bg-[#FFA415] text-white text-[10px] font-bold py-1.5 px-4 rounded-full uppercase tracking-widest shadow-sm">
+                <span className="bg-[var(--secondary)] text-white text-[10px] font-bold py-1.5 px-4 rounded-full uppercase tracking-widest shadow-sm">
                   Tax Exempt
                 </span>
               )}
             </div>
 
             {/* Description — using primary color for consistency with design style */}
-            <p className="text-[#007B39] text-[17px] leading-relaxed mb-8 line-clamp-3 font-semibold">
+            <p className="text-[var(--primary)] text-[17px] leading-relaxed mb-8 line-clamp-3 font-semibold">
               {fundraiserItem.desc}
             </p>
 
@@ -83,13 +83,13 @@ const InitiativesFundraisers = ({
                 <span className="text-[11px] font-black text-[#121D18] uppercase tracking-widest">
                   Fundraising Progress
                 </span>
-                <span className="text-sm font-black text-[#007B39]">
+                <span className="text-sm font-black text-[var(--primary)]">
                   {progressPercentage}%
                 </span>
               </div>
               <div className="w-full bg-white rounded-full h-1.5 mb-3 overflow-hidden">
                 <div
-                  className="h-full rounded-full transition-all duration-1000 ease-out bg-[#007B39]"
+                  className="h-full rounded-full transition-all duration-1000 ease-out bg-[var(--primary)]"
                   style={{ width: `${progressPercentage}%` }}
                 />
               </div>

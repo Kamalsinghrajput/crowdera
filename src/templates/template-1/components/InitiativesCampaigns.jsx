@@ -152,7 +152,7 @@ const InitiativesCampaigns = ({ data: initialCampaignData }) => {
                   </span>
                 )}
                 {campaignItem.isTaxExempt && (
-                  <span className="bg-[#FFCA08] text-[#223632] text-[10px] font-black py-1.5 px-4 rounded-full uppercase tracking-widest shadow-lg">
+                  <span className="bg-[var(--primary)] text-[#223632] text-[10px] font-black py-1.5 px-4 rounded-full uppercase tracking-widest shadow-lg">
                     Tax Exempt
                   </span>
                 )}
@@ -162,7 +162,7 @@ const InitiativesCampaigns = ({ data: initialCampaignData }) => {
             {/* Content */}
             <div className="p-6 flex flex-col flex-grow">
               {/* Title */}
-              <h3 className="font-black text-lg leading-tight text-[#223632] group-hover:text-[#FFCA08] transition-colors line-clamp-2 mb-2">
+              <h3 className="font-black text-lg leading-tight text-[#223632] group-hover:text-[var(--primary)] transition-colors line-clamp-2 mb-2">
                 {campaignItem.title}
               </h3>
 
@@ -194,7 +194,7 @@ const InitiativesCampaigns = ({ data: initialCampaignData }) => {
                     className="h-full rounded-full transition-all duration-1000 ease-out"
                     style={{
                       width: `${progressPercentage}%`,
-                      background: `#FFCA08`,
+                      background: `var(--primary)`,
                     }}
                   />
                 </div>
@@ -210,8 +210,8 @@ const InitiativesCampaigns = ({ data: initialCampaignData }) => {
               <div className="flex items-center gap-1.5 mb-4">
                 <Heart
                   size={14}
-                  className="text-[#FFCA08]"
-                  fill="#FFCA08"
+                  className="text-[var(--primary)]"
+                  fill="var(--primary)"
                   fillOpacity="1"
                 />
                 <span className="text-sm font-black text-[#223632]">
@@ -248,14 +248,14 @@ const InitiativesCampaigns = ({ data: initialCampaignData }) => {
               {/* Buttons */}
               <div className="mt-auto space-y-3">
                 <div className="grid grid-cols-2 gap-3">
-                  <button className="bg-[#223632] text-white font-black py-3.5 rounded-xl text-[10px] uppercase tracking-widest hover:bg-[#FFCA08] hover:text-[#223632] transition-all shadow-md active:scale-95">
+                  <button className="bg-[#223632] text-white font-black py-3.5 rounded-xl text-[10px] uppercase tracking-widest hover:bg-[var(--primary)] hover:text-[#223632] transition-all shadow-md active:scale-95">
                     Donate
                   </button>
                   <button className="bg-white text-[#223632] font-black py-3.5 rounded-xl text-[10px] uppercase tracking-widest border-2 border-[#223632] hover:bg-gray-50 transition-all active:scale-95">
                     View
                   </button>
                 </div>
-                <button className="w-full bg-[#FFCA08] text-[#223632] font-black py-3.5 rounded-xl text-[10px] uppercase tracking-widest hover:opacity-90 transition-all shadow-md active:scale-95 border-2 border-transparent">
+                <button className="w-full bg-[var(--primary)] text-[#223632] font-black py-3.5 rounded-xl text-[10px] uppercase tracking-widest hover:opacity-90 transition-all shadow-md active:scale-95 border-2 border-transparent">
                   Fundraise
                 </button>
               </div>

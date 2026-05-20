@@ -143,7 +143,7 @@ export default function Navbar() {
                   display: "flex",
                   alignItems: "center",
                   gap: 6,
-                  background: "#FFA415",
+                  background: "var(--secondary)",
                   color: "#fff",
                   padding: "7px 20px",
                   fontSize: 15,
@@ -376,7 +376,7 @@ export default function Navbar() {
                       height: 50,
                       border: "1px solid rgba(255,255,255,0.2)",
                       borderRadius: "50%",
-                      background: overflowOpen ? "#FFA415" : "transparent",
+                      background: overflowOpen ? "var(--secondary)" : "transparent",
                       color: "#fff",
                       cursor: "pointer",
                       display: "flex",
@@ -386,8 +386,8 @@ export default function Navbar() {
                     }}
                     onMouseEnter={(e) => {
                       if (!overflowOpen) {
-                        e.currentTarget.style.background = "#FFA415";
-                        e.currentTarget.style.borderColor = "#FFA415";
+                        e.currentTarget.style.background = "var(--secondary)";
+                        e.currentTarget.style.borderColor = "var(--secondary)";
                       }
                     }}
                     onMouseLeave={(e) => {
@@ -543,7 +543,7 @@ export default function Navbar() {
                 href="/templates/template-2"
                 onClick={() => setMobileOpen(false)}
                 style={{
-                  color: "#FFA415",
+                  color: "var(--secondary)",
                   fontFamily: "Sora, sans-serif",
                   fontWeight: 800,
                   fontSize: 22,

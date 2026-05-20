@@ -5,7 +5,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function AboutSection() {
-  const primaryColor = "#e8547a";
+  const primaryColor = "var(--primary)";
   const secondaryColor = "#9b59b6";
 
   const sectionRef = useRef(null);
@@ -56,7 +56,7 @@ export default function AboutSection() {
           cx="60"
           cy="60"
           r="55"
-          stroke="#e8547a"
+          stroke="var(--primary)"
           strokeWidth="3"
           fill="none"
         />
@@ -64,7 +64,7 @@ export default function AboutSection() {
           cx="60"
           cy="60"
           r="35"
-          stroke="#e8547a"
+          stroke="var(--primary)"
           strokeWidth="1.5"
           fill="none"
         />

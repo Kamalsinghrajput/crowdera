@@ -358,7 +358,7 @@ const Navbar = () => {
               <a
                 className="hidden lg:flex items-center font-bold text-sm py-3 px-7 rounded-full bg-[#FEC908]
                              text-[#091F1B]
-                             hover:bg-[#00715D] hover:text-white
+                             hover:bg-[var(--secondary)] hover:text-white
                              transition-all duration-300 ease-in-out group shadow-sm"
               >
                 Donate Now

@@ -52,7 +52,7 @@ function scrollToSection(sectionId) {
 
 export default function Navbar() {
   const router = useRouter();
-  const primaryColor = "#e8547a";
+  const primaryColor = "var(--primary)";
   const secondaryColor = "#9b59b6";
 
   const [hasScrolled, setHasScrolled] = useState(false);

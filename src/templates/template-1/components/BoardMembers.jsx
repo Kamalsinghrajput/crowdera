@@ -184,7 +184,7 @@ const BoardMembers = () => {
           <Link href="/templates/template-1/board">
             <a
               className="inline-flex items-center gap-2 bg-[#091F1B] text-white font-bold py-4 px-10 rounded-full
-                           hover:text-white transition-all duration-300 transform shadow-xl group hover:bg-[#00715D]"
+                           hover:text-white transition-all duration-300 transform shadow-xl group hover:bg-[var(--secondary)]"
             >
               View All Board Members
               <ArrowRight

@@ -39,7 +39,7 @@ export default function GetInTouch() {
             </p>
             <a
               href="mailto:info@gmail.com"
-              className="text-[20px] font-bold text-[#007B39] hover:text-[#FFA415] transition-colors"
+              className="text-[20px] font-bold text-[var(--primary)] hover:text-[var(--secondary)] transition-colors"
             >
               info@gmail.com
             </a>
@@ -56,7 +56,7 @@ export default function GetInTouch() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full h-[60px] px-6 bg-white border border-[#e5e7eb] rounded-[5px] text-[17px] text-[#121d18] focus:outline-none focus:border-[#007B39] transition-colors placeholder:text-[#9ca3af]"
+                  className="w-full h-[60px] px-6 bg-white border border-[#e5e7eb] rounded-[5px] text-[17px] text-[#121d18] focus:outline-none focus:border-[var(--primary)] transition-colors placeholder:text-[#9ca3af]"
                 />
                 <input
                   type="email"
@@ -65,7 +65,7 @@ export default function GetInTouch() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full h-[60px] px-6 bg-white border border-[#e5e7eb] rounded-[5px] text-[17px] text-[#121d18] focus:outline-none focus:border-[#007B39] transition-colors placeholder:text-[#9ca3af]"
+                  className="w-full h-[60px] px-6 bg-white border border-[#e5e7eb] rounded-[5px] text-[17px] text-[#121d18] focus:outline-none focus:border-[var(--primary)] transition-colors placeholder:text-[#9ca3af]"
                 />
               </div>
 
@@ -76,7 +76,7 @@ export default function GetInTouch() {
                 value={formData.subject}
                 onChange={handleChange}
                 required
-                className="w-full h-[60px] px-6 bg-white border border-[#e5e7eb] rounded-[5px] text-[17px] text-[#121d18] focus:outline-none focus:border-[#007B39] transition-colors placeholder:text-[#9ca3af]"
+                className="w-full h-[60px] px-6 bg-white border border-[#e5e7eb] rounded-[5px] text-[17px] text-[#121d18] focus:outline-none focus:border-[var(--primary)] transition-colors placeholder:text-[#9ca3af]"
               />
 
               <textarea
@@ -85,7 +85,7 @@ export default function GetInTouch() {
                 value={formData.message}
                 onChange={handleChange}
                 required
-                className="w-full h-[150px] px-6 py-5 bg-white border border-[#e5e7eb] rounded-[5px] text-[17px] text-[#121d18] focus:outline-none focus:border-[#007B39] transition-colors resize-none placeholder:text-[#9ca3af]"
+                className="w-full h-[150px] px-6 py-5 bg-white border border-[#e5e7eb] rounded-[5px] text-[17px] text-[#121d18] focus:outline-none focus:border-[var(--primary)] transition-colors resize-none placeholder:text-[#9ca3af]"
               ></textarea>
 
               <div className="flex items-center gap-3">
@@ -95,7 +95,7 @@ export default function GetInTouch() {
                   name="agree"
                   checked={formData.agree}
                   onChange={handleChange}
-                  className="w-[18px] h-[18px] accent-[#007B39] cursor-pointer"
+                  className="w-[18px] h-[18px] accent-[var(--primary)] cursor-pointer"
                 />
                 <label
                   htmlFor="agree"

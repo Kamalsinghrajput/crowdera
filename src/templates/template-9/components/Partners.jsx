@@ -5,7 +5,7 @@ import React from "react";
 const SunburstHeart = () => (
   <svg
     viewBox="0 0 100 100"
-    className="w-20 h-20 lg:w-28 lg:h-28 text-[#E3692A] fill-none stroke-current stroke-[3.5] stroke-linecap-round stroke-linejoin-round"
+    className="w-20 h-20 lg:w-28 lg:h-28 text-[var(--primary)] fill-none stroke-current stroke-[3.5] stroke-linecap-round stroke-linejoin-round"
   >
     <path d="M 50 37 C 40 22, 20 27, 20 47 C 20 67, 50 82, 50 87 C 50 82, 80 67, 80 47 C 80 27, 60 22, 50 37 Z" />
     <line x1="50" y1="12" x2="50" y2="20" />
@@ -197,7 +197,7 @@ export default function Partners() {
           
           {/* Cursive Subheading */}
           <span
-            className="text-[#F2B740] text-3xl lg:text-4xl font-normal block mb-4"
+            className="text-[var(--secondary)] text-3xl lg:text-4xl font-normal block mb-4"
             style={{ fontFamily: "'Caveat', 'Segoe Script', cursive" }}
           >
             Our partners
@@ -232,7 +232,7 @@ export default function Partners() {
             />
             
             <ReachingHand
-              fill="#F2B740"
+              fill="var(--secondary)"
               className="h-[80%] lg:h-[90%] transform -rotate-6 translate-x-1 origin-bottom"
             />
             
@@ -252,7 +252,7 @@ export default function Partners() {
             />
             
             <ReachingHand
-              fill="#E3692A"
+              fill="var(--primary)"
               className="h-[85%] lg:h-[95%] transform rotate-12 -translate-x-2 origin-bottom"
             />
             

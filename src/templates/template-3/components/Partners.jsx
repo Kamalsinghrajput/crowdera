@@ -16,7 +16,7 @@ import {
 /* ─── Palette matching Services section ─── */
 const BG = "#EBD3AF";
 const DARK = "#121d18";
-const GREEN = "#007B39";
+const GREEN = "var(--primary)";
 
 /* ─── Partner list ─── */
 const PARTNERS = [

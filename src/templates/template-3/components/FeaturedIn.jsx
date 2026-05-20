@@ -15,7 +15,7 @@ import {
 /* ─── Palette matching Partners & Services section ─── */
 const BG = "#F9F9F9";
 const DARK = "#121d18";
-const GREEN = "#007B39";
+const GREEN = "var(--primary)";
 
 /* ─── Featured-in media list ─── */
 const FEATURED = [
@@ -58,7 +58,7 @@ const MARQUEE_STYLE = `
   .featured-item .featured-icon { color: rgba(18,29,24,0.52); transition: color 0.25s; }
   .featured-item .featured-name { color: rgba(18,29,24,0.52); transition: color 0.25s; font-size: 20px; font-weight: 700; letter-spacing: 0.02em; white-space: nowrap; }
   .featured-item:hover .featured-icon,
-  .featured-item:hover .featured-name { color: #007B39; }
+  .featured-item:hover .featured-name { color: var(--primary); }
 `;
 
 export default function FeaturedIn() {

@@ -94,9 +94,14 @@ export default function Blog({ isAllBlogsPage }) {
           ".blog-grid-item",
           { y: 50, opacity: 0 },
           {
-            y: 0, opacity: 1, duration: 0.8, ease: "power3.out", stagger: 0.1, delay: 0.1,
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: "power3.out",
+            stagger: 0.1,
+            delay: 0.1,
             scrollTrigger: { trigger: sectionRef.current, start: "top 85%" },
-          }
+          },
         );
       } else {
         // Header slides up
@@ -104,9 +109,12 @@ export default function Blog({ isAllBlogsPage }) {
           ".blog-header",
           { y: 50, opacity: 0 },
           {
-            y: 0, opacity: 1, duration: 0.8, ease: "power3.out",
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: "power3.out",
             scrollTrigger: { trigger: sectionRef.current, start: "top 85%" },
-          }
+          },
         );
 
         // Left large card
@@ -114,9 +122,13 @@ export default function Blog({ isAllBlogsPage }) {
           ".blog-card-main",
           { y: 70, opacity: 0 },
           {
-            y: 0, opacity: 1, duration: 0.9, ease: "power3.out", delay: 0.1,
+            y: 0,
+            opacity: 1,
+            duration: 0.9,
+            ease: "power3.out",
+            delay: 0.1,
             scrollTrigger: { trigger: sectionRef.current, start: "top 80%" },
-          }
+          },
         );
 
         // Right stack items stagger
@@ -124,9 +136,14 @@ export default function Blog({ isAllBlogsPage }) {
           ".blog-stack-item",
           { y: 50, opacity: 0 },
           {
-            y: 0, opacity: 1, duration: 0.7, ease: "power3.out", stagger: 0.15, delay: 0.2,
+            y: 0,
+            opacity: 1,
+            duration: 0.7,
+            ease: "power3.out",
+            stagger: 0.15,
+            delay: 0.2,
             scrollTrigger: { trigger: sectionRef.current, start: "top 80%" },
-          }
+          },
         );
       }
     }, sectionRef);
@@ -137,7 +154,7 @@ export default function Blog({ isAllBlogsPage }) {
   return (
     <section
       ref={sectionRef}
-      className={`bg-[#F9F5EC] ${isAllBlogsPage ? 'py-[80px]' : 'py-[120px]'} font-sans relative overflow-hidden z-20 border-t border-black/5`}
+      className={`bg-[#F9F5EC] ${isAllBlogsPage ? "py-[80px]" : "py-[120px]"} font-sans relative overflow-hidden z-20 border-t border-black/5`}
     >
       {/* Ghost Watermark */}
       <div className="absolute top-[60px] left-0 right-0 text-center pointer-events-none select-none z-0">
@@ -147,7 +164,6 @@ export default function Blog({ isAllBlogsPage }) {
       </div>
 
       <div className="max-w-[1200px] mx-auto px-6 relative z-10">
-
         {/* Header Block */}
         {!isAllBlogsPage && (
           <div className="blog-header flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
@@ -248,7 +264,6 @@ export default function Blog({ isAllBlogsPage }) {
           </div>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-
             {/* Left Column (7/12) - Giant Highlight Card */}
             <div className="blog-card-main lg:col-span-7 flex flex-col group cursor-pointer">
               <Link href="/templates/template-9/blog">
@@ -267,7 +282,10 @@ export default function Blog({ isAllBlogsPage }) {
                   </div>
 
                   <div className="flex items-center gap-4 mb-4">
-                    <span className="bg-[var(--secondary)] text-[#2b1f18] text-[13px] font-black px-4.5 py-2.5 rounded-full uppercase tracking-wider">
+                    <span
+                      className="bg-[var(--secondary)] text-[#2b1f18] text-[13px] font-black rounded-full uppercase tracking-wider"
+                      style={{ padding: "10px" }}
+                    >
                       {POSTS[0].tag}
                     </span>
                     <span className="text-[14px] font-bold text-gray-600 uppercase tracking-widest">
@@ -288,7 +306,6 @@ export default function Blog({ isAllBlogsPage }) {
 
             {/* Right Column (5/12) - Secondary Stacked List */}
             <div className="lg:col-span-5 flex flex-col gap-8">
-
               {/* Item with image */}
               <div className="blog-stack-item flex flex-col group cursor-pointer">
                 <Link href="/templates/template-9/blog">
@@ -339,9 +356,7 @@ export default function Blog({ isAllBlogsPage }) {
                       </a>
                     </Link>
                   </div>
-                  {i < 1 && (
-                    <div className="w-full h-[1px] bg-black/[0.08]" />
-                  )}
+                  {i < 1 && <div className="w-full h-[1px] bg-black/[0.08]" />}
                 </React.Fragment>
               ))}
             </div>
@@ -357,7 +372,6 @@ export default function Blog({ isAllBlogsPage }) {
             />
           </div>
         )}
-
       </div>
     </section>
   );

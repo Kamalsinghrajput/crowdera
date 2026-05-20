@@ -96,10 +96,10 @@ export default function JoinUsVolunteer() {
                   >
                     <div
                       className={`w-4 h-4 rounded-full border-2 flex items-center justify-center
-                      ${method.checked ? "border-[#007b5e]" : "border-[#ccc] group-hover:border-[#007b5e]"}`}
+                      ${method.checked ? "border-[var(--primary)]" : "border-[#ccc] group-hover:border-[var(--primary)]"}`}
                     >
                       {method.checked && (
-                        <div className="w-2 h-2 rounded-full bg-[#007b5e]"></div>
+                        <div className="w-2 h-2 rounded-full bg-[var(--primary)]"></div>
                       )}
                     </div>
                     <span className="text-[#555] text-[15px] font-medium">
@@ -112,7 +112,7 @@ export default function JoinUsVolunteer() {
 
             {/* Donate Button */}
             <div>
-              <button className="bg-[var(--secondary)] hover:bg-[#c4965d] text-black font-bold text-[17px] px-10 py-4 rounded-md transition-colors">
+              <button className="bg-[var(--secondary)] hover:brightness-95 text-black font-bold text-[17px] px-10 py-4 rounded-md transition-colors">
                 Donate Now
               </button>
             </div>

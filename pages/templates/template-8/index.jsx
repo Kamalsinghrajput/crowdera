@@ -35,15 +35,17 @@ export default function Template2() {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    
+
     let ctx = gsap.context(() => {
-      const sections = gsap.utils.toArray('main > div');
-      
+      const sections = gsap.utils.toArray("main > div");
+
       sections.forEach((section) => {
         if (section.id === "hero") return; // Skip hero to avoid double animation if it has its own
-        
-        const headings = section.querySelectorAll('h1, h2, h3');
-        const structuralElements = section.querySelectorAll('.container .grid > div, .container > .flex > div:not(.absolute), .container > p');
+
+        const headings = section.querySelectorAll("h1, h2, h3");
+        const structuralElements = section.querySelectorAll(
+          ".container .grid > div, .container > .flex > div:not(.absolute), .container > p",
+        );
 
         // Animate headings
         if (headings.length > 0) {
@@ -60,8 +62,8 @@ export default function Template2() {
                 trigger: section,
                 start: "top 85%",
                 toggleActions: "play none none reverse",
-              }
-            }
+              },
+            },
           );
         }
 
@@ -81,30 +83,30 @@ export default function Template2() {
                 trigger: section,
                 start: "top 80%",
                 toggleActions: "play none none reverse",
-              }
-            }
+              },
+            },
           );
         } else if (headings.length === 0) {
-            // Fallback for sections without specific headings/grids
-            gsap.fromTo(
-              section,
-              { y: 30, opacity: 0 },
-              {
-                y: 0,
-                opacity: 1,
-                duration: 0.8,
-                ease: "power3.out",
-                scrollTrigger: {
-                  trigger: section,
-                  start: "top 85%",
-                  toggleActions: "play none none reverse",
-                }
-              }
-            );
+          // Fallback for sections without specific headings/grids
+          gsap.fromTo(
+            section,
+            { y: 30, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.8,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: section,
+                start: "top 85%",
+                toggleActions: "play none none reverse",
+              },
+            },
+          );
         }
       });
     }, mainRef);
-    
+
     return () => ctx.revert();
   }, []);
 

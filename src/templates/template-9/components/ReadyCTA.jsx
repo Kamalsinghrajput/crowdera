@@ -20,10 +20,10 @@ export default function ReadyCTA() {
       style={{ backgroundColor: "var(--primary)" }}
     >
       {/* Decorative Floating Sparkles */}
-      <div className="absolute top-12 left-10 md:left-24 text-[#F2B740] opacity-40 animate-pulse pointer-events-none select-none" style={{ animationDuration: '3s' }}>
+      <div className="absolute top-12 left-10 md:left-24 text-[var(--secondary)] opacity-40 animate-pulse pointer-events-none select-none" style={{ animationDuration: '3s' }}>
         <MiniSparkle />
       </div>
-      <div className="absolute bottom-16 right-10 md:right-28 text-[#F2B740] opacity-40 animate-pulse pointer-events-none select-none" style={{ animationDuration: '4s' }}>
+      <div className="absolute bottom-16 right-10 md:right-28 text-[var(--secondary)] opacity-40 animate-pulse pointer-events-none select-none" style={{ animationDuration: '4s' }}>
         <MiniSparkle className="scale-125" />
       </div>
 
@@ -31,7 +31,7 @@ export default function ReadyCTA() {
         
         {/* Subheading Block */}
         <div className="inline-flex items-center justify-center gap-3 mb-6 w-full">
-          <div className="w-2.5 h-2.5 rounded-full bg-[#F2B740]" />
+          <div className="w-2.5 h-2.5 rounded-full bg-[var(--secondary)]" />
           <span
             className="text-3xl font-normal text-white"
             style={{ fontFamily: "'Caveat', 'Segoe Script', cursive" }}
@@ -62,7 +62,7 @@ export default function ReadyCTA() {
             text="Start a Campaign"
             href="/templates/template-9/initiatives"
             bgColor="#F9F5EC"
-            textColor="#E3692A"
+            textColor="var(--primary)"
             borderColor="#F9F5EC"
             hoverBgColor="#2b1f18"
             hoverTextColor="#ffffff"

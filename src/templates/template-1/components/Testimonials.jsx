@@ -227,7 +227,7 @@ export default function Testimonials() {
                 style={{
                   width: i === index ? "28px" : "10px",
                   height: "10px",
-                  background: i === index ? "#FFCA08" : "rgba(255,255,255,0.2)",
+                  background: i === index ? "var(--primary)" : "rgba(255,255,255,0.2)",
                 }}
               />
             ))}

@@ -128,7 +128,7 @@ export default function Testimonial() {
                 <div className="flex items-center gap-3">
                   <div className="flex items-center gap-1">
                     {[...Array(5)].map((_, i) => (
-                      <FaStar key={i} className="text-[#F2B740]" size={14} />
+                      <FaStar key={i} className="text-[var(--secondary)]" size={14} />
                     ))}
                   </div>
                   <span className="text-white font-black text-sm">{t.rating}</span>

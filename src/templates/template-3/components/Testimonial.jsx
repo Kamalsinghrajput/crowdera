@@ -140,7 +140,7 @@ export default function Testimonial() {
                 width: "10px",
                 height: "10px",
                 borderRadius: "50%",
-                background: "#007B39",
+                background: "var(--primary)",
                 display: "inline-block",
               }}
             />
@@ -208,7 +208,7 @@ export default function Testimonial() {
               fontSize: "20px",
             }}
             onMouseEnter={(e) =>
-              (e.currentTarget.style.backgroundColor = "#FFA415")
+              (e.currentTarget.style.backgroundColor = "var(--secondary)")
             }
             onMouseLeave={(e) =>
               (e.currentTarget.style.backgroundColor = "#121d18")
@@ -234,7 +234,7 @@ export default function Testimonial() {
               fontSize: "20px",
             }}
             onMouseEnter={(e) =>
-              (e.currentTarget.style.backgroundColor = "#FFA415")
+              (e.currentTarget.style.backgroundColor = "var(--secondary)")
             }
             onMouseLeave={(e) =>
               (e.currentTarget.style.backgroundColor = "#121d18")

@@ -32,14 +32,14 @@ export default function ReadyCTA() {
               width: "8px",
               height: "8px",
               borderRadius: "50%",
-              background: "#FFA415",
+              background: "var(--secondary)",
               display: "inline-block",
             }}
           />
           <span
             style={{
               fontSize: "16px",
-              color: "#FFA415",
+              color: "var(--secondary)",
               fontStyle: "italic",
               fontWeight: 600,
             }}

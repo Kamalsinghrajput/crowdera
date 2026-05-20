@@ -164,7 +164,7 @@ export default function TopDonors() {
                 </div>
 
                 {/* Name */}
-                <h4 className="text-[20px] text-[var(--bg-color)] mb-2 group-hover:text-[#FFA415] transition-colors">
+                <h4 className="text-[20px] text-[var(--bg-color)] mb-2 group-hover:text-[var(--secondary)] transition-colors">
                   {d.name}
                 </h4>
 
@@ -191,7 +191,7 @@ export default function TopDonors() {
                 style={{
                   width: i === index ? "24px" : "10px",
                   height: "10px",
-                  background: i === index ? "#FFA415" : "#DDE3E3",
+                  background: i === index ? "var(--secondary)" : "#DDE3E3",
                 }}
               />
             ))}

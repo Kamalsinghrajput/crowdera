@@ -38,7 +38,7 @@ const MEMBERS = [
 
 
 export default function BoardMembersSection() {
-  const primaryColor = "#e8547a";
+  const primaryColor = "var(--primary)";
   const secondaryColor = "#9b59b6";
 
   const sectionRef = useRef(null);
@@ -80,8 +80,8 @@ export default function BoardMembersSection() {
         className="absolute top-10 left-6 w-32 opacity-10 pointer-events-none"
         viewBox="0 0 120 120">
         
-        <circle cx="60" cy="60" r="55" stroke="#e8547a" strokeWidth="3" fill="none" />
-        <circle cx="60" cy="60" r="35" stroke="#e8547a" strokeWidth="1.5" fill="none" />
+        <circle cx="60" cy="60" r="55" stroke="var(--primary)" strokeWidth="3" fill="none" />
+        <circle cx="60" cy="60" r="35" stroke="var(--primary)" strokeWidth="1.5" fill="none" />
       </svg>
       <svg
         className="absolute bottom-10 right-8 w-24 opacity-10 pointer-events-none"
@@ -89,7 +89,7 @@ export default function BoardMembersSection() {
         
         <path
           d="M50 90S10 68 10 42C10 26 18 15 30 18C40 21 46 29 50 37C54 29 60 21 70 18C82 15 90 26 90 42C90 68 50 90 50 90Z"
-          fill="#e8547a" />
+          fill="var(--primary)" />
         
       </svg>
 
@@ -176,7 +176,7 @@ export default function BoardMembersSection() {
                   className="w-10 h-10 rounded-full flex items-center justify-center shadow-lg
                       hover:scale-110 transform transition-all duration-300 focus:outline-none"
 
-                  style={{ background: "linear-gradient(135deg,#e8547a,#c0394e)" }}>
+                  style={{ background: "linear-gradient(135deg,var(--primary),#c0394e)" }}>
                   
                     <Plus size={20} color="#fff" strokeWidth={3} />
                   </button>

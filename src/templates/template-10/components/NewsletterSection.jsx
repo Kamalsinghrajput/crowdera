@@ -6,7 +6,7 @@ import { useEffect } from "react";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function NewsletterSection() {
-  const primaryColor = "#e8547a";
+  const primaryColor = "var(--primary)";
   const secondaryColor = "#9b59b6";
 
   const sectionRef = useRef(null);

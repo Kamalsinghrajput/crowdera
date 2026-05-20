@@ -57,7 +57,7 @@ export default function Event({ isAllEventsPage }) {
       <div className="max-w-[1200px] mx-auto px-4 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <span className="text-[#007b5e] font-bold text-[15px] mb-3 block">
+          <span className="text-[var(--primary)] font-bold text-[15px] mb-3 block">
             Join Us for Exciting Experiences
           </span>
           <h2 className="text-[#1a2b28] text-[clamp(32px,4vw,46px)] font-extrabold leading-[1.2] mb-6">
@@ -67,8 +67,8 @@ export default function Event({ isAllEventsPage }) {
           </h2>
           {/* Divider */}
           <div className="flex items-center justify-center gap-4">
-            <div className="w-16 h-[2px] bg-[#007b5e] opacity-60"></div>
-            <div className="text-[#007b5e]">
+            <div className="w-16 h-[2px] bg-[var(--primary)] opacity-60"></div>
+            <div className="text-[var(--primary)]">
               <svg
                 width="24"
                 height="24"
@@ -85,7 +85,7 @@ export default function Event({ isAllEventsPage }) {
                 <path d="M12 15v6" strokeLinecap="round" />
               </svg>
             </div>
-            <div className="w-16 h-[2px] bg-[#007b5e] opacity-60"></div>
+            <div className="w-16 h-[2px] bg-[var(--primary)] opacity-60"></div>
           </div>
         </div>
 
@@ -142,7 +142,7 @@ export default function Event({ isAllEventsPage }) {
 
             <div>
               <Link href="/templates/template-8/initiatives?tab=events">
-                <a className="inline-block px-10 py-[18px] bg-[var(--secondary)] text-black font-bold text-[17px] transition-colors hover:bg-[#c4965d] shadow-sm">
+                <a className="inline-block px-10 py-[18px] bg-[var(--secondary)] text-black font-bold text-[17px] transition-colors hover:brightness-95 shadow-sm">
                   Explore All
                 </a>
               </Link>

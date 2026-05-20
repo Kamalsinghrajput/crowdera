@@ -71,7 +71,7 @@ const logos = [
         />
         <path
           d="M13 32 Q17 28 20 30 Q23 28 27 32"
-          stroke="#00715D"
+          stroke="var(--secondary)"
           strokeWidth="2"
           strokeLinecap="round"
           fill="none"
@@ -249,18 +249,18 @@ const logos = [
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <circle cx="20" cy="20" r="13" fill="#00715D" opacity="0.1" />
+        <circle cx="20" cy="20" r="13" fill="var(--secondary)" opacity="0.1" />
         <circle
           cx="20"
           cy="20"
           r="13"
-          stroke="#00715D"
+          stroke="var(--secondary)"
           strokeWidth="2"
           fill="none"
         />
         <path
           d="M20 7 Q24 12 22 18 Q18 22 20 28 Q16 22 18 16 Q16 10 20 7Z"
-          fill="#00715D"
+          fill="var(--secondary)"
           opacity="0.7"
         />
         <path

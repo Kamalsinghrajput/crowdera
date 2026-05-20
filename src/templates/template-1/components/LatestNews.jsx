@@ -108,7 +108,7 @@ const LatestNews = () => {
         <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
           <path
             d="M60 110 C60 110, 10 70, 10 40 C10 18, 30 5, 45 15 C52 20, 57 28, 60 38 C63 28, 68 20, 75 15 C90 5, 110 18, 110 40 C110 70, 60 110, 60 110Z"
-            fill="#FFCA08"
+            fill="var(--primary)"
             opacity="0.85"
           />
         </svg>

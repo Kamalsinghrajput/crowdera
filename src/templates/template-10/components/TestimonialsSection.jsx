@@ -11,7 +11,7 @@ const TESTIMONIALS = [
     name: "Jane Bryan",
     role: "Volunteer",
     avatar: "J",
-    color: "#e8547a",
+    color: "var(--primary)",
     quote:
       "We're curious, passionate, and committed to helping nonprofits learn and grow. Oh, and some of us are stage actors and worm farmers on the side.",
   },
@@ -19,7 +19,7 @@ const TESTIMONIALS = [
     name: "Ann Peterson",
     role: "Volunteer",
     avatar: "A",
-    color: "#e8547a",
+    color: "var(--primary)",
     quote:
       "We're curious, passionate, and committed to helping nonprofits learn and grow. Oh, and some of us are stage actors and worm farmers on the side.",
   },
@@ -54,7 +54,7 @@ const AUTO_MS = 5000;
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
 export default function TestimonialsSection() {
-  const primaryColor = "#e8547a";
+  const primaryColor = "var(--primary)";
   const secondaryColor = "#9b59b6";
 
   const sectionRef = useRef(null);
@@ -136,7 +136,7 @@ export default function TestimonialsSection() {
           cx="60"
           cy="60"
           r="55"
-          stroke="#e8547a"
+          stroke="var(--primary)"
           strokeWidth="3"
           fill="none"
         />
@@ -144,7 +144,7 @@ export default function TestimonialsSection() {
           cx="60"
           cy="60"
           r="35"
-          stroke="#e8547a"
+          stroke="var(--primary)"
           strokeWidth="1.5"
           fill="none"
         />
@@ -210,7 +210,7 @@ export default function TestimonialsSection() {
                     width: i === index ? "28px" : "10px",
                     height: "10px",
                     background:
-                      i === index ? "#e8547a" : "rgba(232, 84, 122, 0.2)",
+                      i === index ? "var(--primary)" : "rgba(232, 84, 122, 0.2)",
                   }}
                 />
               ))}

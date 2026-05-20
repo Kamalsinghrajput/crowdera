@@ -40,7 +40,7 @@ export default function Faq() {
           {/* Left */}
           <div>
             <div className="inline-flex items-center gap-3 mb-6">
-              <div className="w-2 h-2 rounded-full bg-[#007B39]" />
+              <div className="w-2 h-2 rounded-full bg-[var(--primary)]" />
               <span className="text-[17px] text-[#121d18] italic font-bold">
                 Our FAQ
               </span>

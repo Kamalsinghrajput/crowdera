@@ -4,8 +4,8 @@ import { useHeadingAnimation } from "../hooks/useHeadingAnimation";
 
 export default function NewsLetter() {
   const headingRef = useHeadingAnimation();
-  const primaryColor = "#007B39";
-  const secondaryColor = "#FFA415";
+  const primaryColor = "var(--primary)";
+  const secondaryColor = "var(--secondary)";
   const bgColor = "#121d18";
   const secondaryBgColor = "#f9f9f9";
 
@@ -65,7 +65,7 @@ export default function NewsLetter() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="w-full bg-transparent border border-white/20 rounded-full px-8 py-[18px] text-[17px] text-white placeholder:text-white/40 focus:outline-none focus:border-[#FFA415] transition-colors pr-[70px]"
+            className="w-full bg-transparent border border-white/20 rounded-full px-8 py-[18px] text-[17px] text-white placeholder:text-white/40 focus:outline-none focus:border-[var(--secondary)] transition-colors pr-[70px]"
           />
           <button
             type="submit"

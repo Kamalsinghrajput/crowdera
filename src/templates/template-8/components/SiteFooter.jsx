@@ -58,7 +58,7 @@ export default function SiteFooter() {
               />
               <button
                 type="submit"
-                className="absolute right-0 top-0 bottom-0 px-4 bg-[var(--secondary)] text-black rounded-r-[5px] hover:bg-[#c4965d] transition-colors flex items-center justify-center"
+                className="absolute right-0 top-0 bottom-0 px-4 bg-[var(--secondary)] text-black rounded-r-[5px] hover:brightness-95 transition-colors flex items-center justify-center"
               >
                 <svg
                   width="18"

@@ -20,7 +20,7 @@ export const fundraisers = [
 
 const InitiativesFundraisers = ({
   data: initialFundraisersData,
-  primaryColor = "#e8547a",
+  primaryColor = "var(--primary)",
 }) => {
   const fundraisersList = initialFundraisersData || fundraisers;
 
@@ -38,7 +38,7 @@ const InitiativesFundraisers = ({
           >
             {/* Profile Avatar + Name + Subtitle */}
             <div className="flex items-center gap-4 mb-8">
-              <div className="relative w-16 h-16 rounded-full overflow-hidden flex-shrink-0 border-4 border-[#e8547a]/20 shadow-lg group-hover:scale-110 transition-transform duration-500">
+              <div className="relative w-16 h-16 rounded-full overflow-hidden flex-shrink-0 border-4 border-[var(--primary)]/20 shadow-lg group-hover:scale-110 transition-transform duration-500">
                 <Image
                   src={fundraiserItem.img}
                   alt={fundraiserItem.name}
@@ -65,14 +65,14 @@ const InitiativesFundraisers = ({
                 </span>
               )}
               {fundraiserItem.isTaxExempt && (
-                <span className="bg-[#e8547a] text-white text-[10px] font-bold py-1.5 px-4 rounded-full uppercase tracking-widest shadow-md">
+                <span className="bg-[var(--primary)] text-white text-[10px] font-bold py-1.5 px-4 rounded-full uppercase tracking-widest shadow-md">
                   Tax Exempt
                 </span>
               )}
             </div>
 
             {/* Description — using primary color for consistency with design style */}
-            <p className="text-[#e8547a] text-[17px] leading-relaxed mb-8 line-clamp-3 font-bold uppercase tracking-tight italic">
+            <p className="text-[var(--primary)] text-[17px] leading-relaxed mb-8 line-clamp-3 font-bold uppercase tracking-tight italic">
               {fundraiserItem.desc}
             </p>
 
@@ -82,13 +82,13 @@ const InitiativesFundraisers = ({
                 <span className="text-[11px] font-black text-[#1a1a2e] uppercase tracking-widest">
                   Progress
                 </span>
-                <span className="text-sm font-black text-[#e8547a]">
+                <span className="text-sm font-black text-[var(--primary)]">
                   {progressPercentage}%
                 </span>
               </div>
               <div className="w-full bg-white rounded-full h-2 mb-3 overflow-hidden shadow-inner">
                 <div
-                  className="h-full rounded-full transition-all duration-1000 ease-out bg-[#e8547a]"
+                  className="h-full rounded-full transition-all duration-1000 ease-out bg-[var(--primary)]"
                   style={{ width: `${progressPercentage}%` }}
                 />
               </div>
@@ -104,7 +104,7 @@ const InitiativesFundraisers = ({
 
             {/* Buttons */}
             <div className="mt-auto grid grid-cols-2 gap-3">
-              <button className="bg-[#1a1a2e] text-white font-black py-4 rounded-full text-[10px] uppercase tracking-[0.2em] hover:bg-[#e8547a] transition-all active:scale-95 shadow-lg">
+              <button className="bg-[#1a1a2e] text-white font-black py-4 rounded-full text-[10px] uppercase tracking-[0.2em] hover:bg-[var(--primary)] transition-all active:scale-95 shadow-lg">
                 Donate
               </button>
               <button className="bg-white text-[#1a1a2e] font-black py-4 rounded-full text-[10px] uppercase tracking-[0.2em] border-2 border-[#1a1a2e] hover:bg-gray-50 transition-all active:scale-95">

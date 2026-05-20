@@ -20,7 +20,7 @@ export const fundraisers = [
 
 const InitiativesFundraisers = ({
   data: initialFundraisersData,
-  primaryColor = "#00b86b",
+  primaryColor = "var(--primary)",
   secondaryColor = "#FFA415",
 }) => {
   const fundraisersList = initialFundraisersData || fundraisers;

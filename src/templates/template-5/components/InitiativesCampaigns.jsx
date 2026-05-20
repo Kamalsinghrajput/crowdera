@@ -43,7 +43,7 @@ export const campaigns = [
 
 const InitiativesCampaigns = ({
   data: initialCampaignData,
-  primaryColor = "#00b86b",
+  primaryColor = "var(--primary)",
   secondaryColor = "#FFA415",
 }) => {
   const campaignsList = initialCampaignData || campaigns;

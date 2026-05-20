@@ -90,14 +90,14 @@ export default function CounterOne() {
                   <span
                     className={`font-['Sora',sans-serif]  ${
                       stat.suffix.includes("billion")
-                        ? "text-lg text-[#007B39] ml-1"
-                        : "text-[clamp(24px,3vw,40px)] text-[#007B39]"
+                        ? "text-lg text-[var(--primary)] ml-1"
+                        : "text-[clamp(24px,3vw,40px)] text-[var(--primary)]"
                     }`}
                   >
                     {stat.suffix}
                   </span>
                 </div>
-                <p className="font-['Inter',sans-serif] text-base text-[#007B39] m-0 capitalize font-medium">
+                <p className="font-['Inter',sans-serif] text-base text-[var(--primary)] m-0 capitalize font-medium">
                   {stat.label}
                 </p>
               </div>

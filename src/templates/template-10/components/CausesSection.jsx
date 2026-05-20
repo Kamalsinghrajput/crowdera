@@ -215,7 +215,7 @@ const AUTO_MS = 4500;
 const TOTAL = causes.length;
 
 export default function CausesSection() {
-  const primaryColor = "#e8547a";
+  const primaryColor = "var(--primary)";
   const secondaryColor = "#9b59b6";
 
   const trackRef = useRef(null);

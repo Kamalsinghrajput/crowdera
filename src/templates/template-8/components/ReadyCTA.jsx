@@ -23,7 +23,7 @@ export default function ReadyCTA() {
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
           <Link href="/templates/template-2/initiatives" passHref>
-            <a className="t2-btn t2-btn-secondary shadow-2xl hover:-translate-y-1 transition-transform">
+            <a className="px-8 py-4 rounded-full bg-[var(--secondary)] text-[#111] font-bold shadow-2xl hover:-translate-y-1 hover:brightness-110 transition-all inline-block">
               <span>Start a Campaign</span>
             </a>
           </Link>

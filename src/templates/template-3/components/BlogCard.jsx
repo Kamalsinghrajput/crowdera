@@ -67,7 +67,7 @@ export default function BlogCard({ blogData }) {
               fontSize: "14px",
             }}
           >
-            <FiTag size={16} className="text-[#007B39]" />
+            <FiTag size={16} className="text-[var(--primary)]" />
             {blogData.category}
           </div>
           <div
@@ -79,7 +79,7 @@ export default function BlogCard({ blogData }) {
               fontSize: "14px",
             }}
           >
-            <FiMessageCircle size={16} className="text-[#007B39]" />
+            <FiMessageCircle size={16} className="text-[var(--primary)]" />
             {blogData.comments}
           </div>
         </div>
@@ -98,7 +98,7 @@ export default function BlogCard({ blogData }) {
           <Link href="/templates/template-3/blog">
             <a
               style={{ textDecoration: "none", color: "inherit", transition: "color 0.3s" }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "#007B39")}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--primary)")}
               onMouseLeave={(e) => (e.currentTarget.style.color = "inherit")}
             >
               {blogData.title}

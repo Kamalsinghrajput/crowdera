@@ -54,7 +54,7 @@ export default function Blog({ isAllBlogsPage }) {
         {!isAllBlogsPage && (
           <div className="text-center mt-12">
             <Link href="/templates/template-8/blog">
-              <a className="inline-block bg-[var(--secondary)] text-black font-bold text-[17px] px-10 py-5 rounded-md transition-all hover:bg-[#c4965d] hover:shadow-lg no-underline uppercase tracking-wider">
+              <a className="inline-block bg-[var(--secondary)] text-black font-bold text-[17px] px-10 py-5 rounded-md transition-all hover:brightness-95 hover:shadow-lg no-underline uppercase tracking-wider">
                 READ MORE
               </a>
             </Link>

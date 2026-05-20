@@ -96,7 +96,7 @@ export default function Causes({ isAllCausesPage }) {
     dotRefs.current.forEach((dot, i) => {
       if (!dot) return;
       dot.style.width = i === idx ? "28px" : "8px";
-      dot.style.background = i === idx ? "#007B39" : "#D1D5DB";
+      dot.style.background = i === idx ? "var(--primary)" : "#D1D5DB";
     });
   }, []);
 
@@ -201,7 +201,7 @@ export default function Causes({ isAllCausesPage }) {
               style={{
                 width: 8,
                 height: 8,
-                background: "#007B39",
+                background: "var(--primary)",
                 borderRadius: "50%",
                 display: "inline-block",
               }}
@@ -211,7 +211,7 @@ export default function Causes({ isAllCausesPage }) {
                 fontSize: 14,
                 fontStyle: "italic",
                 fontWeight: 600,
-                color: "#007B39",
+                color: "var(--primary)",
               }}
             >
               Recent Causes
@@ -266,7 +266,7 @@ export default function Causes({ isAllCausesPage }) {
                       position: "absolute",
                       bottom: 16,
                       left: 16,
-                      background: "#FFA415",
+                      background: "var(--secondary)",
                       color: "#fff",
                       padding: "5px 14px",
                       borderRadius: 50,
@@ -365,7 +365,7 @@ export default function Causes({ isAllCausesPage }) {
                         style={{
                           height: "100%",
                           width: course.percent + "%",
-                          background: "#007B39",
+                          background: "var(--primary)",
                           borderRadius: 99,
                         }}
                       />
@@ -377,7 +377,7 @@ export default function Causes({ isAllCausesPage }) {
                         top: -22,
                         fontSize: 12,
                         fontWeight: 600,
-                        color: "#007B39",
+                        color: "var(--primary)",
                       }}
                     >
                       {course.percent}%
@@ -455,7 +455,7 @@ export default function Causes({ isAllCausesPage }) {
                           position: "absolute",
                           bottom: 16,
                           left: 16,
-                          background: "#FFA415",
+                          background: "var(--secondary)",
                           color: "#fff",
                           padding: "5px 14px",
                           borderRadius: 50,
@@ -554,7 +554,7 @@ export default function Causes({ isAllCausesPage }) {
                             style={{
                               height: "100%",
                               width: course.percent + "%",
-                              background: "#007B39",
+                              background: "var(--primary)",
                               borderRadius: 99,
                             }}
                           />
@@ -566,7 +566,7 @@ export default function Causes({ isAllCausesPage }) {
                             top: -22,
                             fontSize: 12,
                             fontWeight: 600,
-                            color: "#007B39",
+                            color: "var(--primary)",
                           }}
                         >
                           {course.percent}%
@@ -618,8 +618,8 @@ export default function Causes({ isAllCausesPage }) {
                     flexShrink: 0,
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "#007B39";
-                    e.currentTarget.style.borderColor = "#007B39";
+                    e.currentTarget.style.background = "var(--primary)";
+                    e.currentTarget.style.borderColor = "var(--primary)";
                     e.currentTarget.style.color = "#fff";
                   }}
                   onMouseLeave={(e) => {
@@ -688,8 +688,8 @@ export default function Causes({ isAllCausesPage }) {
                     flexShrink: 0,
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "#007B39";
-                    e.currentTarget.style.borderColor = "#007B39";
+                    e.currentTarget.style.background = "var(--primary)";
+                    e.currentTarget.style.borderColor = "var(--primary)";
                     e.currentTarget.style.color = "#fff";
                   }}
                   onMouseLeave={(e) => {

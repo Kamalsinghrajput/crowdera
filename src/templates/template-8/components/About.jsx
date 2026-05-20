@@ -95,7 +95,7 @@ export default function About() {
           {/* ====== RIGHT COLUMN — Content ====== */}
           <div className="w-full lg:w-1/2 flex flex-col gap-6 about-content">
             <div className="flex flex-col">
-              <span className="text-[#007b5e] font-bold text-[17px] mb-3">
+              <span className="text-[var(--primary)] font-bold text-[17px] mb-3">
                 Supporting Our Cause Together
               </span>
               <h2 className="font-extrabold text-[clamp(32px,4vw,46px)] text-black leading-[1.15] m-0">
@@ -119,8 +119,8 @@ export default function About() {
                 "Compassion in Action",
               ].map((item, idx) => (
                 <div key={idx} className="flex items-center gap-3">
-                  <div className="w-5 h-5 rounded-full border border-[#007b5e] flex items-center justify-center flex-shrink-0">
-                    <FiCheck size={12} className="text-[#007b5e]" />
+                  <div className="w-5 h-5 rounded-full border border-[var(--primary)] flex items-center justify-center flex-shrink-0">
+                    <FiCheck size={12} className="text-[var(--primary)]" />
                   </div>
                   <span className="text-[#333333] text-[17px] font-medium">
                     {item}
@@ -164,7 +164,7 @@ export default function About() {
 
             <div className="mt-4">
               <Link href="/about">
-                <a className="inline-block bg-[var(--secondary)] text-black font-bold text-[17px] px-8 py-4 rounded-md transition-colors hover:bg-[#c4965d]">
+                <a className="inline-block bg-[var(--secondary)] text-black font-bold text-[17px] px-8 py-4 rounded-md transition-colors hover:brightness-95">
                   More About Us
                 </a>
               </Link>

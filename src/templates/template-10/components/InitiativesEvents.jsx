@@ -48,7 +48,7 @@ const InitiativesEvents = ({ data: initialEventsData }) => {
               />
               <div className="absolute top-4 left-4 flex gap-2 flex-wrap">
                 {eventItem.isVerified && (
-                  <span className="bg-[#e8547a] text-white text-[10px] font-bold py-1.5 px-4 rounded-full uppercase tracking-widest shadow-lg">
+                  <span className="bg-[var(--primary)] text-white text-[10px] font-bold py-1.5 px-4 rounded-full uppercase tracking-widest shadow-lg">
                     Verified
                   </span>
                 )}
@@ -63,23 +63,23 @@ const InitiativesEvents = ({ data: initialEventsData }) => {
             {/* Content */}
             <div className="p-8 flex flex-col flex-grow text-left">
               {/* Title */}
-              <h3 className="text-2xl font-bold leading-tight text-[#1a1a2e] group-hover:text-[#e8547a] transition-colors line-clamp-2 mb-4">
+              <h3 className="text-2xl font-bold leading-tight text-[#1a1a2e] group-hover:text-[var(--primary)] transition-colors line-clamp-2 mb-4">
                 {eventItem.title}
               </h3>
 
               {/* Organizer */}
               <div className="flex items-center gap-1.5 mb-5">
-                <Users size={14} className="text-[#e8547a] shrink-0" />
-                <span className="text-xs text-[#e8547a] font-bold uppercase tracking-widest">
+                <Users size={14} className="text-[var(--primary)] shrink-0" />
+                <span className="text-xs text-[var(--primary)] font-bold uppercase tracking-widest">
                   {eventItem.organizer}
                 </span>
               </div>
 
               {/* Date / Time Box */}
-              <div className="flex items-start gap-3 bg-[#fdf0f4] rounded-2xl px-4 py-4 mb-6 border border-[#e8547a]/10">
+              <div className="flex items-start gap-3 bg-[#fdf0f4] rounded-2xl px-4 py-4 mb-6 border border-[var(--primary)]/10">
                 <Calendar
                   size={20}
-                  className="text-[#e8547a] mt-0.5 shrink-0"
+                  className="text-[var(--primary)] mt-0.5 shrink-0"
                 />
                 <div>
                   <div className="text-xs font-bold text-[#1a1a2e] uppercase tracking-widest">
@@ -97,18 +97,18 @@ const InitiativesEvents = ({ data: initialEventsData }) => {
               </p>
 
               {/* Fundraising Progress */}
-              <div className="bg-[#fdf0f4] rounded-2xl p-6 mb-8 border border-[#e8547a]/10">
+              <div className="bg-[#fdf0f4] rounded-2xl p-6 mb-8 border border-[var(--primary)]/10">
                 <div className="flex justify-between items-center mb-3">
                   <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">
                     Fundraising Progress
                   </span>
-                  <span className="text-sm font-black text-[#e8547a]">
+                  <span className="text-sm font-black text-[var(--primary)]">
                     {progressPercentage}%
                   </span>
                 </div>
                 <div className="w-full bg-white rounded-full h-2 mb-3 overflow-hidden">
                   <div
-                    className="h-full rounded-full transition-all duration-1000 ease-out bg-[#e8547a]"
+                    className="h-full rounded-full transition-all duration-1000 ease-out bg-[var(--primary)]"
                     style={{ width: `${progressPercentage}%` }}
                   />
                 </div>
@@ -122,7 +122,7 @@ const InitiativesEvents = ({ data: initialEventsData }) => {
 
               {/* Category tag */}
               <div className="mb-8">
-                <span className="bg-[#e8547a]/10 text-[#e8547a] text-[10px] font-bold py-1.5 px-4 rounded-full uppercase tracking-widest border border-[#e8547a]/20">
+                <span className="bg-[var(--primary)]/10 text-[var(--primary)] text-[10px] font-bold py-1.5 px-4 rounded-full uppercase tracking-widest border border-[var(--primary)]/20">
                   {eventItem.category}
                 </span>
               </div>
@@ -130,14 +130,14 @@ const InitiativesEvents = ({ data: initialEventsData }) => {
               {/* Buttons */}
               <div className="mt-auto space-y-3">
                 <div className="grid grid-cols-2 gap-3">
-                  <button className="bg-[#1a1a2e] text-white font-bold py-3.5 rounded-full text-[10px] uppercase tracking-widest hover:bg-[#e8547a] transition-all active:scale-95 shadow-lg">
+                  <button className="bg-[#1a1a2e] text-white font-bold py-3.5 rounded-full text-[10px] uppercase tracking-widest hover:bg-[var(--primary)] transition-all active:scale-95 shadow-lg">
                     Donate
                   </button>
                   <button className="bg-white text-[#1a1a2e] font-bold py-3.5 rounded-full text-[10px] uppercase tracking-widest border-2 border-[#1a1a2e] hover:bg-gray-50 transition-all active:scale-95">
                     View
                   </button>
                 </div>
-                <button className="w-full bg-[#e8547a] text-white font-bold py-4 rounded-full text-[10px] uppercase tracking-widest hover:opacity-90 transition-all shadow-lg active:scale-95 border-2 border-transparent">
+                <button className="w-full bg-[var(--primary)] text-white font-bold py-4 rounded-full text-[10px] uppercase tracking-widest hover:opacity-90 transition-all shadow-lg active:scale-95 border-2 border-transparent">
                   Fundraise
                 </button>
               </div>

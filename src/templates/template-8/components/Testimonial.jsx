@@ -98,7 +98,7 @@ export default function Testimonial() {
       <div className="max-w-[1200px] mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <span className="text-[#007b5e] font-bold text-[17px] mb-3 block">
+          <span className="text-[var(--primary)] font-bold text-[17px] mb-3 block">
             Supporting Our Cause Together
           </span>
           <h2 className="font-extrabold text-[clamp(32px,4vw,46px)] text-black leading-tight max-w-[800px] mx-auto m-0 mb-4">
@@ -108,11 +108,11 @@ export default function Testimonial() {
           </h2>
           {/* Decorative Divider */}
           <div className="flex items-center justify-center gap-4">
-            <div className="w-12 h-[2px] bg-[#007b5e] opacity-60"></div>
-            <div className="text-[#007b5e] border border-[#007b5e] p-1.5 rounded-md opacity-80">
+            <div className="w-12 h-[2px] bg-[var(--primary)] opacity-60"></div>
+            <div className="text-[var(--primary)] border border-[var(--primary)] p-1.5 rounded-md opacity-80">
               <FiHeart size={20} />
             </div>
-            <div className="w-12 h-[2px] bg-[#007b5e] opacity-60"></div>
+            <div className="w-12 h-[2px] bg-[var(--primary)] opacity-60"></div>
           </div>
         </div>
 
@@ -170,7 +170,7 @@ export default function Testimonial() {
                     <FaQuoteLeft size={20} className="text-white" />
                   </div>
                   <div>
-                    <span className="text-[#007b5e] text-[13px] font-bold block mb-1">
+                    <span className="text-[var(--primary)] text-[13px] font-bold block mb-1">
                       {testimonial.role}
                     </span>
                     <h4 className="text-[var(--secondary)] text-[24px] font-bold m-0">
@@ -191,7 +191,7 @@ export default function Testimonial() {
               </button>
               <button
                 onClick={() => changeSlide(1)}
-                className="w-[45px] h-[45px] rounded-full bg-[var(--secondary)] hover:bg-[#c4965d] flex items-center justify-center transition-colors shadow-md"
+                className="w-[45px] h-[45px] rounded-full bg-[var(--secondary)] hover:brightness-95 flex items-center justify-center transition-colors shadow-md"
               >
                 <FaChevronRight size={16} className="text-black ml-1" />
               </button>

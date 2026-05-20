@@ -102,7 +102,7 @@ export default function Causes({ isAllCausesPage }) {
       <div className="max-w-[1200px] mx-auto px-4">
         {/* ── Section Header ── */}
         <div className="text-center mb-16">
-          <span className="text-[#007b5e] font-bold text-[17px] mb-3 block">
+          <span className="text-[var(--primary)] font-bold text-[17px] mb-3 block">
             Supporting Our Cause Together
           </span>
           <h2 className="font-extrabold text-[clamp(32px,4vw,46px)] text-black leading-[1.2] max-w-[700px] mx-auto m-0 mb-4">
@@ -110,11 +110,11 @@ export default function Causes({ isAllCausesPage }) {
           </h2>
           {/* Decorative Divider */}
           <div className="flex items-center justify-center gap-4">
-            <div className="w-12 h-[2px] bg-[#007b5e] opacity-60"></div>
-            <div className="text-[#007b5e] border border-[#007b5e] p-1.5 rounded-md opacity-80">
+            <div className="w-12 h-[2px] bg-[var(--primary)] opacity-60"></div>
+            <div className="text-[var(--primary)] border border-[var(--primary)] p-1.5 rounded-md opacity-80">
               <FiHeart size={20} />
             </div>
-            <div className="w-12 h-[2px] bg-[#007b5e] opacity-60"></div>
+            <div className="w-12 h-[2px] bg-[var(--primary)] opacity-60"></div>
           </div>
         </div>
 
@@ -153,7 +153,7 @@ export default function Causes({ isAllCausesPage }) {
         {!isAllCausesPage && (
           <div className="text-center mt-10">
             <Link href="/templates/template-8/initiatives?tab=campaigns">
-              <a className="inline-block bg-[var(--secondary)] text-black font-bold text-[17px] px-10 py-4 rounded-md transition-colors duration-300 hover:bg-[#c4965d] no-underline shadow-md">
+              <a className="inline-block bg-[var(--secondary)] text-black font-bold text-[17px] px-10 py-4 rounded-md transition-colors duration-300 hover:brightness-95 no-underline shadow-md">
                 Explore All
               </a>
             </Link>

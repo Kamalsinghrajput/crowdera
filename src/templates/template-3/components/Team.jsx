@@ -92,7 +92,7 @@ export default function Team({ isAllTeamPage }) {
         {!isAllTeamPage && (
           <div style={{ textAlign: "center", marginBottom: "60px" }}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: "10px", marginBottom: "14px" }}>
-              <span style={{ width: "10px", height: "10px", borderRadius: "50%", background: "#007B39", display: "inline-block" }} />
+              <span style={{ width: "10px", height: "10px", borderRadius: "50%", background: "var(--primary)", display: "inline-block" }} />
               <span style={{ fontSize: "16px", fontStyle: "italic", fontWeight: 700, color: "#121d18" }}>
                 Our Board Members
               </span>

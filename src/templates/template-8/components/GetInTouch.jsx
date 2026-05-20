@@ -111,7 +111,7 @@ export default function GetInTouch() {
               <div>
                 <button
                   type="submit"
-                  className="inline-block bg-[var(--secondary)] text-black font-bold text-[17px] px-10 py-5 rounded-md transition-all hover:bg-[#c4965d] hover:shadow-lg"
+                  className="inline-block bg-[var(--secondary)] text-black font-bold text-[17px] px-10 py-5 rounded-md transition-all hover:brightness-95 hover:shadow-lg"
                 >
                   Submit Now
                 </button>

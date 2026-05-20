@@ -172,7 +172,7 @@ export default function TopDonors() {
                                group-hover:scale-105 transition-transform duration-300"
                     style={{
                       "--tw-ring-color":
-                        d.rank <= 3 ? "#FFCA08" : "rgba(255,255,255,0.2)",
+                        d.rank <= 3 ? "var(--primary)" : "rgba(255,255,255,0.2)",
                     }}
                   >
                     <Image
@@ -232,7 +232,7 @@ export default function TopDonors() {
                 style={{
                   width: i === index ? "28px" : "10px",
                   height: "10px",
-                  background: i === index ? "#FFCA08" : "rgba(255,255,255,0.2)",
+                  background: i === index ? "var(--primary)" : "rgba(255,255,255,0.2)",
                 }}
               />
             ))}

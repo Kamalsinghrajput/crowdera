@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { FiX } from "react-icons/fi";
 import {
   FaFacebookF,
@@ -22,6 +23,11 @@ const SOCIALS = [
 export default function TeamCard({ member }) {
   const [showModal, setShowModal] = useState(false);
   const [animateIn, setAnimateIn] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const openModal = () => {
     setShowModal(true);
@@ -77,7 +83,10 @@ export default function TeamCard({ member }) {
             />
 
             {/* Social Overlay on Hover */}
-            <div className="absolute inset-0 bg-[#006755]/80 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div
+              className="absolute inset-0 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              style={{ backgroundColor: "color-mix(in srgb, var(--primary) 40%, transparent)" }}
+            >
               {SOCIALS.map(({ key, Icon, memberKey }) => {
                 const url = member.socials?.[memberKey] || "#";
                 return (
@@ -120,7 +129,7 @@ export default function TeamCard({ member }) {
       </div>
 
       {/* Modal */}
-      {showModal && (
+      {showModal && mounted && createPortal(
         <div
           className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 transition-all duration-350"
           style={{
@@ -128,6 +137,8 @@ export default function TeamCard({ member }) {
             backdropFilter: animateIn ? "blur(6px)" : "blur(0px)",
             transition:
               "background-color 350ms ease, backdrop-filter 350ms ease",
+            "--primary": "#006755",
+            "--secondary": "#CAA166",
           }}
           onClick={closeModal}
         >
@@ -228,7 +239,8 @@ export default function TeamCard({ member }) {
               </div>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );

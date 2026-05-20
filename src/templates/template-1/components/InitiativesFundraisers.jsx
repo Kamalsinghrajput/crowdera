@@ -118,7 +118,7 @@ const InitiativesFundraisers = ({ data: initialFundraisersData }) => {
 
             {/* Avatar + Name + Subtitle */}
             <div className="flex items-center gap-4 mb-6">
-              <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0 border-2 border-[#FFCA08]/20 shadow-md">
+              <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0 border-2 border-[var(--primary)]/20 shadow-md">
                 <Image src={fundraiserItem.img} alt={fundraiserItem.name} layout="fill" objectFit="cover" />
               </div>
               <div className="min-w-0">
@@ -134,7 +134,7 @@ const InitiativesFundraisers = ({ data: initialFundraisersData }) => {
                   <span className="bg-[#223632] text-white text-[10px] font-black py-1.5 px-4 rounded-full uppercase tracking-widest shadow-sm">Verified</span>
                 )}
                 {fundraiserItem.isTaxExempt && (
-                  <span className="bg-[#FFCA08] text-[#223632] text-[10px] font-black py-1.5 px-4 rounded-full uppercase tracking-widest shadow-sm">Tax Exempt</span>
+                  <span className="bg-[var(--primary)] text-[#223632] text-[10px] font-black py-1.5 px-4 rounded-full uppercase tracking-widest shadow-sm">Tax Exempt</span>
                 )}
               </div>
             )}
@@ -155,7 +155,7 @@ const InitiativesFundraisers = ({ data: initialFundraisersData }) => {
                   className="h-full rounded-full transition-all duration-1000 ease-out"
                   style={{ 
                     width: `${progressPercentage}%`,
-                    background: `#FFCA08`
+                    background: `var(--primary)`
                   }}
                 />
               </div>
@@ -167,7 +167,7 @@ const InitiativesFundraisers = ({ data: initialFundraisersData }) => {
 
             {/* Donate + View Buttons only */}
             <div className="grid grid-cols-2 gap-3 mt-auto">
-              <button className="bg-[#223632] text-white font-black py-3.5 rounded-xl text-[10px] uppercase tracking-widest hover:bg-[#FFCA08] hover:text-[#223632] transition-all shadow-md active:scale-95 border-2 border-transparent">
+              <button className="bg-[#223632] text-white font-black py-3.5 rounded-xl text-[10px] uppercase tracking-widest hover:bg-[var(--primary)] hover:text-[#223632] transition-all shadow-md active:scale-95 border-2 border-transparent">
                 Donate
               </button>
               <button className="bg-white text-[#223632] font-black py-3.5 rounded-xl text-[10px] uppercase tracking-widest border-2 border-[#223632] hover:bg-gray-50 transition-all active:scale-95">

@@ -6,14 +6,14 @@ const STATS = [
     num: "100",
     suffix: "%",
     label: "Donation Transparency",
-    color: "#F2B740",
+    color: "var(--secondary)",
     subtext: "Directly reaching community projects and beneficiaries",
   },
   {
     num: "18.2",
     suffix: "K+",
     label: "Lives Touched",
-    color: "#E3692A",
+    color: "var(--primary)",
     subtext: "Through education, nutrition, healthcare, and shelter programs.",
   },
   {

@@ -57,7 +57,7 @@ const rankGradients = {
 };
 
 export default function TopDonorsSection() {
-  const primaryColor = "#e8547a";
+  const primaryColor = "var(--primary)";
   const secondaryColor = "#9b59b6";
 
   const sectionRef = useRef(null);
@@ -138,7 +138,7 @@ export default function TopDonorsSection() {
         
         <path
           d="M50 90S10 68 10 42C10 26 18 15 30 18C40 21 46 29 50 37C54 29 60 21 70 18C82 15 90 26 90 42C90 68 50 90 50 90Z"
-          fill="#e8547a" />
+          fill="var(--primary)" />
         
       </svg>
 
@@ -198,7 +198,7 @@ export default function TopDonorsSection() {
                                group-hover:scale-105 transition-transform duration-300"
 
                   style={{
-                    "--tw-ring-color": d.rank <= 3 ? "#e8547a" : "rgba(155,89,182,0.25)"
+                    "--tw-ring-color": d.rank <= 3 ? "var(--primary)" : "rgba(155,89,182,0.25)"
                   }}>
                   
                     <img src={d.img} alt={d.name} className="w-full h-full object-cover" />
@@ -249,7 +249,7 @@ export default function TopDonorsSection() {
               style={{
                 width: i === index ? "28px" : "10px",
                 height: "10px",
-                background: i === index ? "#e8547a" : "rgba(232, 84, 122, 0.2)"
+                background: i === index ? "var(--primary)" : "rgba(232, 84, 122, 0.2)"
               }} />
 
             )}

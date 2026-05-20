@@ -12,7 +12,7 @@ const TAB_DATA = [
     desc: "Thanks to giving people like you, 33 million children are growing up healthy, nourished and treated for childhood killers like pneumonia.",
     img: "https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1200&q=80",
     btnText: "MEET THE TEAM",
-    accent: "#E3692A",
+    accent: "var(--primary)",
   },
   {
     key: "Education",
@@ -21,7 +21,7 @@ const TAB_DATA = [
     desc: "We believe education is the key to unlocking a child's full potential and breaking the cycle of poverty in vulnerable communities.",
     img: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=80",
     btnText: "EXPLORE SCHOOLS",
-    accent: "#F2B740",
+    accent: "var(--secondary)",
   },
   {
     key: "Food & Nutrition",
@@ -30,7 +30,7 @@ const TAB_DATA = [
     desc: "Providing daily nutritious meals and clean drinking water to thousands of children across community schools to ensure healthy growth.",
     img: "https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=1200&q=80",
     btnText: "SEE PROJECTS",
-    accent: "#E3692A",
+    accent: "var(--primary)",
   },
 ];
 

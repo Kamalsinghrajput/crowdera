@@ -13,7 +13,7 @@ const STATS = [
 ];
 
 export default function ImpactSection() {
-  const primaryColor = "#e8547a";
+  const primaryColor = "var(--primary)";
   const secondaryColor = "#9b59b6";
 
   const sectionRef = useRef(null);
@@ -100,7 +100,7 @@ export default function ImpactSection() {
           }`}
           style={{
             background:
-              "linear-gradient(135deg, #7C3682 0%, #9b59b6 40%, #e8547a 100%)",
+              "linear-gradient(135deg, #7C3682 0%, #9b59b6 40%, var(--primary) 100%)",
           }}
         >
           {/* World map watermark */}

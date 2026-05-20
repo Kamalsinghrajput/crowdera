@@ -17,7 +17,7 @@ const BG = "#EBD3AF";
 const CARD_BDR = "#bfb49a";
 const CARD_HOVER = "black";
 const DARK = "#121d18";
-const GREEN = "#007B39";
+const GREEN = "var(--primary)";
 const GAP = 20;
 const AUTO_MS = 3000;
 
@@ -348,7 +348,7 @@ export default function Services() {
                         gap: "6px",
                         fontSize: "15px",
                         fontWeight: 600,
-                        color: isHov ? "#FFA415" : DARK,
+                        color: isHov ? "var(--secondary)" : DARK,
                         textDecoration: "none",
                         transition: "color 0.3s",
                       }}

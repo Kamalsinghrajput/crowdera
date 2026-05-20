@@ -87,7 +87,7 @@ export default function Hero() {
               key={`sub-${animKey}`}
               className="flex items-center gap-3 mb-6 animate-[slideInUp_0.7s_ease_forwards]"
             >
-              <div className="w-3 h-3 rounded-full bg-[#007B39]" />
+              <div className="w-3 h-3 rounded-full bg-[var(--primary)]" />
               <span className="text-[15px] md:text-[17px] font-bold text-[#121d18] tracking-[0.1em] uppercase font-sans">
                 {slide.subtitle}
               </span>
@@ -143,7 +143,7 @@ export default function Hero() {
                 height="40"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="#007B39"
+                stroke="var(--primary)"
                 strokeWidth="1.5"
               >
                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
@@ -207,7 +207,7 @@ export default function Hero() {
               setCurrent(i);
               setAnimKey((k) => k + 1);
             }}
-            className={`h-2.5 rounded-full transition-all duration-300 ${current === i ? "w-10 bg-[#007B39]" : "w-2.5 bg-white/50 hover:bg-white"}`}
+            className={`h-2.5 rounded-full transition-all duration-300 ${current === i ? "w-10 bg-[var(--primary)]" : "w-2.5 bg-white/50 hover:bg-white"}`}
           />
         ))}
       </div>

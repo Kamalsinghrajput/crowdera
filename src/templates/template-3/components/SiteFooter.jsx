@@ -41,7 +41,7 @@ export default function SiteFooter() {
               ref={headingRef}
               className="text-[32px] font-bold mb-6 tracking-wide"
             >
-              <span className="text-[#FFA415]">Chio</span>
+              <span className="text-[var(--secondary)]">Chio</span>
               <span className="text-white">ary</span>
             </h2>
 
@@ -54,11 +54,11 @@ export default function SiteFooter() {
               <input
                 type="email"
                 placeholder="Your Email"
-                className="w-full bg-white/10 border-none rounded-[5px] h-[50px] px-5 text-white placeholder-white/50 outline-none focus:ring-1 focus:ring-[#FFA415] transition-all"
+                className="w-full bg-white/10 border-none rounded-[5px] h-[50px] px-5 text-white placeholder-white/50 outline-none focus:ring-1 focus:ring-[var(--secondary)] transition-all"
               />
               <button
                 type="submit"
-                className="absolute right-0 top-0 bottom-0 px-4 bg-[#007B39] text-white rounded-r-[5px] hover:bg-[#FFA415] transition-colors flex items-center justify-center"
+                className="absolute right-0 top-0 bottom-0 px-4 bg-[var(--primary)] text-white rounded-r-[5px] hover:bg-[var(--secondary)] transition-colors flex items-center justify-center"
               >
                 <svg
                   width="18"
@@ -83,7 +83,7 @@ export default function SiteFooter() {
             <ul className="space-y-4">
               {quickLinks.map((link) => (
                 <li key={link}>
-                  <a className="text-white/70 hover:text-[#FFA415] transition cursor-pointer text-[17px]">
+                  <a className="text-white/70 hover:text-[var(--secondary)] transition cursor-pointer text-[17px]">
                     {link}
                   </a>
                 </li>
@@ -97,7 +97,7 @@ export default function SiteFooter() {
             <ul className="space-y-4">
               {services.map((link) => (
                 <li key={link}>
-                  <a className="text-white/70 hover:text-[#FFA415] transition cursor-pointer text-[17px]">
+                  <a className="text-white/70 hover:text-[var(--secondary)] transition cursor-pointer text-[17px]">
                     {link}
                   </a>
                 </li>
@@ -112,7 +112,7 @@ export default function SiteFooter() {
             </h3>
             <ul className="space-y-5">
               <li className="flex items-start gap-4 group cursor-pointer">
-                <div className="w-[40px] h-[40px] rounded-full bg-white/10 flex items-center justify-center shrink-0 group-hover:bg-[#FFA415] transition-colors duration-300">
+                <div className="w-[40px] h-[40px] rounded-full bg-white/10 flex items-center justify-center shrink-0 group-hover:bg-[var(--secondary)] transition-colors duration-300">
                   <svg
                     width="18"
                     height="18"
@@ -131,7 +131,7 @@ export default function SiteFooter() {
                 </div>
               </li>
               <li className="flex items-center gap-4 group cursor-pointer">
-                <div className="w-[40px] h-[40px] rounded-full bg-white/10 flex items-center justify-center shrink-0 group-hover:bg-[#FFA415] transition-colors duration-300">
+                <div className="w-[40px] h-[40px] rounded-full bg-white/10 flex items-center justify-center shrink-0 group-hover:bg-[var(--secondary)] transition-colors duration-300">
                   <svg
                     width="18"
                     height="18"
@@ -147,7 +147,7 @@ export default function SiteFooter() {
                 <div className="text-white/70 text-[17px]">(219) 555-0114</div>
               </li>
               <li className="flex items-center gap-4 group cursor-pointer">
-                <div className="w-[40px] h-[40px] rounded-full bg-white/10 flex items-center justify-center shrink-0 group-hover:bg-[#FFA415] transition-colors duration-300">
+                <div className="w-[40px] h-[40px] rounded-full bg-white/10 flex items-center justify-center shrink-0 group-hover:bg-[var(--secondary)] transition-colors duration-300">
                   <svg
                     width="18"
                     height="18"
@@ -173,15 +173,15 @@ export default function SiteFooter() {
         <div className="border-t border-white/10 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-white/70 text-[17px]">
             © 1995–2024 All Rights For{" "}
-            <span className="text-[#FFA415] font-semibold">Chioary</span>{" "}
+            <span className="text-[var(--secondary)] font-semibold">Chioary</span>{" "}
             Exclusive
           </p>
 
           <div className="flex gap-8 text-[17px] text-white/70">
-            <a className="hover:text-[#FFA415] transition cursor-pointer">
+            <a className="hover:text-[var(--secondary)] transition cursor-pointer">
               Terms Of Service
             </a>
-            <a className="hover:text-[#FFA415] transition cursor-pointer">
+            <a className="hover:text-[var(--secondary)] transition cursor-pointer">
               Privacy Policy
             </a>
           </div>

@@ -50,14 +50,14 @@ export default function About() {
           <div className="w-full lg:w-1/2 flex flex-col gap-7">
             {/* Sub-label */}
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-[#007B39] rounded-full" />
+              <div className="w-2 h-2 bg-[var(--primary)] rounded-full" />
               <span
                 style={{
                   fontFamily: "Inter, sans-serif",
                   fontSize: 14,
                   fontStyle: "italic",
                   fontWeight: 600,
-                  color: "#007B39",
+                  color: "var(--primary)",
                 }}
               >
                 Our About
@@ -187,7 +187,7 @@ export default function About() {
                   style={{
                     width: 48,
                     height: 48,
-                    background: "#FFA415",
+                    background: "var(--secondary)",
                     borderRadius: "50%",
                     display: "flex",
                     alignItems: "center",
@@ -202,7 +202,7 @@ export default function About() {
 
             {/* 25 Years Experience badge */}
             <div
-              className="absolute bottom-10 left-0 lg:-left-12 bg-[#007B39] rounded-2xl p-4 lg:p-[18px_22px] shadow-lg min-w-[140px] lg:min-w-[160px] translate-x-4 lg:translate-x-0"
+              className="absolute bottom-10 left-0 lg:-left-12 bg-[var(--primary)] rounded-2xl p-4 lg:p-[18px_22px] shadow-lg min-w-[140px] lg:min-w-[160px] translate-x-4 lg:translate-x-0"
             >
               <div
                 style={{

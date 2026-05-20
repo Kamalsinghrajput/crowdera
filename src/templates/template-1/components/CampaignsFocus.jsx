@@ -177,7 +177,7 @@ const CampaignsFocus = () => {
           >
             <path
               d="M40 70 C40 70, 10 45, 10 28 C10 15, 22 10, 30 14 C35 17, 38 22, 40 28 C42 22, 45 17, 50 14 C58 10, 70 15, 70 28 C70 45, 40 70, 40 70Z"
-              fill="#00715D"
+              fill="var(--secondary)"
             />
           </svg>
         </div>
@@ -190,7 +190,7 @@ const CampaignsFocus = () => {
             <span
               className="text-[var(--secondary)]"
               style={{
-                color: "#FFCA08",
+                color: "var(--primary)",
               }}
             >
               Focus
@@ -266,7 +266,7 @@ const CampaignsFocus = () => {
                         style={{ width: `${pct}%` }}
                       />
                     </div>
-                    <button className="w-full bg-[#091F1B] text-white font-bold py-2.5 rounded-full hover:bg-[#00715D] transition-colors text-xs">
+                    <button className="w-full bg-[#091F1B] text-white font-bold py-2.5 rounded-full hover:bg-[var(--secondary)] transition-colors text-xs">
                       Donate Now
                     </button>
                   </div>
@@ -288,7 +288,7 @@ const CampaignsFocus = () => {
                 style={{
                   width: i === index ? "28px" : "10px",
                   height: "10px",
-                  background: i === index ? "#FFCA08" : "#d1d5db",
+                  background: i === index ? "var(--primary)" : "#d1d5db",
                 }}
               />
             ))}
@@ -297,9 +297,9 @@ const CampaignsFocus = () => {
             <button
               onClick={goPrev}
               aria-label="Previous"
-              className="w-11 h-11 rounded-full border-2 border-[#FFCA08] hover:border-[#091F1B] flex items-center justify-center text-[#091F1B] hover:bg-[#091F1B] hover:text-white transition-all duration-200"
+              className="w-11 h-11 rounded-full border-2 border-[var(--primary)] hover:border-[#091F1B] flex items-center justify-center text-[#091F1B] hover:bg-[#091F1B] hover:text-white transition-all duration-200"
             >
-              <ChevronLeft size={20} color="#FFCA08" />
+              <ChevronLeft size={20} color="var(--primary)" />
             </button>
             <button
               onClick={goNext}
@@ -315,8 +315,8 @@ const CampaignsFocus = () => {
             <a
               className="inline-flex items-center text-[var(--secondary)] font-bold text-sm hover:text-[#091F1B] transition-colors group"
               style={{
-                color: "#FFCA08",
-                border: "1px solid #FFCA08",
+                color: "var(--primary)",
+                border: "1px solid var(--primary)",
                 padding: "12px 24px",
                 borderRadius: "12px",
               }}

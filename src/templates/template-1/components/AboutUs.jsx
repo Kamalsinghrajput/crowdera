@@ -205,7 +205,7 @@ const AboutUs = () => {
           {/* Text Right */}
           <div className="w-full lg:w-1/2 about-text">
             <span
-              className="font-bold tracking-wider uppercase text-md mb-2 block text-[#00715D]"
+              className="font-bold tracking-wider uppercase text-md mb-2 block text-[var(--secondary)]"
               style={{
                 fontFamily: "'Caveat', 'Segoe Script', cursive",
                 fontWeight: "bolder",
@@ -245,7 +245,7 @@ const AboutUs = () => {
               <Link href="#" passHref>
                 <a
                   className="inline-block bg-[#091F1B] text-white font-bold py-4 px-10 rounded-full
-                            hover:text-white hover:bg-[#00715D] transition-all transform shadow-xl hover:shadow-2xl hover:shadow-[#091F1B]/30"
+                            hover:text-white hover:bg-[var(--secondary)] transition-all transform shadow-xl hover:shadow-2xl hover:shadow-[#091F1B]/30"
                 >
                   Learn More About Us
                 </a>

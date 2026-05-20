@@ -175,7 +175,7 @@ export default function Event({ isAllEventsPage }) {
               width: "10px",
               height: "10px",
               borderRadius: "50%",
-              background: "#007B39",
+              background: "var(--primary)",
               display: "inline-block",
             }}
           />
@@ -247,7 +247,7 @@ export default function Event({ isAllEventsPage }) {
                   zIndex: 2,
                 }}
               >
-                <BrushBadge date={eventData.date} color="#007B39" />
+                <BrushBadge date={eventData.date} color="var(--primary)" />
               </div>
 
               {/* bottom info */}
@@ -313,7 +313,7 @@ export default function Event({ isAllEventsPage }) {
             >
               {ITEMS.map((eventData, index) => {
                 const isActive = index === activeTrackIndex;
-                const accent = isActive ? "#007B39" : "#FFA415";
+                const accent = isActive ? "var(--primary)" : "var(--secondary)";
                 return (
                   <div
                     key={index}
@@ -463,8 +463,8 @@ export default function Event({ isAllEventsPage }) {
                 style={{
                   width: "11px",
                   height: "11px",
-                  border: `1.5px solid ${index === activeDot ? "#007B39" : "#bbb"}`,
-                  background: index === activeDot ? "#007B39" : "transparent",
+                  border: `1.5px solid ${index === activeDot ? "var(--primary)" : "#bbb"}`,
+                  background: index === activeDot ? "var(--primary)" : "transparent",
                   cursor: "pointer",
                   padding: 0,
                   outline: "none",

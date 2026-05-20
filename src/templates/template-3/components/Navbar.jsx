@@ -101,34 +101,34 @@ export default function Navbar() {
 
   const buttonStyles = `
     :root {
-      --primary: #007B39;
-      --secondary: #FFA415;
+      --primary: var(--primary);
+      --secondary: var(--secondary);
       --bg-color: #121d18;
       --secondary-bg-color: #f9f9f9;
-      --t2-primary: #007B39;
-      --t2-secondary: #FFA415;
+      --t2-primary: var(--primary);
+      --t2-secondary: var(--secondary);
       --t2-dark: #121d18;
       --t2-gray: #6c6e76;
       --t2-light: #f9f9f9;
     }
     .t2-btn { display: inline-flex; align-items: center; gap: 0; text-decoration: none; border: none; background: none; cursor: pointer; padding: 0; }
-    .t2-btn span { position: relative; display: inline-flex; align-items: center; justify-content: center; height: 50px; padding: 0 35px; background-color: var(--primary, #007B39); color: white; border-radius: 25px; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; z-index: 1; overflow: hidden; transition: all 500ms ease; white-space: nowrap; }
+    .t2-btn span { position: relative; display: inline-flex; align-items: center; justify-content: center; height: 50px; padding: 0 35px; background-color: var(--primary, var(--primary)); color: white; border-radius: 25px; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; z-index: 1; overflow: hidden; transition: all 500ms ease; white-space: nowrap; }
     .t2-btn span::before { content: ""; position: absolute; inset: 0; background-color: var(--bg-color, #121d18); transform-origin: left; transform: scaleX(0); transition: transform 0.8s cubic-bezier(0, 0.96, 0.58, 1.1); z-index: -1; }
     .t2-btn:hover span::before { transform: scaleX(1); transition: transform 1.2s cubic-bezier(0, 0.96, 0.58, 1.1); }
     .t2-btn:hover span { color: white; }
-    .t2-btn i { position: relative; display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; background-color: var(--primary, #007B39); border-radius: 50%; font-size: 18px; color: white; overflow: hidden; transition: all 500ms ease; z-index: 2; margin-left: -10px; }
+    .t2-btn i { position: relative; display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; background-color: var(--primary, var(--primary)); border-radius: 50%; font-size: 18px; color: white; overflow: hidden; transition: all 500ms ease; z-index: 2; margin-left: -10px; }
     .t2-btn i::after { content: ""; position: absolute; inset: 0; background-color: var(--bg-color, #121d18); transform-origin: right; transform: scaleX(0); transition: transform 0.8s cubic-bezier(0, 0.96, 0.58, 1.1); z-index: -1; }
     .t2-btn:hover i::after { transform: scaleX(1); transition: transform 1.2s cubic-bezier(0, 0.96, 0.58, 1.1); }
     .t2-btn:hover i { color: white; }
     .t2-btn i { display: none; }
     .t2-btn.t2-btn-black span { background-color: var(--bg-color, #121d18); }
-    .t2-btn.t2-btn-black span::before { background-color: var(--secondary, #FFA415); }
-    .t2-btn.t2-btn-primary span { background-color: var(--primary, #007B39); }
-    .t2-btn.t2-btn-secondary span { background-color: var(--secondary, #FFA415); color: var(--bg-color, #121d18); }
+    .t2-btn.t2-btn-black span::before { background-color: var(--secondary, var(--secondary)); }
+    .t2-btn.t2-btn-primary span { background-color: var(--primary, var(--primary)); }
+    .t2-btn.t2-btn-secondary span { background-color: var(--secondary, var(--secondary)); color: var(--bg-color, #121d18); }
     .t2-btn.t2-btn-secondary span::before { background-color: var(--bg-color, #121d18); }
     .t2-btn.t2-btn-secondary:hover span { color: white; }
-    .t2-text-btn { display: inline-flex; align-items: center; font-size: 13px; color: var(--primary, #007B39); text-decoration: none; text-transform: uppercase; font-weight: 500; letter-spacing: 0.1em; transition: color 0.3s; }
-    .t2-text-btn:hover { color: var(--secondary, #FFA415); }
+    .t2-text-btn { display: inline-flex; align-items: center; font-size: 13px; color: var(--primary, var(--primary)); text-decoration: none; text-transform: uppercase; font-weight: 500; letter-spacing: 0.1em; transition: color 0.3s; }
+    .t2-text-btn:hover { color: var(--secondary, var(--secondary)); }
     .t2-text-btn svg { transition: transform 0.3s; }
     .t2-text-btn:hover svg { transform: translateX(5px); }
   `;
@@ -463,7 +463,7 @@ export default function Navbar() {
                 >
                   <span
                     style={{
-                      color: "#FFA415",
+                      color: "var(--secondary)",
                       fontFamily: "Sora, sans-serif",
                       fontWeight: 800,
                       fontSize: 22,
@@ -582,7 +582,7 @@ export default function Navbar() {
                 href="#"
                 style={{
                   display: "block",
-                  background: "#FFA415",
+                  background: "var(--secondary)",
                   color: "#fff",
                   padding: "12px 20px",
                   fontSize: 15,
@@ -600,8 +600,8 @@ export default function Navbar() {
                 className="sm:hidden"
                 style={{
                   display: "block",
-                  border: "1px solid #FFA415",
-                  color: "#FFA415",
+                  border: "1px solid var(--secondary)",
+                  color: "var(--secondary)",
                   padding: "12px 20px",
                   fontSize: 15,
                   fontWeight: 600,
@@ -655,9 +655,9 @@ export default function Navbar() {
           to { transform: translateX(0); }
         }
         .t3-navlink { transition: color 0.3s; }
-        .t3-navlink:hover { color: #007B39 !important; }
+        .t3-navlink:hover { color: var(--primary) !important; }
         .t3-submenu-item:hover { background: rgba(0,123,57,0.06); }
-        .t3-submenu-item:hover a { color: #007B39 !important; }
+        .t3-submenu-item:hover a { color: var(--primary) !important; }
       `,
         }}
       />

@@ -175,7 +175,7 @@ export default function Events() {
             </h2>
           </div>
           <Link href="/templates/template-1/initiatives?tab=events">
-            <a className="inline-flex items-center gap-2 text-[#091F1B] font-bold px-6 py-3 rounded-full hover:bg-[#00715D] hover:text-white transition-all text-sm shrink-0 mt-2 bg-[#FEC908]">
+            <a className="inline-flex items-center gap-2 text-[#091F1B] font-bold px-6 py-3 rounded-full hover:bg-[var(--secondary)] hover:text-white transition-all text-sm shrink-0 mt-2 bg-[#FEC908]">
               <ArrowRight size={16} /> Explore More
             </a>
           </Link>
@@ -195,7 +195,7 @@ export default function Events() {
                 <div>
                   <h3 className="font-extrabold text-[#091F1B] text-base mb-1 leading-snug">{ev.title}</h3>
                   <p className="text-[11px] text-gray-400 font-semibold mb-2">{ev.subtitle}</p>
-                  <div className="flex items-center gap-1.5 text-xs text-[#00715D] font-semibold mb-4">
+                  <div className="flex items-center gap-1.5 text-xs text-[var(--secondary)] font-semibold mb-4">
                     <MapPin size={12} /> {ev.venue}
                   </div>
                 </div>

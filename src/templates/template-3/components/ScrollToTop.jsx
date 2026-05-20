@@ -19,7 +19,7 @@ export default function ScrollToTop() {
       style={{
         position: "fixed", bottom: 30, right: 30, zIndex: 9999,
         width: 50, height: 50, borderRadius: "50%",
-        background: "#FFA415", border: "none", cursor: "pointer",
+        background: "var(--secondary)", border: "none", cursor: "pointer",
         display: "flex", alignItems: "center", justifyContent: "center",
         boxShadow: "0 4px 20px rgba(255,164,21,0.45)",
         transition: "background 0.3s, transform 0.3s"
@@ -29,7 +29,7 @@ export default function ScrollToTop() {
         e.currentTarget.style.transform = "translateY(-3px)";
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.background = "#FFA415";
+        e.currentTarget.style.background = "var(--secondary)";
         e.currentTarget.style.transform = "translateY(0)";
       }}>
       

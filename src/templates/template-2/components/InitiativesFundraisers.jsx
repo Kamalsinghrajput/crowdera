@@ -21,7 +21,7 @@ export const fundraisers = [
 const InitiativesFundraisers = ({
   data: initialFundraisersData,
   primaryColor = "#007B39",
-  secondaryColor = "#FFA415",
+  secondaryColor = "var(--secondary)",
 }) => {
   const fundraisersList = initialFundraisersData || fundraisers;
 
@@ -30,19 +30,19 @@ const InitiativesFundraisers = ({
       <style>{`
         :root {
           --primary: #007B39;
-          --secondary: #FFA415;
+          --secondary: var(--secondary);
           --bg-color: #121d18;
         }
         .t2-btn { display: inline-flex; align-items: center; gap: 0; text-decoration: none; border: none; background: none; cursor: pointer; padding: 0; }
         .t2-btn span { position: relative; display: inline-flex; align-items: center; justify-content: center; height: 50px; padding: 0 35px; background-color: var(--bg-color, #121d18); color: white; border-radius: 25px; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; z-index: 1; overflow: hidden; transition: all 500ms ease; white-space: nowrap; }
-        .t2-btn span::before { content: ""; position: absolute; inset: 0; background-color: var(--secondary, #FFA415); transform-origin: left; transform: scaleX(0); transition: transform 0.8s cubic-bezier(0, 0.96, 0.58, 1.1); z-index: -1; }
+        .t2-btn span::before { content: ""; position: absolute; inset: 0; background-color: var(--secondary, var(--secondary)); transform-origin: left; transform: scaleX(0); transition: transform 0.8s cubic-bezier(0, 0.96, 0.58, 1.1); z-index: -1; }
         .t2-btn:hover span::before { transform: scaleX(1); transition: transform 1.2s cubic-bezier(0, 0.96, 0.58, 1.1); }
         .t2-btn:hover span { color: white; }
         .t2-btn i { position: relative; display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; background-color: var(--bg-color, #121d18); border-radius: 50%; font-size: 18px; color: white; overflow: hidden; transition: all 500ms ease; z-index: 2; margin-left: -10px; }
-        .t2-btn i::after { content: ""; position: absolute; inset: 0; background-color: var(--secondary, #FFA415); transform-origin: right; transform: scaleX(0); transition: transform 0.8s cubic-bezier(0, 0.96, 0.58, 1.1); z-index: -1; }
+        .t2-btn i::after { content: ""; position: absolute; inset: 0; background-color: var(--secondary, var(--secondary)); transform-origin: right; transform: scaleX(0); transition: transform 0.8s cubic-bezier(0, 0.96, 0.58, 1.1); z-index: -1; }
         .t2-btn:hover i::after { transform: scaleX(1); transition: transform 1.2s cubic-bezier(0, 0.96, 0.58, 1.1); }
         .t2-btn:hover i { color: white; }
-        .t2-btn.t2-btn-secondary span, .t2-btn.t2-btn-secondary i { background-color: var(--secondary, #FFA415); color: var(--bg-color, #121d18); }
+        .t2-btn.t2-btn-secondary span, .t2-btn.t2-btn-secondary i { background-color: var(--secondary, var(--secondary)); color: var(--bg-color, #121d18); }
         .t2-btn.t2-btn-secondary span::before, .t2-btn.t2-btn-secondary i::after { background-color: var(--bg-color, #121d18); }
         .t2-btn.t2-btn-secondary:hover span, .t2-btn.t2-btn-secondary:hover i { color: white; }
 

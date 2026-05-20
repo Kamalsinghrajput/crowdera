@@ -2,7 +2,7 @@ import Link from "next/link";
 import { MapPin, Calendar, ArrowRight } from "lucide-react";
 
 export default function EventCard({ event }) {
-  const primaryColor = "#e8547a";
+  const primaryColor = "var(--primary)";
   const secondaryColor = "#9b59b6";
 
   return (

@@ -48,12 +48,12 @@ const InitiativesEvents = ({ data: initialEventsData }) => {
               />
               <div className="absolute top-4 left-4 flex gap-2 flex-wrap">
                 {eventItem.isVerified && (
-                  <span className="bg-[#007B39] text-white text-[10px] font-bold py-1.5 px-4 rounded-full uppercase tracking-widest shadow-lg">
+                  <span className="bg-[var(--primary)] text-white text-[10px] font-bold py-1.5 px-4 rounded-full uppercase tracking-widest shadow-lg">
                     Verified
                   </span>
                 )}
                 {eventItem.isTaxExempt && (
-                  <span className="bg-[#FFA415] text-white text-[10px] font-bold py-1.5 px-4 rounded-full uppercase tracking-widest shadow-lg">
+                  <span className="bg-[var(--secondary)] text-white text-[10px] font-bold py-1.5 px-4 rounded-full uppercase tracking-widest shadow-lg">
                     Tax Exempt
                   </span>
                 )}
@@ -63,14 +63,14 @@ const InitiativesEvents = ({ data: initialEventsData }) => {
             {/* Content */}
             <div className="p-8 flex flex-col flex-grow text-left">
               {/* Title */}
-              <h3 className="text-2xl font-bold leading-tight text-[#121D18] group-hover:text-[#007B39] transition-colors line-clamp-2 mb-4 font-sora">
+              <h3 className="text-2xl font-bold leading-tight text-[#121D18] group-hover:text-[var(--primary)] transition-colors line-clamp-2 mb-4 font-sora">
                 {eventItem.title}
               </h3>
 
               {/* Organizer */}
               <div className="flex items-center gap-1.5 mb-4">
-                <Users size={14} className="text-[#007B39] shrink-0" />
-                <span className="text-sm text-[#007B39] font-black uppercase tracking-wider">
+                <Users size={14} className="text-[var(--primary)] shrink-0" />
+                <span className="text-sm text-[var(--primary)] font-black uppercase tracking-wider">
                   {eventItem.organizer}
                 </span>
               </div>
@@ -79,7 +79,7 @@ const InitiativesEvents = ({ data: initialEventsData }) => {
               <div className="flex items-start gap-2 bg-[#fcf8f1] rounded-2xl px-4 py-3 mb-6 border border-[#EBD3AF]/30">
                 <Calendar
                   size={16}
-                  className="text-[#007B39] mt-0.5 shrink-0"
+                  className="text-[var(--primary)] mt-0.5 shrink-0"
                 />
                 <div>
                   <div className="text-xs font-black text-[#121D18] uppercase tracking-widest">
@@ -102,13 +102,13 @@ const InitiativesEvents = ({ data: initialEventsData }) => {
                   <span className="text-[11px] font-black text-[#121D18] uppercase tracking-widest">
                     Fundraising Progress
                   </span>
-                  <span className="text-sm font-black text-[#007B39]">
+                  <span className="text-sm font-black text-[var(--primary)]">
                     {progressPercentage}%
                   </span>
                 </div>
                 <div className="w-full bg-white rounded-full h-1.5 mb-3 overflow-hidden">
                   <div
-                    className="h-full rounded-full transition-all duration-1000 ease-out bg-[#007B39]"
+                    className="h-full rounded-full transition-all duration-1000 ease-out bg-[var(--primary)]"
                     style={{ width: `${progressPercentage}%` }}
                   />
                 </div>
@@ -122,7 +122,7 @@ const InitiativesEvents = ({ data: initialEventsData }) => {
 
               {/* Category tag */}
               <div className="mb-8">
-                <span className="bg-[#FFA415]/10 text-[#121D18] text-[10px] font-black py-1.5 px-4 rounded-full uppercase tracking-widest border border-[#FFA415]/20">
+                <span className="bg-[var(--secondary)]/10 text-[#121D18] text-[10px] font-black py-1.5 px-4 rounded-full uppercase tracking-widest border border-[var(--secondary)]/20">
                   {eventItem.category}
                 </span>
               </div>

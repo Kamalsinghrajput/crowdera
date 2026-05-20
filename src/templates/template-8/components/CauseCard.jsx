@@ -66,7 +66,7 @@ export default function CauseCard({ course }) {
       </div>
 
       {/* Category Badge */}
-      <div className="absolute top-[220px] right-6 bg-[#007b5e] group-hover:bg-[var(--secondary)] transition-colors duration-300 text-white font-bold text-[15px] px-6 py-2 rounded-md shadow-md z-10 pointer-events-none">
+      <div className="absolute top-[220px] right-6 bg-[var(--primary)] group-hover:bg-[var(--secondary)] transition-colors duration-300 text-white font-bold text-[15px] px-6 py-2 rounded-md shadow-md z-10 pointer-events-none">
         {course.tag}
       </div>
 
@@ -110,7 +110,7 @@ export default function CauseCard({ course }) {
 
       {/* Bottom Button */}
       <Link href={`/causes/${course.id}`}>
-        <a className="w-full bg-[#007b5e] hover:bg-[var(--secondary)] transition-colors duration-300 text-white font-bold text-[17px] px-8 py-5 rounded-b-2xl flex items-center justify-between mt-auto">
+        <a className="w-full bg-[var(--primary)] hover:bg-[var(--secondary)] transition-colors duration-300 text-white font-bold text-[17px] px-8 py-5 rounded-b-2xl flex items-center justify-between mt-auto">
           Donate Now
           <FiArrowUpRight size={20} />
         </a>

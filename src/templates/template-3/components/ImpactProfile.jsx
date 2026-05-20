@@ -73,7 +73,7 @@ export default function ImpactProfile() {
 
             {/* Big animated counter */}
             <div className="mb-4">
-              <span className="text-[clamp(40px,8vw,100px)] leading-none text-[#007B39] font-bold">
+              <span className="text-[clamp(40px,8vw,100px)] leading-none text-[var(--primary)] font-bold">
                 {count.toLocaleString()}
               </span>
               <span className="ml-4 text-[clamp(24px,4vw,40px)] text-[#121d18] font-bold">
@@ -117,7 +117,7 @@ export default function ImpactProfile() {
               <Link
                 href={`/templates/template-3/annual-report/${CURRENT_YEAR}`}
               >
-                <a className="inline-block bg-[#007B39] text-white font-bold text-[17px] px-8 py-4 rounded-md transition-colors hover:opacity-90 no-underline">
+                <a className="inline-block bg-[var(--primary)] text-white font-bold text-[17px] px-8 py-4 rounded-md transition-colors hover:opacity-90 no-underline">
                   View Annual Report {CURRENT_YEAR}
                 </a>
               </Link>

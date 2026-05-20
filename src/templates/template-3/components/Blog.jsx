@@ -91,7 +91,7 @@ export default function Blog({ isAllBlogsPage }) {
                   width: "10px",
                   height: "10px",
                   borderRadius: "50%",
-                  background: "#007B39",
+                  background: "var(--primary)",
                   display: "inline-block",
                 }}
               />
@@ -157,7 +157,7 @@ export default function Blog({ isAllBlogsPage }) {
                     width: i === index % BLOGS.length ? '32px' : '10px',
                     height: '10px',
                     borderRadius: '5px',
-                    background: i === index % BLOGS.length ? '#007B39' : '#D1D1D1',
+                    background: i === index % BLOGS.length ? 'var(--primary)' : '#D1D1D1',
                     cursor: 'pointer',
                     transition: 'all 0.3s ease'
                   }}

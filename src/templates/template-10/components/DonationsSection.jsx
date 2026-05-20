@@ -85,7 +85,7 @@ const stats = [
 
 
 export default function DonationsSection() {
-  const primaryColor = "#e8547a";
+  const primaryColor = "var(--primary)";
   const secondaryColor = "#9b59b6";
 
   const sectionRef = useRef(null);

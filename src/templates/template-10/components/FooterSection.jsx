@@ -10,7 +10,7 @@ const SOCIAL = [
 
 
 export default function FooterSection() {
-  const primaryColor = "#e8547a";
+  const primaryColor = "var(--primary)";
   const secondaryColor = "#9b59b6";
 
   return (

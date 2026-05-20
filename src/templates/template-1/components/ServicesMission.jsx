@@ -154,7 +154,7 @@ export default function ServicesMission() {
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center max-w-2xl mx-auto mb-14">
           <span
-            className="text-[var(--secondary)] tracking-wider uppercase text-md mb-2 block text-[#00715D]"
+            className="text-[var(--secondary)] tracking-wider uppercase text-md mb-2 block text-[var(--secondary)]"
             style={{
               fontFamily: "'Caveat', 'Segoe Script', cursive",
               fontWeight: "bolder",

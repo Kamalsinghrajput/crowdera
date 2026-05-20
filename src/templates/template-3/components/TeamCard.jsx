@@ -128,7 +128,7 @@ export default function TeamCard({ member }) {
             <button
               onClick={openModal}
               style={{ background: "none", border: "none", cursor: "pointer", color: "inherit", fontSize: "inherit", fontWeight: "inherit", fontFamily: "inherit" }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "#007B39")}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--primary)")}
               onMouseLeave={(e) => (e.currentTarget.style.color = "#121d18")}
             >
               {member.name}
@@ -184,7 +184,7 @@ export default function TeamCard({ member }) {
             {/* Right Content */}
             <div style={{ flex: 1, padding: "40px", display: "flex", flexDirection: "column", fontFamily: "Inter, sans-serif", overflowY: "auto" }}>
               <div style={{ marginBottom: "16px" }}>
-                <span style={{ background: "#FFA415", color: "#111", fontSize: "11px", fontWeight: 900, padding: "6px 12px", borderRadius: "6px", textTransform: "uppercase", letterSpacing: "0.1em" }}>
+                <span style={{ background: "var(--secondary)", color: "#111", fontSize: "11px", fontWeight: 900, padding: "6px 12px", borderRadius: "6px", textTransform: "uppercase", letterSpacing: "0.1em" }}>
                   Board Member
                 </span>
               </div>
@@ -211,11 +211,11 @@ export default function TeamCard({ member }) {
 
               <div style={{ display: "flex", gap: "12px", marginTop: "auto" }}>
                 <a href={member.socials?.x || "#"} target="_blank" rel="noopener noreferrer"
-                  style={{ width: "40px", height: "40px", borderRadius: "8px", background: "#FFA415", color: "#111", display: "flex", alignItems: "center", justifyContent: "center", textDecoration: "none" }}>
+                  style={{ width: "40px", height: "40px", borderRadius: "8px", background: "var(--secondary)", color: "#111", display: "flex", alignItems: "center", justifyContent: "center", textDecoration: "none" }}>
                   <FaTwitter size={16} />
                 </a>
                 <a href={member.socials?.linkedin || "#"} target="_blank" rel="noopener noreferrer"
-                  style={{ width: "40px", height: "40px", borderRadius: "8px", background: "#FFA415", color: "#111", display: "flex", alignItems: "center", justifyContent: "center", textDecoration: "none" }}>
+                  style={{ width: "40px", height: "40px", borderRadius: "8px", background: "var(--secondary)", color: "#111", display: "flex", alignItems: "center", justifyContent: "center", textDecoration: "none" }}>
                   <FaLinkedinIn size={16} />
                 </a>
               </div>

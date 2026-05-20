@@ -1,357 +1,262 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import Image from "next/image";
+import React, { useState, useEffect, useRef, useCallback } from "react";
+import { gsap } from "gsap";
 import {
-  FiCheck,
-  FiAlertTriangle,
-  FiHeart,
-  FiBookOpen,
-  FiGlobe,
+  FiDroplet,
   FiShoppingBag,
-  FiChevronLeft,
-  FiChevronRight
+  FiHeart,
+  FiUserCheck,
+  FiBookOpen,
+  FiAlertTriangle,
+  FiShield,
+  FiUsers,
 } from "react-icons/fi";
 
 const SERVICES = [
   {
-    title: "Emergency Relief",
-    text: "Providing immediate support, food packages, and emergency shelter during natural disasters and critical crises.",
-    img: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=600&q=80",
-    icon: <FiAlertTriangle size={24} />,
-    tag: "Urgent",
-    list: [
-      "Crisis intervention & response",
-      "Food & medical supply packs",
-      "Temporary shelter construction",
-    ],
-    stat: { label: "Response", percent: 95 },
-  },
-  {
-    title: "Medical Outreach",
-    text: "Delivering primary healthcare services, essential immunizations, and clinical aid directly to remote villages.",
-    img: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=600&q=80",
-    icon: <FiHeart size={24} />,
-    tag: "Healthcare",
-    list: [
-      "Mobile clinic operations",
-      "Free medical checkups",
-      "Vital medicine distribution",
-    ],
-    stat: { label: "Cured", percent: 88 },
-  },
-  {
-    title: "Educational Support",
-    text: "Empowering children and youth through access to quality education, books, and scholarship funds.",
-    img: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80",
-    icon: <FiBookOpen size={24} />,
-    tag: "Education",
-    list: [
-      "Scholarships & school fees",
-      "School kit distribution",
-      "Volunteer school programs",
-    ],
-    stat: { label: "Impact", percent: 92 },
-  },
-  {
-    title: "Community Development",
-    text: "Creating self-reliant communities with sustainable clean water systems and vocational training.",
-    img: "https://images.unsplash.com/photo-1542810634-71277d95dcbb?auto=format&fit=crop&w=600&q=80",
-    icon: <FiGlobe size={24} />,
-    tag: "Sustainability",
-    list: [
-      "Water well installations",
-      "Job-skills development",
-      "Sustainable agriculture",
-    ],
-    stat: { label: "Success", percent: 90 },
+    title: "Clean Water Access",
+    text: "Ensuring Nutritious Meals And Food Supplies Reach Those.",
+    icon: <FiDroplet size={38} strokeWidth={1.3} />,
   },
   {
     title: "Food Security",
-    text: "Ensuring nutritious hot meals and vital grocery kits reach families struggling with hunger and poverty.",
-    img: "https://images.unsplash.com/photo-1606787366850-de6330128bfc?auto=format&fit=crop&w=600&q=80",
-    icon: <FiShoppingBag size={24} />,
-    tag: "Nutrition",
-    list: [
-      "Hot meal distribution",
-      "Monthly grocery bags",
-      "School lunch programs",
-    ],
-    stat: { label: "Relief", percent: 96 },
+    text: "Ensuring Nutritious Meals And Food Supplies Reach Those.",
+    icon: <FiShoppingBag size={38} strokeWidth={1.3} />,
+  },
+  {
+    title: "Healthcare Outreach",
+    text: "Ensuring Nutritious Meals And Food Supplies Reach Those.",
+    icon: <FiHeart size={38} strokeWidth={1.3} />,
+  },
+  {
+    title: "Elderly Care",
+    text: "Ensuring Nutritious Meals And Food Supplies Reach Those.",
+    icon: <FiUserCheck size={38} strokeWidth={1.3} />,
+  },
+  {
+    title: "Educational Support",
+    text: "Ensuring Nutritious Meals And Food Supplies Reach Those.",
+    icon: <FiBookOpen size={38} strokeWidth={1.3} />,
+  },
+  {
+    title: "Emergency Relief",
+    text: "Ensuring Nutritious Meals And Food Supplies Reach Those.",
+    icon: <FiAlertTriangle size={38} strokeWidth={1.3} />,
+  },
+  {
+    title: "Child Protection",
+    text: "Ensuring Nutritious Meals And Food Supplies Reach Those.",
+    icon: <FiShield size={38} strokeWidth={1.3} />,
+  },
+  {
+    title: "Community Development",
+    text: "Ensuring Nutritious Meals And Food Supplies Reach Those.",
+    icon: <FiUsers size={38} strokeWidth={1.3} />,
   },
 ];
 
-export default function Services() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [visibleCount, setVisibleCount] = useState(2);
-  const [isPaused, setIsPaused] = useState(false);
+const TOTAL = SERVICES.length;
+const GAP = 24; // gap between cards
+const AUTO_MS = 4000;
+const CARD_HOVER = "var(--primary)";
 
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 768) {
-        setVisibleCount(1);
-      } else {
-        setVisibleCount(2);
-      }
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+export default function Services() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [cardWidth, setCardWidth] = useState(0);
+  const [visibleCardsCount, setVisibleCardsCount] = useState(4);
+  const [dotCount, setDotCount] = useState(Math.max(1, TOTAL - 4 + 1));
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+  
+  const viewportRef = useRef(null);
+  const trackRef = useRef(null);
+  const overlayRefs = useRef([]);
+  const isPausedRef = useRef(false);
+  const activeRef = useRef(0);
+
+  const measure = useCallback(() => {
+    if (!viewportRef.current) return;
+    const viewportWidth = viewportRef.current.offsetWidth;
+    const currentViewsCount = viewportWidth < 640 ? 1 : viewportWidth < 850 ? 2 : viewportWidth < 1024 ? 3 : 4;
+    setVisibleCardsCount(currentViewsCount);
+    setDotCount(Math.max(1, TOTAL - currentViewsCount + 1));
+    setCardWidth((viewportWidth - (currentViewsCount - 1) * GAP) / currentViewsCount);
   }, []);
 
-  const maxIndex = Math.max(0, SERVICES.length - visibleCount);
+  useEffect(() => {
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, [measure]);
+
+  const slideAmt = cardWidth + GAP;
+
+  const moveTo = useCallback(
+    (rawIndex) => {
+      const targetIndex = Math.max(0, Math.min(rawIndex, dotCount - 1));
+      activeRef.current = targetIndex;
+      setActiveIndex(targetIndex);
+      if (trackRef.current && slideAmt > 0) {
+        gsap.to(trackRef.current, {
+          x: -(targetIndex * slideAmt),
+          duration: 0.6,
+          ease: "power3.inOut",
+        });
+      }
+    },
+    [slideAmt, dotCount],
+  );
 
   useEffect(() => {
-    if (isPaused) return;
-    const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
-    }, 4000);
-    return () => clearInterval(timer);
-  }, [maxIndex, isPaused]);
+    const id = setInterval(() => {
+      if (isPausedRef.current || slideAmt === 0) return;
+      const next = activeRef.current >= dotCount - 1 ? 0 : activeRef.current + 1;
+      activeRef.current = next;
+      setActiveIndex(next);
+      if (trackRef.current) {
+        gsap.to(trackRef.current, {
+          x: -(next * slideAmt),
+          duration: 0.6,
+          ease: "power3.inOut",
+        });
+      }
+    }, AUTO_MS);
+    return () => clearInterval(id);
+  }, [slideAmt, dotCount]);
 
-  const handlePrev = () => {
-    setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
+  const handleEnter = (index) => {
+    isPausedRef.current = true;
+    setHoveredIndex(index);
+    if (overlayRefs.current[index])
+      gsap.to(overlayRefs.current[index], {
+        scaleY: 1,
+        duration: 0.38,
+        ease: "power3.out",
+      });
   };
-
-  const handleNext = () => {
-    setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
+  
+  const handleLeave = (index) => {
+    isPausedRef.current = false;
+    setHoveredIndex(null);
+    if (overlayRefs.current[index])
+      gsap.to(overlayRefs.current[index], {
+        scaleY: 0,
+        duration: 0.32,
+        ease: "power3.inOut",
+      });
   };
 
   return (
-    <section
-      id="services"
-      className="py-[120px] bg-white font-sans overflow-hidden"
-    >
-      <div className="max-w-[1200px] mx-auto px-4 flex flex-col lg:flex-row gap-12 items-start">
-        {/* Left Column: Text & Navigation Controls */}
-        <div className="w-full lg:w-[35%] flex flex-col justify-between self-stretch">
-          <div>
-            <span className="text-[var(--primary)] font-bold text-[15px] mb-4 block uppercase tracking-wider">
-              Start Donating Poor People
-            </span>
-            <h2 className="text-[#1a2b28] text-[clamp(32px,4vw,46px)] font-extrabold leading-[1.2] mb-6">
-              Donate Support To Make Difference Way
-            </h2>
-            <p className="text-[#666] text-[17px] leading-[1.8] mb-8">
-              Charity is the voluntary act of giving help, typically in the form
-              of money, time, or resources, to those in need. Charitable
-              organizations aim to solve social, environmental, and economic
-              challenges.
-            </p>
-          </div>
+    <section id="services" className="py-[120px] bg-[#fafafa] font-sans overflow-hidden relative">
+      {/* Centered Heading */}
+      <div className="max-w-[1200px] mx-auto px-4 text-center mb-16 relative z-10">
+        <span className="text-[var(--primary)] font-bold text-[15px] mb-4 block uppercase tracking-wider">
+          Start Donating Poor People
+        </span>
+        <h2 className="text-[#1a2b28] text-[clamp(32px,4vw,46px)] font-extrabold leading-[1.2] mb-6">
+          Donate Support To Make Difference Way
+        </h2>
+        <p className="text-[#666] text-[17px] leading-[1.8] max-w-[700px] mx-auto">
+          Charity is the voluntary act of giving help, typically in the form
+          of money, time, or resources, to those in need. Charitable
+          organizations aim to solve social, environmental, and economic
+          challenges.
+        </p>
+      </div>
 
-          <div>
-            {/* Carousel Navigation Buttons */}
-            <div className="flex items-center gap-4 mb-8">
-              <button
-                onClick={handlePrev}
-                className="w-[48px] h-[48px] rounded-full bg-[#122f2a] hover:bg-[var(--primary)] flex items-center justify-center text-white transition-colors duration-300 shadow-md active:scale-95"
-                aria-label="Previous slide"
-              >
-                <FiChevronLeft size={20} className="mr-0.5" />
-              </button>
-              <button
-                onClick={handleNext}
-                className="w-[48px] h-[48px] rounded-full bg-[var(--secondary)] hover:brightness-95 flex items-center justify-center text-black transition-colors duration-300 shadow-md active:scale-95"
-                aria-label="Next slide"
-              >
-                <FiChevronRight size={20} className="ml-0.5" />
-              </button>
-            </div>
+      {/* GSAP Slider Viewport */}
+      <div className="max-w-[1320px] mx-auto px-4">
+        <div
+          ref={viewportRef}
+          style={{ overflow: "hidden" }}
+          className="pb-8 pt-4 px-2"
+        >
+          <div
+            ref={trackRef}
+            style={{
+              display: "flex",
+              gap: `${GAP}px`,
+              width: cardWidth > 0 ? `${TOTAL * cardWidth + (TOTAL - 1) * GAP}px` : "100%",
+            }}
+          >
+            {SERVICES.map((srv, index) => {
+              const isHov = hoveredIndex === index;
+              return (
+                <div
+                  key={index}
+                  onMouseEnter={() => handleEnter(index)}
+                  onMouseLeave={() => handleLeave(index)}
+                  className="bg-white rounded-[24px] border border-gray-200 overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.02)] transition-all duration-300 relative text-center px-7 py-12 cursor-pointer flex-shrink-0 flex flex-col group hover:shadow-[0_20px_45px_rgba(0,0,0,0.08)] hover:-translate-y-2 hover:border-[var(--primary)]/30"
+                  style={{
+                    width: cardWidth > 0 ? `${cardWidth}px` : `${100 / visibleCardsCount}%`,
+                  }}
+                >
+                  {/* Hover fill animation overlay */}
+                  <div
+                    ref={(el) => {
+                      overlayRefs.current[index] = el;
+                    }}
+                    className="absolute inset-0 z-0 origin-bottom"
+                    style={{
+                      background: CARD_HOVER,
+                      transform: "scaleY(0)",
+                    }}
+                  />
 
-            {/* Compact Floating Stats Card */}
-            <div className="border border-gray-150 rounded-2xl p-6 flex flex-row items-center justify-between gap-4 shadow-[0_4px_20px_rgba(0,0,0,0.03)] bg-[#fafafa]">
-              {/* Stat 1 */}
-              <div className="flex items-center gap-3 flex-1">
-                <div className="w-10 h-10 rounded-full bg-[var(--secondary)]/15 flex items-center justify-center text-[var(--secondary)] shrink-0">
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path
-                      d="M4 14H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V14Z"
-                      strokeLinejoin="round"
+                  <div className="relative z-10 flex flex-col items-center">
+                    <div
+                      className="flex justify-center mb-6 transition-colors duration-300"
+                      style={{ color: isHov ? "#fff" : "var(--primary)" }}
+                    >
+                      {srv.icon}
+                    </div>
+                    
+                    <div
+                      className="w-10 h-[2px] mx-auto mb-6 transition-colors duration-300 rounded-full"
+                      style={{ background: isHov ? "rgba(255,255,255,0.4)" : "var(--secondary)" }}
                     />
-                    <path d="M12 14V8" strokeLinecap="round" />
-                    <circle cx="12" cy="5" r="2" />
-                    <path d="M4 14H20" strokeLinecap="round" />
-                  </svg>
+                    
+                    <h3
+                      className="text-[20px] font-extrabold mb-4 leading-[1.3] transition-colors duration-300"
+                      style={{ color: isHov ? "#fff" : "#1a2b28" }}
+                    >
+                      {srv.title}
+                    </h3>
+                    
+                    <p
+                      className="text-[14.5px] leading-[1.6] mb-8 transition-colors duration-300"
+                      style={{ color: isHov ? "rgba(255,255,255,0.8)" : "#666" }}
+                    >
+                      {srv.text}
+                    </p>
+                    
+                    <div
+                      className="inline-flex items-center gap-2 font-bold text-[14px] transition-colors duration-300 uppercase tracking-wide"
+                      style={{ color: isHov ? "#fff" : "var(--primary)" }}
+                    >
+                      <span className="w-5 h-[2px] bg-current rounded-full"></span>
+                      Read More
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <span className="text-gray-500 text-[11px] font-bold block uppercase tracking-wider leading-none mb-1">
-                    Donate Now
-                  </span>
-                  <span className="text-[#1a2b28] font-extrabold text-[16px] leading-none">
-                    $40,456
-                  </span>
-                </div>
-              </div>
-
-              {/* Divider */}
-              <div className="w-[1px] h-10 bg-gray-200"></div>
-
-              {/* Stat 2 */}
-              <div className="flex items-center gap-3 flex-1">
-                <div className="w-10 h-10 rounded-full bg-[var(--primary)]/10 flex items-center justify-center text-[var(--primary)] shrink-0">
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path
-                      d="M8 21H16A4 4 0 0 0 20 17V12A6 6 0 0 0 8 12V17A4 4 0 0 0 8 21Z"
-                      strokeLinejoin="round"
-                    />
-                    <path d="M10 5H14" strokeLinecap="round" />
-                    <path d="M12 5V2" strokeLinecap="round" />
-                    <path d="M12 11V16M10 13.5H14" strokeLinecap="round" />
-                  </svg>
-                </div>
-                <div>
-                  <span className="text-gray-500 text-[11px] font-bold block uppercase tracking-wider leading-none mb-1">
-                    Total Raised
-                  </span>
-                  <span className="text-[var(--primary)] font-extrabold text-[16px] leading-none">
-                    $1,540,456
-                  </span>
-                </div>
-              </div>
-            </div>
+              );
+            })}
           </div>
         </div>
 
-        {/* Right Column: Carousel viewport */}
-        <div
-          className="w-full lg:w-[65%] overflow-hidden relative py-4 px-2 select-none self-center"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
-          {/* Carousel Track */}
-          <div
-            className="flex transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
-            style={{
-              transform: `translateX(-${currentIndex * (100 / visibleCount)}%)`,
-            }}
-          >
-            {SERVICES.map((service, idx) => (
-              <div
-                key={idx}
-                className="flex-shrink-0 px-3"
-                style={{ width: `${100 / visibleCount}%` }}
-              >
-                {/* Service Card */}
-                <div className="bg-white rounded-[24px] border border-gray-200 overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.02)] transition-all duration-300 hover:shadow-[0_20px_45px_rgba(0,0,0,0.08)] hover:-translate-y-2 flex flex-col h-full group hover:border-[var(--primary)]/30">
-                  {/* Card Image Block */}
-                  <div className="h-[200px] w-full relative overflow-hidden bg-gray-100">
-                    <Image
-                      src={service.img}
-                      alt={service.title}
-                      layout="fill"
-                      objectFit="cover"
-                      className="group-hover:scale-105 transition-transform duration-500"
-                    />
-                    {/* Badge */}
-                    <span className="absolute top-4 left-4 bg-[var(--secondary)] text-black text-[12px] font-bold px-3 py-1 rounded-full shadow-sm">
-                      {service.tag}
-                    </span>
-                    {/* Floating Icon */}
-                    <div className="absolute -bottom-6 right-6 w-12 h-12 rounded-full bg-[var(--primary)] text-white flex items-center justify-center shadow-lg border-4 border-white group-hover:bg-[var(--secondary)] group-hover:text-black transition-colors duration-300">
-                      {service.icon}
-                    </div>
-                  </div>
-
-                  {/* Card Body */}
-                  <div className="p-6 pt-8 flex-grow flex flex-col justify-between">
-                    <div>
-                      <h3 className="text-[#1a2b28] text-[20px] font-extrabold mb-3 group-hover:text-[var(--primary)] transition-colors duration-300">
-                        {service.title}
-                      </h3>
-                      <p className="text-[#666] text-[14.5px] leading-[1.6] mb-5">
-                        {service.text}
-                      </p>
-
-                      {/* Checklist items */}
-                      <ul className="space-y-2 mb-6">
-                        {service.list.map((item, i) => (
-                          <li
-                            key={i}
-                            className="flex items-start gap-2 text-[#555] text-[14px] font-medium"
-                          >
-                            <FiCheck
-                              size={16}
-                              className="text-[var(--secondary)] mt-0.5 flex-shrink-0"
-                              strokeWidth={3}
-                            />
-                            <span className="leading-tight">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Bottom row: Circular progress + Action Button */}
-                    <div className="flex items-center justify-between gap-4 pt-4 border-t border-gray-100">
-                      {/* Stat indicator */}
-                      <div className="flex items-center gap-3">
-                        <div className="relative w-[48px] h-[48px] rounded-full border-[4px] border-gray-100 flex items-center justify-center shadow-sm bg-white shrink-0">
-                          <svg
-                            className="absolute inset-0 w-full h-full -rotate-90"
-                            viewBox="0 0 100 100"
-                          >
-                            <circle
-                              cx="50"
-                              cy="50"
-                              r="46"
-                              fill="transparent"
-                              stroke="var(--primary)"
-                              strokeWidth="8"
-                              strokeDasharray="289"
-                              strokeDashoffset={
-                                289 - (289 * service.stat.percent) / 100
-                              }
-                              strokeLinecap="round"
-                            />
-                          </svg>
-                          <span className="text-[#1a2b28] font-bold text-[12px]">
-                            {service.stat.percent}%
-                          </span>
-                        </div>
-                        <span className="text-[12px] font-bold text-[#1a2b28] leading-tight max-w-[60px]">
-                          {service.stat.label}
-                        </span>
-                      </div>
-
-                      {/* Action CTA */}
-                      <button className="bg-[var(--secondary)] hover:brightness-95 text-black font-bold text-[13px] px-4 py-2 rounded-lg transition-all shadow-sm active:scale-95 whitespace-nowrap">
-                        Donate Now
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Carousel Pagination Dots */}
-          <div className="flex justify-start items-center gap-2 mt-6 px-3">
-            {Array.from({ length: maxIndex + 1 }).map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => setCurrentIndex(idx)}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  currentIndex === idx
-                    ? "w-6 bg-[var(--primary)]"
-                    : "w-2 bg-gray-200 hover:bg-gray-400"
-                }`}
-                aria-label={`Go to slide ${idx + 1}`}
-              />
-            ))}
-          </div>
+        {/* Carousel Pagination Dots */}
+        <div className="flex justify-center items-center gap-2 mt-4">
+          {Array.from({ length: dotCount }).map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => moveTo(idx)}
+              className={`h-3 rounded-full transition-all duration-300 ${
+                activeIndex === idx
+                  ? "w-8 bg-[var(--primary)]"
+                  : "w-3 bg-gray-300 hover:bg-gray-400"
+              }`}
+              aria-label={`Go to slide ${idx + 1}`}
+            />
+          ))}
         </div>
       </div>
     </section>

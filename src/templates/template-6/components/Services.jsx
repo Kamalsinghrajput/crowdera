@@ -1,311 +1,535 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
-import Image from "next/image";
-import Link from "next/link";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import ButtonLetterRoll from "./ButtonLetterRoll";
 
-const TAB_DATA = [
+const SERVICES_DATA = [
   {
-    key: "Medical",
-    title: "Medical Assist",
-    tagline: "Every child deserves a healthy start",
-    desc: "Thanks to giving people like you, 33 million children are growing up healthy, nourished and treated for childhood killers like pneumonia.",
-    img: "https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1200&q=80",
-    btnText: "MEET THE TEAM",
-    accent: "var(--primary)",
+    id: 1,
+    title: "Medical & Health",
+    description:
+      "Connect with others in a supportive environment and learn mindfulness techniques together.",
+    extraText:
+      "We only accept referrals from medical, healthcare, or social care professionals.",
+    btnText: "Read More",
+    cardBg: "linear-gradient(135deg, #F3E8FF 0%, #FCE7F3 100%)",
+    extraPosition: "bottom",
   },
   {
-    key: "Education",
-    title: "Empower Girls",
-    tagline: "Empower through knowledge",
-    desc: "We believe education is the key to unlocking a child's full potential and breaking the cycle of poverty in vulnerable communities.",
-    img: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=80",
-    btnText: "EXPLORE SCHOOLS",
-    accent: "var(--secondary)",
+    id: 2,
+    title: "Poor Children",
+    description:
+      "Connect with others in a supportive environment and learn mindfulness techniques together.",
+    extraText:
+      "We're tackling the shame so many of us feel around our mental health.",
+    btnText: "Read More",
+    cardBg: "linear-gradient(135deg, #DBEAFE 0%, #E0F2FE 100%)",
+    extraPosition: "top",
   },
   {
-    key: "Food & Nutrition",
-    title: "Pure Food",
-    tagline: "Nourish a growing body and mind",
-    desc: "Providing daily nutritious meals and clean drinking water to thousands of children across community schools to ensure healthy growth.",
-    img: "https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=1200&q=80",
-    btnText: "SEE PROJECTS",
-    accent: "var(--primary)",
+    id: 3,
+    title: "Foster Care",
+    description:
+      "Connect with others in a supportive environment and learn mindfulness techniques together.",
+    extraText:
+      "Side by Side is a supportive online community where you can listen, share and be heard.",
+    btnText: "Read More",
+    cardBg: "linear-gradient(135deg, #F1F5F9 0%, #F8FAFC 100%)",
+    extraPosition: "bottom",
+  },
+  {
+    id: 4,
+    title: "Education",
+    description:
+      "Empowering communities through access to quality education and learning resources.",
+    extraText:
+      "Every child deserves the chance to learn, grow, and reach their full potential.",
+    btnText: "Read More",
+    cardBg: "linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%)",
+    extraPosition: "top",
+  },
+  {
+    id: 5,
+    title: "Clean Water",
+    description:
+      "Providing clean drinking water to communities in need through sustainable solutions.",
+    extraText:
+      "Access to clean water transforms lives and builds healthier communities.",
+    btnText: "Read More",
+    cardBg: "linear-gradient(135deg, #FFF7ED 0%, #FEF3C7 100%)",
+    extraPosition: "bottom",
   },
 ];
 
-// Pixels of scroll track consumed PER TAB (gives a smooth, leisurely feel)
-const PX_PER_TAB = 600;
-const TOTAL_SCROLL_TRACK = TAB_DATA.length * PX_PER_TAB; // 1800 px
-
-// Visible height of the pinned panel (must match the section's fixed height)
-const PANEL_HEIGHT = 820;
+const CARD_GAP = 32; // px
 
 export default function Services() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [tabProgress, setTabProgress] = useState(0); // 0–1 within current tab
-  const [showScrollHint, setShowScrollHint] = useState(true);
-  const outerRef = useRef(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [cardWidth, setCardWidth] = useState(0);
+  const [visibleCards, setVisibleCards] = useState(3);
+  const trackRef = useRef(null);
+  const containerRef = useRef(null);
+  const autoPlayRef = useRef(null);
+  const [isPaused, setIsPaused] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!outerRef.current || window.innerWidth < 1024) return;
+  const maxIndex = SERVICES_DATA.length - visibleCards;
 
-      // Distance from the document top to the outer wrapper's top edge
-      const outerTop =
-        outerRef.current.getBoundingClientRect().top + window.scrollY;
-
-      // How many px the user has scrolled INTO the sticky zone
-      const scrolledIn = Math.max(0, window.scrollY - outerTop);
-      const overallProgress = Math.min(1, scrolledIn / TOTAL_SCROLL_TRACK);
-
-      const segmentSize = 1 / TAB_DATA.length;
-      let newIndex = Math.floor(overallProgress / segmentSize);
-      newIndex = Math.min(TAB_DATA.length - 1, newIndex);
-
-      const segmentStart = newIndex * segmentSize;
-      const localProgress = Math.min(
-        1,
-        (overallProgress - segmentStart) / segmentSize,
-      );
-
-      setActiveIndex(newIndex);
-      setTabProgress(localProgress);
-      setShowScrollHint(scrolledIn < 80);
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll(); // sync on mount
-    return () => window.removeEventListener("scroll", handleScroll);
+  // Measure card width dynamically based on responsive visibility rules
+  const measure = useCallback(() => {
+    if (containerRef.current) {
+      const containerWidth = containerRef.current.offsetWidth;
+      let visible = 3;
+      if (window.innerWidth < 640) {
+        visible = 1;
+      } else if (window.innerWidth < 1024) {
+        visible = 2;
+      }
+      setVisibleCards(visible);
+      const totalGap = CARD_GAP * (visible - 1);
+      setCardWidth((containerWidth - totalGap) / visible);
+    }
   }, []);
 
+  useEffect(() => {
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, [measure]);
+
+  const goTo = useCallback(
+    (index) => {
+      if (isTransitioning) return;
+      const clamped = Math.max(0, Math.min(SERVICES_DATA.length - visibleCards, index));
+      setIsTransitioning(true);
+      setCurrentIndex(clamped);
+      setTimeout(() => setIsTransitioning(false), 500);
+    },
+    [isTransitioning, visibleCards]
+  );
+
+  const goNext = useCallback(() => {
+    if (currentIndex >= maxIndex) {
+      goTo(0); // loop back
+    } else {
+      goTo(currentIndex + 1);
+    }
+  }, [currentIndex, maxIndex, goTo]);
+
+  const goPrev = useCallback(() => {
+    if (currentIndex <= 0) {
+      goTo(maxIndex); // loop to end
+    } else {
+      goTo(currentIndex - 1);
+    }
+  }, [currentIndex, maxIndex, goTo]);
+
+  // Autoplay
+  useEffect(() => {
+    if (isPaused) return;
+    autoPlayRef.current = setInterval(() => {
+      goNext();
+    }, 4000);
+    return () => clearInterval(autoPlayRef.current);
+  }, [isPaused, goNext]);
+
+  // Touch / drag support for mobile sliding
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+  const onTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    if (Math.abs(distance) >= minSwipeDistance) {
+      if (distance > 0) goNext();
+      else goPrev();
+    }
+  };
+
+  const translateX = currentIndex * (cardWidth + CARD_GAP);
+
   return (
-    /*
-     * KEY RULE for `position: sticky` to work:
-     *   1. The outer wrapper must NOT have overflow:hidden / overflow:auto.
-     *   2. The outer wrapper must be taller than the sticky child.
-     *   3. `top:0` on the sticky child = stick to viewport top.
-     *
-     * Total outer height = visible panel + all scroll-track so the section
-     * "locks" the page until every tab has been revealed by scrolling.
-     */
-    <div
-      ref={outerRef}
-      className="hidden lg:block relative w-full bg-[#2b1f18]"
-      style={{ height: `${PANEL_HEIGHT + TOTAL_SCROLL_TRACK}px` }}
+    <section
+      className="services-carousel-section"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
     >
-      {/* ── Sticky panel ─────────────────────────────────────────────── */}
-      <div
-        className="sticky top-0 w-full overflow-hidden shadow-2xl"
-        style={{ height: `${PANEL_HEIGHT}px` }}
-      >
-        <section className="w-full h-full flex flex-row font-sans">
-          {/* ── LEFT COLUMN ───────────────────────────────────────────── */}
-          <div className="w-1/2 bg-[#2b1f18] px-20 py-32 flex flex-col relative overflow-hidden">
-            {/* Large decorative index number */}
-            <span
-              className="absolute bottom-6 right-6 font-black leading-none pointer-events-none select-none transition-all duration-700"
-              style={{
-                fontSize: "200px",
-                color: "rgba(255,255,255,0.03)",
-                lineHeight: 1,
-              }}
+      <div className="services-carousel-header">
+        <div className="services-carousel-label">
+          <span className="services-label-accent" />
+          <span className="services-label-text">Our Services</span>
+        </div>
+        <h2 className="services-carousel-title">
+          We Are In A Mission To Help The Helpless
+        </h2>
+        <div className="services-carousel-nav">
+          <button
+            className="services-nav-btn services-nav-prev"
+            onClick={goPrev}
+            aria-label="Previous service"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
-              {String(activeIndex + 1).padStart(2, "0")}
-            </span>
-
-            {/* Section label */}
-            <span
-              className="text-[var(--secondary)] text-3xl font-normal block mb-6 relative z-10"
-              style={{ fontFamily: "'Caveat', 'Segoe Script', cursive" }}
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+          </button>
+          <button
+            className="services-nav-btn services-nav-next"
+            onClick={goNext}
+            aria-label="Next service"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
-              Our program
-            </span>
-
-            {/* Tab pills — driven by scroll, click also works */}
-            <div className="flex flex-wrap gap-3 mb-10 border-b border-white/10 pb-6 relative z-10">
-              {TAB_DATA.map((tab, idx) => (
-                <button
-                  key={tab.key}
-                  className={`px-6 py-2.5 rounded-full font-black text-xs uppercase tracking-wider transition-all duration-500 ${
-                    activeIndex === idx
-                      ? "bg-white text-[#2b1f18] shadow-lg scale-105"
-                      : "text-white/40 cursor-default"
-                  }`}
-                >
-                  {tab.key}
-                </button>
-              ))}
-            </div>
-
-            {/* Stacked content — each tab sits absolutely, fades in/out */}
-            <div className="relative flex-1 z-10">
-              {TAB_DATA.map((tab, idx) => (
-                <div
-                  key={tab.key}
-                  className="absolute inset-0 flex flex-col gap-5 max-w-[500px]"
-                  style={{
-                    opacity: activeIndex === idx ? 1 : 0,
-                    transform:
-                      activeIndex === idx
-                        ? "translateY(0px)"
-                        : activeIndex > idx
-                          ? "translateY(-40px)"
-                          : "translateY(40px)",
-                    transition:
-                      "opacity 0.6s ease, transform 0.6s cubic-bezier(0.25,1,0.5,1)",
-                    pointerEvents: activeIndex === idx ? "auto" : "none",
-                  }}
-                >
-                  <h2 className="text-white font-black text-6xl xl:text-7xl uppercase tracking-tighter leading-[1.05] m-0">
-                    {tab.title}
-                  </h2>
-                  <h4 className="text-[var(--secondary)] font-extrabold text-[17px] tracking-tight leading-snug m-0 uppercase">
-                    {tab.tagline}
-                  </h4>
-                  <p className="text-white/75 text-[15px] leading-[1.8] font-serif m-0 mb-2">
-                    {tab.desc}
-                  </p>
-                  <div>
-                    <ButtonLetterRoll
-                      text={tab.btnText}
-                      href={
-                        idx === 0
-                          ? "/templates/template-6/team"
-                          : "/templates/template-6/initiatives"
-                      }
-                      bgColor="var(--primary)"
-                      textColor="#ffffff"
-                      borderColor="var(--primary)"
-                      hoverBgColor="var(--secondary)"
-                      hoverTextColor="#2b1f18"
-                      hoverBorderColor="var(--secondary)"
-                      hoverSecondaryLetterColor="#2b1f18"
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* ── Bottom bar: dots + scroll hint + counter ──────────── */}
-            <div className="absolute bottom-10 left-20 right-20 flex items-center justify-between z-10">
-              {/* Progress dots */}
-              <div className="flex items-center gap-3">
-                {TAB_DATA.map((_, idx) => (
-                  <div
-                    key={idx}
-                    className="relative overflow-hidden rounded-full transition-all duration-500"
-                    style={{
-                      width: activeIndex === idx ? "40px" : "8px",
-                      height: "8px",
-                      background:
-                        activeIndex > idx
-                          ? "rgba(255,255,255,0.6)"
-                          : "rgba(255,255,255,0.2)",
-                    }}
-                  >
-                    {activeIndex === idx && (
-                      <div
-                        className="absolute inset-y-0 left-0 rounded-full"
-                        style={{
-                          width: `${tabProgress * 100}%`,
-                          background: "var(--secondary)",
-                          transition: "width 0.1s linear",
-                        }}
-                      />
-                    )}
-                  </div>
-                ))}
-              </div>
-
-              {/* Scroll hint */}
-              <div
-                className="flex items-center gap-2 transition-opacity duration-500"
-                style={{ opacity: showScrollHint ? 1 : 0 }}
-              >
-                <span className="text-white/60 text-[12px] uppercase tracking-widest font-black">
-                  Scroll to explore
-                </span>
-                <svg
-                  className="animate-bounce"
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="rgba(255,255,255,0.6)"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M12 5v14M5 12l7 7 7-7" />
-                </svg>
-              </div>
-
-              {/* Tab counter */}
-              <span className="text-white/50 font-black text-sm tracking-widest">
-                {String(activeIndex + 1).padStart(2, "0")} /{" "}
-                {String(TAB_DATA.length).padStart(2, "0")}
-              </span>
-            </div>
-          </div>
-
-          {/* ── RIGHT COLUMN — image filmstrip ──────────────────────── */}
-          <div className="w-1/2 relative h-full bg-[#1e1611] overflow-hidden">
-            {/* Vertically-stacked images, slides up to reveal next */}
-            <div
-              className="w-full flex flex-col"
-              style={{
-                height: `${TAB_DATA.length * 100}%`,
-                transform: `translateY(-${(activeIndex / TAB_DATA.length) * 100}%)`,
-                transition: "transform 0.7s cubic-bezier(0.25,1,0.5,1)",
-              }}
-            >
-              {TAB_DATA.map((tab) => (
-                <div
-                  key={tab.key}
-                  className="relative shrink-0"
-                  style={{ height: `${100 / TAB_DATA.length}%` }}
-                >
-                  <Image
-                    src={tab.img}
-                    alt={tab.title}
-                    layout="fill"
-                    objectFit="cover"
-                    className="brightness-90"
-                    priority
-                  />
-                  {/* Subtle tinted overlay per tab */}
-                  <div
-                    className="absolute inset-0"
-                    style={{ background: `${tab.accent}18` }}
-                  />
-                </div>
-              ))}
-            </div>
-
-            {/* Vertical "Programs" label on the right edge */}
-            <div className="absolute right-6 top-1/2 -translate-y-1/2 flex flex-col items-center gap-2 z-10 pointer-events-none">
-              <span
-                className="text-white/40 font-black text-[12px] uppercase tracking-[0.4em]"
-                style={{ writingMode: "vertical-rl" }}
-              >
-                Programs
-              </span>
-            </div>
-
-            {/* Bottom progress bar across the image */}
-            <div
-              className="absolute bottom-0 left-0 h-[3px] z-10"
-              style={{
-                width: `${((activeIndex + tabProgress) / TAB_DATA.length) * 100}%`,
-                background:
-                  "linear-gradient(90deg, var(--primary), var(--secondary))",
-                transition: "width 0.1s linear",
-              }}
-            />
-          </div>
-        </section>
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </button>
+        </div>
       </div>
-    </div>
+
+      {/* Carousel track */}
+      <div
+        className="services-carousel-viewport"
+        ref={containerRef}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+      >
+        <div
+          className="services-carousel-track"
+          ref={trackRef}
+          style={{
+            transform: `translateX(-${translateX}px)`,
+            gap: `${CARD_GAP}px`,
+          }}
+        >
+          {SERVICES_DATA.map((service, idx) => (
+            <div
+              key={service.id}
+              className="services-carousel-slide"
+              style={{ width: cardWidth > 0 ? `${cardWidth}px` : "calc(33.333% - 22px)" }}
+            >
+              {/* Extra text above card */}
+              {service.extraPosition === "top" && (
+                <p className="services-extra-text services-extra-top">
+                  {service.extraText}
+                </p>
+              )}
+
+              {/* Card */}
+              <div
+                className="services-card"
+                style={{ background: service.cardBg }}
+              >
+                <h3 className="services-card-title">{service.title}</h3>
+                <p className="services-card-desc">{service.description}</p>
+                <ButtonLetterRoll
+                  text={service.btnText}
+                  bgColor="transparent"
+                  textColor="#1a1220"
+                  borderColor="#1a1220"
+                  hoverBgColor="#1a1220"
+                  hoverTextColor="#ffffff"
+                  hoverBorderColor="#1a1220"
+                  className="mt-auto self-start"
+                  showArrow={false}
+                />
+              </div>
+
+              {/* Extra text below card */}
+              {service.extraPosition === "bottom" && (
+                <p className="services-extra-text services-extra-bottom">
+                  {service.extraText}
+                </p>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Dots */}
+      <div className="services-carousel-dots">
+        {SERVICES_DATA.map((_, idx) => (
+          <button
+            key={idx}
+            className={`services-dot ${
+              idx >= currentIndex && idx < currentIndex + visibleCards
+                ? "services-dot-active"
+                : ""
+            }`}
+            onClick={() => goTo(idx > maxIndex ? maxIndex : idx)}
+            aria-label={`Go to service ${idx + 1}`}
+          />
+        ))}
+      </div>
+
+      <style jsx>{`
+        .services-carousel-section {
+          padding: 80px 0 60px;
+          background: #ffffff;
+          max-width: 1280px;
+          margin: 0 auto;
+          padding-left: 40px;
+          padding-right: 40px;
+        }
+
+        .services-carousel-header {
+          display: flex;
+          align-items: flex-end;
+          justify-content: space-between;
+          margin-bottom: 48px;
+          flex-wrap: wrap;
+          gap: 20px;
+        }
+
+        .services-carousel-label {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 12px;
+        }
+
+        .services-label-accent {
+          width: 32px;
+          height: 3px;
+          background: var(--primary, #8E6F9F);
+          border-radius: 2px;
+        }
+
+        .services-label-text {
+          font-size: 14px;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          color: var(--primary, #8E6F9F);
+          font-family: 'Manrope', 'Inter', sans-serif;
+        }
+
+        .services-carousel-title {
+          font-size: 36px;
+          font-weight: 800;
+          color: #1a1220;
+          line-height: 1.2;
+          margin: 0;
+          max-width: 500px;
+          font-family: 'Manrope', 'Inter', sans-serif;
+        }
+
+        .services-carousel-nav {
+          display: flex;
+          gap: 8px;
+        }
+
+        .services-nav-btn {
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+          border: 2px solid #e2d5ee;
+          background: transparent;
+          color: #8E6F9F;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .services-nav-btn:hover {
+          background: var(--primary, #8E6F9F);
+          border-color: var(--primary, #8E6F9F);
+          color: #fff;
+          transform: scale(1.08);
+        }
+
+        .services-carousel-viewport {
+          overflow: hidden;
+          width: 100%;
+          cursor: grab;
+        }
+
+        .services-carousel-viewport:active {
+          cursor: grabbing;
+        }
+
+        .services-carousel-track {
+          display: flex;
+          transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+          will-change: transform;
+        }
+
+        .services-carousel-slide {
+          flex-shrink: 0;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .services-card {
+          border-radius: 20px;
+          padding: 36px 30px 32px;
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+          min-height: 220px;
+          transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .services-card:hover {
+          transform: translateY(-6px);
+          box-shadow: 0 16px 48px rgba(142, 111, 159, 0.12);
+        }
+
+        .services-card-title {
+          font-size: 24px;
+          font-weight: 800;
+          color: #1a1220;
+          margin: 0;
+          line-height: 1.3;
+          font-family: 'Manrope', 'Inter', sans-serif;
+        }
+
+        .services-card-desc {
+          font-size: 14px;
+          color: #6b6b7b;
+          line-height: 1.75;
+          margin: 0;
+          font-family: 'Inter', sans-serif;
+        }
+
+        .services-card-btn {
+          align-self: flex-start;
+          padding: 10px 24px;
+          border-radius: 8px;
+          border: 1.5px solid #1a1220;
+          background: transparent;
+          color: #1a1220;
+          font-size: 13px;
+          font-weight: 700;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          font-family: 'Manrope', 'Inter', sans-serif;
+          letter-spacing: 0.02em;
+          margin-top: auto;
+        }
+
+        .services-card-btn:hover {
+          background: #1a1220;
+          color: #fff;
+        }
+
+        .services-extra-text {
+          font-size: 14px;
+          color: #7a7a8a;
+          line-height: 1.7;
+          margin: 0;
+          padding: 0 4px;
+          font-family: 'Inter', sans-serif;
+        }
+
+        .services-extra-top {
+          margin-bottom: 20px;
+          min-height: 48px;
+        }
+
+        .services-extra-bottom {
+          margin-top: 20px;
+          min-height: 48px;
+        }
+
+        .services-carousel-dots {
+          display: flex;
+          justify-content: center;
+          gap: 8px;
+          margin-top: 40px;
+        }
+
+        .services-dot {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          border: none;
+          background: #e2d5ee;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          padding: 0;
+        }
+
+        .services-dot-active {
+          background: var(--primary, #8E6F9F);
+          transform: scale(1.25);
+        }
+
+        .services-dot:hover {
+          background: var(--primary, #8E6F9F);
+          opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+          .services-carousel-section {
+            padding: 60px 24px 40px;
+          }
+          .services-carousel-title {
+            font-size: 28px;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .services-carousel-section {
+            padding: 48px 16px 32px;
+            padding-left: 20px;
+            padding-right: 20px;
+          }
+          .services-carousel-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 28px;
+          }
+          .services-carousel-title {
+            font-size: 24px;
+          }
+          .services-carousel-nav {
+            align-self: flex-end;
+          }
+          .services-card {
+            padding: 28px 22px 24px;
+            min-height: 180px;
+          }
+          .services-card-title {
+            font-size: 20px;
+          }
+          .services-extra-top {
+            margin-bottom: 12px;
+            min-height: auto;
+          }
+          .services-extra-bottom {
+            margin-top: 12px;
+            min-height: auto;
+          }
+        }
+      `}</style>
+    </section>
   );
 }

@@ -27,21 +27,14 @@ export default function SiteFooter() {
   ];
 
   return (
-    <footer className="relative bg-[#1e1611] pt-16 font-sans overflow-hidden z-20">
-      {/* Massive Background Watermark Text "CROWDERA" */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0">
-        <span className="text-[12vw] font-black text-white/[0.02] tracking-[1.5rem] uppercase">
-          CROWDERA
-        </span>
-      </div>
-
+    <footer className="relative bg-[#1a1220] pt-16 font-sans overflow-hidden z-20">
       <div className="relative z-10 max-w-[1200px] mx-auto px-6">
         {/* Main Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 py-16 border-b border-white/5">
           {/* Col 1 (4/12) - Logo & Newsletter */}
           <div className="lg:col-span-4 flex flex-col gap-6">
             <h2 className="text-3xl font-black text-white uppercase tracking-tighter m-0">
-              CROWD<span className="text-[var(--primary)]">ERA</span>
+              TRUE<span className="text-[var(--primary)]">HELP</span>
             </h2>
             <p className="text-white/60 leading-relaxed font-serif text-[15px]">
               Empowering communities, feeding families, and providing critical
@@ -55,7 +48,7 @@ export default function SiteFooter() {
               />
               <button
                 type="submit"
-                className="absolute right-1 top-1 bottom-1 px-6 bg-[var(--primary)] hover:bg-[var(--secondary)] text-[#2b1f18] hover:text-[#2b1f18] rounded-full transition-all flex items-center justify-center font-black text-[13px] uppercase tracking-wider"
+                className="absolute right-1 top-1 bottom-1 px-6 bg-[var(--primary)] hover:bg-[var(--secondary)] text-[#211823] hover:text-[#211823] rounded-full transition-all flex items-center justify-center font-black text-[13px] uppercase tracking-wider"
               >
                 Subscribe
               </button>
@@ -113,10 +106,10 @@ export default function SiteFooter() {
                   Email
                 </span>
                 <a
-                  href="mailto:support@crowdera.org"
+                  href="mailto:support@truehelp.org"
                   className="block text-white hover:text-[var(--primary)] transition-colors font-sans"
                 >
-                  support@crowdera.org
+                  support@truehelp.org
                 </a>
               </div>
             </div>
@@ -126,7 +119,7 @@ export default function SiteFooter() {
         {/* Bottom Bar */}
         <div className="py-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-[13px] font-black tracking-wider uppercase text-white/50">
           <p className="m-0">
-            © {new Date().getFullYear()} CROWDERA. ALL RIGHTS RESERVED.
+            © {new Date().getFullYear()} TRUEHELP. ALL RIGHTS RESERVED.
           </p>
 
           <div className="flex items-center gap-6">

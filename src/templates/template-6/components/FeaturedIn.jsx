@@ -13,7 +13,7 @@ const FEATURED_LOGOS = [
 
 export default function FeaturedIn() {
   return (
-    <section className="py-20 bg-[#F9F5EC] border-t border-[#2b1f18]/10 overflow-hidden relative w-full">
+    <section className="py-20 bg-[#FAF6FC] border-t border-[#211823]/10 overflow-hidden relative w-full">
       
       {/* Inject custom infinite marquee CSS styles */}
       <style
@@ -46,11 +46,11 @@ export default function FeaturedIn() {
             }
             .marquee-wrapper-featured::before {
               left: 0;
-              background: linear-gradient(to right, #F9F5EC, transparent);
+              background: linear-gradient(to right, #FAF6FC, transparent);
             }
             .marquee-wrapper-featured::after {
               right: 0;
-              background: linear-gradient(to left, #F9F5EC, transparent);
+              background: linear-gradient(to left, #FAF6FC, transparent);
             }
           `,
         }}
@@ -63,14 +63,14 @@ export default function FeaturedIn() {
           <div className="inline-flex items-center gap-3 mb-4">
             <div className="w-2 h-2 rounded-full bg-[var(--secondary)]" />
             <span
-              className="text-lg text-[#2b1f18]/70 font-normal"
+              className="text-lg text-[#211823]/70 font-normal"
               style={{ fontFamily: "'Caveat', 'Segoe Script', cursive" }}
             >
               Recognized By
             </span>
           </div>
           <h2
-            className="text-[clamp(32px,4.5vw,48px)] font-black text-[#2b1f18] tracking-tighter leading-[1.1] uppercase m-0"
+            className="text-[clamp(32px,4.5vw,48px)] font-black text-[#211823] tracking-tighter leading-[1.1] uppercase m-0"
             style={{ fontFamily: "'Sora', sans-serif" }}
           >
             As Featured In

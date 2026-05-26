@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { FiLock, FiCheck, FiMail } from "react-icons/fi";
 
 export default function NewsLetter() {
   const [email, setEmail] = useState("");
@@ -15,7 +16,7 @@ export default function NewsLetter() {
   };
 
   return (
-    <section className="relative py-[100px] overflow-hidden bg-[#2b1f18] font-sans">
+    <section className="relative py-[100px] overflow-hidden bg-[#211823] font-sans">
       {/* Background image with dark overlay */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -24,7 +25,7 @@ export default function NewsLetter() {
             "url(https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1920&q=80)",
         }}
       />
-      <div className="absolute inset-0 bg-[#2b1f18]/85" />
+      <div className="absolute inset-0 bg-[#211823]/85" />
 
       {/* Ghost watermark */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0">
@@ -67,7 +68,7 @@ export default function NewsLetter() {
           />
           <button
             type="submit"
-            className="absolute right-2.5 top-1/2 -translate-y-1/2 w-[48px] h-[48px] rounded-full bg-[var(--secondary)] hover:bg-white flex items-center justify-center text-[#2b1f18] transition-all duration-300 hover:scale-105 shadow-md"
+            className="absolute right-2.5 top-1/2 -translate-y-1/2 w-[48px] h-[48px] rounded-full bg-[var(--secondary)] hover:bg-white flex items-center justify-center text-[#211823] transition-all duration-300 hover:scale-105 shadow-md"
           >
             {submitted ? (
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
@@ -88,12 +89,12 @@ export default function NewsLetter() {
         )}
 
         {/* Trust badges */}
-        <div className="mt-10 flex items-center justify-center gap-8 text-white/50 text-[13px] font-black uppercase tracking-widest">
-          <span>🔒 No Spam</span>
-          <span className="w-[1px] h-4 bg-white/20" />
-          <span>✦ Unsubscribe anytime</span>
-          <span className="w-[1px] h-4 bg-white/20" />
-          <span>💌 Weekly digest</span>
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-white/50 text-[13px] font-black uppercase tracking-widest">
+          <span className="flex items-center gap-1.5"><FiLock className="text-[var(--secondary)]" size={14} /> No Spam</span>
+          <span className="hidden sm:inline w-[1px] h-4 bg-white/20" />
+          <span className="flex items-center gap-1.5"><FiCheck className="text-[var(--secondary)]" size={14} /> Unsubscribe anytime</span>
+          <span className="hidden sm:inline w-[1px] h-4 bg-white/20" />
+          <span className="flex items-center gap-1.5"><FiMail className="text-[var(--secondary)]" size={14} /> Weekly digest</span>
         </div>
       </div>
     </section>

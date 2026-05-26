@@ -1,5 +1,5 @@
-"use client";
 import React, { useState } from "react";
+import ButtonLetterRoll from "./ButtonLetterRoll";
 
 export default function GetInTouch() {
   const [formData, setFormData] = useState({
@@ -109,12 +109,16 @@ export default function GetInTouch() {
               </div>
 
               <div>
-                <button
+                <ButtonLetterRoll
+                  text="Submit Now"
                   type="submit"
-                  className="inline-block bg-[var(--secondary)] text-black font-bold text-[17px] px-10 py-5 rounded-md transition-all hover:bg-[#c4965d] hover:shadow-lg"
-                >
-                  Submit Now
-                </button>
+                  bgColor="var(--secondary)"
+                  textColor="#211823"
+                  borderColor="transparent"
+                  hoverBgColor="var(--primary)"
+                  hoverTextColor="#ffffff"
+                  hoverBorderColor="transparent"
+                />
               </div>
             </form>
           </div>

@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from "react";
 import Head from "next/head";
 import gsap from "gsap";
@@ -35,13 +36,13 @@ export default function Template2() {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    
+
     let ctx = gsap.context(() => {
       const sections = gsap.utils.toArray('main > div');
-      
+
       sections.forEach((section) => {
         if (section.id === "hero") return; // Skip hero to avoid double animation if it has its own
-        
+
         const headings = section.querySelectorAll('h1, h2, h3');
         const structuralElements = section.querySelectorAll('.container .grid > div, .container > .flex > div:not(.absolute), .container > p');
 
@@ -96,6 +97,7 @@ export default function Template2() {
                 ease: "power3.out",
                 scrollTrigger: {
                   trigger: section,
+                  
                   start: "top 85%",
                   toggleActions: "play none none reverse",
                 }
@@ -104,7 +106,7 @@ export default function Template2() {
         }
       });
     }, mainRef);
-    
+
     return () => ctx.revert();
   }, []);
 
@@ -125,18 +127,19 @@ export default function Template2() {
         />
         {/* Load fonts via standard link Ã¢â‚¬â€ moved to _document ideally but works here too */}
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@400;600;700;800&family=Nunito:wght@400;600;700;800&family=Caveat:wght@400;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@400;600;700;800&family=Nunito:wght@400;600;700;800&family=Caveat:wght@400;700&family=Manrope:wght@400;500;600;700;800&display=swap"
           rel="stylesheet"
         />
       </Head>
 
       <div
         ref={mainRef}
+        className="t6-wrapper"
         style={{
-          "--primary": "#E3692A",
-          "--secondary": "#F2B740",
-          "--bg-color": "#2b1f18",
-          "--text-color": "#F9F5EC",
+          "--primary": "#8E6F9F",
+          "--secondary": "#00D2FF",
+          "--bg-color": "#211823",
+          "--text-color": "#FAF6FC",
           position: "relative",
           /* NOTE: overflowX:hidden removed — it breaks position:sticky on descendants.
              Individual sections (Hero, Event, etc.) handle their own overflow. */

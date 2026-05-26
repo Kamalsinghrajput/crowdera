@@ -4,14 +4,18 @@ import Link from "next/link";
 import ButtonLetterRoll from "./ButtonLetterRoll";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { FiUsers, FiHeart } from "react-icons/fi";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function About() {
   const sectionRef = useRef(null);
+  const mainImgRef = useRef(null);
+  const overlapImgRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // Scroll entry animations
       gsap.from(".about-header", {
         y: 40,
         opacity: 0,
@@ -19,40 +23,56 @@ export default function About() {
         ease: "power3.out",
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top 80%",
+          start: "top 85%",
         },
       });
-      gsap.from(".about-col-1", {
+      gsap.from(".about-image", {
         x: -50,
         opacity: 0,
         duration: 1,
         ease: "power3.out",
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top 70%",
+          start: "top 80%",
         },
       });
-      gsap.from(".about-col-2", {
-        y: 50,
-        opacity: 0,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 70%",
-        },
-      });
-      gsap.from(".about-col-3", {
+      gsap.from(".about-copy", {
         x: 50,
         opacity: 0,
         duration: 1,
         ease: "power3.out",
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top 70%",
+          start: "top 80%",
         },
       });
+
+      // Float the main image container
+      if (mainImgRef.current) {
+        gsap.to(mainImgRef.current, {
+          y: -10,
+          x: 5,
+          duration: 4,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+        });
+      }
+
+      // Float the overlapping image container
+      if (overlapImgRef.current) {
+        gsap.to(overlapImgRef.current, {
+          y: 12,
+          x: -8,
+          duration: 3.5,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+          delay: 0.5,
+        });
+      }
     }, sectionRef);
+
     return () => ctx.revert();
   }, []);
 
@@ -60,134 +80,110 @@ export default function About() {
     <section
       id="about"
       ref={sectionRef}
-      className="py-[120px] bg-[#F9F5EC] overflow-hidden font-sans relative"
+      className="relative py-[120px] bg-[#FAF6FC] overflow-hidden font-sans"
     >
-      <div className="max-w-[1200px] mx-auto px-6">
-        {/* Header Block */}
-        <div className="about-header mb-16 max-w-[800px]">
-          <span
-            className="text-[var(--secondary)] text-3xl font-normal block mb-4"
-            style={{ fontFamily: "'Caveat', 'Segoe Script', cursive" }}
-          >
-            Our mission
-          </span>
-          <h2 className="text-5xl lg:text-7xl font-black text-[#2b1f18] tracking-tighter leading-[1.05] uppercase m-0">
-            BRINGING HOPE AND<br />SUPPORT TO COMMUNITIES
-          </h2>
-        </div>
+      <div className="max-w-[1240px] mx-auto px-6">
+        <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] items-center">
+          {/* Images Left (Template-1 style layout with Next.js Image components) */}
+          <div className="about-image w-full relative flex justify-center lg:justify-start">
+            <div className="relative w-full max-w-[560px] min-h-[360px] sm:min-h-[440px] lg:min-h-[500px]">
+              {/* Main large image */}
+              <div
+                ref={mainImgRef}
+                className="relative rounded-3xl overflow-hidden shadow-2xl z-10 w-4/5 h-[280px] sm:h-[350px] lg:h-[420px]"
+              >
+                <Image
+                  src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=600&auto=format&fit=crop&q=80"
+                  alt="Volunteers helping community"
+                  layout="fill"
+                  objectFit="cover"
+                  priority
+                />
+              </div>
 
-        {/* 3-Column Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
-          {/* Column 1 */}
-          <div className="about-col-1 flex flex-col gap-8">
-            <div className="relative w-full h-[280px] rounded-[2rem] overflow-hidden shadow-md">
-              <Image
-                src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=80"
-                alt="Children laughing"
-                layout="fill"
-                objectFit="cover"
+              {/* Overlapping smaller image */}
+              <div
+                ref={overlapImgRef}
+                className="absolute top-1/4 right-0 w-3/5 h-[180px] sm:h-[220px] lg:h-[260px] rounded-3xl overflow-hidden shadow-2xl border-8 border-white z-20"
+              >
+                <Image
+                  src="https://images.unsplash.com/photo-1497375638960-ca368c7231e4?w=500&auto=format&fit=crop&q=80"
+                  alt="Children learning together"
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </div>
+
+              {/* Experience Badge matching UI theme (var(--primary)) */}
+              <div
+                className="absolute -bottom-4 left-0 sm:-bottom-8 sm:-left-4 lg:-left-8 bg-[var(--primary)] text-white p-5 sm:p-8 rounded-2xl sm:rounded-3xl shadow-xl z-30 font-bold max-w-[200px] sm:max-w-xs transition-transform transform hover:scale-105 duration-300"
+              >
+                <div className="text-2xl sm:text-4xl mb-1 sm:mb-2 font-black leading-none text-white">25+</div>
+                <div className="text-xs sm:text-base leading-tight text-purple-100">
+                  Years of Experience in Charity &amp; Fundraising.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="about-copy relative space-y-8">
+            <span className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.32em] text-[#7B5D86]">
+              <span className="block h-2.5 w-2.5 rounded-full bg-[#D9B6E3]" />
+              About Truehelp
+            </span>
+
+            <div className="space-y-6">
+              <h2 className="text-4xl font-black leading-tight tracking-[-0.03em] text-[#211823] sm:text-5xl xl:text-[4.8rem]">
+                Support When You Need It Most
+              </h2>
+              <p className="max-w-[660px] text-base leading-8 text-[#625362]">
+                Nobody should face a mental health problem alone. We need your help so we can be there – on the other end of the phone.
+              </p>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              <ButtonLetterRoll
+                text="Helping Someone"
+                href="/templates/template-6/initiatives?tab=campaigns"
+                bgColor="#ffffff"
+                textColor="#392C40"
+                borderColor="#E7DCE9"
+                hoverBgColor="var(--primary)"
+                hoverTextColor="#ffffff"
+                hoverBorderColor="var(--primary)"
+                leftIcon={<FiUsers size={16} />}
+                showArrow={false}
+              />
+
+              <ButtonLetterRoll
+                text="Donate Now"
+                href="/templates/template-6/initiatives?tab=donate"
+                bgColor="var(--primary)"
+                textColor="#ffffff"
+                borderColor="var(--primary)"
+                hoverBgColor="#211823"
+                hoverTextColor="#ffffff"
+                hoverBorderColor="#211823"
+                leftIcon={<FiHeart size={16} />}
+                showArrow={false}
               />
             </div>
-            <p className="text-[#5c4a3c] text-[17px] leading-[1.7] font-serif m-0 pr-4">
-              Since 1994, we have supported more than 1,000 local partners to
-              reach more than 15 million children, and we're working with new
-              organizations all the time.
+
+            <p className="max-w-[660px] text-base leading-8 text-[#625362]">
+              Every child has the right to dream, no matter who they are or where they live. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Charity varius enim in eros elementum tristique duis cursus.
             </p>
-            <div>
+
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
               <ButtonLetterRoll
-                text="Learn More"
+                text="About Us"
                 href="/templates/template-6/about"
                 bgColor="var(--primary)"
                 textColor="#ffffff"
                 borderColor="var(--primary)"
-                hoverBgColor="#2b1f18"
+                hoverBgColor="#211823"
                 hoverTextColor="#ffffff"
-                hoverBorderColor="#2b1f18"
+                hoverBorderColor="#211823"
               />
-            </div>
-          </div>
-
-          {/* Column 2 */}
-          <div className="about-col-2 flex flex-col gap-6">
-            {/* Card 1 */}
-            <div className="relative w-full h-[320px] rounded-[2rem] overflow-hidden shadow-md group cursor-pointer">
-              <Image
-                src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=800&q=80"
-                alt="Sharing"
-                layout="fill"
-                objectFit="cover"
-                className="transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
-              <div className="absolute bottom-6 left-6 z-10">
-                <span className="text-white text-2xl font-black uppercase tracking-tight">
-                  Sharing
-                </span>
-              </div>
-            </div>
-
-            {/* Card 2 */}
-            <div className="relative w-full h-[240px] rounded-[2rem] overflow-hidden shadow-md group cursor-pointer">
-              <Image
-                src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=800&q=80"
-                alt="Donation"
-                layout="fill"
-                objectFit="cover"
-                className="transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
-              <div className="absolute bottom-6 left-6 z-10">
-                <span className="text-white text-2xl font-black uppercase tracking-tight">
-                  Donation
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Column 3 */}
-          <div className="about-col-3 flex flex-col gap-8 items-center lg:items-start">
-            {/* Floating Heart Icon Area */}
-            <div className="w-[140px] h-[140px] relative flex items-center justify-center -mt-6">
-              {/* Hand-drawn outline heart with orange sun rays */}
-              <svg
-                viewBox="0 0 100 100"
-                className="w-full h-full text-[var(--primary)] fill-none stroke-current"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                {/* Rays */}
-                <path d="M50,15 L50,5" />
-                <path d="M72,25 L79,18" />
-                <path d="M85,50 L95,50" />
-                <path d="M72,75 L79,82" />
-                <path d="M50,85 L50,95" />
-                <path d="M28,75 L21,82" />
-                <path d="M15,50 L5,50" />
-                <path d="M28,25 L21,18" />
-                {/* Heart */}
-                <path
-                  d="M50,37 C50,37 42,25 32,25 C22,25 18,34 18,44 C18,60 50,75 50,75 C50,75 82,60 82,44 C82,34 78,25 68,25 C58,25 50,37 50,37 Z"
-                  fill="none"
-                />
-              </svg>
-            </div>
-
-            {/* Card 3 */}
-            <div className="relative w-full h-[360px] rounded-[2rem] overflow-hidden shadow-md group cursor-pointer">
-              <Image
-                src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=800&q=80"
-                alt="Community"
-                layout="fill"
-                objectFit="cover"
-                className="transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
-              <div className="absolute bottom-6 left-6 z-10">
-                <span className="text-white text-2xl font-black uppercase tracking-tight">
-                  Community
-                </span>
-              </div>
             </div>
           </div>
         </div>

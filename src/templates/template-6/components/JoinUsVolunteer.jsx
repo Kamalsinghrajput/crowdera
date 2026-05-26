@@ -8,7 +8,7 @@ export default function JoinUsVolunteer() {
   return (
     <section
       id="join-us-volunteer"
-      className="relative py-[120px] bg-[#2b1f18] font-sans overflow-hidden z-20"
+      className="relative py-[120px] bg-[#211823] font-sans overflow-hidden z-20"
     >
       <div className="max-w-[1200px] mx-auto px-6 relative z-10">
         
@@ -30,7 +30,7 @@ export default function JoinUsVolunteer() {
           
           {/* Left Form Side */}
           <div className="w-full lg:w-[55%] p-10 lg:p-14 flex flex-col justify-center">
-            <h3 className="text-[#2b1f18] text-3xl font-black uppercase tracking-tight mb-6">
+            <h3 className="text-[#211823] text-3xl font-black uppercase tracking-tight mb-6">
               Support Where It Counts
             </h3>
 
@@ -39,7 +39,7 @@ export default function JoinUsVolunteer() {
               <div className="text-[var(--secondary)] mt-0.5">
                 <FiAlertTriangle size={20} />
               </div>
-              <p className="text-[#2b1f18]/80 text-sm leading-[1.6] m-0 font-serif">
+              <p className="text-[#211823]/80 text-sm leading-[1.6] m-0 font-serif">
                 <strong>Notice:</strong> Test mode is enabled. While in test
                 mode no live donations are processed.
               </p>
@@ -47,19 +47,19 @@ export default function JoinUsVolunteer() {
 
             {/* Your Donation */}
             <div className="mb-8">
-              <h4 className="text-[#2b1f18] text-base font-black uppercase tracking-wider mb-4">
+              <h4 className="text-[#211823] text-base font-black uppercase tracking-wider mb-4">
                 Your Donation:
               </h4>
 
               {/* Input */}
               <div className="flex items-center bg-[#f7f5f0] rounded-full p-2 mb-4 w-full max-w-[400px] border border-black/[0.04]">
-                <div className="w-10 h-10 rounded-full bg-[#2b1f18] text-white flex items-center justify-center font-bold">
+                <div className="w-10 h-10 rounded-full bg-[#211823] text-white flex items-center justify-center font-bold">
                   $
                 </div>
                 <input
                   type="text"
                   defaultValue="100"
-                  className="bg-transparent border-none outline-none text-lg font-black text-[#2b1f18] px-4 w-full"
+                  className="bg-transparent border-none outline-none text-lg font-black text-[#211823] px-4 w-full"
                 />
               </div>
 
@@ -72,7 +72,7 @@ export default function JoinUsVolunteer() {
                       ${
                         val === "100"
                           ? "bg-[var(--primary)] border-[var(--primary)] text-white"
-                          : "bg-white border-black/[0.08] text-[#2b1f18] hover:border-[var(--primary)]"
+                          : "bg-white border-black/[0.08] text-[#211823] hover:border-[var(--primary)]"
                       }`}
                   >
                     {val}
@@ -83,7 +83,7 @@ export default function JoinUsVolunteer() {
 
             {/* Select Payment Method */}
             <div className="mb-8">
-              <h4 className="text-[#2b1f18] text-base font-black uppercase tracking-wider mb-4">
+              <h4 className="text-[#211823] text-base font-black uppercase tracking-wider mb-4">
                 Select Payment Method:
               </h4>
               <div className="flex flex-wrap items-center gap-6">
@@ -104,7 +104,7 @@ export default function JoinUsVolunteer() {
                         <div className="w-2 h-2 rounded-full bg-[var(--primary)]"></div>
                       )}
                     </div>
-                    <span className="text-[#2b1f18]/85 text-sm font-black uppercase tracking-wider">
+                    <span className="text-[#211823]/85 text-sm font-black uppercase tracking-wider">
                       {method.label}
                     </span>
                   </label>
@@ -120,15 +120,15 @@ export default function JoinUsVolunteer() {
                 bgColor="var(--primary)"
                 textColor="#ffffff"
                 borderColor="var(--primary)"
-                hoverBgColor="#2b1f18"
+                hoverBgColor="#211823"
                 hoverTextColor="#ffffff"
-                hoverBorderColor="#2b1f18"
+                hoverBorderColor="#211823"
               />
             </div>
           </div>
 
           {/* Right Image Side */}
-          <div className="w-full lg:w-[45%] min-h-[300px] lg:min-h-full relative bg-[#2b1f18]">
+          <div className="w-full lg:w-[45%] min-h-[300px] lg:min-h-full relative bg-[#211823]">
             <Image
               src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?auto=format&fit=crop&w=800&q=80"
               alt="Children looking out"

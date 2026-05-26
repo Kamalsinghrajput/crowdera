@@ -117,7 +117,7 @@ export default function ImpactProfile() {
               <Link
                 href={`/templates/template-6/annual-report/${CURRENT_YEAR}`}
               >
-                <a className="inline-block bg-[var(--secondary)] text-black font-bold text-[17px] px-8 py-4 rounded-md transition-colors hover:bg-[#c4965d] no-underline">
+                <a className="inline-block bg-[var(--secondary)] text-[#211823] font-bold text-[17px] px-8 py-4 rounded-md transition-colors hover:bg-[#c4965d] no-underline">
                   View Annual Report {CURRENT_YEAR}
                 </a>
               </Link>

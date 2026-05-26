@@ -1,106 +1,231 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 import CauseCard from "./CauseCard";
+import { FiHeart } from "react-icons/fi";
 import ButtonLetterRoll from "./ButtonLetterRoll";
 
 const causes = [
   {
     id: 1,
-    title: "Child Protection & Orphan Support",
-    tag: "YOUTH DEVELOPMENT",
-    raised: "$8,450.00",
-    goal: "$60,000.00",
-    percent: 14,
-    img: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80",
-    duration: "4 years to go",
+    title: "Urge Policymakers To Support Children",
+    tag: "KIDS PROTECTION",
+    raised: "$3,000",
+    goal: "$6,000",
+    percent: 55,
+    desc: "Your support enables children to live safe, healthy lives free from neglect and exploitation.",
+    img: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=900&q=80",
   },
   {
     id: 2,
-    title: "Women Empowerment Initiative",
-    tag: "FOOD & NUTRITION PROGRAMS",
-    raised: "$12,600.00",
-    goal: "$50,000.00",
-    percent: 25,
-    img: "https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=800&q=80",
-    duration: "5 years to go",
+    title: "Invest In Children And Their Futures",
+    tag: "EDUCATION SUPPORT",
+    raised: "$16,000",
+    goal: "$20,000",
+    percent: 85,
+    desc: "Education is the single most powerful tool we have to change the world for our children.",
+    img: "https://images.unsplash.com/photo-1540479859555-17af45c78602?auto=format&fit=crop&w=900&q=80",
   },
   {
     id: 3,
-    title: "Community Development Program",
-    tag: "COMMUNITY SUPPORT PROGRAMS",
-    raised: "$710.00",
-    goal: "$40,000.00",
-    percent: 2,
-    img: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=800&q=80",
-    duration: "5 years to go",
+    title: "Water For South Sudan Help Children",
+    tag: "WATER INFRASTRUCTURE",
+    raised: "$8,000",
+    goal: "$12,000",
+    percent: 75,
+    desc: "There are many variations of passages of Lorem ipsum, but the majority have.",
+    img: "https://images.unsplash.com/photo-1594708767771-a5e9d3012f0e?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    id: 4,
+    title: "Your Generosity Means Joseph Can Be A Kid",
+    tag: "CHILDREN CARE",
+    raised: "$8,000",
+    goal: "$10,000",
+    percent: 85,
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit proin mi pellentesque.",
+    img: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    id: 5,
+    title: "When Children Are Fed, So Are Their Dreams",
+    tag: "FOOD SECURITY",
+    raised: "$15,000",
+    goal: "$13,000",
+    percent: 90,
+    desc: "Workflow ecosystem we're ahead of the curve on that one, yet re-inventing the wheel.",
+    img: "https://images.unsplash.com/photo-1578496479914-7ef3b0193be3?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    id: 6,
+    title: "Convoy Volunteers Serve Survivors Of Disasters",
+    tag: "EMERGENCY RELIEF",
+    raised: "$4,000",
+    goal: "$8,000",
+    percent: 50,
+    desc: "Product market fit. I have zero cycles for this, products need full resourcing.",
+    img: "https://images.unsplash.com/photo-1542810634-71277d95dcbb?auto=format&fit=crop&w=900&q=80",
   },
 ];
 
+const GAP = 24;
+const AUTO_MS = 3500;
+
 export default function Causes({ isAllCausesPage }) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [visibleCount, setVisibleCount] = useState(3);
+  const [visibleCount, setVisibleCount] = useState(4);
+  const [cardWidth, setCardWidth] = useState(0);
+  const trackRef = useRef(null);
+  const timerRef = useRef(null);
 
+  /* ─── measure ─────────────────────────────────────────── */
   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 768) setVisibleCount(1);
-      else if (window.innerWidth < 1024) setVisibleCount(2);
-      else setVisibleCount(3);
+    const measure = () => {
+      let visible = 1;
+      if (window.innerWidth >= 1100) visible = 4;
+      else if (window.innerWidth >= 780) visible = 3;
+      else if (window.innerWidth >= 520) visible = 2;
+
+      setVisibleCount(visible);
+
+      if (trackRef.current) {
+        const totalWidth = trackRef.current.offsetWidth;
+        setCardWidth((totalWidth - GAP * (visible - 1)) / visible);
+      }
     };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
   }, []);
 
   const maxIndex = Math.max(0, causes.length - visibleCount);
 
+  /* ─── clamp index when visibleCount changes ───────────── */
+  useEffect(() => {
+    setCurrentIndex((prev) => Math.min(prev, maxIndex));
+  }, [maxIndex]);
+
+  /* ─── auto-advance ────────────────────────────────────── */
+  const startTimer = () => {
+    clearInterval(timerRef.current);
+    timerRef.current = setInterval(() => {
+      setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
+    }, AUTO_MS);
+  };
+
   useEffect(() => {
     if (isAllCausesPage || causes.length <= visibleCount) return;
-
-    const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
-    }, 4500);
-
-    return () => clearInterval(timer);
+    startTimer();
+    return () => clearInterval(timerRef.current);
   }, [maxIndex, isAllCausesPage, visibleCount]);
 
-  return (
-    <section id="causes" className="bg-[#F9F5EC] py-[120px] font-sans relative overflow-hidden">
-      
-      {/* Very Light Ghost Watermark Text */}
-      <div className="absolute top-[80px] left-0 right-0 text-center pointer-events-none select-none z-0">
-        <span className="text-[12vw] font-black text-[#2b1f18]/[0.03] tracking-[1.5rem] uppercase block leading-none">
-          DONATIONS
-        </span>
-      </div>
+  const translateX = cardWidth ? -(currentIndex * (cardWidth + GAP)) : 0;
 
-      <div className="max-w-[1200px] mx-auto px-6 relative z-10">
-        
-        {/* ── Section Header ── */}
-        <div className="text-center mb-16 relative">
-          <span
-            className="text-[var(--secondary)] text-3xl font-normal block mb-4"
-            style={{ fontFamily: "'Caveat', 'Segoe Script', cursive" }}
+  const goTo = (i) => {
+    setCurrentIndex(Math.max(0, Math.min(i, maxIndex)));
+    startTimer(); // reset timer on manual nav
+  };
+
+  /* ─── render ──────────────────────────────────────────── */
+  return (
+    <section
+      id="causes"
+      className="relative overflow-hidden py-[100px] font-sans"
+      style={{ background: "#FAF6FC" }}
+    >
+      {/* decorative circle pattern */}
+      <svg
+        className="absolute inset-0 w-full h-full pointer-events-none opacity-30"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <circle cx="80" cy="80" r="60" fill="none" stroke="#C9B8E8" strokeWidth="1.2" />
+        <circle cx="80" cy="80" r="30" fill="none" stroke="#C9B8E8" strokeWidth="1.2" />
+        <circle cx="95%" cy="15%" r="90" fill="none" stroke="#C9B8E8" strokeWidth="1.2" />
+        <circle cx="95%" cy="15%" r="45" fill="none" stroke="#C9B8E8" strokeWidth="1.2" />
+        <circle cx="10%" cy="85%" r="75" fill="none" stroke="#C9B8E8" strokeWidth="1.2" />
+        <circle cx="95%" cy="88%" r="55" fill="none" stroke="#C9B8E8" strokeWidth="1.2" />
+      </svg>
+
+      <div className="max-w-[1240px] mx-auto px-6 relative z-10">
+        {/* ── Header ── */}
+        <div className="flex flex-col items-center gap-5 text-center mb-14">
+          <ButtonLetterRoll
+            text="Donate Us"
+            href="/templates/template-6/initiatives?tab=donate"
+            bgColor="#ffffff"
+            textColor="var(--primary)"
+            borderColor="#D4C3F0"
+            hoverBgColor="var(--primary)"
+            hoverTextColor="#ffffff"
+            hoverBorderColor="var(--primary)"
+            leftIcon={<FiHeart size={14} />}
+            showArrow={false}
+          />
+
+          <h2
+            className="text-4xl sm:text-5xl md:text-[52px] font-black leading-tight tracking-tight max-w-[700px]"
+            style={{ color: "#211823" }}
           >
-            Take action now
-          </span>
-          <h2 className="text-5xl lg:text-7xl font-black text-[#2b1f18] tracking-tighter leading-[1.05] uppercase m-0">
-            POPULAR CAMPAIGN
+            List Of Best Highly Rated Charities
           </h2>
         </div>
 
-        {/* ── Grid ── */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {causes.map((course, index) => (
-            <CauseCard key={course.id} course={course} index={index} />
+        {/* ── Carousel ── */}
+        <div className="relative overflow-hidden" ref={trackRef}>
+          <div
+            className="flex"
+            style={{
+              gap: `${GAP}px`,
+              transform: `translateX(${translateX}px)`,
+              transition: "transform 0.75s cubic-bezier(0.22, 1, 0.36, 1)",
+              willChange: "transform",
+            }}
+          >
+            {causes.map((cause, index) => (
+              <div
+                key={cause.id}
+                className="flex-shrink-0"
+                style={{ width: cardWidth ? `${cardWidth}px` : "100%" }}
+              >
+                <CauseCard course={cause} index={index} />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── Dot navigation ── */}
+        <div className="flex justify-center gap-2 mt-8">
+          {Array.from({ length: maxIndex + 1 }).map((_, i) => (
+            <button
+              key={i}
+              onClick={() => goTo(i)}
+              aria-label={`Go to slide ${i + 1}`}
+              className="h-2 rounded-full transition-all duration-300"
+              style={{
+                width: i === currentIndex ? "24px" : "8px",
+                background: i === currentIndex ? "var(--primary)" : "#D4C3F0",
+                border: "none",
+                cursor: "pointer",
+                padding: 0,
+              }}
+            />
           ))}
         </div>
 
-        {/* ── View All Causes Button ── */}
+        {/* ── View All button ── */}
         {!isAllCausesPage && (
-          <div className="text-center mt-16 animate-fade-in">
+          <div className="text-center mt-12">
             <ButtonLetterRoll
               text="View All Campaigns"
               href="/templates/template-6/initiatives?tab=campaigns"
+              bgColor="var(--primary)"
+              textColor="#ffffff"
+              borderColor="var(--primary)"
+              hoverBgColor="var(--secondary)"
+              hoverTextColor="#211823"
+              hoverBorderColor="var(--secondary)"
             />
           </div>
         )}

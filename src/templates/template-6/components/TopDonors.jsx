@@ -152,7 +152,7 @@ export default function TopDonors() {
                   <div
                     className={`absolute -top-2 -right-2 w-8 h-8 rounded-full flex items-center justify-center text-[15px] shadow-lg font-bold ${
                       d.rank <= 3
-                        ? "bg-[var(--secondary)] text-black"
+                        ? "bg-[var(--secondary)] text-[#211823]"
                         : "bg-[var(--bg-color)] text-white"
                     }`}
                   >

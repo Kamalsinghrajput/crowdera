@@ -40,91 +40,91 @@ export default function TeamCard({ member }) {
 
   return (
     <>
-      {/* ── Board Member Card with Hover expansion ──────────────────── */}
       <div
         onClick={openModal}
-        className="relative bg-white rounded-[2.5rem] p-8 shadow-[0_4px_25px_rgba(0,0,0,0.02)] border border-[#2b1f18]/5 flex flex-col justify-between h-[480px] overflow-hidden cursor-pointer group transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:shadow-2xl"
+        className="relative bg-white rounded-[2.5rem] p-6 shadow-[0_15px_40px_rgba(33,24,35,0.03)] border border-[#211823]/5 flex flex-col h-[500px] overflow-hidden cursor-pointer group transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:shadow-[0_30px_60px_rgba(142,111,159,0.12)] hover:-translate-y-2 bg-gradient-to-b from-white to-[#FAF6FC]/30"
       >
-        {/* Top Header Content */}
-        <div className="flex flex-col relative z-20">
-          <div className="flex justify-between items-center text-[12px] font-black tracking-wider uppercase mb-2">
-            
-            {/* Role transitions color on hover */}
-            <span className="text-[var(--primary)] transition-colors duration-500 group-hover:text-[var(--secondary)]">
-              {member.role}
-            </span>
-
-            {/* Socials transition color on hover */}
-            <div className="text-gray-400 flex items-center gap-2">
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="transition-colors duration-500 hover:text-[var(--primary)] group-hover:text-white/60 group-hover:hover:text-[var(--secondary)] flex items-center justify-center"
-              >
-                <FiFacebook size={14} />
-              </a>
-              <span className="transition-colors duration-500 group-hover:text-white/40">•</span>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="transition-colors duration-500 hover:text-[var(--primary)] group-hover:text-white/60 group-hover:hover:text-[var(--secondary)] flex items-center justify-center"
-              >
-                <FiTwitter size={14} />
-              </a>
-              <span className="transition-colors duration-500 group-hover:text-white/40">•</span>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="transition-colors duration-500 hover:text-[var(--primary)] group-hover:text-white/60 group-hover:hover:text-[var(--secondary)] flex items-center justify-center"
-              >
-                <FiInstagram size={14} />
-              </a>
-            </div>
-          </div>
-
-          {/* Name transitions color on hover */}
-          <h3 className="text-3xl font-black text-[#2b1f18] m-0 tracking-tight leading-none transition-colors duration-500 group-hover:text-white">
-            {member.name}
-          </h3>
-        </div>
-
-        {/* 
-         * Bottom Right Image Container:
-         *   - Normal: aligned to bottom right, takes 70% width/height.
-         *   - Hover: expands to cover 100% width/height, shifts origin to full fill.
-         * */}
-        <div
-          className="absolute bottom-0 right-0 w-[72%] h-[72%] rounded-tl-[2.5rem] overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:w-full group-hover:h-full group-hover:rounded-none z-10"
-          style={{ backgroundColor: member.color }}
-        >
-          {/* Next.js optimized Image tag */}
+        {/* Image Container Wrapper */}
+        <div className="relative w-full h-[280px] rounded-[2rem] overflow-hidden mb-6 z-10 flex-shrink-0">
+          {/* Accent Color Background block that rotates/scales slightly on card hover */}
+          <div
+            className="absolute inset-0 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-105 group-hover:rotate-1"
+            style={{ backgroundColor: member.color }}
+          />
+          {/* The main Image */}
           <Image
             src={member.img}
             alt={member.name}
             layout="fill"
             objectFit="cover"
-            className="mix-blend-multiply opacity-90 transition-transform duration-700 group-hover:scale-105"
+            className="mix-blend-multiply opacity-90 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-105"
             priority
           />
+          {/* Overlay gradient */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           
-          {/* Dark gradient overlay — fades in on hover so overlapping text remains highly legible */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#2b1f18]/65 via-[#2b1f18]/20 to-[#2b1f18]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          {/* Social Icons floating on Image hover */}
+          <div className="absolute bottom-4 right-4 flex items-center gap-2 z-20 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] delay-75">
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="w-8 h-8 rounded-full bg-white/95 text-[#211823] flex items-center justify-center shadow-md hover:bg-[var(--primary)] hover:text-white transition-all duration-300 hover:scale-110"
+            >
+              <FiFacebook size={13} />
+            </a>
+            <a
+              href="https://twitter.com"
+              target="_blank"
+              rel="noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="w-8 h-8 rounded-full bg-white/95 text-[#211823] flex items-center justify-center shadow-md hover:bg-[var(--primary)] hover:text-white transition-all duration-300 hover:scale-110"
+            >
+              <FiTwitter size={13} />
+            </a>
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="w-8 h-8 rounded-full bg-white/95 text-[#211823] flex items-center justify-center shadow-md hover:bg-[var(--primary)] hover:text-white transition-all duration-300 hover:scale-110"
+            >
+              <FiInstagram size={13} />
+            </a>
+          </div>
         </div>
 
-        {/* Hover Information: Fades & slides up cleanly over the expanded dark-overlay image background */}
-        <div className="relative z-20 mt-auto pt-6 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] delay-75 pointer-events-none">
-          <p
-            className="text-white/95 text-[15px] leading-[1.6] m-0 line-clamp-3"
-            style={{ fontFamily: "'Nunito', 'Inter', sans-serif" }}
-          >
-            {member.bio}
-          </p>
+        {/* Content area */}
+        <div className="flex flex-col flex-grow justify-between">
+          <div>
+            {/* Role Badge */}
+            <span 
+              className="inline-block text-[10px] font-black tracking-widest uppercase px-3.5 py-1.5 rounded-full mb-3.5"
+              style={{ 
+                color: member.color, 
+                backgroundColor: `${member.color}15`
+              }}
+            >
+              {member.role}
+            </span>
+
+            {/* Name */}
+            <h3 className="text-2xl font-black text-[#211823] tracking-tight leading-tight mb-2.5 font-sora transition-colors duration-300 group-hover:text-[var(--primary)]">
+              {member.name}
+            </h3>
+
+            {/* Bio Teaser */}
+            <p className="text-gray-500 text-xs leading-relaxed line-clamp-2 font-sans font-normal">
+              {member.bio}
+            </p>
+          </div>
+
+          {/* Action indicator at bottom */}
+          <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-[#211823]/40 group-hover:text-[var(--primary)] transition-colors duration-300 mt-4">
+            <span>Read Biography</span>
+            <span className="w-5 h-[1.5px] bg-[#211823]/20 group-hover:bg-[var(--primary)] group-hover:w-8 transition-all duration-300" />
+          </div>
         </div>
       </div>
 
@@ -141,7 +141,7 @@ export default function TeamCard({ member }) {
           onClick={closeModal}
         >
           <div
-            className="w-full max-w-[900px] bg-[#3b2d24] rounded-[2.5rem] overflow-hidden flex flex-col md:flex-row shadow-2xl relative"
+            className="w-full max-w-[900px] bg-[#1a1220] rounded-[2.5rem] overflow-hidden flex flex-col md:flex-row shadow-2xl relative"
             style={{
               opacity: animateIn ? 1 : 0,
               transform: animateIn
@@ -173,7 +173,7 @@ export default function TeamCard({ member }) {
             {/* Right Content */}
             <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col text-left font-sans text-white">
               <div className="mb-4">
-                <span className="bg-[var(--secondary)] text-[#2b1f18] text-[12px] font-black px-4 py-2 rounded-full uppercase tracking-wider inline-block">
+                <span className="bg-[var(--secondary)] text-[#211823] text-[12px] font-black px-4 py-2 rounded-full uppercase tracking-wider inline-block">
                   Board Member
                 </span>
               </div>
@@ -213,7 +213,7 @@ export default function TeamCard({ member }) {
                     key={sm}
                     target="_blank"
                     rel="noreferrer"
-                    className="w-10 h-10 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white hover:text-[#2b1f18] transition-colors"
+                    className="w-10 h-10 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white hover:text-[#211823] transition-colors"
                   >
                     <span className="text-[12px] font-black uppercase">{sm.slice(0, 2)}</span>
                   </a>

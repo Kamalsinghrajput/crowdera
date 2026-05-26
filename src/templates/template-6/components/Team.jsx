@@ -106,7 +106,7 @@ const BOARD_MEMBERS = [
 
 export default function Team({ isAllTeamPage }) {
   return (
-    <section className="bg-[#F9F5EC] py-[120px] relative overflow-hidden z-20 border-t border-black/5">
+    <section className="bg-[#FAF6FC] py-[120px] relative overflow-hidden z-20 border-t border-black/5">
       <div className="max-w-[1200px] mx-auto px-6 relative z-10">
         
         {/* Header Block — Hidden on secondary page */}
@@ -119,7 +119,7 @@ export default function Team({ isAllTeamPage }) {
               Board Members
             </span>
             <h2
-              className="text-5xl lg:text-7xl font-black text-[#2b1f18] tracking-tighter leading-[1.05] uppercase m-0"
+              className="text-5xl lg:text-7xl font-black text-[#211823] tracking-tighter leading-[1.05] uppercase m-0"
               style={{ fontFamily: "'Sora', sans-serif" }}
             >
               MEET OUR BOARD MEMBERS

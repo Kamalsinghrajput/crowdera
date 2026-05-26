@@ -1,9 +1,7 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import AccordionItem from "./AccordionItem";
-import ButtonLetterRoll from "./ButtonLetterRoll";
 
 const FAQS = [
   {
@@ -33,62 +31,59 @@ export default function Faq() {
   const [open, setOpen] = useState(1);
 
   return (
-    <section className="bg-[#F9F5EC] py-[120px] font-sans relative overflow-hidden z-20 border-t border-black/5">
+    <section className="bg-[#EEF7FC] py-[120px] font-sans relative overflow-hidden z-20">
       <div className="max-w-[1200px] mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-20 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-16 lg:gap-20 items-center">
           {/* Left Side */}
           <div className="flex flex-col">
             <span
-              className="text-[var(--secondary)] text-3xl font-normal block mb-4"
-              style={{ fontFamily: "'Caveat', 'Segoe Script', cursive" }}
+              className="text-[var(--primary)] text-lg font-bold block mb-4 uppercase tracking-wider"
             >
-              Our FAQ
+              Have Questions?
             </span>
 
-            <h2 className="text-5xl lg:text-7xl font-black text-[#2b1f18] tracking-tighter leading-[1.05] uppercase m-0 mb-6">
-              FREQUENTLY ASKED QUESTIONS
+            <h2 className="text-4xl lg:text-5xl font-extrabold text-[#211823] tracking-tight leading-[1.15] m-0 mb-8">
+              Help Make a Difference in the Life of a Child
             </h2>
 
-            <p className="text-[#2b1f18]/80 text-[16px] leading-[1.8] font-serif mb-10">
-              Have questions? We've got answers. Browse through our frequently
-              asked questions to find the information you need.
-            </p>
-
-            <div>
-              <ButtonLetterRoll
-                text="More Questions"
-                href="/templates/template-6/contact"
-                bgColor="var(--primary)"
-                textColor="#ffffff"
-                borderColor="var(--primary)"
-                hoverBgColor="#2b1f18"
-                hoverTextColor="#ffffff"
-                hoverBorderColor="#2b1f18"
-              />
-            </div>
-
-            {/* Decorative Image Card */}
-            <div className="mt-12 rounded-[2.5rem] overflow-hidden h-[240px] relative shadow-md">
+            {/* Image Card with Play Button */}
+            <div className="group relative rounded-[2rem] overflow-hidden aspect-[16/10] w-full shadow-[0_15px_35px_rgba(0,0,0,0.1)] cursor-pointer">
               <Image
-                src="https://images.unsplash.com/photo-1593113616828-6f22bca04804?auto=format&fit=crop&w=700&q=80"
-                alt="FAQ support image"
+                src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=80"
+                alt="Volunteers helping children"
                 layout="fill"
                 objectFit="cover"
-                className="brightness-50"
+                className="transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 flex flex-col items-center justify-center">
-                <span className="text-5xl text-[var(--secondary)] font-black leading-none uppercase">
-                  24/7
-                </span>
-                <span className="text-xs text-white/90 mt-2 tracking-widest font-black uppercase">
-                  Support Available
-                </span>
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-black/20 transition-colors duration-300 group-hover:bg-black/35" />
+              
+              {/* Play Button Overlay */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="relative flex items-center justify-center">
+                  {/* Outer waves */}
+                  <div className="absolute w-20 h-20 bg-white/30 rounded-full animate-ping duration-1000" />
+                  <div className="absolute w-16 h-16 bg-white/40 rounded-full animate-pulse" />
+                  
+                  {/* Inner Play Circle */}
+                  <div className="w-16 h-16 bg-white text-[var(--primary)] rounded-full flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-110 relative z-10">
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      className="ml-1"
+                    >
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Right Side */}
-          <div className="flex flex-col gap-4">
+          {/* Right Side - Accordion FAQ items */}
+          <div className="flex flex-col gap-5">
             {FAQS.map((faqData, index) => (
               <AccordionItem
                 key={index}
@@ -104,3 +99,4 @@ export default function Faq() {
     </section>
   );
 }
+

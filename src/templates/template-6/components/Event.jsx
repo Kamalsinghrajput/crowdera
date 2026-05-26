@@ -1,198 +1,236 @@
 "use client";
-import React, { useEffect, useRef } from "react";
-import Image from "next/image";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import ButtonLetterRoll from "./ButtonLetterRoll";
-import { FiArrowUpRight } from "react-icons/fi";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { MdLocationOn } from "react-icons/md";
+import { FiStar } from "react-icons/fi";
 
 const EVENTS = [
   {
-    category: "Food & Transport",
-    title: "Child Trouble & Care",
-    img: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=80",
+    id: 1,
+    title: "Women's Economic Justice Practice Engages",
+    desc: "Ultimate measure of success you gotta smoke test your hypothesis, nor hire the best slow-walk our commitment. Lean into that problem. Tiger team ultimate.",
+    location: "14200 Park Meadow Drive, Suite 330S",
   },
   {
-    category: "Health & Food",
-    title: "Health Care Program",
-    img: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=800&q=80",
+    id: 2,
+    title: "Provide Healthy Meals To A Child",
+    desc: "Nam vel lacus eu nisl bibendum accumsan vitae vitae nibh. Nam nec eros id magna hendrerit sagittis. Nullam sed mi non odio feugiat volutpat sit amet nec.",
+    location: "14200 Park Meadow Drive, Suite 330S",
   },
   {
-    category: "Education & Food",
-    title: "Education & Safety Program",
-    img: "https://images.unsplash.com/photo-1542810634-71277d95dcbb?auto=format&fit=crop&w=800&q=80",
+    id: 3,
+    title: "Helping Before, During And After A Crisis",
+    desc: "Tbrand terrorists keep it lean mumbo jumbo, but turn the ship, for accountable talk digitalize productize. Make it look like digital this is meaningless, or we have.",
+    location: "14200 Park Meadow Drive, Suite 330S",
+  },
+  {
+    id: 4,
+    title: "Child Education & Community Outreach",
+    desc: "Circle back on our core competencies, nor we need to think big picture, also table the discussion. Let's pressure test this and circle back organically.",
+    location: "14200 Park Meadow Drive, Suite 330S",
+  },
+  {
+    id: 5,
+    title: "Clean Water Access for Rural Families",
+    desc: "Move the needle gain traction, or we need to crystallize a plan, but cross-pollination touch base. Organic growth, and window of opportunity.",
+    location: "14200 Park Meadow Drive, Suite 330S",
   },
 ];
 
-// Slight tilt on each card — alternates so they look natural when flying in
-const CARD_TILTS = [-4, 3, -2.5];
+// Pastel card backgrounds cycling per card
+const CARD_BACKGROUNDS = ["#D6E9F8", "#EDE8E1", "#E8E3F3"];
+
+const GAP = 24;
+const AUTO_MS = 3500;
 
 export default function Event({ isAllEventsPage }) {
-  const containerRef = useRef(null);
-  const cardsRef = useRef([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [visibleCount, setVisibleCount] = useState(3);
+  const [cardWidth, setCardWidth] = useState(0);
+  const trackRef = useRef(null);
+  const timerRef = useRef(null);
 
+  /* ─── Measure card widths on mount/resize ─── */
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+    const measure = () => {
+      let visible = 1;
+      if (window.innerWidth >= 1024) visible = 3;
+      else if (window.innerWidth >= 640) visible = 2;
 
-    const mm = gsap.matchMedia();
+      setVisibleCount(visible);
 
-    mm.add("(min-width: 1024px)", () => {
-      // Set initial positions: all cards far off-screen to the left, tilted
-      cardsRef.current.forEach((card, idx) => {
-        if (!card) return;
-        gsap.set(card, {
-          x: 800 + idx * 120,
-          rotation: CARD_TILTS[idx],
-          opacity: 0,
-        });
-      });
-
-      // Pin the entire container while cards fly in one by one
-      const totalScrollTrack = EVENTS.length * 400; // 400px of scroll per card
-
-      const triggerInstance = ScrollTrigger.create({
-        trigger: containerRef.current,
-        start: "top top",
-        end: `+=${totalScrollTrack}`,
-        pin: true,
-        scrub: 0.8,
-        onUpdate: (self) => {
-          const progress = self.progress;
-          const segmentSize = 1 / EVENTS.length;
-
-          cardsRef.current.forEach((card, idx) => {
-            if (!card) return;
-            const cardStart = idx * segmentSize;
-            const cardEnd = cardStart + segmentSize;
-
-            // Local progress within each card's window (0 -> 1)
-            const localProgress = Math.max(
-              0,
-              Math.min(1, (progress - cardStart) / segmentSize)
-            );
-
-            // Fly in: x from right (+800) to 0, rotation from tilt to 0, opacity 0 to 1
-            gsap.set(card, {
-              x: gsap.utils.interpolate(800 + idx * 120, 0, localProgress),
-              rotation: gsap.utils.interpolate(CARD_TILTS[idx], 0, localProgress),
-              opacity: localProgress,
-            });
-          });
-        },
-      });
-
-      // Style the spacer background to prevent white gap
-      if (triggerInstance.spacer) {
-        triggerInstance.spacer.style.backgroundColor = "#F9F5EC";
+      if (trackRef.current) {
+        const totalWidth = trackRef.current.offsetWidth;
+        setCardWidth((totalWidth - GAP * (visible - 1)) / visible);
       }
-    });
-
-    return () => {
-      mm.revert();
-      ScrollTrigger.getAll().forEach((t) => t.kill());
     };
+
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
   }, []);
 
+  const maxIndex = Math.max(0, EVENTS.length - visibleCount);
+
+  /* ─── Clamp index when screen resizes ─── */
+  useEffect(() => {
+    setCurrentIndex((prev) => Math.min(prev, maxIndex));
+  }, [maxIndex]);
+
+  /* ─── Auto-advance timer ─── */
+  const startTimer = () => {
+    clearInterval(timerRef.current);
+    timerRef.current = setInterval(() => {
+      setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
+    }, AUTO_MS);
+  };
+
+  useEffect(() => {
+    if (isAllEventsPage || EVENTS.length <= visibleCount) return;
+    startTimer();
+    return () => clearInterval(timerRef.current);
+  }, [maxIndex, isAllEventsPage, visibleCount]);
+
+  const goTo = (i) => {
+    setCurrentIndex(Math.max(0, Math.min(i, maxIndex)));
+    startTimer();
+  };
+
+  const translateX = cardWidth ? -(currentIndex * (cardWidth + GAP)) : 0;
+
   return (
-    <div
-      ref={containerRef}
-      className="relative w-full overflow-hidden bg-[#F9F5EC]"
-    >
-      <section className="w-full h-auto lg:h-[820px] flex flex-col font-sans relative z-20">
-        
-        {/* Ghost Watermark */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0">
-          <span className="text-[14vw] font-black text-[#2b1f18]/[0.03] tracking-[1.5rem] uppercase leading-none">
-            EVENTS
-          </span>
-        </div>
+    <section className="bg-white py-20 px-6 font-sans">
+      <div className="max-w-[1240px] mx-auto">
 
-        <div className="max-w-[1300px] w-full mx-auto px-8 lg:px-16 relative z-10 flex flex-col h-full py-16 lg:py-20">
-
-          {/* Section Header */}
-          <div className="mb-14">
-            <span
-              className="text-[var(--secondary)] text-3xl font-normal block mb-4"
-              style={{ fontFamily: "'Caveat', 'Segoe Script', cursive" }}
-            >
-              Get Involved
+        {/* ── Header ── */}
+        <div className="flex flex-col items-center text-center mb-12">
+          {/* "Our Events" pill */}
+          <div
+            className="inline-flex items-center gap-2 rounded-full border bg-white px-5 py-2.5 mb-5"
+            style={{ borderColor: "#D4C3F0", color: "#6B3FA0" }}
+          >
+            <FiStar size={13} strokeWidth={2.5} />
+            <span className="text-xs font-bold uppercase tracking-[0.15em]">
+              Our Events
             </span>
-            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-              <h2 className="text-5xl lg:text-7xl font-black text-[#2b1f18] tracking-tighter leading-[1.05] uppercase m-0 max-w-[700px]">
-                UPCOMING EVENTS & ACTIVITIES
-              </h2>
-              {!isAllEventsPage && (
-                <div className="hidden lg:block shrink-0">
-                  <ButtonLetterRoll
-                    text="View All Events"
-                    href="/templates/template-6/initiatives?tab=events"
-                  />
-                </div>
-              )}
-            </div>
           </div>
 
-          {/* Cards Row — cards fly in from left on scroll */}
-          <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 flex-grow items-stretch">
+          <h2
+            className="text-4xl sm:text-5xl font-black leading-tight tracking-tight"
+            style={{ color: "#211823" }}
+          >
+            Our Latest Upcoming Events
+          </h2>
+        </div>
+
+        {/* ── Carousel track ── */}
+        <div className="overflow-hidden" ref={trackRef}>
+          <div
+            className="flex"
+            style={{
+              gap: `${GAP}px`,
+              transform: `translateX(${translateX}px)`,
+              transition: "transform 0.7s cubic-bezier(0.22, 1, 0.36, 1)",
+              willChange: "transform",
+            }}
+          >
             {EVENTS.map((event, idx) => (
               <div
-                key={idx}
-                ref={(el) => (cardsRef.current[idx] = el)}
-                className="relative rounded-[2.5rem] overflow-hidden group shadow-lg flex-1 h-[280px] lg:h-auto min-h-[280px] will-change-transform cursor-pointer"
+                key={event.id}
+                className="flex-shrink-0 relative rounded-[22px] p-7 flex flex-col gap-4 overflow-hidden"
                 style={{
-                  // On mobile, show normally without tilt animation
+                  width: cardWidth ? `${cardWidth}px` : "100%",
+                  background: CARD_BACKGROUNDS[idx % CARD_BACKGROUNDS.length],
+                  minHeight: "290px",
                 }}
               >
-                <Image
-                  src={event.img}
-                  alt={event.title}
-                  layout="fill"
-                  objectFit="cover"
-                  className="transition-transform duration-700 ease-out group-hover:scale-105"
-                  priority
+                {/* Decorative star watermark */}
+                <span
+                  className="absolute bottom-[-12px] right-[-8px] text-[110px] leading-none pointer-events-none select-none"
+                  style={{ color: "#4a3060", opacity: 0.1 }}
+                  aria-hidden="true"
+                >
+                  ✳
+                </span>
+
+                {/* Title */}
+                <h3
+                  className="font-black leading-snug text-[18px] relative z-10"
+                  style={{ color: "#211823" }}
+                >
+                  {event.title}
+                </h3>
+
+                {/* Description */}
+                <p
+                  className="text-[13px] leading-relaxed flex-1 relative z-10"
+                  style={{ color: "#5a5070" }}
+                >
+                  {event.desc}
+                </p>
+
+                {/* Location */}
+                <div
+                  className="flex items-center gap-1.5 text-[12px] font-semibold relative z-10"
+                  style={{ color: "#4a3060" }}
+                >
+                  <MdLocationOn size={15} />
+                  {event.location}
+                </div>
+
+                <ButtonLetterRoll
+                  text="Event Details"
+                  href="/templates/template-6/initiatives?tab=events"
+                  bgColor="#ffffff"
+                  textColor="#211823"
+                  borderColor="transparent"
+                  hoverBgColor="var(--primary)"
+                  hoverTextColor="#ffffff"
+                  hoverBorderColor="transparent"
+                  className="self-start"
+                  showArrow={false}
                 />
-
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
-
-                {/* Top Right Arrow Button */}
-                <Link href="/templates/template-6/initiatives?tab=events">
-                  <a className="absolute top-6 right-6 w-[45px] h-[45px] rounded-full bg-[var(--secondary)] flex items-center justify-center translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 shadow-md z-10">
-                    <FiArrowUpRight className="text-black" size={22} />
-                  </a>
-                </Link>
-
-                {/* Bottom Content */}
-                <div className="absolute bottom-8 left-8 pr-8 z-10">
-                  <span className="text-white/70 text-[11px] font-black mb-2 block tracking-widest uppercase">
-                    {event.category}
-                  </span>
-                  <h3 className="text-white text-[22px] font-black m-0 leading-tight group-hover:text-[var(--secondary)] transition-colors duration-300">
-                    {event.title}
-                  </h3>
-                </div>
-
-                {/* Card index number */}
-                <div className="absolute top-6 left-8 text-white/20 font-black text-6xl leading-none pointer-events-none select-none">
-                  {String(idx + 1).padStart(2, "0")}
-                </div>
               </div>
             ))}
           </div>
-
-          {/* Mobile View All Button */}
-          {!isAllEventsPage && (
-            <div className="mt-10 lg:hidden text-center">
-              <ButtonLetterRoll
-                text="View All Events"
-                href="/templates/template-6/initiatives?tab=events"
-              />
-            </div>
-          )}
-
         </div>
-      </section>
-    </div>
+
+        {/* ── Dot navigation ── */}
+        <div className="flex justify-center gap-2 mt-8">
+          {Array.from({ length: maxIndex + 1 }).map((_, i) => (
+            <button
+              key={i}
+              onClick={() => goTo(i)}
+              aria-label={`Go to slide ${i + 1}`}
+              className="h-2 rounded-full transition-all duration-300"
+              style={{
+                width: i === currentIndex ? "24px" : "8px",
+                background: i === currentIndex ? "var(--primary)" : "#D4C3F0",
+                border: "none",
+                cursor: "pointer",
+                padding: 0,
+              }}
+            />
+          ))}
+        </div>
+
+        {/* ── View All button ── */}
+        {!isAllEventsPage && (
+          <div className="text-center mt-10">
+            <ButtonLetterRoll
+              text="View All Events"
+              href="/templates/template-6/initiatives?tab=events"
+              bgColor="var(--primary)"
+              textColor="#ffffff"
+              borderColor="var(--primary)"
+              hoverBgColor="var(--secondary)"
+              hoverTextColor="#211823"
+              hoverBorderColor="var(--secondary)"
+            />
+          </div>
+        )}
+      </div>
+    </section>
   );
 }

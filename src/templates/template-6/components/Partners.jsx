@@ -120,7 +120,7 @@ const LogoFoodSafety = () => (
 const LogoChildrenNow = () => (
   <svg viewBox="0 0 140 40" className="h-9 text-[#555] fill-current">
     <rect x="0" y="2" width="105" height="20" fill="#555" rx="2" />
-    <text x="52.5" y="16" fontFamily="'Inter', sans-serif" fontWeight="900" fontSize="10.5" fill="#F9F5EC" textAnchor="middle" letterSpacing="0.8">
+    <text x="52.5" y="16" fontFamily="'Inter', sans-serif" fontWeight="900" fontSize="10.5" fill="#FAF6FC" textAnchor="middle" letterSpacing="0.8">
       CHILDREN
     </text>
     <text x="52.5" y="36" fontFamily="'Sora', sans-serif" fontWeight="900" fontSize="13.5" letterSpacing="1.2" textAnchor="middle">
@@ -147,7 +147,7 @@ const LOGO_COMPONENTS = [
 
 export default function Partners() {
   return (
-    <section className="py-20 lg:py-24 bg-[#F9F5EC] overflow-hidden relative w-full">
+    <section className="py-20 lg:py-24 bg-gradient-to-b from-[#fff] to-[#FAF6FC] overflow-hidden relative w-full font-sans">
       
       {/* Inject custom infinite marquee CSS styles */}
       <style
@@ -180,11 +180,11 @@ export default function Partners() {
             }
             .marquee-wrapper::before {
               left: 0;
-              background: linear-gradient(to right, #F9F5EC, transparent);
+              background: linear-gradient(to right, #FAF6FC, transparent);
             }
             .marquee-wrapper::after {
               right: 0;
-              background: linear-gradient(to left, #F9F5EC, transparent);
+              background: linear-gradient(to left, #FAF6FC, transparent);
             }
           `,
         }}
@@ -193,11 +193,11 @@ export default function Partners() {
       <div className="max-w-[1250px] mx-auto px-6 relative">
         
         {/* ── Top Header Section ──────────────────────────────────────── */}
-        <div className="text-center relative max-w-[800px] mx-auto mb-12">
+        <div className="text-center relative max-w-[800px] mx-auto mb-16">
           
           {/* Cursive Subheading */}
           <span
-            className="text-[var(--secondary)] text-3xl lg:text-4xl font-normal block mb-4"
+            className="text-[var(--primary)] text-3xl lg:text-4xl font-normal block mb-4"
             style={{ fontFamily: "'Caveat', 'Segoe Script', cursive" }}
           >
             Our partners
@@ -205,26 +205,25 @@ export default function Partners() {
 
           {/* Main Huge All-caps Title */}
           <h2
-            className="text-[clamp(32px,5.5vw,60px)] font-black text-[#2b1f18] tracking-tighter leading-[1.05] uppercase m-0 max-w-[700px] mx-auto"
-            style={{ fontFamily: "'Sora', sans-serif" }}
+            className="text-[clamp(32px,5vw,52px)] font-black text-[#211823] tracking-tighter leading-[1.1] uppercase m-0 max-w-[700px] mx-auto font-sora"
           >
             YOUR SUPPORT DRIVES OUR GLOBAL IMPACT
           </h2>
 
           {/* Decorator Left: Orange Sunburst Heart */}
-          <div className="absolute left-[-20px] top-[-30px] hidden md:block select-none pointer-events-none transform -rotate-12 animate-pulse" style={{ animationDuration: '4s' }}>
+          <div className="absolute left-[-40px] top-[-40px] hidden lg:block select-none pointer-events-none transform -rotate-12 animate-pulse" style={{ animationDuration: '4s' }}>
             <SunburstHeart />
           </div>
 
           {/* Decorator Right: Teal Stars */}
-          <div className="absolute right-[-20px] top-[-10px] hidden md:block select-none pointer-events-none transform rotate-6">
+          <div className="absolute right-[-40px] top-[-20px] hidden lg:block select-none pointer-events-none transform rotate-6">
             <TealStars />
           </div>
         </div>
 
         {/* ── Row of Colorful Reaching Hands ─────────────────────────── */}
         <div className="relative w-full h-[120px] lg:h-[160px] flex items-end justify-center overflow-hidden mb-0">
-          <div className="flex items-end justify-center w-full max-w-[800px] h-full gap-2 px-4 translate-y-1">
+          <div className="flex items-end justify-center w-full max-w-[800px] h-full gap-3 px-4 translate-y-1">
             
             <ReachingHand
               fill="#FCDCD4"
@@ -269,18 +268,18 @@ export default function Partners() {
         </div>
 
         {/* Thin Elegant Baseline Divider */}
-        <hr className="border-t border-[#2b1f18]/15 w-full my-0 p-0" />
+        <hr className="border-t border-[#211823]/10 w-full my-0 p-0" />
 
         {/* ── Seamless Infinite Marquee Carousel (Bottom) ──────────────── */}
         <div className="marquee-wrapper py-12">
-          <div className="flex w-max marquee-track">
+          <div className="flex w-max marquee-track py-2">
             
             {/* Set 1 */}
-            <div className="flex items-center justify-around gap-16 px-8 animate-marquee whitespace-nowrap">
+            <div className="flex items-center justify-around gap-8 px-4 animate-marquee whitespace-nowrap">
               {LOGO_COMPONENTS.map((Logo, idx) => (
                 <div
                   key={`set1-${idx}`}
-                  className="logo-wrapper shrink-0 opacity-65 hover:opacity-100 hover:scale-105 transition-all duration-300 cursor-pointer"
+                  className="logo-wrapper shrink-0 bg-white/60 backdrop-blur-md border border-white/40 shadow-[0_8px_30px_rgba(80,40,140,0.03)] rounded-2xl py-6 px-10 flex items-center justify-center min-w-[200px] h-[90px] opacity-80 hover:opacity-100 hover:scale-105 hover:bg-white hover:border-[var(--primary)]/30 hover:shadow-lg transition-all duration-300 cursor-pointer"
                 >
                   <Logo />
                 </div>
@@ -288,11 +287,11 @@ export default function Partners() {
             </div>
 
             {/* Set 2 */}
-            <div className="flex items-center justify-around gap-16 px-8 animate-marquee whitespace-nowrap">
+            <div className="flex items-center justify-around gap-8 px-4 animate-marquee whitespace-nowrap">
               {LOGO_COMPONENTS.map((Logo, idx) => (
                 <div
                   key={`set2-${idx}`}
-                  className="logo-wrapper shrink-0 opacity-65 hover:opacity-100 hover:scale-105 transition-all duration-300 cursor-pointer"
+                  className="logo-wrapper shrink-0 bg-white/60 backdrop-blur-md border border-white/40 shadow-[0_8px_30px_rgba(80,40,140,0.03)] rounded-2xl py-6 px-10 flex items-center justify-center min-w-[200px] h-[90px] opacity-80 hover:opacity-100 hover:scale-105 hover:bg-white hover:border-[var(--primary)]/30 hover:shadow-lg transition-all duration-300 cursor-pointer"
                 >
                   <Logo />
                 </div>

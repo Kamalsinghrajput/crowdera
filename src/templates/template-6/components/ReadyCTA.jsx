@@ -61,12 +61,12 @@ export default function ReadyCTA() {
           <ButtonLetterRoll
             text="Start a Campaign"
             href="/templates/template-6/initiatives"
-            bgColor="#F9F5EC"
+            bgColor="#FAF6FC"
             textColor="var(--primary)"
-            borderColor="#F9F5EC"
-            hoverBgColor="#2b1f18"
+            borderColor="#FAF6FC"
+            hoverBgColor="#211823"
             hoverTextColor="#ffffff"
-            hoverBorderColor="#2b1f18"
+            hoverBorderColor="#211823"
             hoverSecondaryLetterColor="#ffffff"
           />
         </div>

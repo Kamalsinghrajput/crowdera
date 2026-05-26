@@ -26,43 +26,7 @@ const InitiativesFundraisers = ({
 }) => {
   const fundraisersList = initialFundraisersData || fundraisers;
 
-  const handleMouseMove = (e) => {
-    const card = e.currentTarget;
-    const { left, top, width, height } = card.getBoundingClientRect();
-    const x = (e.clientX - left - width / 2) / (width / 2);
-    const y = (e.clientY - top - height / 2) / (height / 2);
 
-    gsap.to(card, {
-      rotateX: -y * 10,
-      rotateY: x * 10,
-      duration: 0.2,
-      ease: "power2.out",
-    });
-  };
-
-  const handleMouseEnter = (e) => {
-    const card = e.currentTarget;
-    gsap.to(card, {
-      y: -10,
-      boxShadow: "0 25px 50px -12px rgba(0,0,0,0.15)",
-      duration: 0.4,
-      ease: "power2.out",
-      transformPerspective: 1000,
-      transformOrigin: "center center",
-    });
-  };
-
-  const handleMouseLeave = (e) => {
-    const card = e.currentTarget;
-    gsap.to(card, {
-      y: 0,
-      rotateX: 0,
-      rotateY: 0,
-      boxShadow: "0 1px 2px 0 rgba(0,0,0,0.05)",
-      duration: 0.5,
-      ease: "power2.out",
-    });
-  };
 
   return (
     <>
@@ -74,11 +38,7 @@ const InitiativesFundraisers = ({
         return (
           <div
             key={fundraiserItem.id}
-            onMouseEnter={handleMouseEnter}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
             className="bg-white rounded-2xl group flex flex-col border border-gray-100 opacity-0 p-8 text-left relative"
-            style={{ willChange: "transform" }}
           >
             {/* Profile Avatar + Name + Subtitle */}
             <div className="flex items-center gap-4 mb-8">
@@ -148,11 +108,13 @@ const InitiativesFundraisers = ({
 
             {/* Buttons */}
             <div className="mt-auto grid grid-cols-2 gap-3">
-              <button className="bg-[var(--primary)] text-white font-bold py-3.5 rounded-full text-[12px] uppercase tracking-widest hover:bg-[#111] transition-all active:scale-95 shadow-md">
-                Donate
+              <button className="relative overflow-hidden bg-[var(--primary)] text-white font-bold py-3.5 rounded-full text-[12px] uppercase tracking-widest transition-all active:scale-95 shadow-md group/btn">
+                <span className="absolute inset-0 w-full h-full bg-[#211823] transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] origin-left scale-x-0 group-hover/btn:scale-x-100" />
+                <span className="relative z-10">Donate</span>
               </button>
-              <button className="bg-white text-[#111] font-bold py-3.5 rounded-full text-[12px] uppercase tracking-widest border-2 border-[#111] hover:bg-gray-50 transition-all active:scale-95">
-                View
+              <button className="relative overflow-hidden bg-white text-[#111] font-bold py-3.5 rounded-full text-[12px] uppercase tracking-widest border-2 border-[#111] transition-all active:scale-95 group/btn">
+                <span className="absolute inset-0 w-full h-full bg-[#111] transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] origin-left scale-x-0 group-hover/btn:scale-x-100" />
+                <span className="relative z-10 group-hover/btn:text-white transition-colors duration-300">View</span>
               </button>
             </div>
           </div>

@@ -15,25 +15,26 @@ export default function BlogPage() {
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Caveat&family=Inter:wght@400;500;600;700;800&family=Sora:wght@400;600;700;800&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Inter:wght@400;500;600;700;800&family=Sora:wght@400;600;700;800&family=Nunito:wght@400;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
           rel="stylesheet"
         />
       </Head>
       <div
+        className="t6-wrapper"
         style={{
-          "--primary": "#E3692A",
-          "--secondary": "#F2B740",
-          "--bg-color": "#2b1f18",
-          "--text-color": "#F9F5EC",
+          "--primary": "#8E6F9F",
+          "--secondary": "#00D2FF",
+          "--bg-color": "#211823",
+          "--text-color": "#FAF6FC",
           position: "relative",
           overflowX: "hidden",
-          background: "#F9F5EC",
+          background: "#FAF6FC",
         }}
       >
         <Navbar />
         <main>
           {/* Subpage Header Banner */}
-          <div className="bg-[#2b1f18] pt-[180px] pb-[100px] text-center relative overflow-hidden">
+          <div className="bg-[#211823] pt-[180px] pb-[100px] text-center relative overflow-hidden">
             <div className="max-w-[1200px] mx-auto px-6 relative z-10">
               <span
                 className="text-[var(--secondary)] text-3xl font-normal block mb-2"
@@ -41,7 +42,7 @@ export default function BlogPage() {
               >
                 Our stories
               </span>
-              <h1 className="text-5xl lg:text-7xl font-black text-white uppercase tracking-tighter m-0">
+              <h1 className="text-5xl lg:text-7xl font-black text-white uppercase tracking-tighter m-0" style={{ fontFamily: "'Sora', sans-serif" }}>
                 ALL BLOG POSTS
               </h1>
             </div>

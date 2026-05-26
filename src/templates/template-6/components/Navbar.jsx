@@ -1,19 +1,15 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import {
-  FiPhone,
-  FiMail,
-  FiMapPin,
-  FiFacebook,
-  FiTwitter,
-  FiInstagram,
   FiChevronDown,
   FiMenu,
   FiX,
+  FiSearch,
 } from "react-icons/fi";
 
+// Main nav items (visible in the top bar)
 const NAV_ITEMS = [
   { label: "Home", href: "#hero" },
   { label: "Services", href: "#services" },
@@ -44,48 +40,54 @@ const NAV_ITEMS = [
       { label: "Newsletter", href: "#newsletter" },
     ],
   },
-  { label: "Team", href: "#team" },
   { label: "Testimonials", href: "#testimonials" },
   { label: "FAQ", href: "#faq" },
   { label: "Blog", href: "#blog" },
   { label: "Contact", href: "#contact" },
 ];
 
-const MAIN_LIMIT = 5;
+// Items that live ONLY inside the hamburger drawer
+const HAMBURGER_ONLY_ITEMS = [
+  { label: "Team", href: "#team" },
+];
+
+// Show up to 6 items on the main navbar; the rest go into the hamburger drawer
+const MAIN_LIMIT = 6;
 
 export default function Navbar() {
   const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [overflowOpen, setOverflowOpen] = useState(false);
-  const overflowRef = useRef(null);
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   const mainLinks = NAV_ITEMS.slice(0, MAIN_LIMIT);
   const overflowLinks = NAV_ITEMS.slice(MAIN_LIMIT);
-  const hasOverflow = overflowLinks.length > 0;
+  // All items that go in the hamburger drawer: overflow nav items + hamburger-only items (Team)
+  const drawerLinks = [...overflowLinks, ...HAMBURGER_ONLY_ITEMS];
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 80);
+    const onScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const isSubpage = router.pathname !== "/templates/template-6";
 
+  // Close drawer when clicking outside
   useEffect(() => {
+    if (!drawerOpen) return;
     const fn = (e) => {
-      if (overflowRef.current && !overflowRef.current.contains(e.target)) {
-        setOverflowOpen(false);
+      const drawer = document.getElementById("t6-nav-drawer");
+      if (drawer && !drawer.contains(e.target)) {
+        setDrawerOpen(false);
       }
     };
     document.addEventListener("mousedown", fn);
     return () => document.removeEventListener("mousedown", fn);
-  }, []);
+  }, [drawerOpen]);
 
   const scrollTo = (e, href) => {
     e.preventDefault();
-    setMobileOpen(false);
-    setOverflowOpen(false);
+    setDrawerOpen(false);
 
     if (href.startsWith("#")) {
       if (isSubpage) {
@@ -93,7 +95,7 @@ export default function Navbar() {
       } else {
         const el = document.querySelector(href);
         if (el) {
-          const top = el.offsetTop - 80;
+          const top = el.offsetTop - 90;
           window.scrollTo({ top, behavior: "smooth" });
         }
       }
@@ -104,184 +106,268 @@ export default function Navbar() {
 
   return (
     <>
-      {/* ONLY animations live here */}
-      <style>
-        {`
-        @keyframes fadeDown {
-          from { opacity: 0; transform: translateY(-10px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes slideInLeft {
-          from { transform: translateX(-100%); }
-          to { transform: translateX(0); }
-        }
-        .animate-fadeDown {
-          animation: fadeDown 0.2s ease;
-        }
-        .animate-slideInLeft {
-          animation: slideInLeft 0.3s cubic-bezier(0.4,0,0.2,1);
-        }
-      `}
-      </style>
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+            @keyframes fadeDown {
+              from { opacity: 0; transform: translateY(-10px); }
+              to { opacity: 1; transform: translateY(0); }
+            }
+            @keyframes slideInRight {
+              from { transform: translateX(100%); }
+              to { transform: translateX(0); }
+            }
+            @keyframes overlayFadeIn {
+              from { opacity: 0; }
+              to { opacity: 1; }
+            }
+            .animate-fadeDown {
+              animation: fadeDown 0.2s ease;
+            }
+            .animate-slideInRight {
+              animation: slideInRight 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+            .animate-overlayFadeIn {
+              animation: overlayFadeIn 0.3s ease;
+            }
+            .font-sora {
+              font-family: 'Sora', sans-serif;
+            }
+            .font-inter {
+              font-family: 'Inter', sans-serif;
+            }
+            .font-manrope {
+              font-family: 'Manrope', sans-serif;
+            }
+            /* TrueHelp scoped typography */
+            .t6-wrapper h1,
+            .t6-wrapper h2,
+            .t6-wrapper h3,
+            .t6-wrapper h4,
+            .t6-wrapper h5,
+            .t6-wrapper h6 {
+              font-family: 'Manrope', 'Sora', sans-serif;
+            }
+            .t6-wrapper p,
+            .t6-wrapper span,
+            .t6-wrapper div,
+            .t6-wrapper a,
+            .t6-wrapper li,
+            .t6-wrapper button {
+              font-family: 'Inter', 'Manrope', sans-serif;
+            }
+          `,
+        }}
+      />
 
-      <header className="absolute top-0 left-0 right-0 z-[999]">
-        {/* TOP BAR */}
-        <div
-          className={`bg-[var(--bg-color)] overflow-hidden transition-all duration-300 ${
-            scrolled ? "h-0" : "h-[45px]"
-          }`}
-        >
-          <div className="hidden md:flex justify-between items-center h-full mx-auto max-w-[1200px] px-4 text-white text-sm">
-            <div>
-              <span className="text-gray-300">Join our movement — </span>
-              <a
-                href="#volunteer"
-                className="text-[var(--primary)] font-bold hover:underline"
-              >
-                Sign up
-              </a>
-              <span className="text-gray-300"> to volunteer this weekend!</span>
+      <header
+        className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-300 ${
+          scrolled || isSubpage
+            ? "bg-white/95 backdrop-blur-md shadow-md py-3"
+            : "bg-transparent py-5"
+        }`}
+      >
+        <nav className="max-w-[1280px] mx-auto px-6 flex justify-between items-center">
+          {/* LOGO */}
+          <Link href="/templates/template-6">
+            <div className="flex items-center gap-2.5 cursor-pointer">
+              <div className="relative flex items-center justify-center">
+                {/* Hand holding heart SVG */}
+                <svg
+                  width="38"
+                  height="38"
+                  viewBox="0 0 512 512"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="transition-transform duration-300 hover:scale-110"
+                >
+                  <defs>
+                    <linearGradient id="hand-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#4cd2ff" />
+                      <stop offset="100%" stopColor="#8c62aa" />
+                    </linearGradient>
+                  </defs>
+                  {/* Heart shape */}
+                  <path
+                    d="M256 420c-8-0-16-3-22-9L114 291c-40-40-40-105-0-145c40-40-105-40-145 0l15 15l-15-15c40-40 105-40 145 0c40 40 40 105 0 145l-120 120c-6 6-14 9-22 9z"
+                    fill="#8c62aa"
+                  />
+                  {/* Hand shape curving underneath */}
+                  <path
+                    d="M100 300c30-10 70 10 100 40s60 30 90 10c25-15 40-40 70-50"
+                    stroke="url(#hand-grad)"
+                    strokeWidth="32"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
+              <div className="flex flex-col leading-tight font-sora">
+                <span className="text-2xl font-extrabold tracking-tight text-[#312340]">Truehelp</span>
+                <span className="text-[10px] font-bold text-[#8c62aa] tracking-widest uppercase -mt-0.5">Charity Organization</span>
+              </div>
             </div>
-            <div>
-              <span className="font-bold text-gray-200">
-                Call: (888) 123 4567
-              </span>
-            </div>
-          </div>
-        </div>
+          </Link>
 
-        {/* NAV */}
-        <div
-          className={`left-0 right-0 z-[1000] transition-all duration-300 ${
-            scrolled ? "fixed top-0 shadow-lg bg-white" : "absolute top-[45px] bg-transparent border-b border-white/10"
-          }`}
-        >
-          <nav className="w-full">
-            <div className="max-w-[1200px] mx-auto flex justify-between items-center px-4 py-4 lg:py-5">
-              {/* LOGO */}
-              <Link href="/templates/template-6">
-                <div className="flex items-center gap-2 cursor-pointer">
-                  <div className="text-[var(--primary)] text-3xl">
-                    <svg
-                      stroke="currentColor"
-                      fill="currentColor"
-                      strokeWidth="0"
-                      viewBox="0 0 512 512"
-                      height="1em"
-                      width="1em"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path>
-                    </svg>
+          {/* DESKTOP NAV LINKS */}
+          <ul className="hidden lg:flex items-center gap-6 xl:gap-8 font-sora">
+            {mainLinks.map((item) => (
+              <li key={item.label} className="group relative">
+                <a
+                  href={item.href}
+                  onClick={(e) => scrollTo(e, item.href)}
+                  className="text-[15px] font-semibold transition-colors py-2 flex items-center gap-1 text-[#312340] hover:text-[#8c62aa]"
+                >
+                  {item.label}
+                  {item.subItems && (
+                    <FiChevronDown className="w-3.5 h-3.5 opacity-60 group-hover:rotate-180 transition-transform duration-300" />
+                  )}
+                </a>
+
+                {item.subItems && (
+                  <div className="absolute top-full left-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-2 group-hover:translate-y-0 bg-white shadow-xl border-t-4 border-[#8c62aa] rounded-b-lg min-w-[200px] z-[1010] py-2">
+                    {item.subItems.map((sub) => (
+                      <a
+                        key={sub.label}
+                        href={sub.href}
+                        onClick={(e) => scrollTo(e, sub.href)}
+                        className="block px-4 py-2 text-sm text-[#4a3e56] hover:bg-[#8c62aa]/10 hover:text-[#8c62aa] transition-colors font-inter"
+                      >
+                        {sub.label}
+                      </a>
+                    ))}
                   </div>
-                  <span className={`text-2xl font-black tracking-tight uppercase transition-colors ${scrolled ? "text-gray-900" : "text-white"}`}>
-                    GIVICO
-                  </span>
-                </div>
-              </Link>
+                )}
+              </li>
+            ))}
 
-              {/* DESKTOP */}
-              <ul className="hidden lg:flex gap-8">
-                {mainLinks.map((item) => (
-                  <li key={item.label} className="group relative">
+
+          </ul>
+
+          {/* ACTION BUTTONS */}
+          <div className="flex items-center gap-4 xl:gap-6">
+            {/* Search Icon */}
+            <button className="text-[#312340] hover:text-[#8c62aa] transition-all p-1.5 hover:scale-110">
+              <FiSearch size={20} strokeWidth={2.5} />
+            </button>
+
+            {/* Donation Button */}
+            <a
+              href="#donate"
+              onClick={(e) => scrollTo(e, "#donate")}
+              className="hidden sm:inline-block bg-[#8c62aa] hover:bg-[#774ba3] text-white font-sora font-bold text-sm px-6 py-2.5 rounded-full transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0"
+            >
+              Donation
+            </a>
+
+            {/* Hamburger menu button — visible on ALL screen sizes */}
+            <button
+              onClick={() => setDrawerOpen(!drawerOpen)}
+              className="text-[#312340] hover:text-[#8c62aa] p-1.5 transition-colors hover:scale-110"
+              aria-label="Open menu"
+            >
+              {drawerOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+            </button>
+          </div>
+        </nav>
+      </header>
+
+      {/* SLIDE-IN DRAWER (hamburger menu — works on all screen sizes) */}
+      {drawerOpen && (
+        <div className="fixed inset-0 z-[9999]">
+          {/* Overlay */}
+          <div
+            className="absolute inset-0 bg-black/40 backdrop-blur-sm animate-overlayFadeIn"
+            onClick={() => setDrawerOpen(false)}
+          />
+          {/* Drawer panel */}
+          <div
+            id="t6-nav-drawer"
+            className="absolute right-0 top-0 bottom-0 w-[300px] bg-white shadow-2xl p-6 flex flex-col z-10 animate-slideInRight font-sora"
+          >
+            <div className="flex justify-between items-center mb-8">
+              <span className="text-xl font-extrabold text-[#312340]">Menu</span>
+              <button
+                onClick={() => setDrawerOpen(false)}
+                className="text-[#312340] hover:text-[#8c62aa] p-1"
+              >
+                <FiX size={24} />
+              </button>
+            </div>
+
+            <div className="flex-1 overflow-y-auto space-y-4">
+              {/* On mobile: show ALL nav items. On desktop (lg+): show only overflow + hamburger-only items */}
+              {/* Mobile: full nav */}
+              <div className="lg:hidden space-y-4">
+                {[...NAV_ITEMS, ...HAMBURGER_ONLY_ITEMS].map((item) => (
+                  <div key={item.label} className="space-y-1">
                     <a
                       href={item.href}
                       onClick={(e) => scrollTo(e, item.href)}
-                      className={`relative text-[14px] font-bold uppercase py-2 flex items-center gap-1.5 transition-colors ${scrolled ? "text-gray-800 hover:text-[var(--primary)]" : "text-white hover:text-[var(--secondary)]"}`}
+                      className="block text-base font-semibold text-[#312340] hover:text-[#8c62aa] py-1 transition-colors"
                     >
-                      <span className="text-sm">+</span> {item.label}
+                      {item.label}
                     </a>
-
                     {item.subItems && (
-                      <div className="absolute top-full left-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-3 group-hover:translate-y-0 bg-white shadow-xl border-t-4 border-[var(--primary)] rounded-b-lg min-w-[240px]">
+                      <div className="pl-4 border-l-2 border-[#8c62aa]/20 space-y-2 mt-1">
                         {item.subItems.map((sub) => (
                           <a
                             key={sub.label}
                             href={sub.href}
                             onClick={(e) => scrollTo(e, sub.href)}
-                            className="block px-5 py-3 text-sm hover:bg-[var(--primary)]/10 hover:text-[var(--primary)] hover:pl-7 transition-all"
+                            className="block text-sm text-[#4a3e56] hover:text-[#8c62aa] py-0.5 transition-colors font-inter"
                           >
                             {sub.label}
                           </a>
                         ))}
                       </div>
                     )}
-                  </li>
+                  </div>
                 ))}
-              </ul>
+              </div>
 
-              {/* RIGHT */}
-              <div className="flex items-center gap-4">
-                <a
-                  href="#donate"
-                  onClick={(e) => scrollTo(e, "#donate")}
-                  className="hidden lg:flex items-center gap-2 bg-[var(--primary)] px-7 py-3 rounded-full text-sm font-bold text-white transition hover:opacity-90 uppercase tracking-wide"
-                >
-                  Donate <span>→</span>
-                </a>
-
-                {/* OVERFLOW */}
-                {hasOverflow && (
-                  <div ref={overflowRef} className="relative hidden lg:block">
-                    <button
-                      onClick={() => setOverflowOpen(!overflowOpen)}
-                      className={`w-12 h-12 border rounded-full flex items-center justify-center transition-colors ${scrolled ? "border-gray-200 text-gray-800 hover:bg-gray-50" : "border-white/20 text-white hover:bg-white/10"}`}
+              {/* Desktop: only overflow + hamburger-only items */}
+              <div className="hidden lg:block space-y-4">
+                {drawerLinks.map((item) => (
+                  <div key={item.label} className="space-y-1">
+                    <a
+                      href={item.href}
+                      onClick={(e) => scrollTo(e, item.href)}
+                      className="block text-base font-semibold text-[#312340] hover:text-[#8c62aa] py-1 transition-colors"
                     >
-                      {overflowOpen ? <FiX /> : <FiMenu />}
-                    </button>
-
-                    {overflowOpen && (
-                      <div className="absolute right-0 top-[calc(100%+10px)] bg-white shadow-xl border-t-4 border-[var(--primary)] rounded-b-lg animate-fadeDown">
-                        {overflowLinks.map((link) => (
+                      {item.label}
+                    </a>
+                    {item.subItems && (
+                      <div className="pl-4 border-l-2 border-[#8c62aa]/20 space-y-2 mt-1">
+                        {item.subItems.map((sub) => (
                           <a
-                            key={link.label}
-                            href={link.href}
-                            onClick={(e) => scrollTo(e, link.href)}
-                            className="block px-5 py-3 hover:bg-[var(--primary)]/10 hover:text-[var(--primary)]"
+                            key={sub.label}
+                            href={sub.href}
+                            onClick={(e) => scrollTo(e, sub.href)}
+                            className="block text-sm text-[#4a3e56] hover:text-[#8c62aa] py-0.5 transition-colors font-inter"
                           >
-                            {link.label}
+                            {sub.label}
                           </a>
                         ))}
                       </div>
                     )}
                   </div>
-                )}
-
-                {/* MOBILE BTN */}
-                <button
-                  onClick={() => setMobileOpen(true)}
-                  className="lg:hidden bg-[var(--primary)] text-white p-2 rounded"
-                >
-                  <FiMenu size={24} />
-                </button>
+                ))}
               </div>
             </div>
-          </nav>
-        </div>
-      </header>
 
-      {/* MOBILE DRAWER */}
-      {mobileOpen && (
-        <div className="fixed inset-0 z-[9999]">
-          <div
-            className="absolute inset-0 bg-black/60"
-            onClick={() => setMobileOpen(false)}
-          />
-          <div className="absolute left-0 top-0 bottom-0 w-[300px] bg-black text-white p-6 animate-slideInLeft">
-            <button onClick={() => setMobileOpen(false)}>
-              <FiX size={24} />
-            </button>
-
-            {NAV_ITEMS.map((item) => (
+            <div className="pt-6 border-t border-gray-100">
               <a
-                key={item.label}
-                href={item.href}
-                onClick={(e) => scrollTo(e, item.href)}
-                className="block py-3 border-b border-white/10"
+                href="#donate"
+                onClick={(e) => {
+                  scrollTo(e, "#donate");
+                  setDrawerOpen(false);
+                }}
+                className="block text-center bg-[#8c62aa] hover:bg-[#774ba3] text-white font-bold py-3 rounded-full transition-all duration-300"
               >
-                {item.label}
+                Donation
               </a>
-            ))}
+            </div>
           </div>
         </div>
       )}

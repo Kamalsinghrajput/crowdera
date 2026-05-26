@@ -1,59 +1,86 @@
 "use client";
 import Image from "next/image";
-import { FaQuoteLeft } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
 
-export default function TestimonialCard({ testimonialData, cardWidth }) {
+/**
+ * TestimonialCard
+ * Renders a single testimonial in the new reference style:
+ * - Reviewer avatar + name + role at top
+ * - Quote body
+ * - Star rating row at bottom
+ *
+ * Used by Testimonial.jsx for the left-panel slide content.
+ */
+export default function TestimonialCard({ testimonialData }) {
+  if (!testimonialData) return null;
+
   return (
-    <div
-      style={{
-        flexShrink: 0,
-        width: cardWidth > 0 ? `${cardWidth}px` : "calc(50% - 20px)",
-        padding: "10px",
-        boxSizing: "border-box",
-      }}
-    >
-      <div style={{ marginBottom: "24px" }}>
-        <FaQuoteLeft size={40} color="#121d18" />
-      </div>
-      <p
-        style={{
-          fontSize: "22px",
-          color: "#6c6e76",
-          lineHeight: 1.6,
-          marginBottom: "30px",
-          fontWeight: 400,
-        }}
-      >
-        {testimonialData.text}
-      </p>
-      <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+    <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+      {/* Reviewer identity */}
+      <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
         <div
           style={{
-            width: "60px",
-            height: "60px",
+            width: 58,
+            height: 58,
             borderRadius: "50%",
             overflow: "hidden",
             position: "relative",
             flexShrink: 0,
+            border: "3px solid #C8EEFB",
           }}
         >
-          <Image src={testimonialData.img} alt={testimonialData.name} layout="fill" objectFit="cover" />
+          <Image
+            src={testimonialData.img}
+            alt={testimonialData.name}
+            layout="fill"
+            objectFit="cover"
+          />
         </div>
         <div>
           <h4
             style={{
-              fontSize: "20px",
-              fontWeight: 700,
-              color: "#121d18",
-              marginBottom: "4px",
+              fontSize: "15px",
+              fontWeight: 800,
+              color: "#1E1033",
+              margin: 0,
             }}
           >
             {testimonialData.name}
           </h4>
-          <p style={{ fontSize: "14px", color: "#6c6e76", margin: 0 }}>
+          <p style={{ fontSize: "12px", color: "#8a7a9b", margin: 0, marginTop: "2px" }}>
             {testimonialData.role}
           </p>
         </div>
+      </div>
+
+      {/* Quote */}
+      <p
+        style={{
+          fontSize: "16px",
+          color: "#3a3060",
+          lineHeight: 1.75,
+          fontWeight: 500,
+          margin: 0,
+        }}
+      >
+        {testimonialData.text}
+      </p>
+
+      {/* Stars */}
+      <div
+        style={{
+          display: "inline-flex",
+          alignItems: "center",
+          gap: "6px",
+          background: "#EBF7FF",
+          borderRadius: "12px",
+          padding: "10px 18px",
+          alignSelf: "flex-start",
+        }}
+      >
+        {[...Array(5)].map((_, i) => (
+          <FaStar key={i} color="#FBBF24" size={16} />
+        ))}
       </div>
     </div>
   );

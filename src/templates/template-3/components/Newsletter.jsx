@@ -22,12 +22,12 @@ export default function NewsLetter() {
   };
 
   return (
-    <section className="relative pt-[120px] pb-[80px] overflow-hidden bg-[var(--bg-color)]">
-      <style
-        dangerouslySetInnerHTML={{
-          __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; --bg-color: ${bgColor}; --secondary-bg-color: ${secondaryBgColor}; }`,
-        }}
-      />
+    <section
+      className="relative pt-[120px] pb-[80px] overflow-hidden"
+      style={{
+        background: "var(--bg-color)",
+      }}
+    >
       {/* Background image */}
       <div
         className="absolute inset-0 bg-cover bg-center grayscale"

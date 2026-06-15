@@ -13,6 +13,7 @@ import TestimonialsSection from "../../../src/templates/template-10/components/T
 import BoardMembersSection from "../../../src/templates/template-10/components/BoardMembersSection";
 import NewsletterSection from "../../../src/templates/template-10/components/NewsletterSection";
 import FooterSection from "../../../src/templates/template-10/components/FooterSection";
+import VideoSection from "../../../src/templates/template-10/components/VideoSection";
 
 export default function Template10() {
   return (
@@ -24,9 +25,17 @@ export default function Template10() {
           content="BigHearts – the largest global crowdfunding community connecting nonprofits, donors, and companies worldwide." />
         
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <style>{`
+          html {
+            font-size: 18px !important;
+          }
+        `}</style>
       </Head>
 
-      <div className="font-sans antialiased overflow-x-hidden">
+      <div className="font-sans antialiased overflow-x-hidden" style={{
+        "--primary": "#7C3682",
+        "--secondary": "#9b59b6"
+      }}>
         <Navbar />
         <main>
           <HeroSection />
@@ -35,6 +44,7 @@ export default function Template10() {
           <DonationsSection />
           <CausesSection />
           <EventsSection />
+          <VideoSection />
           <TopDonorsSection />
           <BoardMembersSection />
           <TestimonialsSection />

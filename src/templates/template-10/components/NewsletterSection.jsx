@@ -50,7 +50,7 @@ export default function NewsletterSection() {
       id="newsletter"
       className="relative py-20 md:py-28 px-4 sm:px-6 overflow-hidden bg-white"
     >
-      <style>{`:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; }`}</style>
+
 
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
@@ -104,8 +104,8 @@ export default function NewsletterSection() {
                   required
                   className="
                     flex-1 bg-gray-100 border border-gray-300 rounded-full px-6 py-4
-                    text-gray-800 placeholder-gray-500 text-sm font-semibold
-                    outline-none focus:border-t10-rose focus:bg-white transition-all duration-300
+                    text-gray-800 placeholder-gray-500 text-base font-semibold
+                    outline-none focus:border-[var(--primary)] focus:bg-white transition-all duration-300
                   "
                 />
 
@@ -113,8 +113,8 @@ export default function NewsletterSection() {
                   type="submit"
                   className="
                     flex items-center justify-center gap-2
-                    bg-gradient-to-r from-t10-rose to-t10-roseDark hover:shadow-lg hover:shadow-t10-rose/30
-                    text-white font-extrabold text-sm uppercase tracking-widest
+                    bg-[var(--primary)] hover:bg-[#511F54] hover:shadow-lg hover:shadow-[var(--primary)]/30
+                    text-white font-black text-base uppercase tracking-widest
                     px-8 py-4 rounded-full flex-shrink-0
                     shadow-md
                     transition-all duration-300

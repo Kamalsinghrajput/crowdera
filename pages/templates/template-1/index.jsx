@@ -13,6 +13,7 @@ import BoardMembers from "../../../src/templates/template-1/components/BoardMemb
 import TopDonors from "../../../src/templates/template-1/components/TopDonors";
 import Testimonials from "../../../src/templates/template-1/components/Testimonials";
 import Events from "../../../src/templates/template-1/components/Events";
+import VideoSection from "../../../src/templates/template-1/components/VideoSection";
 
 export default function Template1() {
   return (
@@ -43,6 +44,7 @@ export default function Template1() {
         <TopDonors />
         <Testimonials />
         <Events />
+        <VideoSection />
 
         {/* Gallery Carousel */}
         {/* <GalleryCarousel /> */}

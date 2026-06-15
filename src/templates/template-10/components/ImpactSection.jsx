@@ -63,11 +63,6 @@ export default function ImpactSection() {
           "linear-gradient(135deg,#fdf4f6 0%,#ffffff 50%,#f8f0ff 100%)",
       }}
     >
-      <style
-        dangerouslySetInnerHTML={{
-          __html: `:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; }`,
-        }}
-      />
 
       <div className="max-w-7xl mx-auto">
         {/* Section header */}

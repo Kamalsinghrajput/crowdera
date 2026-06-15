@@ -73,7 +73,7 @@ export default function BoardMembersSection() {
       id="board-members"
       className="relative py-20 md:py-28 px-4 sm:px-6 overflow-hidden"
       style={{ background: "linear-gradient(135deg,#fff7f9 0%,#ffffff 50%,#f8f0ff 100%)" }}>
-      <style>{`:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; }`}</style>
+
       
       {/* Decorative SVGs matching Template-10 style */}
       <svg

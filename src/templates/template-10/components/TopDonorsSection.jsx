@@ -122,7 +122,7 @@ export default function TopDonorsSection() {
       id="top-donors"
       className="relative py-20 md:py-28 px-4 sm:px-6 overflow-hidden"
       style={{ background: "linear-gradient(135deg,#fdf4f6 0%,#ffffff 50%,#f8f0ff 100%)" }}>
-      <style>{`:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; }`}</style>
+
       
       {/* Decorative elements */}
       <svg

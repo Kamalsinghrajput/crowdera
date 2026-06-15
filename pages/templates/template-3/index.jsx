@@ -20,6 +20,7 @@ import SiteFooter from "../../../src/templates/template-3/components/SiteFooter"
 import ImpactProfile from "../../../src/templates/template-3/components/ImpactProfile";
 import TopDonors from "../../../src/templates/template-3/components/TopDonors";
 import ReadyCTA from "../../../src/templates/template-3/components/ReadyCTA";
+import VideoSection from "../../../src/templates/template-3/components/VideoSection";
 
 // ScrollToTop must be client-only to avoid hydration mismatch
 const ScrollToTop = dynamic(
@@ -55,6 +56,10 @@ export default function Template2() {
           position: "relative",
           overflowX: "hidden",
           background: "#fff",
+          "--primary": "#0e7c3b",
+          "--secondary": "#EBD3AF",
+          "--bg-color": "#121D18",
+          "--secondary-bg-color": "#f9f9f9"
         }}
       >
         <Navbar />
@@ -89,6 +94,9 @@ export default function Template2() {
           </div>
           <div id="testimonials">
             <Testimonial />
+          </div>
+          <div id="video">
+            <VideoSection />
           </div>
 
           <div id="team">

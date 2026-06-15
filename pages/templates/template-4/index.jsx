@@ -22,6 +22,7 @@ import FeaturedIn from "../../../src/templates/template-4/components/FeaturedIn"
 import ImpactProfile from "../../../src/templates/template-4/components/ImpactProfile";
 import CounterOne from "../../../src/templates/template-4/components/CounterOne";
 import ReadyCTA from "../../../src/templates/template-4/components/ReadyCTA";
+import VideoSection from "../../../src/templates/template-4/components/VideoSection";
 
 // ScrollToTop must be client-only to avoid hydration mismatch
 const ScrollToTop = dynamic(
@@ -100,6 +101,9 @@ export default function Template2() {
           </div>
           <div id="help-us">
             <HelpUs />
+          </div>
+          <div id="video">
+            <VideoSection />
           </div>
           <div id="team">
             <Team />

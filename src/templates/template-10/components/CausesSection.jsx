@@ -275,7 +275,7 @@ export default function CausesSection() {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <style>{`:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; }`}</style>
+
 
       <div className="relative z-10 flex flex-col items-center justify-center px-4 sm:px-6">
         <div className="text-center mb-12">

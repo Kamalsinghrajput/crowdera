@@ -123,7 +123,7 @@ export default function DonationsSection() {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat"
       }}>
-      <style>{`:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; }`}</style>
+
       
       {/* Dark overlay for readability */}
       <div className="absolute inset-0 z-[1]" />

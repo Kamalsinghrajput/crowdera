@@ -125,7 +125,7 @@ export default function TestimonialsSection() {
         background: "linear-gradient(135deg,#fdf4f6 0%,#fff 60%,#f8f0ff 100%)",
       }}
     >
-      <style>{`:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; }`}</style>
+
 
       {/* Watermark rings */}
       <svg

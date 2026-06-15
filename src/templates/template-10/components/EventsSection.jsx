@@ -24,10 +24,9 @@ export default function EventsSection() {
       id="events"
       className="relative py-20 md:py-28 px-4 sm:px-6 overflow-hidden"
       style={{
-        background: "#511F54"
+        background: "#2D0A31"
       }}>
-      <style>{`:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; }`}</style>
-      
+
       {/* Decorative blobs */}
       <div className="absolute top-0 left-0 w-80 h-80 rounded-full bg-t10-rose/10 blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-t10-purple/10 blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none" />
@@ -43,14 +42,14 @@ export default function EventsSection() {
           <div>
             <div className="inline-flex items-center gap-3 mb-4">
               <span className="block w-10 h-0.5 bg-[var(--primary)]" />
-              <span className="text-[var(--primary)] font-extrabold text-xs uppercase tracking-[3px]">
+              <span className="text-[#e8547a] font-extrabold text-xs uppercase tracking-[3px]">
                 Ongoing Events
               </span>
             </div>
             <h2 className="font-black text-white text-3xl md:text-4xl lg:text-[44px] leading-tight">
               Get Involved: Upcoming
               <br />
-              <span className="text-[var(--primary)]">Charity Events</span>
+              <span className="text-[#e8547a]">Charity Events</span>
             </h2>
           </div>
           <Link href="/templates/template-10/events">

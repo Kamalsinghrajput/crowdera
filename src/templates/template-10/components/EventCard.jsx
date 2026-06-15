@@ -7,7 +7,7 @@ export default function EventCard({ event }) {
 
   return (
     <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group flex flex-col sm:flex-row h-full">
-      <style>{`:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; }`}</style>
+
       {/* Image with date badge */}
       <div className="relative w-full sm:w-44 md:w-48 shrink-0 h-52 sm:h-auto overflow-hidden">
         <img

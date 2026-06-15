@@ -23,6 +23,7 @@ import NewsLetter from "../../../src/templates/template-9/components/Newsletter"
 import SiteFooter from "../../../src/templates/template-9/components/SiteFooter";
 import ImpactProfile from "../../../src/templates/template-9/components/ImpactProfile";
 import TopDonors from "../../../src/templates/template-9/components/TopDonors";
+import VideoSection from "../../../src/templates/template-9/components/VideoSection";
 
 // ScrollToTop must be client-only to avoid hydration mismatch
 const ScrollToTop = dynamic(
@@ -175,6 +176,9 @@ export default function Template2() {
           </div>
           <div id="counter">
             <CounterOne />
+          </div>
+          <div id="video">
+            <VideoSection />
           </div>
           <div id="team">
             <Team />

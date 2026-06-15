@@ -20,7 +20,7 @@ export default function FooterSection() {
       style={{
         background: "url('/assets/template-10-footer.svg') center bottom / cover no-repeat, #511F54"
       }}>
-      <style>{`:root { --primary: ${primaryColor}; --secondary: ${secondaryColor}; }`}</style>
+
       
 
 
